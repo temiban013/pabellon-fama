@@ -2,9 +2,9 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -31,8 +31,8 @@ const config: Config = {
             400: "#4ade80",
             500: "#22c55e",
             600: "#16a34a",
-            700: "#15803d",
-            800: "#166534", // Color verde del escudo
+            700: "#15803d", // Color verde del escudo
+            800: "#166534",
             900: "#14532d",
           },
           brown: {
@@ -48,12 +48,10 @@ const config: Config = {
             900: "#43302b",
           },
         },
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        serif: ["Georgia", "serif"],
+        serif: ["Georgia", "Times New Roman", "serif"],
       },
       boxShadow: {
         pabellon:
@@ -97,4 +95,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;

@@ -1,0 +1,99 @@
+{
+  "name": "Pabellón de la Fama del Deporte Humacaeño",
+  "short_name": "Pabellón Fama",
+  "description": "Museo Manuel Rivera Guevara - Honrando la excelencia deportiva de Humacao, Puerto Rico",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#15803d",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "es-PR",
+  "categories": ["sports", "education", "lifestyle"],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Directorio de Exaltados",
+      "short_name": "Exaltados",
+      "description": "Ver atletas exaltados al Pabellón de la Fama",
+      "url": "/directorio",
+      "icons": [
+        {
+          "src": "/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Museo Virtual",
+      "short_name": "Museo",
+      "description": "Tour virtual del Museo Manuel Rivera Guevara",
+      "url": "/museo",
+      "icons": [
+        {
+          "src": "/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Horarios",
+      "short_name": "Horarios",
+      "description": "Horarios de visita y contacto",
+      "url": "/horario",
+      "icons": [
+        {
+          "src": "/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Homepage en desktop"
+    },
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Homepage en móvil"
+    }
+  ]
+}
