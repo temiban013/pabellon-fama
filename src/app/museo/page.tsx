@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 
@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "museo deportivo",
     "exhibiciones",
   ],
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function MuseoPage() {

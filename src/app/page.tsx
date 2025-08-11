@@ -1,3 +1,6 @@
+import Link from "next/link";
+import RegistroForm from "@/components/forms/RegistroForm";
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
@@ -28,30 +31,30 @@ export default function HomePage() {
 
             {/* Navegación simplificada */}
             <nav className="hidden lg:flex space-x-6">
-              <a href="/" className="nav-link">
+              <Link href="/" className="nav-link">
                 Inicio
-              </a>
-              <a href="#" className="nav-link">
+              </Link>
+              <Link href="#" className="nav-link">
                 Junta de Directores
-              </a>
-              <a href="#" className="nav-link">
+              </Link>
+              <Link href="#" className="nav-link">
                 Directorio de Exaltados
-              </a>
-              <a href="#" className="nav-link">
+              </Link>
+              <Link href="#" className="nav-link">
                 Historia
-              </a>
-              <a href="#" className="nav-link">
+              </Link>
+              <Link href="#" className="nav-link">
                 Enlaces
-              </a>
-              <a href="/museo" className="nav-link">
+              </Link>
+              <Link href="/museo" className="nav-link">
                 Museo MRG
-              </a>
-              <a href="#" className="nav-link">
+              </Link>
+              <Link href="#" className="nav-link">
                 Horario
-              </a>
-              <a href="#" className="nav-link">
+              </Link>
+              <Link href="#" className="nav-link">
                 Calendario
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
@@ -146,31 +149,9 @@ export default function HomePage() {
         </section>
 
         {/* Sección de Registro */}
-        <section className="py-16 bg-gradient-to-br from-pabellon-gold-100 to-pabellon-gold-200">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12 border-4 border-pabellon-gold-300">
-              <h3 className="text-2xl lg:text-3xl font-bold text-pabellon-green-800 mb-6">
-                COMUNÍCATE CON NOSOTROS
-              </h3>
-              <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                Mantente informado sobre nuestras actividades, eventos
-                especiales y nuevas incorporaciones al Pabellón de la Fama del
-                Deporte Humacaeño.
-              </p>
-              <div className="max-w-md mx-auto">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <input
-                    type="email"
-                    placeholder="Tu correo electrónico"
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all"
-                  />
-                  <button className="btn-pabellon">Regístrate aquí</button>
-                </div>
-                <p className="text-sm text-gray-600 mt-4">
-                  Respetamos tu privacidad. No compartimos tu información.
-                </p>
-              </div>
-            </div>
+        <section className="py-16 bg-gradient-to-br from-amber-100 to-amber-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <RegistroForm />
           </div>
         </section>
       </main>

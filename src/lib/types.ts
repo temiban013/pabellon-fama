@@ -1,16 +1,6 @@
 // ==================================================
-// PABELLÓN DE LA FAMA - ORGANIZACIÓN PRINCIPAL
+// INTERFACES PRINCIPALES DEL PABELLÓN
 // ==================================================
-
-export interface PabellonInfo {
-  nombre: string;
-  fechaFundacion: Date;
-  mision: string;
-  vision: string;
-  direccion: DireccionFisica;
-  contacto: InformacionContacto;
-  museoAsociado: string; // "Manuel Rivera Guevara"
-}
 
 export interface Exaltado {
   id: string;
@@ -306,13 +296,6 @@ export interface ConfiguracionSeo {
 // UTILIDADES Y HELPERS
 // ==================================================
 
-export interface ApiResponse<T> {
-  data: T;
-  mensaje: string;
-  exito: boolean;
-  timestamp: Date;
-}
-
 export interface PaginationParams {
   pagina: number;
   limite: number;
@@ -383,4 +366,63 @@ export interface UsePaginationResult {
   irAPagina: (pagina: number) => void;
   puedeRetroceder: boolean;
   puedeAvanzar: boolean;
+}
+
+/// lib/types.ts
+export interface RegistroUsuario {
+  id?: string;
+  email: string;
+  nombre?: string;
+  telefono?: string;
+  interes: "visitante" | "voluntario" | "investigador" | "general";
+  mensaje?: string;
+  fechaRegistro?: Date;
+  activo?: boolean;
+}
+
+export interface ApiResponse<T = unknown> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  message?: string;
+}
+
+export interface FormState {
+  isLoading: boolean;
+  isSuccess: boolean;
+  error: string | null;
+}
+
+// Estados del formulario de registro
+export type RegistroFormData = Pick<
+  RegistroUsuario,
+  "email" | "nombre" | "telefono" | "interes" | "mensaje"
+>;
+
+// Respuesta del API de registro
+export interface RegistroResponse extends ApiResponse {
+  data?: {
+    id: string;
+    email: string;
+    mensaje: string;
+  };
+}
+
+// Tipos para los hooks personalizados
+export interface UseRegistroReturn {
+  formData: RegistroFormData;
+  formState: FormState;
+  validationErrors: ValidationErrors;
+  updateField: (field: keyof RegistroFormData, value: string) => void;
+  submitForm: () => Promise<void>;
+  resetForm: () => void;
+}
+
+// Tipos para errores de validación
+export interface ValidationErrors {
+  email?: string;
+  nombre?: string;
+  telefono?: string;
+  interes?: string;
+  mensaje?: string;
 }
