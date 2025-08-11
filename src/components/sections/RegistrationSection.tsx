@@ -23,6 +23,7 @@ export function RegistrationSection({
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -32,19 +33,33 @@ export function RegistrationSection({
       ...prev,
       [name]: value,
     }));
+    // Limpiar error cuando el usuario empiece a escribir
+    if (error) setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
 
-    // Simulación de envío - aquí conectarías con tu backend
     try {
+      // Validación básica
+      if (!formData.email || !formData.nombre) {
+        throw new Error("Por favor completa todos los campos requeridos.");
+      }
+
+      // Simulación de envío - aquí conectarías con tu backend
       await new Promise((resolve) => setTimeout(resolve, 1500));
+
       setIsSubmitted(true);
       setFormData({ email: "", nombre: "", interes: "general" });
     } catch (error) {
       console.error("Error al registrar:", error);
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Hubo un error al procesar tu registro. Por favor intenta nuevamente."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -100,6 +115,13 @@ export function RegistrationSection({
               la Fama.
             </p>
 
+            {/* Mostrar error si existe */}
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-700 text-sm">{error}</p>
+              </div>
+            )}
+
             {/* Formulario de registro */}
             <form
               onSubmit={handleSubmit}
@@ -111,7 +133,7 @@ export function RegistrationSection({
                     htmlFor="nombre"
                     className="block text-sm font-medium text-pabellon-green-700 mb-2 text-left"
                   >
-                    Nombre Completo
+                    Nombre Completo *
                   </label>
                   <input
                     type="text"
@@ -130,7 +152,7 @@ export function RegistrationSection({
                     htmlFor="email"
                     className="block text-sm font-medium text-pabellon-green-700 mb-2 text-left"
                   >
-                    Correo Electrónico
+                    Correo Electrónico *
                   </label>
                   <input
                     type="email"
@@ -173,7 +195,7 @@ export function RegistrationSection({
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-pabellon-green-700 to-pabellon-green-800 hover:from-pabellon-green-800 hover:to-pabellon-green-900 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:transform-none text-lg"
+                className="w-full bg-gradient-to-r from-pabellon-green-700 to-pabellon-green-800 hover:from-pabellon-green-800 hover:to-pabellon-green-900 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed text-lg"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center">

@@ -41,15 +41,14 @@ export function Hero({ className = "" }: HeroProps) {
             <div className="bg-white px-8 py-8 lg:px-16 lg:py-12 border-2 border-dashed border-pabellon-gold-300 rounded-lg shadow-2xl relative">
               {/* Título principal exacto del PDF */}
               <h1 className="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-bold text-pabellon-green-800 mb-4 leading-tight">
-                Museo del Pabellón de la Fama
+                El Pabellón de la Fama
               </h1>
               <h2 className="text-xl sm:text-2xl lg:text-4xl xl:text-5xl font-bold text-pabellon-green-800 mb-6">
                 del Deporte Humacaeño
               </h2>
 
-              {/* Subtítulo Manuel Rivera Guevara */}
-              <div className="mt-6 text-lg lg:text-xl text-pabellon-gold-600 font-semibold italic">
-                Manuel Rivera Guevara
+              <div className="mt-6 text-base lg:text-lg text-pabellon-gold-600 font-medium">
+                Honrando la excelencia deportiva desde 1996
               </div>
 
               {/* Decoración adicional */}

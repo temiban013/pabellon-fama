@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
-import { ToastProvider } from "@/components/ui/Toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pabellon.org"),
   title: "Pabellón de la Fama del Deporte Humacaeño",
   description:
     "Museo y Pabellón de la Fama que honra la excelencia deportiva de Humacao, Puerto Rico. Museo Manuel Rivera Guevara.",
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg", // Agregar imagen cuando esté disponible
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Pabellón de la Fama del Deporte Humacaeño",
@@ -61,14 +63,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+};
 
-  viewport: "width=device-width, initial-scale=1",
-
-  // Agregar cuando estén disponibles
-  // verification: {
-  //   google: 'google-verification-code',
-  //   yandex: 'yandex-verification-code',
-  // },
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#15803d",
 };
 
 export default function RootLayout({
@@ -79,14 +79,13 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <head>
-        {/* Favicons - agregar cuando estén disponibles */}
+        {/* Favicons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        {/* Theme color para mobile browsers */}
-        <meta name="theme-color" content="#15803d" />
+        {/* Theme colors */}
         <meta name="msapplication-TileColor" content="#15803d" />
 
         {/* Preconnect para performance */}
@@ -108,11 +107,10 @@ export default function RootLayout({
 
         {/* Main app wrapper */}
         <div id="root" className="min-h-screen flex flex-col">
-          {children}
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
         </div>
-
-        {/* Scripts adicionales si son necesarios */}
-        {/* <script>console.log('Pabellón de la Fama loaded');</script> */}
       </body>
     </html>
   );
