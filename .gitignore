@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Pabellón de la Fama - Datos de registraciones
+/data/
+/data/registraciones.json
+/registraciones-backup-*.json
+
+# Logs personalizados
+/logs/
+*.log
+
+# Archivos temporales
+/temp/
+/tmp/

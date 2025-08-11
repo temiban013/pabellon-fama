@@ -1,4 +1,3 @@
-// components/forms/RegistroForm.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -55,7 +54,7 @@ export default function RegistroForm({
   }, [formState.error, showError]);
 
   const handleEmailSubmit = async () => {
-    if (!isExpanded && formData.email) {
+    if (!showFullForm && formData.email) {
       setShowFullForm(true);
       return;
     }
@@ -100,8 +99,6 @@ export default function RegistroForm({
       )}
     </div>
   );
-
-  // Estado de éxito ya no es necesario - se maneja con toast
 
   return (
     <div
@@ -228,12 +225,13 @@ export default function RegistroForm({
             )}
           </div>
 
-          {/* Error general ya no es necesario - se maneja con toast */}
-
           {/* Botones de acción */}
           <div className="flex gap-3">
             <button
-              onClick={() => setShowFullForm(false)}
+              onClick={() => {
+                setShowFullForm(false);
+                if (onClose) onClose();
+              }}
               disabled={formState.isLoading}
               className="flex-1 bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 text-gray-700 font-semibold px-6 py-3 rounded-lg transition-all duration-300"
             >
