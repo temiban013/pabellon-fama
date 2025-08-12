@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { type RegistroUsuario } from "@/lib/types";
 
 interface RegistrationStats {
@@ -44,7 +44,7 @@ export default function AdminPage() {
       } else {
         setError(result.error || "Clave incorrecta");
       }
-    } catch (err) {
+    } catch {
       setError("Error conectando con el servidor");
     } finally {
       setLoading(false);
@@ -66,7 +66,7 @@ export default function AdminPage() {
       } else {
         setError("Error actualizando datos");
       }
-    } catch (err) {
+    } catch {
       setError("Error conectando con el servidor");
     } finally {
       setLoading(false);
@@ -340,7 +340,7 @@ export default function AdminPage() {
                           )}
                           {registro.mensaje && (
                             <p className="text-sm text-gray-600 italic mt-1">
-                              💬 "{registro.mensaje}"
+                              💬 &quot;{registro.mensaje}&quot;
                             </p>
                           )}
                         </div>
