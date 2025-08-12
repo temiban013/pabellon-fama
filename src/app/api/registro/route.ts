@@ -1,16 +1,16 @@
-// app/api/registro/route.ts - Enhanced with real persistence
+// app/api/registro/route.ts - Enhanced with admin support
 import { NextRequest, NextResponse } from "next/server";
 import { writeFile, readFile, mkdir } from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
 import { validateRegistroApi } from "@/lib/validations";
-import { type RegistroResponse, type RegistroUsuario } from "@/lib/types";
+import { type RegistroUsuario } from "@/lib/types";
 
 // Headers para CORS y seguridad
 const corsHeaders = {
   "Access-Control-Allow-Origin":
     process.env.NODE_ENV === "production" ? "https://pabellon.org" : "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
   "Cache-Control": "no-store, max-age=0",
   "X-Content-Type-Options": "nosniff",
@@ -21,11 +21,11 @@ const corsHeaders = {
 const DATA_DIR = path.join(process.cwd(), "data");
 const REGISTRATIONS_FILE = path.join(DATA_DIR, "registraciones.json");
 
+// Clave administrativa (en producción debería estar en env variables)
+const ADMIN_KEY = process.env.ADMIN_KEY;
+
 // Función helper para respuestas de error
-function errorResponse(
-  error: string,
-  status: number = 400
-): NextResponse<RegistroResponse> {
+function errorResponse(error: string, status: number = 400): NextResponse {
   return NextResponse.json(
     { success: false, error },
     { status, headers: corsHeaders }
@@ -34,12 +34,12 @@ function errorResponse(
 
 // Función helper para respuestas de éxito
 function successResponse(
-  data: { id: string; email: string; mensaje: string },
-  message: string = "Registro exitoso"
-): NextResponse<RegistroResponse> {
+  data: unknown,
+  message: string = "Operación exitosa"
+): NextResponse {
   return NextResponse.json(
     { success: true, data, message },
-    { status: 201, headers: corsHeaders }
+    { status: data === null ? 200 : 201, headers: corsHeaders }
   );
 }
 
@@ -62,6 +62,41 @@ async function readExistingRegistrations(): Promise<RegistroUsuario[]> {
     console.error("Error leyendo registraciones:", error);
     return [];
   }
+}
+
+// Función para generar estadísticas
+function generateStatistics(registrations: RegistroUsuario[]) {
+  const now = new Date();
+  const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const oneMonthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+
+  // Contar por tipo de interés
+  const porInteres = registrations.reduce((acc, reg) => {
+    acc[reg.interes] = (acc[reg.interes] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  // Contar por fecha
+  const ultimaSemana = registrations.filter(
+    (reg) => reg.fechaRegistro && new Date(reg.fechaRegistro) >= oneWeekAgo
+  ).length;
+
+  const ultimoMes = registrations.filter(
+    (reg) => reg.fechaRegistro && new Date(reg.fechaRegistro) >= oneMonthAgo
+  ).length;
+
+  return {
+    total: registrations.length,
+    porInteres,
+    ultimaSemana,
+    ultimoMes,
+  };
+}
+
+// Función para verificar autenticación admin
+function verifyAdminAuth(request: NextRequest): boolean {
+  const key = request.nextUrl.searchParams.get("key");
+  return key === ADMIN_KEY;
 }
 
 // Función para guardar registración en archivo JSON
@@ -185,7 +220,42 @@ export async function OPTIONS() {
   return new NextResponse(null, { status: 200, headers: corsHeaders });
 }
 
-// Handler principal para POST
+// Handler para GET (Admin dashboard data)
+export async function GET(request: NextRequest) {
+  try {
+    // Verificar autenticación administrativa
+    if (!verifyAdminAuth(request)) {
+      return errorResponse("Acceso no autorizado", 401);
+    }
+
+    // Leer todas las registraciones
+    const registrations = await readExistingRegistrations();
+
+    // Ordenar por fecha más reciente primero
+    const sortedRegistrations = registrations.sort((a, b) => {
+      const dateA = a.fechaRegistro ? new Date(a.fechaRegistro).getTime() : 0;
+      const dateB = b.fechaRegistro ? new Date(b.fechaRegistro).getTime() : 0;
+      return dateB - dateA;
+    });
+
+    // Generar estadísticas
+    const estadisticas = generateStatistics(registrations);
+
+    // Respuesta para el dashboard admin
+    const adminData = {
+      registraciones: sortedRegistrations,
+      estadisticas,
+      ultimaActualizacion: new Date().toISOString(),
+    };
+
+    return successResponse(adminData, "Datos administrativos obtenidos");
+  } catch (error) {
+    console.error("❌ Error en GET admin:", error);
+    return errorResponse("Error interno del servidor", 500);
+  }
+}
+
+// Handler principal para POST (Registro público)
 export async function POST(request: NextRequest) {
   try {
     // Verificar Content-Type
@@ -261,10 +331,6 @@ export async function POST(request: NextRequest) {
 }
 
 // Otros métodos no permitidos
-export async function GET() {
-  return errorResponse("Método no permitido", 405);
-}
-
 export async function PUT() {
   return errorResponse("Método no permitido", 405);
 }

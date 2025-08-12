@@ -34,7 +34,7 @@ export default function AdminPage() {
 
     try {
       const response = await fetch(
-        `/api/admin/registraciones?key=${encodeURIComponent(adminKey)}`
+        `/api/registro?key=${encodeURIComponent(adminKey)}`
       );
       const result = await response.json();
 
@@ -57,12 +57,13 @@ export default function AdminPage() {
     setLoading(true);
     try {
       const response = await fetch(
-        `/api/admin/registraciones?key=${encodeURIComponent(adminKey)}`
+        `/api/registro?key=${encodeURIComponent(adminKey)}`
       );
       const result = await response.json();
 
       if (response.ok && result.success) {
         setData(result.data);
+        setError(null);
       } else {
         setError("Error actualizando datos");
       }
@@ -140,28 +141,40 @@ export default function AdminPage() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-                {error}
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative">
+                <span className="block sm:inline">{error}</span>
               </div>
             )}
 
             <button
               onClick={authenticate}
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pabellon-green-700 hover:bg-pabellon-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pabellon-green-500 disabled:opacity-50"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pabellon-green-700 hover:bg-pabellon-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pabellon-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Verificando..." : "Acceder"}
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      className="opacity-25"
+                      fill="none"
+                    />
+                    <path
+                      fill="currentColor"
+                      className="opacity-75"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    />
+                  </svg>
+                  Verificando...
+                </span>
+              ) : (
+                "Acceder"
+              )}
             </button>
-
-            <div className="text-xs text-gray-500 text-center mt-4">
-              <p>
-                Clave por defecto:{" "}
-                <code className="bg-gray-100 px-1 py-0.5 rounded">
-                  pabellon-admin-2025
-                </code>
-              </p>
-              <p className="mt-1">Para Kike y Felix del Pabellón</p>
-            </div>
           </div>
         </div>
       </div>
@@ -177,23 +190,50 @@ export default function AdminPage() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">
-                📊 Registraciones
+                📊 Dashboard Administrativo
               </h1>
               <p className="text-gray-600">
-                Panel administrativo del Pabellón de la Fama
+                Registraciones del Pabellón de la Fama
               </p>
             </div>
             <div className="flex gap-3">
               <button
                 onClick={refreshData}
                 disabled={loading}
-                className="bg-pabellon-green-600 hover:bg-pabellon-green-700 text-white px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+                className="bg-pabellon-green-600 hover:bg-pabellon-green-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg transition-colors font-medium disabled:cursor-not-allowed"
               >
-                {loading ? "Cargando..." : "🔄 Actualizar"}
+                {loading ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        className="opacity-25"
+                        fill="none"
+                      />
+                      <path
+                        fill="currentColor"
+                        className="opacity-75"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    Actualizando...
+                  </span>
+                ) : (
+                  "🔄 Actualizar"
+                )}
               </button>
               <button
-                onClick={() => setIsAuthenticated(false)}
-                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors"
+                onClick={() => {
+                  setIsAuthenticated(false);
+                  setData(null);
+                  setAdminKey("");
+                  setError(null);
+                }}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"
               >
                 Cerrar Sesión
               </button>
@@ -201,11 +241,20 @@ export default function AdminPage() {
           </div>
         </div>
 
+        {/* Error Display */}
+        {error && (
+          <div className="px-4 sm:px-0 mb-6">
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+              {error}
+            </div>
+          </div>
+        )}
+
         {data && (
           <div className="px-4 sm:px-0">
             {/* Estadísticas */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              <div className="bg-white overflow-hidden shadow rounded-lg">
+              <div className="bg-white overflow-hidden shadow rounded-lg border border-gray-200">
                 <div className="p-5">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
@@ -216,7 +265,7 @@ export default function AdminPage() {
                         <dt className="text-sm font-medium text-gray-500 truncate">
                           Total Registraciones
                         </dt>
-                        <dd className="text-lg font-medium text-gray-900">
+                        <dd className="text-2xl font-bold text-gray-900">
                           {data.estadisticas.total}
                         </dd>
                       </dl>
@@ -225,7 +274,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-white overflow-hidden shadow rounded-lg">
+              <div className="bg-white overflow-hidden shadow rounded-lg border border-gray-200">
                 <div className="p-5">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
@@ -236,7 +285,7 @@ export default function AdminPage() {
                         <dt className="text-sm font-medium text-gray-500 truncate">
                           Esta Semana
                         </dt>
-                        <dd className="text-lg font-medium text-gray-900">
+                        <dd className="text-2xl font-bold text-gray-900">
                           {data.estadisticas.ultimaSemana}
                         </dd>
                       </dl>
@@ -245,7 +294,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-white overflow-hidden shadow rounded-lg">
+              <div className="bg-white overflow-hidden shadow rounded-lg border border-gray-200">
                 <div className="p-5">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
@@ -256,7 +305,7 @@ export default function AdminPage() {
                         <dt className="text-sm font-medium text-gray-500 truncate">
                           Este Mes
                         </dt>
-                        <dd className="text-lg font-medium text-gray-900">
+                        <dd className="text-2xl font-bold text-gray-900">
                           {data.estadisticas.ultimoMes}
                         </dd>
                       </dl>
@@ -265,7 +314,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-white overflow-hidden shadow rounded-lg">
+              <div className="bg-white overflow-hidden shadow rounded-lg border border-gray-200">
                 <div className="p-5">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
@@ -287,7 +336,7 @@ export default function AdminPage() {
             </div>
 
             {/* Distribución por interés */}
-            <div className="bg-white shadow rounded-lg mb-8 p-6">
+            <div className="bg-white shadow rounded-lg mb-8 p-6 border border-gray-200">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 📈 Distribución por Tipo de Interés
               </h3>
@@ -312,7 +361,7 @@ export default function AdminPage() {
             </div>
 
             {/* Lista de registraciones */}
-            <div className="bg-white shadow overflow-hidden sm:rounded-md">
+            <div className="bg-white shadow overflow-hidden sm:rounded-md border border-gray-200">
               <div className="px-4 py-5 sm:px-6">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
                   📝 Registraciones Recientes
@@ -324,14 +373,14 @@ export default function AdminPage() {
               <ul className="divide-y divide-gray-200">
                 {data.registraciones.map((registro) => (
                   <li key={registro.id}>
-                    <div className="px-4 py-4 sm:px-6">
+                    <div className="px-4 py-4 sm:px-6 hover:bg-gray-50">
                       <div className="flex items-center justify-between">
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-gray-900 truncate">
-                            {registro.nombre}
+                            {registro.nombre || "Sin nombre"}
                           </p>
                           <p className="text-sm text-gray-500">
-                            {registro.email}
+                            📧 {registro.email}
                           </p>
                           {registro.telefono && (
                             <p className="text-sm text-gray-500">
@@ -339,7 +388,7 @@ export default function AdminPage() {
                             </p>
                           )}
                           {registro.mensaje && (
-                            <p className="text-sm text-gray-600 italic mt-1">
+                            <p className="text-sm text-gray-600 italic mt-1 line-clamp-2">
                               💬 &quot;{registro.mensaje}&quot;
                             </p>
                           )}
@@ -353,7 +402,9 @@ export default function AdminPage() {
                             {getInteresLabel(registro.interes)}
                           </div>
                           <p className="text-xs text-gray-500 mt-1">
-                            {formatDate(registro.fechaRegistro!.toString())}
+                            {registro.fechaRegistro
+                              ? formatDate(registro.fechaRegistro.toString())
+                              : "Fecha no disponible"}
                           </p>
                         </div>
                       </div>
@@ -366,6 +417,9 @@ export default function AdminPage() {
                 <div className="px-4 py-8 text-center text-gray-500">
                   <div className="text-4xl mb-2">📭</div>
                   <p>No hay registraciones aún</p>
+                  <p className="text-sm mt-1">
+                    Las nuevas registraciones aparecerán aquí
+                  </p>
                 </div>
               )}
             </div>
