@@ -345,7 +345,7 @@ export default function RegistroForm({
             label="Tipo de Interés"
             required
             value={formData.interes}
-            onChange={(value) => updateField("interes", value as any)}
+            onChange={(value) => updateField("interes", value)}
             error={validationErrors.interes}
             disabled={formState.isLoading}
             options={interesOptions}
