@@ -11,28 +11,28 @@ export function Footer({ className = "" }: FooterProps) {
     {
       title: "Pabellón de la Fama",
       links: [
-        { name: "Directorio de Exaltados", href: "/directorio" },
-        { name: "Historia", href: "/historia" },
-        { name: "Junta de Directores", href: "/junta" },
-        { name: "Calendario", href: "/calendario" },
+        { name: "Directorio de Exaltados", href: "#" },
+        { name: "Historia", href: "#" },
+        { name: "Junta de Directores", href: "#" },
+        { name: "Calendario", href: "#" },
       ],
     },
     {
       title: "Museo",
       links: [
         { name: "Museo Manuel Rivera Guevara", href: "/museo" },
-        { name: "Exhibiciones", href: "/museo#exhibiciones" },
-        { name: "Tour Virtual", href: "/museo#tour-virtual" },
-        { name: "Horarios de Visita", href: "/museo#horarios" },
+        { name: "Exhibiciones", href: "#" },
+        { name: "Tour Virtual", href: "#" },
+        { name: "Horarios de Visita", href: "#" },
       ],
     },
     {
       title: "Enlaces",
       links: [
-        { name: "Biblioteca", href: "/enlaces#biblioteca" },
-        { name: "Blog", href: "/enlaces#blog" },
-        { name: "YouTube", href: "/enlaces#youtube" },
-        { name: "Horario y Contacto", href: "/horario" },
+        { name: "Biblioteca", href: "#" },
+        { name: "Blog", href: "#" },
+        { name: "YouTube", href: "#" },
+        { name: "Horario y Contacto", href: "#" },
       ],
     },
   ];
