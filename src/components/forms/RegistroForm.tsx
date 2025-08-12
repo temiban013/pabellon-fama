@@ -1,3 +1,4 @@
+// src/components/forms/RegistroForm.tsx - VERSIÓN CORREGIDA
 "use client";
 
 import { useState, useEffect } from "react";
@@ -10,6 +11,194 @@ interface RegistroFormProps {
   onSuccess?: () => void;
   onClose?: () => void;
   className?: string;
+}
+
+// 🔧 SOLUCION: Mover InputField FUERA del componente principal
+interface InputFieldProps {
+  type?: string;
+  field: string;
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  disabled?: boolean;
+}
+
+function InputField({
+  type = "text",
+  field,
+  label,
+  placeholder,
+  required = false,
+  value,
+  onChange,
+  error,
+  disabled = false,
+}: InputFieldProps) {
+  return (
+    <div className="space-y-1">
+      <label
+        htmlFor={field}
+        className="block text-sm font-medium text-gray-700"
+      >
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <input
+        id={field}
+        name={field}
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all ${
+          error
+            ? "border-red-500 bg-red-50"
+            : "border-gray-300 hover:border-gray-400"
+        }`}
+        disabled={disabled}
+        autoComplete={
+          field === "email"
+            ? "email"
+            : field === "nombre"
+            ? "name"
+            : field === "telefono"
+            ? "tel"
+            : "off"
+        }
+      />
+      {error && (
+        <p className="text-sm text-red-600 flex items-center gap-1">
+          <ExclamationCircleIcon className="w-4 h-4" />
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+// 🔧 SOLUCION: SelectField también fuera del componente
+interface SelectFieldProps {
+  field: string;
+  label: string;
+  required?: boolean;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  disabled?: boolean;
+  options: Array<{ value: string; label: string }>;
+}
+
+function SelectField({
+  field,
+  label,
+  required = false,
+  value,
+  onChange,
+  error,
+  disabled = false,
+  options,
+}: SelectFieldProps) {
+  return (
+    <div className="space-y-1">
+      <label
+        htmlFor={field}
+        className="block text-sm font-medium text-gray-700"
+      >
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <select
+        id={field}
+        name={field}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all ${
+          error
+            ? "border-red-500 bg-red-50"
+            : "border-gray-300 hover:border-gray-400"
+        }`}
+        disabled={disabled}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      {error && (
+        <p className="text-sm text-red-600 flex items-center gap-1">
+          <ExclamationCircleIcon className="w-4 h-4" />
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+interface TextareaFieldProps {
+  field: string;
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  disabled?: boolean;
+  maxLength?: number;
+  rows?: number;
+}
+
+function TextareaField({
+  field,
+  label,
+  placeholder,
+  required = false,
+  value,
+  onChange,
+  error,
+  disabled = false,
+  maxLength = 500,
+  rows = 3,
+}: TextareaFieldProps) {
+  return (
+    <div className="space-y-1">
+      <label
+        htmlFor={field}
+        className="block text-sm font-medium text-gray-700"
+      >
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <textarea
+        id={field}
+        name={field}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        rows={rows}
+        maxLength={maxLength}
+        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all resize-none ${
+          error
+            ? "border-red-500 bg-red-50"
+            : "border-gray-300 hover:border-gray-400"
+        }`}
+        disabled={disabled}
+      />
+      <div className="flex justify-between items-center">
+        {error ? (
+          <p className="text-sm text-red-600 flex items-center gap-1">
+            <ExclamationCircleIcon className="w-4 h-4" />
+            {error}
+          </p>
+        ) : (
+          <div />
+        )}
+        <div className="text-xs text-gray-500">
+          {value.length}/{maxLength} caracteres
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function RegistroForm({
@@ -29,6 +218,14 @@ export default function RegistroForm({
 
   const { success, error: showError } = useToastHelpers();
   const [showFullForm, setShowFullForm] = useState(isExpanded);
+
+  // Opciones para el select de interés
+  const interesOptions = [
+    { value: "general", label: "Interés General" },
+    { value: "visitante", label: "Visitante del Museo" },
+    { value: "investigador", label: "Investigador/Estudiante" },
+    { value: "voluntario", label: "Voluntario" },
+  ];
 
   // Efecto para manejar éxito y errores con toast
   useEffect(() => {
@@ -61,44 +258,10 @@ export default function RegistroForm({
     await submitForm();
   };
 
-  // Componente de campo de entrada reutilizable
-  const InputField = ({
-    type = "text",
-    field,
-    label,
-    placeholder,
-    required = false,
-  }: {
-    type?: string;
-    field: keyof typeof formData;
-    label: string;
-    placeholder: string;
-    required?: boolean;
-  }) => (
-    <div className="space-y-1">
-      <label className="block text-sm font-medium text-gray-700">
-        {label} {required && <span className="text-red-500">*</span>}
-      </label>
-      <input
-        type={type}
-        value={formData[field] || ""}
-        onChange={(e) => updateField(field, e.target.value)}
-        placeholder={placeholder}
-        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all ${
-          validationErrors[field]
-            ? "border-red-500 bg-red-50"
-            : "border-gray-300 hover:border-gray-400"
-        }`}
-        disabled={formState.isLoading}
-      />
-      {validationErrors[field] && (
-        <p className="text-sm text-red-600 flex items-center gap-1">
-          <ExclamationCircleIcon className="w-4 h-4" />
-          {validationErrors[field]}
-        </p>
-      )}
-    </div>
-  );
+  const handleBackToBasic = () => {
+    setShowFullForm(false);
+    if (onClose) onClose();
+  };
 
   return (
     <div
@@ -124,6 +287,10 @@ export default function RegistroForm({
             label="Correo Electrónico"
             placeholder="tu@email.com"
             required
+            value={formData.email}
+            onChange={(value) => updateField("email", value)}
+            error={validationErrors.email}
+            disabled={formState.isLoading}
           />
 
           <button
@@ -145,6 +312,10 @@ export default function RegistroForm({
             label="Correo Electrónico"
             placeholder="tu@email.com"
             required
+            value={formData.email}
+            onChange={(value) => updateField("email", value)}
+            error={validationErrors.email}
+            disabled={formState.isLoading}
           />
 
           <InputField
@@ -152,6 +323,10 @@ export default function RegistroForm({
             label="Nombre Completo"
             placeholder="Tu nombre completo"
             required
+            value={formData.nombre || ""}
+            onChange={(value) => updateField("nombre", value)}
+            error={validationErrors.nombre}
+            disabled={formState.isLoading}
           />
 
           <InputField
@@ -159,79 +334,39 @@ export default function RegistroForm({
             field="telefono"
             label="Teléfono"
             placeholder="787-123-4567"
+            value={formData.telefono || ""}
+            onChange={(value) => updateField("telefono", value)}
+            error={validationErrors.telefono}
+            disabled={formState.isLoading}
           />
 
-          <div className="space-y-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Tipo de Interés <span className="text-red-500">*</span>
-            </label>
-            <select
-              value={formData.interes}
-              onChange={(e) =>
-                updateField(
-                  "interes",
-                  e.target.value as
-                    | "visitante"
-                    | "voluntario"
-                    | "investigador"
-                    | "general"
-                )
-              }
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all ${
-                validationErrors.interes
-                  ? "border-red-500 bg-red-50"
-                  : "border-gray-300 hover:border-gray-400"
-              }`}
-              disabled={formState.isLoading}
-            >
-              <option value="general">Interés General</option>
-              <option value="visitante">Visitante del Museo</option>
-              <option value="investigador">Investigador/Estudiante</option>
-              <option value="voluntario">Voluntario</option>
-            </select>
-            {validationErrors.interes && (
-              <p className="text-sm text-red-600 flex items-center gap-1">
-                <ExclamationCircleIcon className="w-4 h-4" />
-                {validationErrors.interes}
-              </p>
-            )}
-          </div>
+          <SelectField
+            field="interes"
+            label="Tipo de Interés"
+            required
+            value={formData.interes}
+            onChange={(value) => updateField("interes", value as any)}
+            error={validationErrors.interes}
+            disabled={formState.isLoading}
+            options={interesOptions}
+          />
 
-          <div className="space-y-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Mensaje (Opcional)
-            </label>
-            <textarea
-              value={formData.mensaje || ""}
-              onChange={(e) => updateField("mensaje", e.target.value)}
-              placeholder="¿Hay algo específico en lo que estás interesado?"
-              rows={3}
-              maxLength={500}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all resize-none ${
-                validationErrors.mensaje
-                  ? "border-red-500 bg-red-50"
-                  : "border-gray-300 hover:border-gray-400"
-              }`}
-              disabled={formState.isLoading}
-            />
-            <div className="text-xs text-gray-500 text-right">
-              {(formData.mensaje || "").length}/500 caracteres
-            </div>
-            {validationErrors.mensaje && (
-              <p className="text-sm text-red-600 flex items-center gap-1">
-                <ExclamationCircleIcon className="w-4 h-4" />
-                {validationErrors.mensaje}
-              </p>
-            )}
-          </div>
+          <TextareaField
+            field="mensaje"
+            label="Mensaje (Opcional)"
+            placeholder="¿Hay algo específico en lo que estás interesado?"
+            value={formData.mensaje || ""}
+            onChange={(value) => updateField("mensaje", value)}
+            error={validationErrors.mensaje}
+            disabled={formState.isLoading}
+            maxLength={500}
+            rows={3}
+          />
 
           {/* Botones de acción */}
           <div className="flex gap-3">
             <button
-              onClick={() => {
-                setShowFullForm(false);
-                if (onClose) onClose();
-              }}
+              onClick={handleBackToBasic}
               disabled={formState.isLoading}
               className="flex-1 bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 text-gray-700 font-semibold px-6 py-3 rounded-lg transition-all duration-300"
             >
