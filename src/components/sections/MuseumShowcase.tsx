@@ -127,7 +127,7 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
                   Tour Virtual
                 </Link>
                 <Link
-                  href="/horario"
+                  href="#"
                   className="inline-flex items-center justify-center px-6 py-3 border-2 border-pabellon-green-700 text-pabellon-green-700 font-medium rounded-lg hover:bg-pabellon-green-700 hover:text-white transition-all duration-200"
                 >
                   <span className="mr-2">🕒</span>

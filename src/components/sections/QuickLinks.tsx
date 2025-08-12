@@ -24,7 +24,7 @@ interface QuickLinkItem {
 const quickLinks: QuickLinkItem[] = [
   {
     name: "Biblioteca",
-    href: "/biblioteca",
+    href: "#",
     description: "Recursos y documentos históricos",
     icon: BookOpenIcon,
     external: false,
@@ -37,10 +37,10 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "YouTube",
-    href: "https://youtube.com/@pabellonfamadeportehumacao", // URL placeholder
+    href: "#", // URL placeholder
     description: "Videos y documentales deportivos",
     icon: VideoCameraIcon,
-    external: true,
+    external: false,
     bgGradient: "from-red-50 to-red-100",
     borderColor: "border-red-200",
     iconColor: "text-red-700",
@@ -50,7 +50,7 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "Blog",
-    href: "/blog",
+    href: "#",
     description: "Noticias y artículos deportivos",
     icon: NewspaperIcon,
     external: false,
@@ -63,7 +63,7 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "Horario",
-    href: "/horario",
+    href: "#",
     description: "Horas de visita y contacto",
     icon: ClockIcon,
     external: false,
