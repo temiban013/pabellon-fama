@@ -163,13 +163,19 @@ export function QuickLinks({ className = "" }: QuickLinksProps) {
               ¿Necesitas más información?
             </h4>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Contáctanos directamente o visita nuestro museo para una
-              experiencia completa
+              Explora nuestro directorio completo de exaltados o contáctanos
+              directamente
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/horario"
+                href="/directorio"
                 className="inline-flex items-center justify-center px-6 py-3 bg-pabellon-green-700 text-white font-medium rounded-lg hover:bg-pabellon-green-800 transition-colors duration-200"
+              >
+                Ver Exaltados
+              </Link>
+              <Link
+                href="/horario"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-pabellon-green-700 text-pabellon-green-700 font-medium rounded-lg hover:bg-pabellon-green-700 hover:text-white transition-all duration-200"
               >
                 Ver Horarios
               </Link>

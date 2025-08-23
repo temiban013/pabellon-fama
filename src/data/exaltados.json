@@ -1,0 +1,328 @@
+{
+  "atletismo": {
+    "atletas": [
+      {
+        "id": "julio-yuyo-maldonado",
+        "nombre": "Julio (Yuyo) Luzunaris Maldonado",
+        "apellidos": "Luzunaris Maldonado",
+        "nombreCompleto": "Julio (Yuyo) Luzunaris Maldonado",
+        "deporte": ["Atletismo"],
+        "categoria": "atleta",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Destacado atleta humacaeño reconocido por sus contribuciones al atletismo local y nacional.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/julio-yuyo-maldonado.jpg",
+        "estado": "activo"
+      },
+      {
+        "id": "carmen-paciencia-marrero",
+        "nombre": "Carmen Paciencia Marrero Berrios",
+        "apellidos": "Marrero Berrios",
+        "nombreCompleto": "Carmen Paciencia Marrero Berrios",
+        "deporte": ["Atletismo"],
+        "categoria": "atleta",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Pionera del atletismo femenino en Humacao, destacada por su dedicación y logros deportivos.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/carmen-marrero.jpg",
+        "estado": "activo"
+      },
+      {
+        "id": "manuel-rivera-guevara",
+        "nombre": "Manuel Rivera Guevara",
+        "apellidos": "Rivera Guevara",
+        "nombreCompleto": "Manuel Rivera Guevara",
+        "deporte": ["Atletismo"],
+        "categoria": "atleta-propulsor",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Atleta y propulsor del deporte humacaeño. El museo lleva su nombre en honor a sus contribuciones.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/manuel-rivera-guevara.jpg",
+        "estado": "activo"
+      },
+      {
+        "id": "jaime-tolentino",
+        "nombre": "Jaime Tolentino",
+        "apellidos": "Tolentino",
+        "nombreCompleto": "Jaime Tolentino",
+        "deporte": ["Atletismo"],
+        "categoria": "atleta",
+        "anoExaltacion": 2000,
+        "exaltacion": "2da. Exaltación",
+        "biografia": "Atleta destacado en las competencias de atletismo a nivel local y nacional.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/jaime-tolentino.jpg",
+        "estado": "activo"
+      },
+      {
+        "id": "miguel-lopez-reyes",
+        "nombre": "Miguel A. López Reyes",
+        "apellidos": "López Reyes",
+        "nombreCompleto": "Miguel A. López Reyes",
+        "deporte": ["Atletismo"],
+        "categoria": "atleta",
+        "anoExaltacion": 2000,
+        "exaltacion": "2da. Exaltación",
+        "biografia": "Atleta humacaeño con destacada participación en competencias nacionales de atletismo.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/miguel-lopez-reyes.jpg",
+        "estado": "activo"
+      },
+      {
+        "id": "gladys-diaz",
+        "nombre": "Gladys Díaz",
+        "apellidos": "Díaz",
+        "nombreCompleto": "Gladys Díaz",
+        "deporte": ["Atletismo", "Softbol"],
+        "categoria": "atleta",
+        "anoExaltacion": 2002,
+        "exaltacion": "2da. Exaltación",
+        "biografia": "Destacada atleta en atletismo y softbol, pionera del deporte femenino en Humacao.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ]
+  },
+  "beisbol": {
+    "jugadores": [
+      {
+        "id": "jacinto-jayase-hernandez",
+        "nombre": "Jacinto (Jáyase) Hernández",
+        "apellidos": "Hernández",
+        "nombreCompleto": "Jacinto (Jáyase) Hernández",
+        "deporte": ["Béisbol"],
+        "categoria": "jugador",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Legendario pelotero humacaeño conocido por su excelencia en el diamante.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/jacinto-hernandez.jpg",
+        "estado": "activo"
+      },
+      {
+        "id": "nestor-morales-santiago",
+        "nombre": "Néstor Morales Santiago",
+        "apellidos": "Morales Santiago",
+        "nombreCompleto": "Néstor Morales Santiago",
+        "deporte": ["Béisbol"],
+        "categoria": "jugador",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Destacado pelotero que representó con honor el béisbol humacaeño.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      },
+      {
+        "id": "julio-yuyo-cora",
+        "nombre": "Julio S. Yuyo Cora Romero",
+        "apellidos": "Cora Romero",
+        "nombreCompleto": "Julio S. Yuyo Cora Romero",
+        "deporte": ["Béisbol"],
+        "categoria": "jugador",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Pelotero de gran trayectoria en el béisbol humacaeño y nacional.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ],
+    "propulsores": [
+      {
+        "id": "osvaldo-gil-bosch",
+        "nombre": "Osvaldo Gil Bosch",
+        "apellidos": "Gil Bosch",
+        "nombreCompleto": "Osvaldo Gil Bosch",
+        "deporte": ["Béisbol"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Promotor y propulsor del béisbol humacaeño, dedicado al desarrollo de talentos locales.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ],
+    "equipos": [
+      {
+        "id": "equipo-humacao-1951",
+        "nombre": "Equipo Humacao Doble A (1951)",
+        "apellidos": "",
+        "nombreCompleto": "Equipo Humacao Doble A (1951)",
+        "deporte": ["Béisbol"],
+        "categoria": "equipo",
+        "anoExaltacion": 2002,
+        "exaltacion": "2da. Exaltación",
+        "biografia": "Histórico equipo de béisbol que representó con orgullo a Humacao en 1951.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ]
+  },
+  "boxeo": {
+    "boxeadores": [
+      {
+        "id": "luis-fernando-rivera",
+        "nombre": "Luis Fernando Rivera",
+        "apellidos": "Rivera",
+        "nombreCompleto": "Luis Fernando Rivera",
+        "deporte": ["Boxeo"],
+        "categoria": "boxeador",
+        "anoExaltacion": 2006,
+        "exaltacion": "4ta. Exaltación",
+        "biografia": "Destacado boxeador humacaeño con gran trayectoria en el ring.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ],
+    "propulsores": [
+      {
+        "id": "pedro-tolentino-berberena",
+        "nombre": "Pedro Tolentino Berberena",
+        "apellidos": "Tolentino Berberena",
+        "nombreCompleto": "Pedro Tolentino Berberena",
+        "deporte": ["Boxeo"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Promotor del boxeo humacaeño, dedicado al desarrollo de nuevos talentos.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ]
+  },
+  "baloncesto": {
+    "jugadores": [
+      {
+        "id": "jose-tonin-casillas",
+        "nombre": "José Toñin Casillas Fernández",
+        "apellidos": "Casillas Fernández",
+        "nombreCompleto": "José Toñin Casillas Fernández",
+        "deporte": ["Baloncesto"],
+        "categoria": "jugador",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Legendario jugador de baloncesto que destacó en las canchas humacaeñas.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/jose-casillas.jpg",
+        "estado": "activo"
+      }
+    ]
+  },
+  "futbol": {
+    "jugadores": [
+      {
+        "id": "juan-saso-tulier",
+        "nombre": "Juan (Saso) Tulier Cruz",
+        "apellidos": "Tulier Cruz",
+        "nombreCompleto": "Juan (Saso) Tulier Cruz",
+        "deporte": ["Fútbol"],
+        "categoria": "jugador-propulsor",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Jugador y propulsor del fútbol humacaeño, pionero del deporte en la región.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ],
+    "propulsores": [
+      {
+        "id": "emilio-huyke-colon",
+        "nombre": "Emilio E. Huyke Colón",
+        "apellidos": "Huyke Colón",
+        "nombreCompleto": "Emilio E. Huyke Colón",
+        "deporte": ["Fútbol"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Promotor del fútbol en Humacao, dedicado al desarrollo del deporte.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ]
+  },
+  "deportes-varios": {
+    "propulsores": [
+      {
+        "id": "agripino-roig-guzman",
+        "nombre": "Agripino Roig Guzmán",
+        "apellidos": "Roig Guzmán",
+        "nombreCompleto": "Agripino Roig Guzmán",
+        "deporte": ["Deportes Varios"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Propulsor de múltiples deportes en Humacao, dedicado al desarrollo deportivo integral.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ],
+    "cronistas": [
+      {
+        "id": "julio-francis-edwards",
+        "nombre": "Julio Francis Edwards",
+        "apellidos": "Francis Edwards",
+        "nombreCompleto": "Julio Francis Edwards",
+        "deporte": ["Cronista Deportivo"],
+        "categoria": "cronista",
+        "anoExaltacion": 2000,
+        "exaltacion": "1ra. Exaltación",
+        "biografia": "Destacado cronista deportivo que documentó la historia deportiva humacaeña.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/julio-edwards.jpg",
+        "estado": "activo"
+      }
+    ]
+  },
+  "estadisticas": {
+    "totalExaltados": 78,
+    "deportesRepresentados": 12,
+    "exaltacionesPorAno": {
+      "2000": 28,
+      "2002": 8,
+      "2004": 12,
+      "2006": 8,
+      "2008": 10,
+      "2010": 6,
+      "2012": 8,
+      "2015": 6
+    },
+    "categorias": {
+      "atletas": 45,
+      "propulsores": 25,
+      "equipos": 3,
+      "cronistas": 1,
+      "arbitros": 2,
+      "entrenadores": 2
+    }
+  }
+}

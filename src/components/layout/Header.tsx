@@ -13,7 +13,7 @@ interface NavigationItem {
 const navigation: NavigationItem[] = [
   { name: "Inicio", href: "/" },
   { name: "Junta de Directores", href: "#" },
-  { name: "Directorio de Exaltados", href: "#" },
+  { name: "Directorio de Exaltados", href: "/directorio" },
   { name: "Historia", href: "#" },
   { name: "Enlaces", href: "#" },
   { name: "Museo", href: "/museo" },
