@@ -7,7 +7,11 @@ import { FilterPanel } from "./FilterPanel";
 import { ViewToggle } from "./ViewToggle";
 import { ExaltadoModal } from "./ExaltadoModal";
 import { Pagination } from "./Pagination";
-import { type Exaltado, type FiltrosDirectorio, type CategoriaExaltado } from "@/lib/types";
+import {
+  type Exaltado,
+  type FiltrosDirectorio,
+  type CategoriaExaltado,
+} from "@/lib/types";
 import { debounce } from "@/lib/utils";
 import exaltadosData from "@/data/exaltados.json";
 
@@ -142,7 +146,7 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
   const debouncedSearch = useMemo(
     () =>
       debounce((term: unknown) => {
-        if (typeof term === 'string') {
+        if (typeof term === "string") {
           setCurrentPage(1); // Reset page when searching
           applyFiltersAndSort(term, filters, sortBy, sortDirection);
         }

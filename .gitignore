@@ -52,3 +52,7 @@ next-env.d.ts
 # Archivos temporales
 /temp/
 /tmp/
+
+# Claude
+.claude/
+CLAUDE.md

@@ -121,13 +121,37 @@ export function titleCase(text: string): string {
 
 /**
  * Función para obtener iniciales de un nombre
+ * Maneja apodos en paréntesis y nombres del medio apropiadamente
  */
 export function getInitials(name: string): string {
-  return name
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase())
-    .join("")
-    .slice(0, 2);
+  // Remove content in parentheses (nicknames) and quotes
+  const cleanName = name
+    .replace(/\([^)]*\)/g, '') // Remove (nickname)
+    .replace(/["'"]/g, '') // Remove quotes
+    .replace(/\s+/g, ' ') // Normalize spaces
+    .trim();
+  
+  // Split into words and filter out empty strings and single letters (middle initials)
+  const words = cleanName
+    .split(' ')
+    .filter(word => word.length > 0)
+    .filter(word => {
+      // Keep words that are not just single letters (unless they're the only words)
+      return word.length > 1 || cleanName.split(' ').filter(w => w.length > 0).length <= 2;
+    });
+  
+  if (words.length === 0) {
+    return "??"; // Fallback
+  } else if (words.length === 1) {
+    // Single word: take first letter twice for consistency
+    const initial = words[0].charAt(0).toUpperCase();
+    return initial + initial;
+  } else {
+    // Multiple words: take first letter of first and last word
+    const firstInitial = words[0].charAt(0).toUpperCase();
+    const lastInitial = words[words.length - 1].charAt(0).toUpperCase();
+    return firstInitial + lastInitial;
+  }
 }
 
 /**
