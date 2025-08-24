@@ -14,13 +14,47 @@ export interface Exaltado {
   anoNacimiento?: number;
   lugarNacimiento?: string;
   biografia: string;
-  logros: Logro[];
-  reconocimientos: Reconocimiento[];
+  logros: Logro[] | string[]; // Allow both structured objects and string arrays
+  reconocimientos: Reconocimiento[] | string[]; // Allow both structured objects and string arrays
   foto?: string;
   galeria?: string[];
   estadisticas?: EstadisticaDeportiva[];
   estado: "activo" | "fallecido";
-  fechaFallecimiento?: Date;
+  // New biographical fields
+  fechaNacimiento?: string | null;
+  fechaFallecimiento?: string | null;
+  apodo?: string | null;
+  especialidad?: string;
+  carreraEntrenador?: string;
+  carreraCompetitiva?: Record<string, string>;
+  carreraMLB?: Record<string, unknown>;
+  carreraJugador?: string;
+  carreraAdministrativa?: Record<string, string>;
+  contribucion?: string;
+  record?: string;
+  campeonatos?: Record<string, string>;
+  fechaCampeonato?: string;
+  jugadoresClave?: string[];
+  carreraInternacional?: string;
+  equipos?: string[];
+  carreraAcademica?: string;
+  carreraOlimpica?: Record<string, string>;
+  rolesPrincipales?: Record<string, string>;
+  deportesPromovidos?: string[];
+  familia?: string;
+  logroPionero?: string;
+  inicioProyecto?: string;
+  carreraPeriodistica?: string;
+  servicioPublico?: string;
+  rolFundador?: string;
+  rol?: string;
+  posicion?: string;
+  seleccionNacional?: string;
+  clubes?: string[];
+  cargosPrincipales?: Record<string, string>;
+  participacionOlimpica?: string;
+  victoriasInternacionales1968?: string[];
+  estadisticasMLB?: Record<string, unknown>;
 }
 
 export type CategoriaExaltado =
@@ -35,7 +69,9 @@ export type CategoriaExaltado =
   | "cronista"
   | "arbitro"
   | "benefactor"
-  | "equipo";
+  | "equipo"
+  | "atleta-propulsor"
+  | "jugador-propulsor";
 
 export interface Logro {
   id: string;

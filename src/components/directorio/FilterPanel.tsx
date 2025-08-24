@@ -23,6 +23,8 @@ const categoriasLabels: Record<string, string> = {
   arbitro: "Árbitro",
   comentarista: "Comentarista",
   benefactor: "Benefactor",
+  "atleta-propulsor": "Atleta-Propulsor",
+  "jugador-propulsor": "Jugador-Propulsor",
 };
 
 type SortOption = "nombre" | "ano" | "deporte";

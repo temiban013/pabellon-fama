@@ -32,6 +32,11 @@ function flattenExaltadosData(): Exaltado[] {
     dirigentes: "dirigente",
     cronistas: "cronista",
     equipos: "equipo",
+    entrenadores: "entrenador",
+    promotores: "promotor",
+    comentaristas: "comentarista",
+    arbitros: "arbitro",
+    benefactores: "benefactor",
   };
 
   Object.entries(exaltadosData).forEach(([deporte, categorias]) => {
@@ -92,14 +97,60 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
       if (searchTerm.trim()) {
         const search = searchTerm.toLowerCase().trim();
         filtered = filtered.filter(
-          (exaltado) =>
-            exaltado.nombre.toLowerCase().includes(search) ||
-            exaltado.apellidos?.toLowerCase().includes(search) ||
-            exaltado.nombreCompleto.toLowerCase().includes(search) ||
-            exaltado.deporte.some((d) => d.toLowerCase().includes(search)) ||
-            exaltado.biografia?.toLowerCase().includes(search) ||
-            exaltado.categoria.toLowerCase().includes(search) ||
-            exaltado.exaltacion?.toLowerCase().includes(search)
+          (exaltado) => {
+            // Búsqueda en campos básicos
+            const basicFields = [
+              exaltado.nombre,
+              exaltado.apellidos,
+              exaltado.nombreCompleto,
+              exaltado.biografia,
+              exaltado.categoria,
+              exaltado.exaltacion,
+              exaltado.apodo,
+              exaltado.lugarNacimiento,
+              exaltado.especialidad,
+              exaltado.rol,
+              exaltado.posicion
+            ].filter(Boolean).some(field => 
+              field?.toString().toLowerCase().includes(search)
+            );
+
+            // Búsqueda en deportes
+            const deporteMatch = exaltado.deporte.some((d) => 
+              d.toLowerCase().includes(search)
+            );
+
+            // Búsqueda en logros y reconocimientos
+            const logrosMatch = Array.isArray(exaltado.logros) 
+              ? exaltado.logros.some(logro => 
+                  typeof logro === 'string' 
+                    ? logro.toLowerCase().includes(search)
+                    : logro.titulo?.toLowerCase().includes(search) ||
+                      logro.descripcion?.toLowerCase().includes(search)
+                )
+              : false;
+
+            const reconocimientosMatch = Array.isArray(exaltado.reconocimientos)
+              ? exaltado.reconocimientos.some(reconocimiento => 
+                  typeof reconocimiento === 'string'
+                    ? reconocimiento.toLowerCase().includes(search)
+                    : reconocimiento.titulo?.toLowerCase().includes(search) ||
+                      reconocimiento.otorgadoPor?.toLowerCase().includes(search)
+                )
+              : false;
+
+            // Búsqueda en equipos/clubes
+            const equiposMatch = exaltado.equipos?.some(equipo => 
+              equipo.toLowerCase().includes(search)
+            ) || false;
+
+            const clubesMatch = exaltado.clubes?.some(club => 
+              club.toLowerCase().includes(search)
+            ) || false;
+
+            return basicFields || deporteMatch || logrosMatch || 
+                   reconocimientosMatch || equiposMatch || clubesMatch;
+          }
         );
       }
 
@@ -261,7 +312,7 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
             <SearchBar
               value={searchTerm}
               onChange={handleSearchChange}
-              placeholder="Buscar por nombre, deporte o biografía..."
+              placeholder="Buscar por nombre, apodo, deporte, biografía o logros..."
             />
           </div>
 
