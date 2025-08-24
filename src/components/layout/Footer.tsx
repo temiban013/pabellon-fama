@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface FooterProps {
   className?: string;
@@ -44,10 +45,14 @@ export function Footer({ className = "" }: FooterProps) {
           {/* Logo y descripción */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-pabellon-gold-400 to-pabellon-gold-600 rounded-full p-1 border-2 border-pabellon-brown-700">
-                <div className="w-full h-full bg-pabellon-green-800 rounded-full flex items-center justify-center text-pabellon-gold-400 font-bold text-xs">
-                  PFDH
-                </div>
+              <div className="w-12 h-12 flex-shrink-0">
+                <Image
+                  src="/images/pabellon-logo.png"
+                  alt="Pabellón de la Fama del Deporte Humacaeño - Logo Oficial"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-pabellon-gold-400">

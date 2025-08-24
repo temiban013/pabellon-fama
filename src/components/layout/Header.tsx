@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 interface NavigationItem {
@@ -34,16 +35,16 @@ export function Header() {
           {/* Logo y título */}
           <Link href="/" className="flex items-center space-x-4 group">
             <div className="relative w-16 h-16">
-              {/* Logo del escudo basado en la imagen */}
-              <div className="w-full h-full bg-gradient-to-br from-pabellon-gold-400 to-pabellon-gold-600 rounded-full p-2 shadow-lg border-2 border-pabellon-brown-700 group-hover:scale-105 transition-transform duration-200">
-                <div className="w-full h-full bg-pabellon-green-800 rounded-full flex items-center justify-center relative overflow-hidden">
-                  {/* Escudo simplificado del logo */}
-                  <div className="text-pabellon-gold-400 font-bold text-xs leading-none text-center">
-                    <div className="text-[8px]">PABELLÓN</div>
-                    <div className="text-[6px]">FAMA</div>
-                    <div className="text-[8px] mt-1">1996</div>
-                  </div>
-                </div>
+              {/* Logo oficial del pabellón */}
+              <div className="w-full h-full group-hover:scale-105 transition-transform duration-200">
+                <Image
+                  src="/images/pabellon-logo.png"
+                  alt="Pabellón de la Fama del Deporte Humacaeño - Logo Oficial"
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-contain drop-shadow-lg"
+                  priority
+                />
               </div>
             </div>
             <div className="hidden sm:block">
