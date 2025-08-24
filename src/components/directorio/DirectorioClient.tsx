@@ -25,24 +25,32 @@ function flattenExaltadosData(): Exaltado[] {
 
   // Mapeo de categorías del JSON a las categorías del tipo
   const categoriaMap: Record<string, CategoriaExaltado> = {
-    jugadores: "atleta",
-    propulsores: "promotor",
+    atletas: "atleta",
+    jugadores: "jugador",
+    boxeadores: "boxeador",
+    propulsores: "propulsor",
     dirigentes: "dirigente",
+    cronistas: "cronista",
+    equipos: "equipo",
   };
 
   Object.entries(exaltadosData).forEach(([deporte, categorias]) => {
     if (deporte === "estadisticas") return;
 
-    Object.entries(categorias as Record<string, Exaltado[]>).forEach(
-      ([categoria, personas]) => {
-        personas.forEach((persona) => {
-          exaltados.push({
-            ...persona,
-            categoria: categoriaMap[categoria] || "atleta",
+    // Verificar que categorias sea un objeto válido
+    if (categorias && typeof categorias === 'object' && !Array.isArray(categorias)) {
+      Object.entries(categorias).forEach(([categoria, personas]) => {
+        // Verificar que personas sea un array
+        if (Array.isArray(personas)) {
+          personas.forEach((persona) => {
+            exaltados.push({
+              ...persona,
+              categoria: categoriaMap[categoria] || "atleta",
+            });
           });
-        });
-      }
-    );
+        }
+      });
+    }
   });
 
   return exaltados;
@@ -87,8 +95,11 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
           (exaltado) =>
             exaltado.nombre.toLowerCase().includes(search) ||
             exaltado.apellidos?.toLowerCase().includes(search) ||
+            exaltado.nombreCompleto.toLowerCase().includes(search) ||
             exaltado.deporte.some((d) => d.toLowerCase().includes(search)) ||
-            exaltado.biografia?.toLowerCase().includes(search)
+            exaltado.biografia?.toLowerCase().includes(search) ||
+            exaltado.categoria.toLowerCase().includes(search) ||
+            exaltado.exaltacion?.toLowerCase().includes(search)
         );
       }
 
@@ -282,9 +293,8 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
                 <h2 className="text-xl font-semibold text-pabellon-green-800">
                   {totalItems} exaltado{totalItems !== 1 ? "s" : ""}{" "}
                   {searchTerm || Object.keys(filters).length > 0
-                    ? "encontrado"
+                    ? `encontrado${totalItems !== 1 ? "s" : ""}`
                     : ""}
-                  {totalItems !== 1 ? "s" : ""}
                 </h2>
                 {searchTerm && (
                   <p className="text-sm text-gray-600 mt-1">

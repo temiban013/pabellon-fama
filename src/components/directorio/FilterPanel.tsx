@@ -9,6 +9,22 @@ import {
 import { type FiltrosDirectorio, type CategoriaExaltado } from "@/lib/types";
 import { capitalize } from "@/lib/utils";
 
+// Mapeo para mostrar nombres más descriptivos de categorías
+const categoriasLabels: Record<string, string> = {
+  atleta: "Atleta",
+  jugador: "Jugador",
+  boxeador: "Boxeador", 
+  propulsor: "Propulsor",
+  cronista: "Cronista Deportivo",
+  equipo: "Equipo",
+  promotor: "Promotor",
+  dirigente: "Dirigente",
+  entrenador: "Entrenador",
+  arbitro: "Árbitro",
+  comentarista: "Comentarista",
+  benefactor: "Benefactor",
+};
+
 type SortOption = "nombre" | "ano" | "deporte";
 type SortDirection = "asc" | "desc";
 
@@ -201,7 +217,7 @@ export function FilterPanel({
                   className="rounded border-gray-300 text-pabellon-gold-600 focus:ring-pabellon-gold-500"
                 />
                 <span className="ml-2 text-sm text-gray-700">
-                  {capitalize(categoria)}
+                  {categoriasLabels[categoria] || capitalize(categoria)}
                 </span>
               </label>
             ))}
@@ -325,7 +341,7 @@ export function FilterPanel({
             {filters.categoria?.length && (
               <div className="text-gray-600">
                 <span className="font-medium">Categorías:</span>{" "}
-                {filters.categoria.map(capitalize).join(", ")}
+                {filters.categoria.map(cat => categoriasLabels[cat] || capitalize(cat)).join(", ")}
               </div>
             )}
             {(filters.anoDesde || filters.anoHasta) && (

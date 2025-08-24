@@ -200,6 +200,23 @@
         "foto": null,
         "estado": "activo"
       }
+    ],
+    "propulsores": [
+      {
+        "id": "rafael-perez",
+        "nombre": "Rafael Pérez",
+        "apellidos": "Pérez",
+        "nombreCompleto": "Rafael Pérez",
+        "deporte": ["Atletismo"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2012,
+        "exaltacion": "7ma. Exaltación",
+        "biografia": "Propulsor del atletismo humacaeño, dedicado al desarrollo de atletas.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
     ]
   },
   "beisbol": {
@@ -640,6 +657,36 @@
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
+      },
+      {
+        "id": "luis-f-baby-carrasquillo",
+        "nombre": "Luis F. (Baby) Carrasquillo",
+        "apellidos": "Carrasquillo",
+        "nombreCompleto": "Luis F. (Baby) Carrasquillo",
+        "deporte": ["Béisbol"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2012,
+        "exaltacion": "7ma. Exaltación",
+        "biografia": "Propulsor del béisbol humacaeño, dedicado al desarrollo de talentos.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      },
+      {
+        "id": "inocencio-ino-olmeda",
+        "nombre": "Inocencio (Ino) Olmeda",
+        "apellidos": "Olmeda",
+        "nombreCompleto": "Inocencio (Ino) Olmeda",
+        "deporte": ["Béisbol"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2012,
+        "exaltacion": "7ma. Exaltación",
+        "biografia": "Propulsor del béisbol humacaeño, dedicado al desarrollo del deporte.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
       }
     ],
     "equipos": [
@@ -652,8 +699,8 @@
         "categoria": "equipo",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
-        "biografia": "Histórico equipo de béisbol que representó con orgullo a Humacao en 1951.",
-        "logros": [],
+        "biografia": "Histórico equipo de béisbol que conquistó el campeonato en 1951, único título de los Grises hasta nuestros días.",
+        "logros": ["Campeón Doble A 1951"],
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
@@ -667,8 +714,8 @@
         "categoria": "equipo",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
-        "biografia": "Destacado equipo de béisbol que marcó una época en el deporte humacaeño.",
-        "logros": [],
+        "biografia": "Destacado equipo de béisbol que obtuvo el Subcampeonato en 1960.",
+        "logros": ["Subcampeón Doble A 1960"],
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
@@ -834,6 +881,21 @@
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
+      },
+      {
+        "id": "luis-r-alvarez-vazquez",
+        "nombre": "Luis R. Álvarez Vázquez",
+        "apellidos": "Álvarez Vázquez",
+        "nombreCompleto": "Luis R. Álvarez Vázquez",
+        "deporte": ["Fútbol"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2015,
+        "exaltacion": "8va. Exaltación",
+        "biografia": "Propulsor del fútbol humacaeño, dedicado al desarrollo del deporte.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
       }
     ],
     "equipos": [
@@ -869,6 +931,23 @@
         "logros": [],
         "reconocimientos": [],
         "foto": "/images/exaltados/jose-casillas.jpg",
+        "estado": "activo"
+      }
+    ],
+    "propulsores": [
+      {
+        "id": "richard-timmy-boyle",
+        "nombre": "Richard (Timmy) Boyle",
+        "apellidos": "Boyle",
+        "nombreCompleto": "Richard (Timmy) Boyle",
+        "deporte": ["Baloncesto", "Voleibol"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2010,
+        "exaltacion": "6ta. Exaltación",
+        "biografia": "Propulsor del baloncesto y voleibol humacaeño.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
         "estado": "activo"
       }
     ]
@@ -979,6 +1058,23 @@
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
         "biografia": "Pesista humacaeño con destacada trayectoria en competencias.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ],
+    "propulsores": [
+      {
+        "id": "gilberto-gilbert-lopez",
+        "nombre": "Gilberto (Gilbert) López",
+        "apellidos": "López",
+        "nombreCompleto": "Gilberto (Gilbert) López",
+        "deporte": ["Levantamiento de Pesas"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2012,
+        "exaltacion": "7ma. Exaltación",
+        "biografia": "Propulsor del levantamiento de pesas humacaeño.",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1122,6 +1218,25 @@
       }
     ]
   },
+  "tenis": {
+    "propulsores": [
+      {
+        "id": "jose-m-pepe-lopez",
+        "nombre": "José M. (Pepe) López",
+        "apellidos": "López",
+        "nombreCompleto": "José M. (Pepe) López",
+        "deporte": ["Tenis"],
+        "categoria": "propulsor",
+        "anoExaltacion": 2012,
+        "exaltacion": "7ma. Exaltación",
+        "biografia": "Propulsor del tenis humacaeño.",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": null,
+        "estado": "activo"
+      }
+    ]
+  },
   "deportes-varios": {
     "propulsores": [
       {
@@ -1153,66 +1268,6 @@
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
-      },
-      {
-        "id": "richard-timmy-boyle",
-        "nombre": "Richard (Timmy) Boyle",
-        "apellidos": "Boyle",
-        "nombreCompleto": "Richard (Timmy) Boyle",
-        "deporte": ["Baloncesto", "Voleibol"],
-        "categoria": "propulsor",
-        "anoExaltacion": 2010,
-        "exaltacion": "6ta. Exaltación",
-        "biografia": "Propulsor del baloncesto y voleibol humacaeño.",
-        "logros": [],
-        "reconocimientos": [],
-        "foto": null,
-        "estado": "activo"
-      },
-      {
-        "id": "jose-m-pepe-lopez",
-        "nombre": "José M. (Pepe) López",
-        "apellidos": "López",
-        "nombreCompleto": "José M. (Pepe) López",
-        "deporte": ["Tenis"],
-        "categoria": "propulsor",
-        "anoExaltacion": 2012,
-        "exaltacion": "7ma. Exaltación",
-        "biografia": "Propulsor del tenis humacaeño.",
-        "logros": [],
-        "reconocimientos": [],
-        "foto": null,
-        "estado": "activo"
-      },
-      {
-        "id": "gilberto-gilbert-lopez",
-        "nombre": "Gilberto (Gilbert) López",
-        "apellidos": "López",
-        "nombreCompleto": "Gilberto (Gilbert) López",
-        "deporte": ["Levantamiento de Pesas"],
-        "categoria": "propulsor",
-        "anoExaltacion": 2012,
-        "exaltacion": "7ma. Exaltación",
-        "biografia": "Propulsor del levantamiento de pesas humacaeño.",
-        "logros": [],
-        "reconocimientos": [],
-        "foto": null,
-        "estado": "activo"
-      },
-      {
-        "id": "luis-r-alvarez-vazquez",
-        "nombre": "Luis R. Álvarez Vázquez",
-        "apellidos": "Álvarez Vázquez",
-        "nombreCompleto": "Luis R. Álvarez Vázquez",
-        "deporte": ["Fútbol"],
-        "categoria": "propulsor",
-        "anoExaltacion": 2015,
-        "exaltacion": "8va. Exaltación",
-        "biografia": "Propulsor del fútbol humacaeño, dedicado al desarrollo del deporte.",
-        "logros": [],
-        "reconocimientos": [],
-        "foto": null,
-        "estado": "activo"
       }
     ],
     "cronistas": [
@@ -1235,7 +1290,9 @@
   },
   "estadisticas": {
     "totalExaltados": 78,
-    "deportesRepresentados": 10,
+    "totalEquipos": 3,
+    "totalEntradas": 81,
+    "deportesRepresentados": 12,
     "exaltacionesPorAno": {
       "2000": 20,
       "2002": 8,
@@ -1244,11 +1301,30 @@
       "2008": 8,
       "2010": 6,
       "2012": 14,
-      "2015": 5
+      "2015": 6
     },
     "categorias": {
       "atletas": 45,
-      "propulsores": 30,
+      "jugadores": 23,
+      "propulsores": 27,
+      "cronistas": 1,
+      "equipos": 3
+    },
+    "deportesPorCategoria": {
+      "artes-marciales": 1,
+      "atletismo": 13,
+      "beisbol": 32,
+      "boxeo": 5,
+      "futbol": 7,
+      "baloncesto": 2,
+      "ciclismo": 1,
+      "levantamiento-pesas": 7,
+      "lucha-olimpica": 2,
+      "natacion": 2,
+      "paso-fino": 2,
+      "tiro": 2,
+      "tenis": 1,
+      "deportes-varios": 3,
       "equipos": 3
     }
   }

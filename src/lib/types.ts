@@ -10,6 +10,7 @@ export interface Exaltado {
   deporte: string[];
   categoria: CategoriaExaltado;
   anoExaltacion: number;
+  exaltacion?: string; // e.g., "1ra. Exaltación", "6ta. Exaltación"
   anoNacimiento?: number;
   lugarNacimiento?: string;
   biografia: string;
@@ -24,12 +25,17 @@ export interface Exaltado {
 
 export type CategoriaExaltado =
   | "atleta"
+  | "jugador"
+  | "boxeador"
   | "entrenador"
   | "dirigente"
   | "promotor"
+  | "propulsor"
   | "comentarista"
+  | "cronista"
   | "arbitro"
-  | "benefactor";
+  | "benefactor"
+  | "equipo";
 
 export interface Logro {
   id: string;

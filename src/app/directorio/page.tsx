@@ -71,10 +71,13 @@ export default function DirectorioPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="bg-white rounded-lg p-4 text-center shadow-md border border-pabellon-gold-200">
               <div className="text-2xl lg:text-3xl font-bold text-pabellon-gold-600 mb-1">
-                78+
+                81
               </div>
               <p className="text-sm font-medium text-pabellon-green-700">
                 Exaltados
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                78 individuos + 3 equipos
               </p>
             </div>
             <div className="bg-white rounded-lg p-4 text-center shadow-md border border-pabellon-gold-200">

@@ -4,6 +4,24 @@ import Image from "next/image";
 import { type Exaltado } from "@/lib/types";
 import { getInitials, capitalize } from "@/lib/utils";
 
+// Mapeo para mostrar nombres más descriptivos de categorías
+const categoriasLabels: Record<string, string> = {
+  atleta: "Atleta",
+  jugador: "Jugador",
+  boxeador: "Boxeador", 
+  propulsor: "Propulsor",
+  cronista: "Cronista Deportivo",
+  equipo: "Equipo",
+  promotor: "Promotor",
+  dirigente: "Dirigente",
+  entrenador: "Entrenador",
+  arbitro: "Árbitro",
+  comentarista: "Comentarista",
+  benefactor: "Benefactor",
+  "atleta-propulsor": "Atleta-Propulsor",
+  "jugador-propulsor": "Jugador-Propulsor",
+};
+
 interface ExaltadoCardProps {
   exaltado: Exaltado;
   viewMode: "grid" | "list";
@@ -17,7 +35,9 @@ export function ExaltadoCard({
   onClick,
   className = "",
 }: ExaltadoCardProps) {
-  const initials = getInitials(exaltado.nombre);
+  // Para equipos, usar un ícono diferente en lugar de iniciales
+  const isTeam = exaltado.categoria === "equipo";
+  const initials = isTeam ? "⚾" : getInitials(exaltado.nombre);
 
   // Función para obtener color de categoría
   const getCategoryColor = (categoria: string) => {
@@ -125,7 +145,7 @@ export function ExaltadoCard({
                 exaltado.categoria
               )}`}
             >
-              {capitalize(exaltado.categoria)}
+              {categoriasLabels[exaltado.categoria] || capitalize(exaltado.categoria)}
             </div>
             <div className="text-sm font-medium text-pabellon-gold-600">
               {exaltado.anoExaltacion}
@@ -175,7 +195,7 @@ export function ExaltadoCard({
               exaltado.categoria
             )}`}
           >
-            {capitalize(exaltado.categoria)}
+            {categoriasLabels[exaltado.categoria] || capitalize(exaltado.categoria)}
           </span>
         </div>
 
