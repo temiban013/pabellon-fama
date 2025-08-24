@@ -256,7 +256,7 @@ export default function MuseoPage() {
                     Lunes - Viernes
                   </span>
                   <span className="text-pabellon-green-600">
-                    9:00 AM - 4:00 PM
+                    8:00 AM - 4:00 PM
                   </span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-200">
@@ -306,7 +306,7 @@ export default function MuseoPage() {
                     Dirección
                   </h4>
                   <p className="text-pabellon-green-600">
-                    [Dirección exacta del museo]
+                    Centro Cultural Dra. Antonia Sáez
                     <br />
                     Humacao, Puerto Rico 00791
                   </p>
@@ -316,15 +316,9 @@ export default function MuseoPage() {
                   <h4 className="font-semibold text-pabellon-green-700 mb-2">
                     Teléfono
                   </h4>
-                  <p className="text-pabellon-green-600">(787) XXX-XXXX</p>
+                  <p className="text-pabellon-green-600">(787) 410-1237</p>
                 </div>
 
-                <div>
-                  <h4 className="font-semibold text-pabellon-green-700 mb-2">
-                    Email
-                  </h4>
-                  <p className="text-pabellon-green-600">museo@pabellon.org</p>
-                </div>
 
                 <div className="pt-6">
                   <button className="btn-pabellon w-full mb-4">

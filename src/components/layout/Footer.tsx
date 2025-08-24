@@ -12,28 +12,28 @@ export function Footer({ className = "" }: FooterProps) {
     {
       title: "Pabellón de la Fama",
       links: [
-        { name: "Directorio de Exaltados", href: "#" },
-        { name: "Historia", href: "#" },
-        { name: "Junta de Directores", href: "#" },
-        { name: "Calendario", href: "#" },
+        { name: "Directorio de Exaltados", href: "/directorio" },
+        { name: "Historia", href: "/historia" },
+        { name: "Junta de Directores", href: "/junta" },
+        { name: "Calendario", href: "/calendario" },
       ],
     },
     {
       title: "Museo",
       links: [
         { name: "Museo Manuel Rivera Guevara", href: "/museo" },
-        { name: "Exhibiciones", href: "#" },
-        { name: "Tour Virtual", href: "#" },
-        { name: "Horarios de Visita", href: "#" },
+        { name: "Exhibiciones", href: "/museo#exhibiciones" },
+        { name: "Tour Virtual", href: "/museo#tour" },
+        { name: "Horarios de Visita", href: "/horario" },
       ],
     },
     {
       title: "Enlaces",
       links: [
-        { name: "Biblioteca", href: "#" },
-        { name: "Blog", href: "#" },
-        { name: "YouTube", href: "#" },
-        { name: "Horario y Contacto", href: "#" },
+        { name: "Biblioteca", href: "/enlaces#biblioteca" },
+        { name: "Blog", href: "/enlaces#blog" },
+        { name: "YouTube", href: "/enlaces#youtube" },
+        { name: "Horario y Contacto", href: "/horario" },
       ],
     },
   ];
@@ -99,8 +99,7 @@ export function Footer({ className = "" }: FooterProps) {
               </h4>
               <div className="space-y-2 text-pabellon-green-200 text-sm">
                 <p>📍 Humacao, Puerto Rico</p>
-                <p>📧 info@pabellon.org</p>
-                <p>📞 (787) XXX-XXXX</p>
+                <p>📞 (787) 410-1237</p>
               </div>
             </div>
 

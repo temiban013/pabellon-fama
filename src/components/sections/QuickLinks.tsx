@@ -24,7 +24,7 @@ interface QuickLinkItem {
 const quickLinks: QuickLinkItem[] = [
   {
     name: "Biblioteca",
-    href: "#",
+    href: "/enlaces",
     description: "Recursos y documentos históricos",
     icon: BookOpenIcon,
     external: false,
@@ -37,8 +37,8 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "YouTube",
-    href: "#", // URL placeholder
-    description: "Videos y documentales deportivos",
+    href: "#",
+    description: "Videos y documentales deportivos (próximamente)",
     icon: VideoCameraIcon,
     external: false,
     bgGradient: "from-red-50 to-red-100",
@@ -50,10 +50,10 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "Blog",
-    href: "#",
+    href: "https://pabellonfdh.blogspot.com/",
     description: "Noticias y artículos deportivos",
     icon: NewspaperIcon,
-    external: false,
+    external: true,
     bgGradient: "from-blue-50 to-blue-100",
     borderColor: "border-blue-200",
     iconColor: "text-blue-700",
@@ -63,7 +63,7 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "Horario",
-    href: "#",
+    href: "/horario",
     description: "Horas de visita y contacto",
     icon: ClockIcon,
     external: false,

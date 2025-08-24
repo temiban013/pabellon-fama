@@ -13,13 +13,13 @@ interface NavigationItem {
 
 const navigation: NavigationItem[] = [
   { name: "Inicio", href: "/" },
-  { name: "Junta de Directores", href: "#" },
+  { name: "Junta de Directores", href: "/junta" },
   { name: "Directorio de Exaltados", href: "/directorio" },
-  { name: "Historia", href: "#" },
-  { name: "Enlaces", href: "#" },
+  { name: "Historia", href: "/historia" },
+  { name: "Enlaces", href: "/enlaces" },
   { name: "Museo", href: "/museo" },
-  { name: "Horario", href: "#" },
-  { name: "Calendario", href: "#" },
+  { name: "Horario", href: "/horario" },
+  { name: "Calendario", href: "/calendario" },
 ];
 
 export function Header() {
