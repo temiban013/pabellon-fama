@@ -341,6 +341,9 @@ export default function CalendarioPage() {
                 >
                   787-410-1237
                 </a>
+                <p className="text-gray-600 mt-2 text-sm">
+                  informa@pfdh.org
+                </p>
               </div>
             </div>
 
@@ -350,8 +353,11 @@ export default function CalendarioPage() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Eventos Especiales
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-2">
                   Solicita eventos privados o educativos
+                </p>
+                <p className="text-gray-600 text-sm mb-4">
+                  Centro Cultural Antonia Sáez
                 </p>
                 <p className="text-gray-800 font-semibold">
                   Lunes a Viernes, 8:00 AM - 4:00 PM

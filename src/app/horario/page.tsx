@@ -214,7 +214,7 @@ export default function HorarioContactoPage() {
                     </p>
                     <p className="text-sm text-blue-700 mt-1">
                       Para grupos de 10 o más personas, se recomienda hacer
-                      reservación previa llamando al 787-410-1237.
+                      reservación previa llamando al 787-410-1237 o escribiendo a informa@pfdh.org.
                     </p>
                   </div>
                 </div>
@@ -268,7 +268,10 @@ export default function HorarioContactoPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           <ContactoCard
             titulo="Reservaciones y Consultas"
-            contenido="787-410-1237"
+            contenido={[
+              "📞 787-410-1237",
+              "✉️ informa@pfdh.org"
+            ]}
             icono={Phone}
             color="blue"
             accion={{

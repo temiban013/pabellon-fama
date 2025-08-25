@@ -348,6 +348,12 @@ export default function EnlacesPage() {
                   <strong>Teléfono:</strong> 787-410-1237
                 </p>
                 <p>
+                  <strong>Email:</strong> informa@pfdh.org
+                </p>
+                <p>
+                  <strong>Ubicación:</strong> Centro Cultural Antonia Sáez
+                </p>
+                <p>
                   <strong>Horario:</strong> Lunes a Viernes, 8:00 AM - 4:00 PM
                 </p>
                 <p className="text-sm">

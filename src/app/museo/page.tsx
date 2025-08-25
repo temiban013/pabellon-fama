@@ -108,6 +108,12 @@ export default function MuseoPage() {
               <p className="text-sm text-pabellon-green-600 mb-4">
                 Para visitas grupales o programadas, contáctanos con anticipación.
               </p>
+              <p className="text-sm text-pabellon-green-700 font-medium mb-2">
+                📞 (787) 410-1237
+              </p>
+              <p className="text-sm text-pabellon-green-700 font-medium mb-4">
+                ✉️ informa@pfdh.org
+              </p>
               <button className="btn-pabellon w-full">
                 Llamar (787) 410-1237
               </button>
@@ -280,9 +286,12 @@ export default function MuseoPage() {
 
                 <div>
                   <h4 className="font-semibold text-pabellon-green-700 mb-2">
-                    Teléfono
+                    Contacto
                   </h4>
-                  <p className="text-pabellon-green-600">(787) 410-1237</p>
+                  <p className="text-pabellon-green-600">
+                    📞 (787) 410-1237<br/>
+                    ✉️ informa@pfdh.org
+                  </p>
                 </div>
 
                 <div>

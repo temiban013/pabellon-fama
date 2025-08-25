@@ -98,8 +98,9 @@ export function Footer({ className = "" }: FooterProps) {
                 Contacto
               </h4>
               <div className="space-y-2 text-pabellon-green-200 text-sm">
-                <p>📍 Humacao, Puerto Rico</p>
+                <p>📍 Centro Cultural Antonia Sáez, Humacao, Puerto Rico</p>
                 <p>📞 (787) 410-1237</p>
+                <p>✉️ informa@pfdh.org</p>
               </div>
             </div>
 
