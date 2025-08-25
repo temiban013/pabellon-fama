@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Slab } from "next/font/google";
+import { Suspense } from "react";
 import {
   generateMetadata as generateSEOMetadata,
   generateJsonLd,
@@ -8,7 +9,9 @@ import {
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/providers/Providers";
-import { Analytics } from "@/components/SEO/Analytics";
+import Analytics from "@/components/analytics/Analytics";
+import CookieConsent from "@/components/analytics/CookieConsent";
+import { ClientLayout } from "@/components/layout/ClientLayout";
 import { IconLinks } from "@/components/SEO/IconLinks";
 import Script from "next/script";
 import "./globals.css";
@@ -58,18 +61,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
     >
       <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-5CNPGJ4D');
-            `,
-          }}
-        />
 
         {/* Iconos y PWA */}
         <IconLinks />
@@ -119,6 +110,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           as="image"
           type="image/png"
         />
+        {/* Font preload commented out until we have actual custom fonts
         <link
           rel="preload"
           href="/fonts/custom-font.woff2"
@@ -126,6 +118,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        */}
       </head>
 
       <body className="min-h-screen bg-white text-gray-900 antialiased">
@@ -141,34 +134,54 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         {/* Providers para estado global */}
         <Providers>
-          {/* Skip to main content - Accesibilidad */}
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-600 text-white p-2 z-50"
-          >
-            Saltar al contenido principal
-          </a>
+          <ClientLayout>
+            {/* Skip to main content - Accesibilidad */}
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-600 text-white p-2 z-50"
+            >
+              Saltar al contenido principal
+            </a>
 
-          {/* Layout Structure */}
-          <div className="flex flex-col min-h-screen">
-            {/* Header */}
-            <Header />
+            {/* Layout Structure */}
+            <div className="flex flex-col min-h-screen">
+              {/* Header */}
+              <Header />
 
-            {/* Main Content */}
-            <main id="main-content" className="flex-grow" role="main">
-              {children}
-            </main>
+              {/* Main Content */}
+              <main id="main-content" className="flex-grow" role="main">
+                {children}
+              </main>
 
-            {/* Footer */}
-            <Footer />
-          </div>
+              {/* Footer */}
+              <Footer />
+            </div>
 
-          {/* Toast Container */}
-          <div id="toast-root" />
+            {/* Toast Container */}
+            <div id="toast-root" />
+          </ClientLayout>
         </Providers>
 
         {/* Analytics y Scripts */}
-        <Analytics />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
+        <CookieConsent />
+
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-5CNPGJ4D');
+            `,
+          }}
+        />
 
         {/* Service Worker Registration */}
         <Script

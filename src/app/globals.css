@@ -50,6 +50,22 @@
            bg-clip-text text-transparent;
   }
 
+  /* Animation for cookie banner */
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
   .nav-link {
     @apply text-pabellon-green-700 hover:text-pabellon-gold-600 
            font-medium transition-colors duration-200 relative;

@@ -56,3 +56,6 @@ next-env.d.ts
 # Claude
 .claude/
 CLAUDE.md
+
+# Scripts 
+/scripts/
