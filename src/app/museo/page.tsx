@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import GoogleMap from "@/components/ui/GoogleMap";
 
 export const metadata: Metadata = {
   title:
@@ -319,13 +320,18 @@ export default function MuseoPage() {
                   <p className="text-pabellon-green-600">(787) 410-1237</p>
                 </div>
 
+                <div>
+                  <h4 className="font-semibold text-pabellon-green-700 mb-4">
+                    Mapa de Ubicación
+                  </h4>
+                  <GoogleMap 
+                    address="Centro Cultural Dra. Antonia Sáez, Humacao, Puerto Rico 00791"
+                  />
+                </div>
 
                 <div className="pt-6">
-                  <button className="btn-pabellon w-full mb-4">
+                  <button className="btn-pabellon w-full">
                     📞 Reservar Visita Grupal
-                  </button>
-                  <button className="bg-white border-2 border-pabellon-green-700 text-pabellon-green-700 hover:bg-pabellon-green-700 hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 w-full">
-                    🗺️ Ver en Google Maps
                   </button>
                 </div>
               </div>
