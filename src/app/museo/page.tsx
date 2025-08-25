@@ -61,91 +61,56 @@ export default function MuseoPage() {
               Tour Virtual del Museo
             </h2>
             <p className="text-xl text-pabellon-green-700 max-w-2xl mx-auto">
-              Explora nuestras salas y exhibiciones desde la comodidad de tu
-              hogar
+              Próximamente: Tour virtual interactivo del museo
             </p>
           </div>
 
           {/* Imagen del museo con tour virtual */}
           <div className="relative max-w-5xl mx-auto mb-12">
-            <div className="relative group cursor-pointer">
+            <div className="relative group">
               <div className="bg-white p-4 rounded-2xl shadow-2xl border border-pabellon-gold-200">
-                {/* Simulación de la fachada del museo real */}
-                <div className="aspect-video bg-gradient-to-b from-pabellon-green-100 to-pabellon-green-200 rounded-lg overflow-hidden relative">
-                  {/* Fachada del museo basada en la imagen del PDF */}
-                  <div className="absolute inset-0">
-                    {/* Cielo */}
-                    <div className="w-full h-1/3 bg-gradient-to-b from-blue-300 to-blue-200"></div>
-
-                    {/* Edificio del museo */}
-                    <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-b from-gray-200 to-gray-300">
-                      {/* Letrero principal */}
-                      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-8 py-2 text-sm font-bold text-center">
-                        <div>
-                          MUSEO PABELLÓN DE LA FAMA DEL DEPORTE HUMACAEÑO
-                        </div>
-                        <div className="text-xs mt-1">
-                          MANUEL RIVERA GUEVARA
-                        </div>
-                      </div>
-
-                      {/* Puertas del museo */}
-                      <div className="absolute bottom-0 left-1/4 w-1/6 h-1/2 bg-pabellon-brown-700 border-t-4 border-pabellon-brown-800"></div>
-                      <div className="absolute bottom-0 left-1/2 w-1/6 h-1/2 bg-pabellon-brown-700 border-t-4 border-pabellon-brown-800 transform -translate-x-1/2"></div>
-                      <div className="absolute bottom-0 right-1/4 w-1/6 h-1/2 bg-pabellon-brown-700 border-t-4 border-pabellon-brown-800"></div>
-
-                      {/* Ventanas */}
-                      <div className="absolute top-1/3 left-8 w-12 h-8 bg-blue-400 border border-gray-400"></div>
-                      <div className="absolute top-1/3 right-8 w-12 h-8 bg-blue-400 border border-gray-400"></div>
-                    </div>
-                  </div>
-
-                  {/* Overlay de tour virtual */}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white text-pabellon-green-800 px-8 py-4 rounded-lg font-bold shadow-xl transform scale-95 group-hover:scale-100 transition-transform">
-                        🎯 Iniciar Tour Virtual
-                      </div>
-                    </div>
+                <div className="aspect-video bg-gradient-to-b from-pabellon-green-100 to-pabellon-green-200 rounded-lg overflow-hidden relative flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-6xl mb-4">🏛️</div>
+                    <h3 className="text-2xl font-bold text-pabellon-green-800 mb-2">
+                      Tour Virtual Próximamente
+                    </h3>
+                    <p className="text-pabellon-green-700">
+                      Estamos trabajando en crear una experiencia virtual inmersiva del museo
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Opciones de tour */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Opciones de visita */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <div className="card-pabellon p-6 text-center">
-              <div className="text-4xl mb-4">🚶‍♂️</div>
+              <div className="text-4xl mb-4">🏛️</div>
               <h3 className="text-lg font-semibold text-pabellon-green-800 mb-2">
-                Tour Autoguiado
+                Visita Presencial
               </h3>
               <p className="text-sm text-pabellon-green-600 mb-4">
-                Explora el museo a tu propio ritmo con información interactiva
+                Ven y conoce el museo en persona. Entrada gratuita para todos los visitantes.
               </p>
-              <button className="btn-pabellon w-full">Comenzar</button>
+              <p className="text-sm text-pabellon-green-700 font-medium">
+                Lunes a Viernes: 8:00 AM - 4:00 PM<br/>
+                Sábados: 10:00 AM - 2:00 PM
+              </p>
             </div>
 
             <div className="card-pabellon p-6 text-center">
-              <div className="text-4xl mb-4">👨‍🏫</div>
+              <div className="text-4xl mb-4">📞</div>
               <h3 className="text-lg font-semibold text-pabellon-green-800 mb-2">
-                Visita Guiada
+                Reserva tu Visita
               </h3>
               <p className="text-sm text-pabellon-green-600 mb-4">
-                Tour narrado con información detallada de nuestros curadores
+                Para visitas grupales o programadas, contáctanos con anticipación.
               </p>
-              <button className="btn-pabellon w-full">Iniciar</button>
-            </div>
-
-            <div className="card-pabellon p-6 text-center">
-              <div className="text-4xl mb-4">👨‍👩‍👧‍👦</div>
-              <h3 className="text-lg font-semibold text-pabellon-green-800 mb-2">
-                Tour Familiar
-              </h3>
-              <p className="text-sm text-pabellon-green-600 mb-4">
-                Experiencia educativa diseñada especialmente para familias
-              </p>
-              <button className="btn-pabellon w-full">Empezar</button>
+              <button className="btn-pabellon w-full">
+                Llamar (787) 410-1237
+              </button>
             </div>
           </div>
         </div>
