@@ -58,6 +58,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
     >
       <head>
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-5CNPGJ4D');
+            `,
+          }}
+        />
+
         {/* Iconos y PWA */}
         <IconLinks />
 
@@ -116,6 +129,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
 
       <body className="min-h-screen bg-white text-gray-900 antialiased">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5CNPGJ4D"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
         {/* Providers para estado global */}
         <Providers>
           {/* Skip to main content - Accesibilidad */}
