@@ -1,92 +1,72 @@
-// src/app/manifest.ts
 import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Pabellón de la Fama del Deporte Humacaeño",
-    short_name: "Pabellón Humacaeño",
+    short_name: "PFDH",
     description:
-      "Pabellón de la Fama que honra la excelencia deportiva de Humacao, Puerto Rico. Museo Manuel Rivera Guevara.",
+      "Museo del Pabellón de la Fama del Deporte Humacaeño Manuel Rivera Guevara",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#15803d",
-    orientation: "portrait-primary",
-    categories: ["sports", "education", "museum", "culture"],
-    lang: "es-PR",
+    theme_color: "#0066CC",
+    orientation: "portrait",
     scope: "/",
+    lang: "es-PR",
+    categories: ["sports", "education", "entertainment"],
+
     icons: [
       {
-        src: "/android-chrome-192x192.png",
+        src: "/icon-192.png",
         sizes: "192x192",
         type: "image/png",
-        purpose: "any",
+        purpose: "maskable",
       },
       {
-        src: "/android-chrome-512x512.png",
+        src: "/icon-512.png",
         sizes: "512x512",
         type: "image/png",
-        purpose: "any",
+        purpose: "maskable",
       },
       {
         src: "/apple-touch-icon.png",
         sizes: "180x180",
         type: "image/png",
-        purpose: "any",
-      },
-      {
-        src: "/favicon-32x32.png",
-        sizes: "32x32",
-        type: "image/png",
-        purpose: "any",
-      },
-      {
-        src: "/favicon-16x16.png",
-        sizes: "16x16",
-        type: "image/png",
-        purpose: "any",
       },
     ],
+
+    screenshots: [
+      {
+        src: "/screenshots/desktop-home.png",
+        sizes: "1280x720",
+        type: "image/png",
+        form_factor: "wide",
+        label: "Página de Inicio del Pabellón",
+      },
+      {
+        src: "/screenshots/mobile-directorio.png",
+        sizes: "375x812",
+        type: "image/png",
+        form_factor: "narrow",
+        label: "Directorio de Exaltados",
+      },
+    ],
+
     shortcuts: [
-      //   {
-      //     name: "Directorio de Exaltados",
-      //     short_name: "Directorio",
-      //     description: "Ver todos los atletas exaltados",
-      //     url: "/directorio",
-      //     icons: [
-      //       {
-      //         src: "/icons/directorio-96x96.png",
-      //         sizes: "96x96",
-      //         type: "image/png",
-      //       },
-      //     ],
-      //   },
+      {
+        name: "Directorio de Exaltados",
+        short_name: "Exaltados",
+        description: "Buscar en el directorio de exaltados",
+        url: "/directorio",
+        icons: [{ src: "/icon-96.png", sizes: "96x96" }],
+      },
       {
         name: "Museo Virtual",
         short_name: "Museo",
-        description: "Tour virtual del Museo Manuel Rivera Guevara",
+        description: "Tour virtual del museo",
         url: "/museo",
-        icons: [
-          {
-            src: "/icons/museo-96x96.png",
-            sizes: "96x96",
-            type: "image/png",
-          },
-        ],
+        icons: [{ src: "/icon-96.png", sizes: "96x96" }],
       },
-      //   {
-      //     name: "Horarios",
-      //     short_name: "Horarios",
-      //     description: "Información de contacto y horarios",
-      //     url: "/horario",
-      //     icons: [
-      //       {
-      //         src: "/icons/horario-96x96.png",
-      //         sizes: "96x96",
-      //         type: "image/png",
-      //       },
-      //     ],
-      //   },
     ],
   };
 }

@@ -1,177 +1,65 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Slab } from "next/font/google";
+import {
+  generateMetadata as generateSEOMetadata,
+  generateJsonLd,
+  seoConfigs,
+} from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ToastProvider } from "@/components/ui/Toast";
+import { Providers } from "@/components/providers/Providers";
+import { Analytics } from "@/components/SEO/Analytics";
+import { IconLinks } from "@/components/SEO/IconLinks";
+import Script from "next/script";
 import "./globals.css";
 
+// Fuentes optimizadas
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+  preload: true,
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://pabellon.org"),
-  title: {
-    default: "Pabellón de la Fama del Deporte Humacaeño",
-    template: "%s | Pabellón de la Fama del Deporte Humacaeño",
-  },
-  description:
-    "Museo y Pabellón de la Fama que honra la excelencia deportiva de Humacao, Puerto Rico. Museo Manuel Rivera Guevara. Fundado en 1996.",
-  keywords: [
-    "pabellón de la fama",
-    "deporte humacaeño",
-    "Humacao",
-    "Puerto Rico",
-    "museo deportivo",
-    "Manuel Rivera Guevara",
-    "atletas puertorriqueños",
-    "historia deportiva",
-    "exaltados",
-    "deporte boricua",
-    "baloncesto",
-    "béisbol",
-    "atletismo",
-    "boxeo",
-    "voleibol",
-  ],
-  authors: [
-    {
-      name: "Pabellón de la Fama del Deporte Humacaeño",
-      url: "https://pabellon.org",
-    },
-  ],
-  creator: "Pabellón de la Fama del Deporte Humacaeño",
-  publisher: "Pabellón de la Fama del Deporte Humacaeño",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  category: "sports",
-  classification: "Museum, Sports Hall of Fame",
+const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto-slab",
+  preload: true,
+});
 
-  openGraph: {
-    title: "Pabellón de la Fama del Deporte Humacaeño",
-    description:
-      "Honrando la excelencia deportiva de Humacao, Puerto Rico desde 1996. Museo Manuel Rivera Guevara.",
-    url: "https://pabellon.org",
-    siteName: "Pabellón de la Fama del Deporte Humacaeño",
-    locale: "es_PR",
-    type: "website",
-    countryName: "Puerto Rico",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Pabellón de la Fama del Deporte Humacaeño - Museo Manuel Rivera Guevara",
-        type: "image/jpeg",
-      },
-      {
-        url: "/og-image-square.jpg",
-        width: 1080,
-        height: 1080,
-        alt: "Logo Pabellón de la Fama del Deporte Humacaeño",
-        type: "image/jpeg",
-      },
-    ],
-  },
+// Metadata estática del sitio
+export const metadata: Metadata = generateSEOMetadata(seoConfigs.home);
 
-  twitter: {
-    card: "summary_large_image",
-    site: "@pabellonfama",
-    creator: "@pabellonfama",
-    title: "Pabellón de la Fama del Deporte Humacaeño",
-    description:
-      "Honrando la excelencia deportiva de Humacao, Puerto Rico desde 1996",
-    images: {
-      url: "/twitter-image.jpg",
-      alt: "Pabellón de la Fama del Deporte Humacaeño",
-    },
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-
-  // verification: {
-  //   google: process.env.GOOGLE_SITE_VERIFICATION,
-  //   yandex: process.env.YANDEX_VERIFICATION,
-  //   yahoo: process.env.YAHOO_VERIFICATION,
-  //   other: {
-  //     "msvalidate.01": process.env.BING_VERIFICATION || "",
-  //   },
-  // },
-
-  // alternates: {
-  //   canonical: "https://pabellon.org",
-  //   languages: {
-  //     "es-PR": "https://pabellon.org",
-  //     es: "https://pabellon.org/es",
-  //     en: "https://pabellon.org/en",
-  //   },
-  // },
-
-  // archives: ["https://pabellondelafamahumacao.blogspot.com/"],
-
-  // assets: ["https://pabellon.org/assets"],
-
-  other: {
-    "geo.region": "PR",
-    "geo.placename": "Humacao",
-    "geo.position": "18.15;-65.83",
-    ICBM: "18.15, -65.83",
-    "DC.title": "Pabellón de la Fama del Deporte Humacaeño",
-    "DC.creator": "Pabellón de la Fama del Deporte Humacaeño",
-    "DC.subject": "Deporte, Museo, Puerto Rico, Humacao, Atletas",
-    "DC.description":
-      "Museo y Pabellón de la Fama que honra la excelencia deportiva de Humacao, Puerto Rico.",
-    "DC.publisher": "Pabellón de la Fama del Deporte Humacaeño",
-    "DC.contributor": "Junta de Directores PFDH",
-    "DC.date": "1996",
-    "DC.type": "Website",
-    "DC.format": "text/html",
-    "DC.identifier": "https://pabellon.org",
-    "DC.language": "es-PR",
-    "DC.coverage": "Puerto Rico, Humacao",
-    "DC.rights": "© 2025 Pabellón de la Fama del Deporte Humacaeño",
-  },
-};
-
+// Viewport configuration
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#15803d",
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0066CC" },
+    { media: "(prefers-color-scheme: dark)", color: "#0066CC" },
+  ],
+  colorScheme: "light",
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
-  return (
-    <html lang="es" className="scroll-smooth">
-      <head>
-        {/* Favicons */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* <link rel="icon" href="/favicon.svg" type="image/svg+xml" /> */}
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+}
 
-        {/* Theme colors */}
-        <meta name="msapplication-TileColor" content="#15803d" />
+export default function RootLayout({ children }: RootLayoutProps) {
+  const organizationJsonLd = generateJsonLd("organization", {});
+
+  return (
+    <html
+      lang="es-PR"
+      className={`${inter.variable} ${robotoSlab.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Iconos y PWA */}
+        <IconLinks />
 
         {/* Preconnect para performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -180,27 +68,114 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-      </head>
-      <body className={`${inter.className} antialiased bg-white text-gray-900`}>
-        {/* Skip to content para accesibilidad */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-pabellon-gold-500 text-white px-4 py-2 rounded-lg z-50"
-        >
-          Saltar al contenido principal
-        </a>
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
 
-        {/* Toast Provider Wrapper */}
-        <ToastProvider>
-          {/* Main app wrapper */}
-          <div id="root" className="min-h-screen flex flex-col">
+        {/* DNS Prefetch */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+        {/* Structured Data - Organización */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+
+        {/* Verification Tags */}
+        <meta
+          name="google-site-verification"
+          content="your-google-verification-code"
+        />
+        <meta name="msvalidate.01" content="your-bing-verification-code" />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="language" content="Spanish" />
+        <meta name="geo.region" content="PR-HUM" />
+        <meta name="geo.placename" content="Humacao, Puerto Rico" />
+        <meta name="geo.position" content="18.1500;-65.8333" />
+        <meta name="ICBM" content="18.1500, -65.8333" />
+
+        {/* Performance Hints */}
+        <link
+          rel="preload"
+          href="/images/pabellon-logo.png"
+          as="image"
+          type="image/png"
+        />
+        <link
+          rel="preload"
+          href="/fonts/custom-font.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
+
+      <body className="min-h-screen bg-white text-gray-900 antialiased">
+        {/* Providers para estado global */}
+        <Providers>
+          {/* Skip to main content - Accesibilidad */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-600 text-white p-2 z-50"
+          >
+            Saltar al contenido principal
+          </a>
+
+          {/* Layout Structure */}
+          <div className="flex flex-col min-h-screen">
+            {/* Header */}
             <Header />
-            <main id="main-content" className="flex-1">
+
+            {/* Main Content */}
+            <main id="main-content" className="flex-grow" role="main">
               {children}
             </main>
+
+            {/* Footer */}
             <Footer />
           </div>
-        </ToastProvider>
+
+          {/* Toast Container */}
+          <div id="toast-root" />
+        </Providers>
+
+        {/* Analytics y Scripts */}
+        <Analytics />
+
+        {/* Service Worker Registration */}
+        <Script
+          id="sw-registration"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                  .then(() => console.log('SW registered'))
+                  .catch(() => console.log('SW registration failed'));
+              }
+            `,
+          }}
+        />
+
+        {/* Emergency Contact Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPoint",
+              telephone: "+1-787-410-1237",
+              contactType: "customer service",
+              availableLanguage: ["Spanish", "English"],
+              areaServed: "PR",
+            }),
+          }}
+        />
       </body>
     </html>
   );

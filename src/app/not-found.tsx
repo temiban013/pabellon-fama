@@ -1,4 +1,16 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org"),
+  title: "Página no encontrada - Pabellón de la Fama",
+  description:
+    "La página que buscas no fue encontrada. Regresa al inicio o busca en nuestro directorio de exaltados.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (
