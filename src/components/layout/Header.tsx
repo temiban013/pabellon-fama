@@ -15,6 +15,7 @@ const navigation: NavigationItem[] = [
   { name: "Inicio", href: "/" },
   { name: "Junta de Directores", href: "/junta" },
   { name: "Directorio de Exaltados", href: "/directorio" },
+  { name: "Revistas", href: "/revistas" },
   { name: "Historia", href: "/historia" },
   { name: "Enlaces", href: "/enlaces" },
   { name: "Museo", href: "/museo" },
