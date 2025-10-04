@@ -76,12 +76,12 @@ export default async function RevistaPage({ params }: RevistaPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Portada */}
             <div className="lg:col-span-1">
-              <div className="relative aspect-[3/4] max-w-sm mx-auto">
+              <div className="relative aspect-[3/4] max-w-sm mx-auto bg-white/10 rounded-lg">
                 <Image
                   src={revista.portadaUrl}
                   alt={`Portada ${revista.titulo}`}
                   fill
-                  className="object-cover rounded-lg shadow-2xl"
+                  className="object-contain rounded-lg shadow-2xl"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   priority
                 />
@@ -89,12 +89,12 @@ export default async function RevistaPage({ params }: RevistaPageProps) {
             </div>
 
             {/* Info */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 pt-2">
               <div className="inline-block px-4 py-1 bg-pabellon-gold-400 text-pabellon-green-900 rounded-full text-sm font-semibold mb-4">
                 Revista #{revista.numero}
               </div>
 
-              <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+              <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight py-1">
                 {revista.titulo}
               </h1>
 

@@ -5,6 +5,7 @@ import {
   generateJsonLd,
 } from "@/lib/seo";
 import { exaltados } from "@/data/exaltados";
+import { todosLosExaltados } from "@/data/exaltados-all";
 import { ExaltadoDetail } from "@/components/directorio/ExaltadoDetail";
 
 interface ExaltadoPageProps {
@@ -56,6 +57,62 @@ export function generateStaticParams() {
 
 export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
   const { slug } = await params;
+
+  // Primero buscar en exaltados de revistas (más reciente)
+  const exaltadoRevista = todosLosExaltados.find((e) => e.id === slug);
+
+  // Si se encuentra en revistas, convertir al formato esperado
+  if (exaltadoRevista) {
+    // Intentar varias variaciones de nombre de foto
+    const fotoVariaciones = [
+      `/images/exaltados/${exaltadoRevista.id}.jpg`,
+      `/images/exaltados/${exaltadoRevista.nombre.toLowerCase()}-${exaltadoRevista.apellidos.toLowerCase().split(' ')[0]}.jpg`,
+    ];
+
+    const exaltadoAdaptado = {
+      id: exaltadoRevista.id,
+      nombre: exaltadoRevista.nombre,
+      nombreCompleto: `${exaltadoRevista.nombre}${exaltadoRevista.apodo ? ` "${exaltadoRevista.apodo}"` : ''} ${exaltadoRevista.apellidos}`,
+      name: `${exaltadoRevista.nombre} ${exaltadoRevista.apellidos}`,
+      deporte: exaltadoRevista.deportes,
+      sport: exaltadoRevista.deportes.join(', '),
+      categoria: exaltadoRevista.categoria,
+      anoExaltacion: exaltadoRevista.anoExaltacion,
+      yearInducted: exaltadoRevista.anoExaltacion,
+      biografia: exaltadoRevista.contenido.biografia,
+      biography: exaltadoRevista.contenido.biografia,
+      // Usar la primera variación por defecto, el componente tiene fallback
+      foto: fotoVariaciones[0],
+      photo: fotoVariaciones[0],
+      apodo: exaltadoRevista.apodo,
+      logros: exaltadoRevista.contenido.logros,
+      achievements: exaltadoRevista.contenido.logros,
+      reconocimientos: exaltadoRevista.contenido.reconocimientos || [],
+      estado: 'activo' as const,
+      slug: exaltadoRevista.id,
+    };
+
+    const personJsonLd = generateJsonLd("person", {
+      name: exaltadoAdaptado.name,
+      biography: exaltadoAdaptado.biography,
+      sport: exaltadoAdaptado.sport,
+      achievements: exaltadoAdaptado.achievements || [],
+    });
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd),
+          }}
+        />
+        <ExaltadoDetail exaltado={exaltadoAdaptado} />
+      </>
+    );
+  }
+
+  // Si no está en revistas, buscar en data vieja
   const exaltado = exaltados.find((e) => e.slug === slug);
 
   if (!exaltado) {

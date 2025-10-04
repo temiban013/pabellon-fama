@@ -67,7 +67,7 @@ export default function RevistasPage() {
                         src={revista.portadaUrl}
                         alt={`Portada Revista ${revista.numero} - ${revista.titulo}`}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

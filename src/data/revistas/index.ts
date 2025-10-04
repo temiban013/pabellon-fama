@@ -26,8 +26,30 @@ export const revistasMetadata: RevistaMetadata[] = [
       biografias: [10, 32],
       fotosHistoricas: [33, 40]
     }
+  },
+
+  // Sprint 2: Revista #02 (2002) - 8 exaltados
+  {
+    numero: 2,
+    year: 2002,
+    titulo: 'Segunda Exaltación del Pabellón',
+    fechaCeremonia: '2002-08-17',
+    descripcion: 'Segunda ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Programa 2002.',
+    pdfUrl: '/revistas/completas/revista-02.pdf',
+    portadaUrl: '/revistas/portadas/rev02.jpg',
+    totalPaginas: 43,
+    exaltadosCount: 8,
+    categorias: {
+      deportistas: 4,
+      propulsores: 2,
+      postumos: 2
+    },
+    rangoPaginas: {
+      biografias: [16, 23],
+      fotosHistoricas: [31, 33]
+    }
   }
-  // ... Se agregarán en Sprints 2-8
+  // ... Se agregarán en Sprints 3-8
 ];
 
 export function getRevistaByNumero(numero: number): RevistaMetadata | undefined {
