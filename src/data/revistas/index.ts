@@ -48,8 +48,30 @@ export const revistasMetadata: RevistaMetadata[] = [
       biografias: [16, 23],
       fotosHistoricas: [31, 33]
     }
+  },
+
+  // Sprint 3: Revista #03 (2004) - 7 exaltados
+  {
+    numero: 3,
+    year: 2004,
+    titulo: 'Tercera Exaltación del Pabellón',
+    fechaCeremonia: '2004-08-22',
+    descripcion: 'Tercera ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadros de Honor 2000, 2002 y 2004.',
+    pdfUrl: '/revistas/completas/revista-03.pdf',
+    portadaUrl: '/revistas/portadas/rev03.jpg',
+    totalPaginas: 40,
+    exaltadosCount: 7,
+    categorias: {
+      deportistas: 6,
+      propulsores: 1,
+      postumos: 0
+    },
+    rangoPaginas: {
+      biografias: [20, 26],
+      fotosHistoricas: [34, 40]
+    }
   }
-  // ... Se agregarán en Sprints 3-8
+  // ... Se agregarán en Sprints 4-8
 ];
 
 export function getRevistaByNumero(numero: number): RevistaMetadata | undefined {
