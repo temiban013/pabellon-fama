@@ -92,8 +92,30 @@ export const revistasMetadata: RevistaMetadata[] = [
       biografias: [14, 25],
       fotosHistoricas: [23, 25]
     }
+  },
+
+  // Sprint 5: Revista #05 (2008) - 9 exaltados
+  {
+    numero: 5,
+    year: 2008,
+    titulo: 'Quinta Exaltación del Pabellón',
+    fechaCeremonia: '2008-08-15',
+    descripcion: 'Quinta ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2008 y cuadros históricos de honor 2000, 2002, 2004 y 2006.',
+    pdfUrl: '/revistas/completas/revista-05.pdf',
+    portadaUrl: '/revistas/portadas/rev05.jpg',
+    totalPaginas: 36,
+    exaltadosCount: 9,
+    categorias: {
+      deportistas: 7,
+      propulsores: 2,
+      postumos: 0
+    },
+    rangoPaginas: {
+      biografias: [13, 21],
+      fotosHistoricas: [28, 36]
+    }
   }
-  // ... Se agregarán en Sprints 5-8
+  // ... Se agregarán en Sprints 6-8
 ];
 
 export function getRevistaByNumero(numero: number): RevistaMetadata | undefined {
