@@ -7,13 +7,14 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 import { rev01Exaltados } from './revistas/rev01/exaltados';
 import { rev02Exaltados } from './revistas/rev02/exaltados';
 import { rev03Exaltados } from './revistas/rev03/exaltados';
+import { rev04Exaltados } from './revistas/rev04/exaltados';
 // ... etc
 
 export const todosLosExaltados: ExaltadoRevista[] = [
   ...rev01Exaltados,  // Sprint 1 - 23 exaltados
   ...rev02Exaltados,  // Sprint 2 - 8 exaltados
   ...rev03Exaltados,  // Sprint 3 - 7 exaltados
-  // ...rev04Exaltados,  // Sprint 4
+  ...rev04Exaltados,  // Sprint 4 - 9 exaltados
   // ...rev05Exaltados,  // Sprint 5
   // ...rev06Exaltados,  // Sprint 6
   // ...rev07Exaltados,  // Sprint 7

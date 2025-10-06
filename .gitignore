@@ -55,9 +55,8 @@ next-env.d.ts
 
 # Claude
 .claude/
+.project/
 CLAUDE.md
 
 # Scripts 
 /scripts/
-# Documentación interna de Claude Code (privada)
-.claude/

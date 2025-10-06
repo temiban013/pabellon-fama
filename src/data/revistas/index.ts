@@ -70,8 +70,30 @@ export const revistasMetadata: RevistaMetadata[] = [
       biografias: [20, 26],
       fotosHistoricas: [34, 40]
     }
+  },
+
+  // Sprint 4: Revista #04 (2006) - 9 exaltados
+  {
+    numero: 4,
+    year: 2006,
+    titulo: 'Cuarta Exaltación del Pabellón',
+    fechaCeremonia: '2006-11-05',
+    descripcion: 'Cuarta ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2006 y exaltación especial al equipo Doble A de 1960.',
+    pdfUrl: '/revistas/completas/revista-04.pdf',
+    portadaUrl: '/revistas/portadas/rev04.jpg',
+    totalPaginas: 36,
+    exaltadosCount: 9,
+    categorias: {
+      deportistas: 7,
+      propulsores: 1,
+      postumos: 1
+    },
+    rangoPaginas: {
+      biografias: [14, 25],
+      fotosHistoricas: [23, 25]
+    }
   }
-  // ... Se agregarán en Sprints 4-8
+  // ... Se agregarán en Sprints 5-8
 ];
 
 export function getRevistaByNumero(numero: number): RevistaMetadata | undefined {
