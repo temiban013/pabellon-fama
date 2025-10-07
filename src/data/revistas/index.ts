@@ -158,8 +158,29 @@ export const revistasMetadata: RevistaMetadata[] = [
       biografias: [11, 20],
       fotosHistoricas: [21, 28]
     }
+  },
+
+  // Sprint 8: Revista #08 (2015) - 6 exaltados
+  {
+    numero: 8,
+    year: 2015,
+    titulo: 'Octava Exaltación del Pabellón',
+    fechaCeremonia: '2015-03-29',
+    descripcion: 'Octava ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2015 en el Centro de Arte Ángel (Lito) Peña.',
+    pdfUrl: '/revistas/completas/revista-08.pdf',
+    portadaUrl: '/revistas/portadas/rev08.jpg',
+    totalPaginas: 28,
+    exaltadosCount: 6,
+    categorias: {
+      deportistas: 4,
+      propulsores: 1,
+      postumos: 1
+    },
+    rangoPaginas: {
+      biografias: [11, 16],
+      fotosHistoricas: [20, 21]
+    }
   }
-  // ... Se agregará en Sprint 8
 ];
 
 export function getRevistaByNumero(numero: number): RevistaMetadata | undefined {
