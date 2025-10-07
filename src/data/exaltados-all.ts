@@ -9,6 +9,8 @@ import { rev02Exaltados } from './revistas/rev02/exaltados';
 import { rev03Exaltados } from './revistas/rev03/exaltados';
 import { rev04Exaltados } from './revistas/rev04/exaltados';
 import { rev05Exaltados } from './revistas/rev05/exaltados';
+import { rev06Exaltados } from './revistas/rev06/exaltados';
+import { rev07Exaltados } from './revistas/rev07/exaltados';
 // ... etc
 
 export const todosLosExaltados: ExaltadoRevista[] = [
@@ -17,8 +19,8 @@ export const todosLosExaltados: ExaltadoRevista[] = [
   ...rev03Exaltados,  // Sprint 3 - 7 exaltados
   ...rev04Exaltados,  // Sprint 4 - 9 exaltados
   ...rev05Exaltados,  // Sprint 5 - 9 exaltados
-  // ...rev06Exaltados,  // Sprint 6
-  // ...rev07Exaltados,  // Sprint 7
+  ...rev06Exaltados,  // Sprint 6 - 7 exaltados
+  ...rev07Exaltados,  // Sprint 7 - 10 exaltados
   // ...rev08Exaltados,  // Sprint 8
 ];
 

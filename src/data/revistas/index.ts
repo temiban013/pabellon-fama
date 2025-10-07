@@ -114,8 +114,52 @@ export const revistasMetadata: RevistaMetadata[] = [
       biografias: [13, 21],
       fotosHistoricas: [28, 36]
     }
+  },
+
+  // Sprint 6: Revista #06 (2010) - 7 exaltados
+  {
+    numero: 6,
+    year: 2010,
+    titulo: 'Sexta Exaltación del Pabellón',
+    fechaCeremonia: '2010-11-14',
+    descripcion: 'Sexta ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2010 y cuadros históricos de honor.',
+    pdfUrl: '/revistas/completas/revista-06.pdf',
+    portadaUrl: '/revistas/portadas/rev06.jpg',
+    totalPaginas: 36,
+    exaltadosCount: 7,
+    categorias: {
+      deportistas: 4,
+      propulsores: 2,
+      postumos: 1
+    },
+    rangoPaginas: {
+      biografias: [10, 16],
+      fotosHistoricas: [23, 36]
+    }
+  },
+
+  // Sprint 7: Revista #07 (2012) - 10 exaltados
+  {
+    numero: 7,
+    year: 2012,
+    titulo: 'Séptima Exaltación del Pabellón',
+    fechaCeremonia: '2012-11-18',
+    descripcion: 'Séptima ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2012 con homenaje al centenario de Emilio Huyke.',
+    pdfUrl: '/revistas/completas/revista-07.pdf',
+    portadaUrl: '/revistas/portadas/rev07.jpg',
+    totalPaginas: 36,
+    exaltadosCount: 10,
+    categorias: {
+      deportistas: 7,
+      propulsores: 3,
+      postumos: 0
+    },
+    rangoPaginas: {
+      biografias: [11, 20],
+      fotosHistoricas: [21, 28]
+    }
   }
-  // ... Se agregarán en Sprints 6-8
+  // ... Se agregará en Sprint 8
 ];
 
 export function getRevistaByNumero(numero: number): RevistaMetadata | undefined {
