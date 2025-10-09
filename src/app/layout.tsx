@@ -183,8 +183,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
           }}
         />
 
-        {/* Service Worker Registration */}
-        <Script
+        {/* Service Worker Registration - DISABLED FOR DEVELOPMENT
+            The current SW implementation conflicts with Next.js 15 + Turbopack's
+            dynamic chunk loading system. It intercepts fetch requests and returns
+            stale cached chunks, causing "Failed to load chunk" errors.
+
+            TODO: Re-enable with proper PWA implementation using @ducanh2912/next-pwa
+            or implement network-first strategy that excludes /_next/ paths.
+        */}
+        {/* <Script
           id="sw-registration"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -196,7 +203,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               }
             `,
           }}
-        />
+        /> */}
 
         {/* Emergency Contact Schema */}
         <script

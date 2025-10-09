@@ -1,7 +1,12 @@
 /**
  * Exaltados de la Revista #04 (Año 2006)
  * Cuarta Exaltación - 5 de noviembre de 2006
- * Total: 9 exaltados
+ * Total: 10 exaltados (9 individuos + 1 equipo)
+ *
+ * Categorías:
+ * - Atletas: 8
+ * - Propulsores: 1
+ * - Equipos: 1
  *
  * NOTA: Biografías extraídas del PDF - pueden contener errores menores
  * que serán corregidos en revisiones futuras
@@ -297,12 +302,12 @@ Los gastos para esas instalaciones, equipos, materiales y viajes eran donados po
     }
   },
 
-  // PÓSTUMO - Equipo Doble A 1960
+  // EQUIPO - Equipo Doble A 1960
   {
-    id: 'equipo-1960',
+    id: 'equipo-humacao-1960',
     nombre: 'Equipo Humacao Doble A',
-    apellidos: '1960',
-    categoria: 'PÓSTUMO',
+    apellidos: '(1960)',
+    categoria: 'EQUIPO',
     deportes: ['Béisbol'],
     anoExaltacion: 2006,
     revistaNumero: 4,

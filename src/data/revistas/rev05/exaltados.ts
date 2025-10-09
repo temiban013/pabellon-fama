@@ -319,10 +319,10 @@ Una larga e impresionante carrera profesional como Asistente de Terapia Física 
     }
   },
   {
-    id: 'equipo-jumacao-fc',
-    nombre: 'Equipo Jumacao F.C.',
-    apellidos: '',
-    categoria: 'ATLETA',
+    id: 'equipo-juvenil-futbol',
+    nombre: 'Equipo Juvenil Fútbol Jumacao F.C.',
+    apellidos: '(1958)',
+    categoria: 'EQUIPO',
     deportes: ['Fútbol'],
     anoExaltacion: 2008,
     revistaNumero: 5,

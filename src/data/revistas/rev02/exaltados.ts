@@ -1,12 +1,13 @@
 /**
  * Exaltados de la Revista #02 (Año 2002)
  * Segunda Exaltación - 17 de agosto de 2002
- * Total: 8 exaltados
+ * Total: 9 exaltados (8 individuos + 1 equipo)
  *
  * Categorías:
  * - Atletas: 4
  * - Propulsores: 2
  * - Póstumos: 2
+ * - Equipos: 1
  */
 
 import { ExaltadoRevista } from '@/lib/types/revista';
@@ -278,6 +279,39 @@ En 1967 fue presidente fundador de las Pequeñas Ligas de Humacao. Organizó en 
         'Presidente fundador Pequeñas Ligas de Humacao (1967)',
         'Organizador división Big League de Puerto Rico (1973)'
       ],
+    }
+  },
+
+  {
+    id: 'equipo-humacao-1951',
+    nombre: 'Equipo Humacao Doble A',
+    apellidos: '(1951)',
+    categoria: 'EQUIPO',
+    deportes: ['Béisbol'],
+    anoExaltacion: 2002,
+    revistaNumero: 2,
+    paginaInicio: 24,
+    paginaFin: 25,
+    contenido: {
+      biografia: `Histórico equipo de béisbol que conquistó el campeonato nacional y mundial amateur en 1951. Los Grises de Humacao, bajo una destacada actuación colectiva, lograron lo que sería el único título de la franquicia hasta 2021 - una sequía de 70 años que subraya la magnitud de esta hazaña.
+
+El equipo viajó a México donde representaron a Puerto Rico en el Campeonato Mundial Amateur de Béisbol. Con una combinación de talento local, disciplina y determinación, Los Grises derrotaron a los mejores equipos del continente para coronarse campeones mundiales.
+
+Este equipo legendario incluyó a figuras que más tarde serían inmortalizadas individualmente en el Pabellón de la Fama: Melquíades Silva Anderson en los jardines, Carlos (Memelo) López Sánchez en el campo interno, y Osvaldo Gil Bosch como receptor. La química del equipo, junto con el liderazgo técnico y administrativo, creó una época dorada del béisbol humacaeño que perdura en la memoria colectiva del pueblo.
+
+El campeonato de 1951 no fue solo una victoria deportiva, sino un momento de orgullo y unidad para Humacao. Las calles se llenaron de celebración cuando Los Grises regresaron con el trofeo que los consagraba como los mejores del mundo. Esta hazaña quedó grabada como uno de los momentos más gloriosos en la historia deportiva del municipio.`,
+      logros: [
+        'Campeones Nacionales de Puerto Rico (1951)',
+        'Campeones Mundiales Amateur en México (1951)',
+        'Único campeonato de Los Grises hasta 2021 (70 años)',
+        'Representación destacada de Puerto Rico a nivel internacional',
+        'Legado duradero en la historia del béisbol humacaeño'
+      ],
+      reconocimientos: [
+        'Considerado el equipo más glorioso en la historia de Humacao',
+        'Primera y única vez campeones mundiales hasta 2021',
+        'Tres de sus jugadores clave fueron exaltados individualmente al Pabellón'
+      ]
     }
   },
 ];
