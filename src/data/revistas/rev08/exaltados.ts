@@ -2,7 +2,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 
 export const rev08Exaltados: ExaltadoRevista[] = [
   {
-    id: 'exaltado-rev08-001',
+    id: 'luis-r-alvarez-vazquez',
     nombre: 'Luis Reinaldo',
     apellidos: 'Álvarez Vázquez',
     apodo: 'Prof. Luis R. Álvarez',
@@ -30,7 +30,7 @@ En el tenis fue miembro fundador y primer Presidente del Jumacao Tenis Club del 
     }
   },
   {
-    id: 'exaltado-rev08-002',
+    id: 'miguel-papuso-garcia-cruz',
     nombre: 'Miguel A.',
     apellidos: 'García Cruz',
     apodo: 'Papuso',
@@ -59,7 +59,7 @@ Representó a la UPR de Humacao en Béisbol, más destacado en Voleibol y Pista 
     }
   },
   {
-    id: 'exaltado-rev08-003',
+    id: 'juan-de-dios-ortiz',
     nombre: 'Juan',
     apellidos: 'De Dios Ortiz',
     categoria: 'ATLETA',
@@ -71,7 +71,7 @@ Representó a la UPR de Humacao en Béisbol, más destacado en Voleibol y Pista 
     contenido: {
       biografia: `Nació el 17 de octubre de 1943 en el Barrio Abajo de Humacao en el matrimonio de Paula Santiago y Encarnación Ortiz. Casado con Luz M. Castañeda y padre de 4 varones: Juan Luis, Juan Manuel, Juan Carlos y Juan De Dios. Es producto de las escuelas públicas y en el ejército practicó el boxeo.
 
-A los 8 años se inició en el béisbol en La Liga Atlética Policiaca de Humacao y a los 15 años, bajo la tutela de Tito Álamo, se inició en la Clase A en Junquito. Jugó en la COLICEBA en Las Piedras, Naguabo y luego perteneció a Humacao AA con Barry López como apoderado. Se trasladó a Nueva York y de 1964 al 1968 jugó en Las Ligas Hispanas regresando a Puerto Rico integrarse al equipo de Humacao Doble A.
+los 8 años se inició en el béisbol en La Liga Atlética Policiaca de Humacao y a los 15 años, bajo la tutela de Tito Álamo, se inició en la Clase A en Junquito. Jugó en la COLICEBA en Las Piedras, Naguabo y luego perteneció a Humacao AA con Barry López como apoderado. Se trasladó a Nueva York y de 1964 al 1968 jugó en Las Ligas Hispanas regresando a Puerto Rico integrarse al equipo de Humacao Doble A.
 
 En 1975 organizó un equipo de Clase A en Río Abajo logrando El Campeonato Nacional eliminando a Guayanilla, en 1977 repitieron la hazaña derrotando a los Leones de Ponce y el 1978, venciendo a Sabana Grande en el Jacinto "Jáyase" Hernández. La racha continuó en 1979 al superar a los poderosos de Jayuya. En 1981 y 82, comenzó con un equipo de la Legión Americana dirigido por Benny Vázquez y, en liga a nivel nacional, lograron 2 campeonatos derrotando a Añasco en 1982 y a Los Tiburones de Aguadilla donde participó el joven Carlos Delgado.
 
@@ -89,7 +89,7 @@ Este Quijote de la Clase A trajo grandes logros, logrando exposición nacional q
     }
   },
   {
-    id: 'exaltado-rev08-004',
+    id: 'fernando-maldonado-lopez',
     nombre: 'Fernando',
     apellidos: 'Maldonado López',
     categoria: 'ATLETA',
@@ -99,7 +99,7 @@ Este Quijote de la Clase A trajo grandes logros, logrando exposición nacional q
     paginaInicio: 14,
     paginaFin: 14,
     contenido: {
-      biografia: `Nació el 9 de septiembre de 1963 en Humacao. Fueron sus padres Fernando y Juana y a los 6 años su familia se traslada a Brooklyn, New York. A los 13 años regresa a Puerto Rico, se interesa en el boxeo con sus primos y en 1979 decide participar el boxeo con el entrenador Ismael García mientras, estudia su cuarto año en el Centro de Estudio y Trabajo de Las Piedras.
+      biografia: `Nació el 9 de septiembre de 1963 en Humacao. Fueron sus padres Fernando y Juana y a los 6 años su familia se traslada a Brooklyn, New York. los 13 años regresa a Puerto Rico, se interesa en el boxeo con sus primos y en 1979 decide participar el boxeo con el entrenador Ismael García mientras, estudia su cuarto año en el Centro de Estudio y Trabajo de Las Piedras.
 
 Su primer viaje fue a Barquisimeto, Venezuela en 1982, Primera Copa Mundial de Boxeo Aficionado "Simón Bolívar". En 1983 se proclama Campeón Nacional en Guantes Dorados en el peso ligero (132 lbs.). Es seleccionado para participar en los Juegos Panamericanos en Venezuela y no compitió por una lesión torácica. En 1983 logra Medalla de Bronce en los XIII Campeonatos Centroamericanos y del Caribe de Boxeo, en Cuba. En 1984 asistió a un intercambio amistoso en México y en 1984 y 1985, en Texas, participó en "North American Championship", obteniendo, en ambos, tercer lugar en el peso ligero. En 1985 viajó a Las Vegas para el Campeonato Mundial de Boxeo, ganando su primera pelea, perdió cerradamente a su segundo encuentro ante el cubano Adolfo Horta, Campeón Mundial. En 1986 y en peso ligero, en los Juegos Centroamericanos y del Caribe, en República Dominicana, obtuvo medalla de Bronce. Como aficionado realizó 69 peleas: 34 por "knockout", 20 por decisión y 15 perdidas.
 
@@ -121,7 +121,7 @@ Su relación con Ismael García fue de respeto, confianza como de padre e hijo. 
     }
   },
   {
-    id: 'exaltado-rev08-005',
+    id: 'ismael-rivera-tirado',
     nombre: 'Ismael',
     apellidos: 'Rivera Tirado',
     categoria: 'PÓSTUMO',
@@ -156,7 +156,7 @@ Ismael Rivera Tirado un Campeón de mucha cría, fajón como ninguno, esposo, pa
     }
   },
   {
-    id: 'exaltado-rev08-006',
+    id: 'lourdes-vega-gonzalez',
     nombre: 'Lourdes',
     apellidos: 'Vega González',
     categoria: 'ATLETA',
@@ -166,7 +166,7 @@ Ismael Rivera Tirado un Campeón de mucha cría, fajón como ninguno, esposo, pa
     paginaInicio: 16,
     paginaFin: 16,
     contenido: {
-      biografia: `Nació el 5 de Julio de 1962 en Humacao, hija de Ramón Vega Sosa y María González Vázquez. A los 8 años comenzó en la natación con Loyola Athletic Club. En 1982, al formarse el Equipo de Natación de Humacao, ofreció clases de natación y técnica de estilos. En 1986 se convierte en entrenadora del equipo y por primera vez Humacao compitió en los Campeonatos Nacionales. De 1986 a 1998 en 8 ocasiones formó parte del grupo de técnicos de la Selección Nacional, incluyendo Juegos Centroamericanos y del Caribe de 1993 celebrados en Ponce. También funge como entrenadora del equipo de natación de la UPRH y del Colegio San Antonio Abad.
+      biografia: `Nació el 5 de Julio de 1962 en Humacao, hija de Ramón Vega Sosa y María González Vázquez. los 8 años comenzó en la natación con Loyola Athletic Club. En 1982, al formarse el Equipo de Natación de Humacao, ofreció clases de natación y técnica de estilos. En 1986 se convierte en entrenadora del equipo y por primera vez Humacao compitió en los Campeonatos Nacionales. De 1986 a 1998 en 8 ocasiones formó parte del grupo de técnicos de la Selección Nacional, incluyendo Juegos Centroamericanos y del Caribe de 1993 celebrados en Ponce. También funge como entrenadora del equipo de natación de la UPRH y del Colegio San Antonio Abad.
 
 Tras un retiro, regresa en 2006 al Equipo de Humacao. En 2007 el Equipo sube de la undécima a la tercera posición en los Campeonatos Nacionales. Entre el 2008 y 2010 el Equipo revalida la tercera posición y obtienes el Premio Excelencia y Nadador Más Valioso 2009. En 2011 logran el Campeonato Nacional en Piscina Corta. Desde 2007, once de sus nadadores integraron selecciones nacionales internacionalmente con: Eladio Carrión, Luis Ortiz, Yamilka Rios, Nicole Báez, Daniel Santana, Ana Vega, Ángel Diane Rosario, Cristina Rosario, Fátima Tolentino, Marisa Lugo y Richard Certuche.
 

@@ -112,12 +112,13 @@ const recursosEnlaces: RecursoEnlace[] = [
     id: "publicaciones",
     titulo: "Publicaciones Oficiales",
     descripcion:
-      "Acceso a libros y publicaciones auspiciadas por el PFDH sobre historia deportiva y biografías de atletas.",
-    url: "#publicaciones",
+      "Revistas conmemorativas de las 8 ceremonias de exaltación con biografías completas, fotografías históricas y documentación de cada evento.",
+    url: "/revistas",
     tipo: "documento",
     icono: BookOpen,
-    activo: false,
-    contenidoEspecial: "Libros de historia deportiva y biografías",
+    activo: true,
+    destacado: true,
+    contenidoEspecial: "8 revistas oficiales con 81 biografías de exaltados",
   },
   {
     id: "pabellones-hermanos",
@@ -225,15 +226,33 @@ const RecursoCard = ({ recurso }: { recurso: RecursoEnlace }) => {
         {/* Botón de acción */}
         <div className="pt-4 border-t border-gray-100">
           {recurso.activo ? (
-            <a
-              href={recurso.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Visitar Recurso
-              <ExternalLink className="ml-2 h-4 w-4" />
-            </a>
+            recurso.url.startsWith("#") ? (
+              <a
+                href={recurso.url}
+                className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Ver Contenido
+                <Award className="ml-2 h-4 w-4" />
+              </a>
+            ) : recurso.url.startsWith("/") ? (
+              <Link
+                href={recurso.url}
+                className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Ver Contenido
+                <Award className="ml-2 h-4 w-4" />
+              </Link>
+            ) : (
+              <a
+                href={recurso.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Visitar Recurso
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </a>
+            )
           ) : (
             <button
               disabled

@@ -11,7 +11,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 
 export const rev05Exaltados: ExaltadoRevista[] = [
   {
-    id: 'miguel-a-pochy-figueroa',
+    id: 'jose-miguel-pochy-figueroa',
     nombre: 'Miguel A.',
     apellidos: 'Figueroa',
     apodo: 'Pochy',
@@ -24,13 +24,13 @@ export const rev05Exaltados: ExaltadoRevista[] = [
     contenido: {
       biografia: `Nació en Fajardo el 28 de febrero de 1965. Hace sus estudios primarios en la Escuela Antonio Agripino Roig y en la Escuela Carlos Rivera Ufret de Humacao. Comenzó sus hazañas como jugador de béisbol en su barrio, Mabú.
 
-A los nueve años comienza en la Liga Néstor Morales jugando con el Equipo Manuel Mediavilla, dirigido por el Sr. Luis A. (Güiare) Colón. En mayo de 1974, se inaugura la Boys Baseball League de Humacao, presidida para entonces por el Sr. Miguel Luzunaris y continúa jugando en esa Liga hasta la edad de 14 años.
+los nueve años comienza en la Liga Néstor Morales jugando con el Equipo Manuel Mediavilla, dirigido por el Sr. Luis A. (Güiare) Colón. En mayo de 1974, se inaugura la Boys Baseball League de Humacao, presidida para entonces por el Sr. Miguel Luzunaris y continúa jugando en esa Liga hasta la edad de 14 años.
 
-A esa edad sus padres se trasladan a Pennsylvania, donde obtiene su diploma de Escuela Superior en 1983 en la Lois Dierfoff High School, siendo becado por la Universidad de Pennsylvania State. Transcurrido un año en la Universidad decide regresar a Humacao trayendo consigo un excelente historial como jugador de la tercera base.
+esa edad sus padres se trasladan a Pennsylvania, donde obtiene su diploma de Escuela Superior en 1983 en la Lois Dierfoff High School, siendo becado por la Universidad de Pennsylvania State. Transcurrido un año en la Universidad decide regresar a Humacao trayendo consigo un excelente historial como jugador de la tercera base.
 
 El dirigente José (Chemane) Carradero lo firma para el equipo de Juncos siendo reclamado por Melquiades Silva para jugar de Humacao en 1983.
 
-Entre su resumé deportivo se pueden señalar las 16 temporadas en Humacao, novena con la cual obtiene 13 títulos de bateo. Dos veces líder de carreras empujadas a nivel nacional. Participó en 10 juegos de estrellas. Fue miembro del Equipo Nacional en el año 1993, donde obtuvieron medalla de plata en Nicaragua y quedando líder de bateo con promedio de .500. En dicho torneo fue seleccionado como la mejor primera base y por consiguiente la primera base del equipo "Todos Estrellas".
+Entre su resumé deportivo se pueden señalar las 16 temporadas en Humacao, novena con la cual obtiene 13 títulos de bateo. Dos veces líder de carreras empujadas a nivel nacional. Participó en 10 juegos de estrellas. Fue miembro del Equipo Nacional en el año 1993, donde obtuvieron medalla de plata en Nicaragua y quedando líder de bateo con promedio de.500. En dicho torneo fue seleccionado como la mejor primera base y por consiguiente la primera base del equipo "Todos Estrellas".
 
 Jugó en los Juegos Centroamericanos y del Caribe en Ponce en donde obtuvieron medalla de bronce. El 15 de marzo de 1998, consigue el hit número 500 de su carrera con el equipo de Humacao. Termina su carrera en Humacao con un total de 500 indiscutibles.
 
@@ -48,7 +48,7 @@ En el año 2000, jugó con los Juyeros de Maunabo, siendo líder de bateo del eq
     }
   },
   {
-    id: 'francisco-paco-rey',
+    id: 'francisco-paco-rey-vazquez',
     nombre: 'Francisco',
     apellidos: 'Rey',
     apodo: 'Paco',
@@ -99,25 +99,25 @@ Para el 1970, fungió como Secretario de la Asociación de Fútbol Aficionado de
     contenido: {
       biografia: `Cándido Maldonado nació en la ciudad de Humacao el 5 de septiembre de 1960. Viaja junto a sus padres a los Estados Unidos y a su regreso se radica en Arecibo cursando sus estudios primarios y secundarios en esa ciudad. Inicia su trayectoria en el béisbol en plena niñez, participando en torneos de Pequeñas Ligas, Pibe Central, Liga Pony y Mickey Mantle, hasta llegar a la Doble A. Durante la serie final de la Doble A, su equipo de Florida, se enfrenta a Utuado y su destacada actuación le abre el camino para ingresar al equipo de los Lobos de Arecibo y de aquí a las Grandes Ligas con los Dodgers de Los Angeles en 1978.
 
-Jugó por 15 años en las Grandes Ligas militando en varios equipos, a saber: L.A. Dodgers, Gigantes de San Francisco, Cerveceros de Milwaukee, Azulejos de Toronto, Cachorros de Chicago, Indios de Cleveland y Rancheros de Texas.
+Jugó por 15 años en las Grandes Ligas militando en varios equipos, a saber: L. A. Dodgers, Gigantes de San Francisco, Cerveceros de Milwaukee, Azulejos de Toronto, Cachorros de Chicago, Indios de Cleveland y Rancheros de Texas.
 
 Entre sus muchos logros en Grandes Ligas podemos señalar los siguientes:
 
 · Comienza su carrera profesional en Lethbridge bateando 48 RBI en 57 juegos en 1978.
 
-· En 1980 es el Co-MVP en Lodi, Liga de California, al batear .305 con 24 cuadrangulares y líder de la Liga con 102 RBI. Es seleccionado al Equipo de Todos Estrellas de la Liga de Clase A de California.
+· En 1980 es el Co-MVP en Lodi, Liga de California, al batear.305 con 24 cuadrangulares y líder de la Liga con 102 RBI. Es seleccionado al Equipo de Todos Estrellas de la Liga de Clase A de California.
 
-· En 1981 batea para .335 con el equipo de Albuquerque con 104 RBI siendo el promedio más alto en la Liga de la Costa del Pacífico. Fue líder de todos los jardineros en asistencias con 21.
+· En 1981 batea para.335 con el equipo de Albuquerque con 104 RBI siendo el promedio más alto en la Liga de la Costa del Pacífico. Fue líder de todos los jardineros en asistencias con 21.
 
 · Hace su debut en Grandes Ligas en septiembre de 1981 y batea su primer hit en Grandes Ligas el 28 del mismo mes.
 
 · En 1983 batea su primer cuadrangular contra el lanzador Fred Breining de San Francisco.
 
-· Juega su primera temporada completa en Grandes Ligas bateando para .268 en 116 juegos jugando en los bosques y en la tercera base.
+· Juega su primera temporada completa en Grandes Ligas bateando para.268 en 116 juegos jugando en los bosques y en la tercera base.
 
 · En 1985 juega como jardinero central, conectando la cantidad de hit más alta en un juego con 5.
 
-· En 1986 fue el mejor bateador designado de la Liga Nacional con .425, 4 cuadrangulares y 20 RBI.`,
+· En 1986 fue el mejor bateador designado de la Liga Nacional con.425, 4 cuadrangulares y 20 RBI.`,
       logros: [
         'Debut en Grandes Ligas 1981',
         'Co-MVP Liga de California 1980 (.305, 24 HR, 102 RBI)',
@@ -131,7 +131,7 @@ Entre sus muchos logros en Grandes Ligas podemos señalar los siguientes:
     }
   },
   {
-    id: 'angel-manuel-mane-rosa-lopez',
+    id: 'angel-mane-rosa-lopez',
     nombre: 'Angel Manuel',
     apellidos: 'Rosa López',
     apodo: 'Mane',
@@ -169,9 +169,9 @@ Participó como delegado en los Juegos de Buena Voluntad en Seattle en 1988. Por
     contenido: {
       biografia: `En 1943, a la edad de 16 años, comienza a demostrar su fortaleza al sorprender ganando el evento de 800 metros el Día de Juegos de la Escuela Superior Ana Roqué, ganando también, el evento de triple salto. Ese mismo año ingresa en las Fuerzas Armadas de los Estados Unidos y regresa a la isla en 1946, reanudando sus estudios en la Ana Roqué y su carrera como atleta.
 
-En el 1947, se celebraron las Justas Atléticas del Este en Caguas y Juan Luis es asignado a correr en el tercer tramo del relevo de 4 x 100, recibiendo el batón en quinto lugar. Realizó un tramo para recordar, entregando el batón en segundo lugar, aprovechando el tramo ancla, Miguel López Reyes, para darle el triunfo al relevo humacaeño. Fue en esas justas donde se descubre el potencial de velocista de Juan Luis ya que usualmente se desempeñaba en carreras largas.
+En el 1947, se celebraron las Justas Atléticas del Este en Caguas y Juan Luis es asignado a correr en el tercer tramo del relevo de 4 100, recibiendo el batón en quinto lugar. Realizó un tramo para recordar, entregando el batón en segundo lugar, aprovechando el tramo ancla, Miguel López Reyes, para darle el triunfo al relevo humacaeño. Fue en esas justas donde se descubre el potencial de velocista de Juan Luis ya que usualmente se desempeñaba en carreras largas.
 
-En 1948 se celebraron los Relevos de Puerto Rico; una competencia a nivel nacional para escuelas superiores coordinada por el Departamento de Instrucción y la Comisión de Parques y Recreo de Puerto Rico. Participó en el relevo de 4 x 400 como tercer tramo, entregando el batón en segundo lugar al corredor ancla, Eduardo Curbelo (Q.E.P.D.) quien arribó en primer lugar, y en el relevo combinado, junto a sus compañeros, se alzó con la victoria.
+En 1948 se celebraron los Relevos de Puerto Rico; una competencia a nivel nacional para escuelas superiores coordinada por el Departamento de Instrucción y la Comisión de Parques y Recreo de Puerto Rico. Participó en el relevo de 4 400 como tercer tramo, entregando el batón en segundo lugar al corredor ancla, Eduardo Curbelo (Q. E. P. D.) quien arribó en primer lugar, y en el relevo combinado, junto a sus compañeros, se alzó con la victoria.
 
 Ese mismo año se celebraron en Mayagüez, las Justas Interescolares de Escuelas Superiores. La carrera de 200 metros fue impresionante al desarrollarse un duelo entre Bibiano Medina (de Ponce) y Juan Luis, al extremo de que ambos mejoraron la marca interescolar que era de 22.5 segundos. Bibiano cronometró 22.3 y Juan Luis 22.4 segundos.
 
@@ -198,12 +198,12 @@ En las Justas Intramurales de la Escuela Superior de 1949 ganó los 100, 200 y 4
     }
   },
   {
-    id: 'pedro-j-peyo-davila-poupart',
+    id: 'pedro-j-davila-poupart',
     nombre: 'Pedro J.',
     apellidos: 'Dávila Poupart',
     apodo: 'Peyo',
     categoria: 'PROPULSOR',
-    deportes: ['Múltiples Deportes', 'Fútbol', 'Softball', 'Balompié'],
+    deportes: ['Béisbol', 'Fútbol', 'Softball', 'Balompié'],
     anoExaltacion: 2008,
     revistaNumero: 5,
     paginaInicio: 18,
@@ -230,7 +230,7 @@ Como profesor universitario y líder comunitario es un gran propulsor de las act
     }
   },
   {
-    id: 'carlos-vazquez-torres',
+    id: 'carlos-carlitos-vazquez-torres',
     nombre: 'Carlos',
     apellidos: 'Vázquez Torres',
     categoria: 'ATLETA',
@@ -240,15 +240,15 @@ Como profesor universitario y líder comunitario es un gran propulsor de las act
     paginaInicio: 19,
     paginaFin: 19,
     contenido: {
-      biografia: `Nació en Humacao en donde, desde muy temprana edad, comienza a presentar sus credenciales como deportista. A los 14 años participa en el Torneo de Futuras Estrellas con el equipo de Humacao. Para el 1952 forma parte del equipo Kelly Tires de la Clase A dirigido por Catalino Santos demostrando ser un estilista en el campo corto. En 1954 Carlitos firma con los Grises de Humacao de Don Pedro (Matojo) Cruz para el béisbol Doble A y bajo la dirección de Harry Rexach, bateando para .358 en su primer año.
+      biografia: `Nació en Humacao en donde, desde muy temprana edad, comienza a presentar sus credenciales como deportista. los 14 años participa en el Torneo de Futuras Estrellas con el equipo de Humacao. Para el 1952 forma parte del equipo Kelly Tires de la Clase A dirigido por Catalino Santos demostrando ser un estilista en el campo corto. En 1954 Carlitos firma con los Grises de Humacao de Don Pedro (Matojo) Cruz para el béisbol Doble A y bajo la dirección de Harry Rexach, bateando para.358 en su primer año.
 
-Forma parte, para ese mismo año, de la Selección de Béisbol Juvenil para representar a Puerto Rico en la ciudad de México, jugando en el campo corto y proclamándose subcampeones del Torneo Mundial de Béisbol Juvenil. A su regreso, la Selección se enfrenta a un equipo de la Legión Americana de Estados Unidos, obteniendo Puerto Rico la victoria 2-1 con John Martinez como lanzador y decidiendo el partido con un cuadrangular de Carlitos Vázquez.
+Forma parte, para ese mismo año, de la Selección de Béisbol Juvenil para representar a Puerto Rico en la ciudad de México, jugando en el campo corto y proclamándose subcampeones del Torneo Mundial de Béisbol Juvenil. su regreso, la Selección se enfrenta a un equipo de la Legión Americana de Estados Unidos, obteniendo Puerto Rico la victoria 2-1 con John Martinez como lanzador y decidiendo el partido con un cuadrangular de Carlitos Vázquez.
 
-El 1958, representó para Carlitos su último año con los Grises bateando para .358 siendo el campeón bate del equipo. Luego de esa exitosa participación en el béisbol Doble A es firmado, ese mismo año, para el profesionalismo por el escucha Monchile Concepción para los Dodgers (para ese tiempo Brooklyn) y para los Senadores de San Juan.
+El 1958, representó para Carlitos su último año con los Grises bateando para.358 siendo el campeón bate del equipo. Luego de esa exitosa participación en el béisbol Doble A es firmado, ese mismo año, para el profesionalismo por el escucha Monchile Concepción para los Dodgers (para ese tiempo Brooklyn) y para los Senadores de San Juan.
 
 En su primer año en el campo de entrenamiento de los Dodgers le tocó compartir con jugadores de la talla de Duke Sneider, Maury Wills, Junior Gilliam, Tommy y Willie Davis y con el cubano Edmundo Amorós.
 
-En su primer año con el Odesa de Texas bateó para .305 siendo seleccionado para el Juego de Estrellas de esa Liga como tercera base.
+En su primer año con el Odesa de Texas bateó para.305 siendo seleccionado para el Juego de Estrellas de esa Liga como tercera base.
 
 En 1959, jugando en la tercera base, fue golpeado por una línea de Carlos Bernier estando inactivo el resto de la temporada. Desarrolló problemas en la visión a consecuencia del pelotazo y no pudo regresar a su posición, siendo retenido por los Senadores de San Juan como lanzador de prácticas. Ese equipo de San Juan se proclamó Campeón de Puerto Rico y Carlitos fue incluido en el "Roster" del equipo que viajaría a la Serie del Caribe en Caracas, Venezuela. Continuando con problemas en la vista se retira como jugador, fundando, en 1961, el Carlitos Sport Shop y comenzando una destacada carrera como propulsor y dirigente de equipos de béisbol en Humacao.
 
@@ -271,7 +271,7 @@ En la actualidad y en su vida de comerciante sigue pendiente y colaborando con e
     }
   },
   {
-    id: 'jose-elias-betancourt-rosario',
+    id: 'jose-elias-betancourt',
     nombre: 'José Elías',
     apellidos: 'Betancourt Rosario',
     categoria: 'ATLETA',

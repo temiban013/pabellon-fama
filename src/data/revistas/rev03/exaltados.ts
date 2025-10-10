@@ -2,7 +2,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 
 export const rev03Exaltados: ExaltadoRevista[] = [
   {
-    id: 'jorge-d-de-leon-burgos',
+    id: 'jorge-david-de-leon-burgos',
     nombre: 'Jorge David',
     apellidos: 'de León Burgos',
     categoria: 'ATLETA',
@@ -138,7 +138,7 @@ Luego de su exitosa carrera deportiva representando a Puerto Rico en distintos p
     }
   },
   {
-    id: 'pedro-toribio-pena',
+    id: 'pedro-pena-flecha',
     nombre: 'Pedro',
     apellidos: 'Peña',
     apodo: 'Toribio',
@@ -153,7 +153,7 @@ Luego de su exitosa carrera deportiva representando a Puerto Rico en distintos p
 
 Desde muy pequeño mostró una pasión especial por el deporte del béisbol. Junto a sus hermanos, entre ellos Felipe, y los amigos de la calle, formaron un equipo para jugar en el parque Jacinto Hernández.
 
-Pedro ingresó al ejército para la Segunda Guerra Mundial, participando como jugador con el equipo de las fuerzas armadas norteamericanas. A su regreso se integró al equipo Doble A de Humacao.
+Pedro ingresó al ejército para la Segunda Guerra Mundial, participando como jugador con el equipo de las fuerzas armadas norteamericanas. su regreso se integró al equipo Doble A de Humacao.
 
 Sus ejecutorias en este deporte son extraordinarias y están presentes en muchas de las personas que se privilegiaron de verlo jugar. Se le conoce como uno de los jugadores más temibles al bate. Le pegaba a la bola con un poder extraordinario. Su zona predilecta para batear lo era el jardín izquierdo. Su promedio osciló sobre los 300 en casi todos las temporadas en que participó.
 
@@ -165,7 +165,7 @@ En el béisbol profesional de Puerto Rico, Pedro jugó con el equipo de Caguas-G
 
 Compartió con peloteros estelares del béisbol boricua como: Perucho Cepeda, Tetelo Vargas, Pedro Alomar, Bin Torres, Roberto Vargas y Víctor Pellot.
 
-En su segunda temporada (1948-49), tuvo mayor participación bateando para un promedio de .279, producto de 12 indiscutibles, entre ellos cuatro dobles, en 43 turnos al bate y con tres carreras anotadas y 6 empujadas.
+En su segunda temporada (1948-49), tuvo mayor participación bateando para un promedio de.279, producto de 12 indiscutibles, entre ellos cuatro dobles, en 43 turnos al bate y con tres carreras anotadas y 6 empujadas.
 
 En su vida personal, contrajo matrimonio con Doña Lydia Morales. El matrimonio procreó cuatro hijos.
 
@@ -197,7 +197,7 @@ La Legión Americana le rindió un homenaje póstumo en conmemoración de su ges
     contenido: {
       biografia: `En el 1940, la joven atleta humacaeña Ángela Wilkes, destacada corredora de distancias cortas desde la escuela elemental, participó en los Campeonatos Estatales que celebraba la Comisión de Parques y Recreo, hoy Departamento de Recreación y Deportes. Los Campeonatos Estatales de Atletismo se celebraban anualmente el 4 de julio, bajo la dirección del Comisionado de Deportes en ese tiempo, Sr. Juan Maldonado.
 
-A corta edad compitió en el evento de 100 metros lisos, ganando con tiempo de 13.5 segundos, derrotando a la campeona Nacional Sara Correa, convirtiéndose en la Campeona Nacional de Puerto Rico pasando a formar parte de la Selección de Puerto Rico que participaría en los Juegos Centroamericanos y del Caribe a celebrarse en Costa Rica. Desafortunadamente estos juegos no se llevaron a cabo como consecuencia del comienzo de la Segunda Guerra Mundial.
+corta edad compitió en el evento de 100 metros lisos, ganando con tiempo de 13.5 segundos, derrotando a la campeona Nacional Sara Correa, convirtiéndose en la Campeona Nacional de Puerto Rico pasando a formar parte de la Selección de Puerto Rico que participaría en los Juegos Centroamericanos y del Caribe a celebrarse en Costa Rica. Desafortunadamente estos juegos no se llevaron a cabo como consecuencia del comienzo de la Segunda Guerra Mundial.
 
 No obstante continuó su participación a nivel estatal, cosechando nuevos triunfos. En el 1946 formó parte de la Selección de Puerto Rico en 100 metros lisos y 80 metros con vallas altas para representarnos en los Quintos Juegos Centroamericanos y del Caribe en Barranquilla, Colombia, donde participó con valentía y dignidad para orgullo y honra de Humacao y Puerto Rico. Ángela Wilkes, es un ejemplo de disciplina y dedicación al deporte para las futuras generaciones.`,
       logros: [

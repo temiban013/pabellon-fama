@@ -1,7 +1,7 @@
 import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev06Exaltados: ExaltadoRevista[] = [
   {
-    id: 'exaltado-rev06-001',
+    id: 'richard-timmy-boyle',
     nombre: 'Richard',
     apellidos: 'Boyle',
     
@@ -28,7 +28,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
     },
   },
   {
-    id: 'exaltado-rev06-002',
+    id: 'aurelio-gerald-lopez',
     nombre: 'Aurelio',
     apellidos: 'López',
     
@@ -54,7 +54,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
     },
   },
   {
-    id: 'exaltado-rev06-003',
+    id: 'john-impo-martinez',
     nombre: 'John',
     apellidos: 'Martínez',
     
@@ -79,7 +79,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
     },
   },
   {
-    id: 'exaltado-rev06-004',
+    id: 'angel-lalin-rodriguez',
     nombre: 'Ángel',
     apellidos: 'Rodríguez',
     
@@ -108,7 +108,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
     },
   },
   {
-    id: 'exaltado-rev06-005',
+    id: 'milton-rosario-soto',
     nombre: 'Milton',
     apellidos: 'Rosario',
     
@@ -138,7 +138,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
     },
   },
   {
-    id: 'exaltado-rev06-006',
+    id: 'marcelino-torres',
     nombre: 'Marcelino',
     apellidos: 'Torres',
     
@@ -166,7 +166,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
     },
   },
   {
-    id: 'exaltado-rev06-007',
+    id: 'luis-humberto-torres',
     nombre: 'Luis Humberto',
     apellidos: 'Torres',
     

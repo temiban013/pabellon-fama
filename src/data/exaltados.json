@@ -6,15 +6,13 @@
         "nombre": "Marcelino Torres",
         "apellidos": "Torres",
         "nombreCompleto": "Marcelino Torres",
-        "deporte": ["Artes Marciales"],
+        "deporte": [
+          "Artes Marciales"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
         "biografia": "Destacado exponente de las artes marciales en Humacao.",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
@@ -33,7 +31,9 @@
         "nombre": "Julio (Yuyo) Luzunaris Maldonado",
         "apellidos": "Luzunaris Maldonado",
         "nombreCompleto": "Julio (Yuyo) Luzunaris Maldonado",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -52,7 +52,9 @@
         "nombre": "Carmen Paciencia Marrero Berrios",
         "apellidos": "Marrero Berrios",
         "nombreCompleto": "Carmen Paciencia Marrero Berrios",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -60,18 +62,21 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Paciencia",
         "logros": [],
         "reconocimientos": [],
         "foto": "/images/exaltados/carmen-marrero.jpg",
-        "estado": "activo"
+        "estado": "activo",
+        "genero": "femenino"
       },
       {
         "id": "manuel-rivera-guevara",
         "nombre": "Manuel Rivera Guevara",
         "apellidos": "Rivera Guevara",
         "nombreCompleto": "Manuel Rivera Guevara",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta-propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -81,7 +86,10 @@
         "lugarNacimiento": null,
         "apodo": null,
         "logros": [],
-        "reconocimientos": ["Museo del Deporte Manuel Rivera Guevara nombrado en su honor", "Pista atlética del Parque Jacinto Hernández nombrada en su honor"],
+        "reconocimientos": [
+          "Museo del Deporte Manuel Rivera Guevara nombrado en su honor",
+          "Pista atlética del Parque Jacinto Hernández nombrada en su honor"
+        ],
         "foto": "/images/exaltados/manuel-rivera-guevara.jpg",
         "estado": "activo"
       },
@@ -90,7 +98,9 @@
         "nombre": "Jaime Tolentino",
         "apellidos": "Tolentino",
         "nombreCompleto": "Jaime Tolentino",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "2da. Exaltación",
@@ -109,7 +119,9 @@
         "nombre": "Miguel A. López Reyes",
         "apellidos": "López Reyes",
         "nombreCompleto": "Miguel A. López Reyes",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "2da. Exaltación",
@@ -128,7 +140,10 @@
         "nombre": "Gladys Díaz",
         "apellidos": "Díaz",
         "nombreCompleto": "Gladys Díaz",
-        "deporte": ["Atletismo", "Softbol"],
+        "deporte": [
+          "Atletismo",
+          "Softbol"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
@@ -137,21 +152,20 @@
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
         "apodo": null,
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": null,
-        "estado": "activo"
+        "estado": "activo",
+        "genero": "femenino"
       },
       {
         "id": "angela-wilkes",
         "nombre": "Ángela Wilkes",
         "apellidos": "Wilkes",
         "nombreCompleto": "Ángela Wilkes",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2004,
         "exaltacion": "3ra. Exaltación",
@@ -160,29 +174,24 @@
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
         "apodo": null,
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": null,
-        "estado": "activo"
+        "estado": "activo",
+        "genero": "femenino"
       },
       {
         "id": "juan-ramon-garcia",
         "nombre": "Juan Ramón García",
         "apellidos": "García",
         "nombreCompleto": "Juan Ramón García",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
         "biografia": "Atleta destacado en competencias locales y nacionales de atletismo.",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
@@ -197,7 +206,9 @@
         "nombre": "Clotilde Villegas Piñero",
         "apellidos": "Villegas Piñero",
         "nombreCompleto": "Clotilde Villegas Piñero",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -206,29 +217,24 @@
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
         "apodo": null,
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": null,
-        "estado": "activo"
+        "estado": "activo",
+        "genero": "femenino"
       },
       {
         "id": "juan-luis-gomez-rivera",
         "nombre": "Juan Luis Gómez Rivera",
         "apellidos": "Gómez Rivera",
         "nombreCompleto": "Juan Luis Gómez Rivera",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
         "biografia": "Atleta destacado con gran trayectoria en competencias atléticas.",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
@@ -243,7 +249,9 @@
         "nombre": "Luis Humberto Torres Rosa",
         "apellidos": "Torres Rosa",
         "nombreCompleto": "Luis Humberto Torres Rosa",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
@@ -253,8 +261,15 @@
         "lugarNacimiento": null,
         "apodo": null,
         "especialidad": "Fondista (corredor de distancia)",
-        "logros": ["Completó el Maratón de Boston 13 veces", "Representó a PR en tres Juegos Centroamericanos y del Caribe", "A los 91 años (2019) completó el Medio Maratón San Blas de Coamo (2:40)"],
-        "reconocimientos": ["Exaltado al Pabellón de la Fama del Deporte Puertorriqueño como #118 en atletismo (2019)", "Maratón 8k Luis Humberto Torres en Las Piedras nombrado en su honor"],
+        "logros": [
+          "Completó el Maratón de Boston 13 veces",
+          "Representó a PR en tres Juegos Centroamericanos y del Caribe",
+          "A los 91 años (2019) completó el Medio Maratón San Blas de Coamo (2:40)"
+        ],
+        "reconocimientos": [
+          "Exaltado al Pabellón de la Fama del Deporte Puertorriqueño como #118 en atletismo (2019)",
+          "Maratón 8k Luis Humberto Torres en Las Piedras nombrado en su honor"
+        ],
         "carreraEntrenador": "Universidad Interamericana (1960-1980) y UPR Humacao (1990-1992)",
         "foto": null,
         "estado": "activo"
@@ -264,7 +279,9 @@
         "nombre": "Miguel A. (Papuso) García Cruz",
         "apellidos": "García Cruz",
         "nombreCompleto": "Miguel A. (Papuso) García Cruz",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
@@ -273,10 +290,6 @@
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
         "apodo": "Papuso",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -289,7 +302,9 @@
         "nombre": "Rafael Pérez",
         "apellidos": "Pérez",
         "nombreCompleto": "Rafael Pérez",
-        "deporte": ["Atletismo"],
+        "deporte": [
+          "Atletismo"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -302,7 +317,11 @@
           "juegos1971": "7º lugar en 10,000m en Juegos Panamericanos 1971",
           "juegos1975": "5º lugar en 10,000m y 8º lugar en maratón en Juegos Panamericanos 1975"
         },
-        "logros": ["7º lugar en 10,000m, Juegos Panamericanos 1971", "5º lugar en 10,000m, Juegos Panamericanos 1975", "8º lugar en maratón, Juegos Panamericanos 1975"],
+        "logros": [
+          "7º lugar en 10,000m, Juegos Panamericanos 1971",
+          "5º lugar en 10,000m, Juegos Panamericanos 1975",
+          "8º lugar en maratón, Juegos Panamericanos 1975"
+        ],
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
@@ -316,7 +335,9 @@
         "nombre": "Jacinto (Jáyase) Hernández",
         "apellidos": "Hernández",
         "nombreCompleto": "Jacinto (Jáyase) Hernández",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -326,7 +347,9 @@
         "lugarNacimiento": null,
         "apodo": "Jáyase",
         "logros": [],
-        "reconocimientos": ["El Parque Jacinto Hernández lleva su nombre"],
+        "reconocimientos": [
+          "El Parque Jacinto Hernández lleva su nombre"
+        ],
         "foto": "/images/exaltados/jacinto-hernandez.jpg",
         "estado": "activo"
       },
@@ -335,7 +358,9 @@
         "nombre": "Néstor Morales Santiago",
         "apellidos": "Morales Santiago",
         "nombreCompleto": "Néstor Morales Santiago",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -345,7 +370,9 @@
         "lugarNacimiento": null,
         "apodo": null,
         "logros": [],
-        "reconocimientos": ["El Estadio Néstor Morales lleva su nombre"],
+        "reconocimientos": [
+          "El Estadio Néstor Morales lleva su nombre"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -354,7 +381,9 @@
         "nombre": "Julio S. Yuyo Cora Romero",
         "apellidos": "Cora Romero",
         "nombreCompleto": "Julio S. Yuyo Cora Romero",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -363,10 +392,6 @@
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
         "apodo": "Yuyo",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -377,7 +402,9 @@
         "nombre": "Carlos (Memelo) López Sánchez",
         "apellidos": "López Sánchez",
         "nombreCompleto": "Carlos (Memelo) López Sánchez",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -385,11 +412,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": "Memelo",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Menelo",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -400,15 +423,13 @@
         "nombre": "Melquiades Silva Anderson",
         "apellidos": "Silva Anderson",
         "nombreCompleto": "Melquiades Silva Anderson",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
         "biografia": "Pelotero humacaeño con gran trayectoria en el béisbol amateur.",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
-        "lugarNacimiento": null,
-        "apodo": null,
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
@@ -423,7 +444,9 @@
         "nombre": "Pedro Peña Flecha",
         "apellidos": "Peña Flecha",
         "nombreCompleto": "Pedro Peña Flecha",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2004,
         "exaltacion": "3ra. Exaltación",
@@ -431,7 +454,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Toribio",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -442,7 +465,9 @@
         "nombre": "Ángel \"Pipá\" Sierra Ruffat",
         "apellidos": "Sierra Ruffat",
         "nombreCompleto": "Ángel \"Pipá\" Sierra Ruffat",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -450,7 +475,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Pipá",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -461,7 +486,9 @@
         "nombre": "Iván Carradero Muriel",
         "apellidos": "Carradero Muriel",
         "nombreCompleto": "Iván Carradero Muriel",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -480,7 +507,9 @@
         "nombre": "Rubén \"Conejo\" López",
         "apellidos": "López",
         "nombreCompleto": "Rubén \"Conejo\" López",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -488,7 +517,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Conejo",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -499,7 +528,9 @@
         "nombre": "Luis Curbelo Rivera",
         "apellidos": "Curbelo Rivera",
         "nombreCompleto": "Luis Curbelo Rivera",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -518,7 +549,9 @@
         "nombre": "José Miguel (Pochy) Figueroa",
         "apellidos": "Figueroa",
         "nombreCompleto": "José Miguel (Pochy) Figueroa",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -526,7 +559,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Pochy",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -537,7 +570,9 @@
         "nombre": "Cándido (Candy) Maldonado",
         "apellidos": "Maldonado",
         "nombreCompleto": "Cándido (Candy) Maldonado",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -551,10 +586,25 @@
           "promedioBateo": ".254",
           "jonrones": 146,
           "carrerasImpulsadas": 618,
-          "equipos": ["Dodgers", "Giants", "Indians", "Brewers", "Blue Jays", "Cubs", "Rangers"]
+          "equipos": [
+            "Dodgers",
+            "Giants",
+            "Indians",
+            "Brewers",
+            "Blue Jays",
+            "Cubs",
+            "Rangers"
+          ]
         },
-        "logros": ["Campeón Serie Mundial con Toronto Blue Jays (1992)", "Hit para el ciclo (4 de mayo de 1987)", "Primer jugador en conectar hit ganador fuera de EE.UU. en Serie Mundial"],
-        "reconocimientos": ["Salón de la Fama del Béisbol del Caribe (2011)", "Salón de la Fama del Béisbol de Puerto Rico"],
+        "logros": [
+          "Campeón Serie Mundial con Toronto Blue Jays (1992)",
+          "Hit para el ciclo (4 de mayo de 1987)",
+          "Primer jugador en conectar hit ganador fuera de EE.UU. en Serie Mundial"
+        ],
+        "reconocimientos": [
+          "Salón de la Fama del Béisbol del Caribe (2011)",
+          "Salón de la Fama del Béisbol de Puerto Rico"
+        ],
         "estadisticasMLB": {
           "promedio": ".254",
           "jonrones": 146,
@@ -568,7 +618,9 @@
         "nombre": "Carlos (Carlitos) Vázquez Torres",
         "apellidos": "Vázquez Torres",
         "nombreCompleto": "Carlos (Carlitos) Vázquez Torres",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -587,7 +639,9 @@
         "nombre": "John (Impo) Martínez",
         "apellidos": "Martínez",
         "nombreCompleto": "John (Impo) Martínez",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
@@ -595,7 +649,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Impo",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -606,7 +660,9 @@
         "nombre": "Ángel Luis (Tito Cucú) Alcaráz",
         "apellidos": "Alcaráz",
         "nombreCompleto": "Ángel Luis (Tito Cucú) Alcaráz",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -614,7 +670,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Tito Cucú",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -625,7 +681,9 @@
         "nombre": "Samuel (Sammy) García",
         "apellidos": "García",
         "nombreCompleto": "Samuel (Sammy) García",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -633,7 +691,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Sammy",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -644,7 +702,9 @@
         "nombre": "Esteban Ocasio",
         "apellidos": "Ocasio",
         "nombreCompleto": "Esteban Ocasio",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -663,7 +723,9 @@
         "nombre": "Rafael (Rafa) Ocasio",
         "apellidos": "Ocasio",
         "nombreCompleto": "Rafael (Rafa) Ocasio",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -671,7 +733,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Rafa",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -684,7 +746,9 @@
         "nombre": "Osvaldo Gil Bosch",
         "apellidos": "Gil Bosch",
         "nombreCompleto": "Osvaldo Gil Bosch",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -699,8 +763,14 @@
           "vicepresidenteCOP": "Vicepresidente del Comité Olímpico de PR por 17 años",
           "presidenteCOP": "Presidente del Comité Olímpico de PR (1990-1991)"
         },
-        "logros": ["Campeón con Grises 1951", "33 años como Presidente Federación Béisbol PR", "17 años como Vicepresidente Comité Olímpico PR"],
-        "reconocimientos": ["El Complejo Deportivo Osvaldo Gil Bosch en Humacao lleva su nombre"],
+        "logros": [
+          "Campeón con Grises 1951",
+          "33 años como Presidente Federación Béisbol PR",
+          "17 años como Vicepresidente Comité Olímpico PR"
+        ],
+        "reconocimientos": [
+          "El Complejo Deportivo Osvaldo Gil Bosch en Humacao lleva su nombre"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -709,7 +779,9 @@
         "nombre": "Miguel Luzunaris Soto",
         "apellidos": "Luzunaris Soto",
         "nombreCompleto": "Miguel Luzunaris Soto",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -719,8 +791,13 @@
         "lugarNacimiento": null,
         "apodo": null,
         "contribucion": "Entrenador y promotor comunitario por más de 40 años",
-        "logros": ["Más de 40 años promoviendo el béisbol comunitario", "Su liga produjo jugadores MLB como Edwin Díaz"],
-        "reconocimientos": ["Complejo de Pequeñas Ligas Miguel A. Luzunaris Soto en Humacao"],
+        "logros": [
+          "Más de 40 años promoviendo el béisbol comunitario",
+          "Su liga produjo jugadores MLB como Edwin Díaz"
+        ],
+        "reconocimientos": [
+          "Complejo de Pequeñas Ligas Miguel A. Luzunaris Soto en Humacao"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -729,7 +806,9 @@
         "nombre": "Pedro (Matojo) Cruz",
         "apellidos": "Cruz",
         "nombreCompleto": "Pedro (Matojo) Cruz",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -737,7 +816,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Matojo",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -748,7 +827,9 @@
         "nombre": "Antonio Montañez Torres",
         "apellidos": "Montañez Torres",
         "nombreCompleto": "Antonio Montañez Torres",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -767,7 +848,9 @@
         "nombre": "José Manuel (Chemane) Carradero Muriel",
         "apellidos": "Carradero Muriel",
         "nombreCompleto": "José Manuel (Chemane) Carradero Muriel",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
@@ -782,8 +865,15 @@
           "yabucoa": "1980, 1994-1996",
           "cidra": "1998"
         },
-        "logros": ["7 campeonatos nacionales como dirigente", "Juncos (1983-1985)", "Yabucoa (1980, 1994-1996)", "Cidra (1998)"],
-        "reconocimientos": ["En 2024, el Complejo Deportivo en Villa Humacao fue renombrado en su honor"],
+        "logros": [
+          "7 campeonatos nacionales como dirigente",
+          "Juncos (1983-1985)",
+          "Yabucoa (1980, 1994-1996)",
+          "Cidra (1998)"
+        ],
+        "reconocimientos": [
+          "En 2024, el Complejo Deportivo en Villa Humacao fue renombrado en su honor"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -792,7 +882,9 @@
         "nombre": "Pablo Dávila Escribano",
         "apellidos": "Dávila Escribano",
         "nombreCompleto": "Pablo Dávila Escribano",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
@@ -811,7 +903,9 @@
         "nombre": "Manuel Mediavilla",
         "apellidos": "Mediavilla",
         "nombreCompleto": "Manuel Mediavilla",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -830,7 +924,9 @@
         "nombre": "Ángel (Mane) Rosa López",
         "apellidos": "Rosa López",
         "nombreCompleto": "Ángel (Mane) Rosa López",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -838,7 +934,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Mane",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -849,7 +945,9 @@
         "nombre": "Milton Rosario Soto",
         "apellidos": "Rosario Soto",
         "nombreCompleto": "Milton Rosario Soto",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
@@ -868,7 +966,9 @@
         "nombre": "Ángel (Lalin) Rodríguez",
         "apellidos": "Rodríguez",
         "nombreCompleto": "Ángel (Lalin) Rodríguez",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
@@ -876,7 +976,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Lalin",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -887,7 +987,9 @@
         "nombre": "Juan De Dios Ortiz",
         "apellidos": "De Dios Ortiz",
         "nombreCompleto": "Juan De Dios Ortiz",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
@@ -906,7 +1008,9 @@
         "nombre": "Luis F. (Baby) Carrasquillo",
         "apellidos": "Carrasquillo",
         "nombreCompleto": "Luis F. (Baby) Carrasquillo",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -914,7 +1018,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Baby",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -925,7 +1029,9 @@
         "nombre": "Inocencio (Ino) Olmeda",
         "apellidos": "Olmeda",
         "nombreCompleto": "Inocencio (Ino) Olmeda",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -933,7 +1039,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Ino",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -946,15 +1052,26 @@
         "nombre": "Equipo Humacao Doble A (1951)",
         "apellidos": "",
         "nombreCompleto": "Equipo Humacao Doble A (1951)",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "equipo",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
         "biografia": "Histórico equipo de béisbol que conquistó el campeonato nacional y mundial amateur en 1951, único título de los Grises hasta 2021 (70 años de sequía).",
         "fechaCampeonato": "1951",
-        "jugadoresClave": ["Melquíades Silva Anderson", "Carlos López Sánchez", "Osvaldo Gil Bosch"],
-        "logros": ["Campeones nacionales 1951", "Campeones Mundiales Amateur en México 1951"],
-        "reconocimientos": ["Primera y única vez campeones hasta 2021"],
+        "jugadoresClave": [
+          "Melquíades Silva Anderson",
+          "Carlos López Sánchez",
+          "Osvaldo Gil Bosch"
+        ],
+        "logros": [
+          "Campeones nacionales 1951",
+          "Campeones Mundiales Amateur en México 1951"
+        ],
+        "reconocimientos": [
+          "Primera y única vez campeones hasta 2021"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -963,12 +1080,16 @@
         "nombre": "Equipo Humacao Doble A (1960)",
         "apellidos": "",
         "nombreCompleto": "Equipo Humacao Doble A (1960)",
-        "deporte": ["Béisbol"],
+        "deporte": [
+          "Béisbol"
+        ],
         "categoria": "equipo",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
         "biografia": "Destacado equipo de béisbol que obtuvo el Subcampeonato en 1960.",
-        "logros": ["Subcampeón Doble A 1960"],
+        "logros": [
+          "Subcampeón Doble A 1960"
+        ],
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
@@ -982,7 +1103,9 @@
         "nombre": "Luis Fernando Rivera",
         "apellidos": "Rivera",
         "nombreCompleto": "Luis Fernando Rivera",
-        "deporte": ["Boxeo"],
+        "deporte": [
+          "Boxeo"
+        ],
         "categoria": "boxeador",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -1001,7 +1124,9 @@
         "nombre": "Fernando M Maldonado López",
         "apellidos": "Maldonado López",
         "nombreCompleto": "Fernando M Maldonado López",
-        "deporte": ["Boxeo"],
+        "deporte": [
+          "Boxeo"
+        ],
         "categoria": "boxeador",
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
@@ -1022,7 +1147,9 @@
         "nombre": "Pedro Tolentino Berberena",
         "apellidos": "Tolentino Berberena",
         "nombreCompleto": "Pedro Tolentino Berberena",
-        "deporte": ["Boxeo"],
+        "deporte": [
+          "Boxeo"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1035,8 +1162,14 @@
         "inicioProyecto": "Promovió la creación del Pabellón en 1983",
         "carreraPeriodistica": "Reportero deportivo de El Oriental, participó en programas de Radio Walo",
         "servicioPublico": "Miembro de la Asamblea Municipal de Humacao",
-        "logros": ["Fundador del Pabellón de la Fama (1983)", "Reportero deportivo El Oriental", "Miembro Asamblea Municipal Humacao"],
-        "reconocimientos": ["Fundador del Pabellón de la Fama del Deporte Humacaeño"],
+        "logros": [
+          "Fundador del Pabellón de la Fama (1983)",
+          "Reportero deportivo El Oriental",
+          "Miembro Asamblea Municipal Humacao"
+        ],
+        "reconocimientos": [
+          "Fundador del Pabellón de la Fama del Deporte Humacaeño"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -1045,7 +1178,9 @@
         "nombre": "Ismael García Pérez",
         "apellidos": "García Pérez",
         "nombreCompleto": "Ismael García Pérez",
-        "deporte": ["Boxeo"],
+        "deporte": [
+          "Boxeo"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1064,7 +1199,9 @@
         "nombre": "Rafael López Paredes",
         "apellidos": "López Paredes",
         "nombreCompleto": "Rafael López Paredes",
-        "deporte": ["Boxeo"],
+        "deporte": [
+          "Boxeo"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2004,
         "exaltacion": "3ra. Exaltación",
@@ -1072,7 +1209,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Don Felo",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1087,7 +1224,9 @@
         "nombre": "Juan (Saso) Tulier Cruz",
         "apellidos": "Tulier Cruz",
         "nombreCompleto": "Juan (Saso) Tulier Cruz",
-        "deporte": ["Fútbol"],
+        "deporte": [
+          "Fútbol"
+        ],
         "categoria": "jugador-propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1097,10 +1236,20 @@
         "lugarNacimiento": "Santurce",
         "apodo": "Saso",
         "carreraInternacional": "Representó a PR en Juegos Centroamericanos (1959-1974)",
-        "equipos": ["Arqueros Verdes", "Yabuco", "Jumacao"],
+        "equipos": [
+          "Arqueros Verdes",
+          "Yabuco",
+          "Jumacao"
+        ],
         "carreraEntrenador": "28 años con la selección nacional",
-        "logros": ["Juegos Centroamericanos (1959-1974)", "28 años como entrenador selección nacional"],
-        "reconocimientos": ["Exaltado al Salón de la Fama Nacional de PR (1991)", "Considerado el mejor futbolista en la historia de Puerto Rico"],
+        "logros": [
+          "Juegos Centroamericanos (1959-1974)",
+          "28 años como entrenador selección nacional"
+        ],
+        "reconocimientos": [
+          "Exaltado al Salón de la Fama Nacional de PR (1991)",
+          "Considerado el mejor futbolista en la historia de Puerto Rico"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -1109,7 +1258,9 @@
         "nombre": "Pedro José (Pepito) Álvarez",
         "apellidos": "Álvarez",
         "nombreCompleto": "Pedro José (Pepito) Álvarez",
-        "deporte": ["Fútbol"],
+        "deporte": [
+          "Fútbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
@@ -1120,8 +1271,16 @@
         "apodo": "Pepito",
         "posicion": "Defensa central",
         "seleccionNacional": "Juegos Centroamericanos (1966, 1970, 1974)",
-        "clubes": ["Jumacao FC", "Riverside FC", "Satélites FC", "Roosevelt FC"],
-        "logros": ["Juegos Centroamericanos (1966, 1970, 1974)", "Eliminatorias Copa Mundial FIFA 1972"],
+        "clubes": [
+          "Jumacao FC",
+          "Riverside FC",
+          "Satélites FC",
+          "Roosevelt FC"
+        ],
+        "logros": [
+          "Juegos Centroamericanos (1966, 1970, 1974)",
+          "Eliminatorias Copa Mundial FIFA 1972"
+        ],
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
@@ -1131,7 +1290,9 @@
         "nombre": "Alfredo del Valle Baltes",
         "apellidos": "del Valle Baltes",
         "nombreCompleto": "Alfredo del Valle Baltes",
-        "deporte": ["Fútbol"],
+        "deporte": [
+          "Fútbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2006,
         "exaltacion": "4ta. Exaltación",
@@ -1150,7 +1311,9 @@
         "nombre": "Francisco (Paco) Rey Vázquez",
         "apellidos": "Rey Vázquez",
         "nombreCompleto": "Francisco (Paco) Rey Vázquez",
-        "deporte": ["Fútbol"],
+        "deporte": [
+          "Fútbol"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -1158,7 +1321,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Paco",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1171,7 +1334,9 @@
         "nombre": "Emilio E. Huyke Colón",
         "apellidos": "Huyke Colón",
         "nombreCompleto": "Emilio E. Huyke Colón",
-        "deporte": ["Fútbol"],
+        "deporte": [
+          "Fútbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1185,8 +1350,13 @@
           "secretarioGeneral": "Secretario General del Comité Olímpico de PR (1964-1972)",
           "presidenteComite": "Presidente del Comité Organizador de los X Juegos Centroamericanos (1966)"
         },
-        "logros": ["Secretario General Comité Olímpico PR (1964-1972)", "Presidente Comité Organizador X Juegos Centroamericanos (1966)"],
-        "reconocimientos": ["El Coliseo Emilio E. Huyke en Humacao lleva su nombre"],
+        "logros": [
+          "Secretario General Comité Olímpico PR (1964-1972)",
+          "Presidente Comité Organizador X Juegos Centroamericanos (1966)"
+        ],
+        "reconocimientos": [
+          "El Coliseo Emilio E. Huyke en Humacao lleva su nombre"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -1195,7 +1365,9 @@
         "nombre": "Luis R. Álvarez Vázquez",
         "apellidos": "Álvarez Vázquez",
         "nombreCompleto": "Luis R. Álvarez Vázquez",
-        "deporte": ["Fútbol"],
+        "deporte": [
+          "Fútbol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
@@ -1203,7 +1375,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Prof. Luis R. Álvarez",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1216,7 +1388,9 @@
         "nombre": "Equipo Juvenil Fútbol",
         "apellidos": "",
         "nombreCompleto": "Equipo Juvenil Fútbol",
-        "deporte": ["Fútbol"],
+        "deporte": [
+          "Fútbol"
+        ],
         "categoria": "equipo",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -1239,7 +1413,9 @@
         "nombre": "José Toñin Casillas Fernández",
         "apellidos": "Casillas Fernández",
         "nombreCompleto": "José Toñin Casillas Fernández",
-        "deporte": ["Baloncesto"],
+        "deporte": [
+          "Baloncesto"
+        ],
         "categoria": "jugador",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1247,12 +1423,23 @@
         "fechaNacimiento": "1935-08-08",
         "fechaFallecimiento": null,
         "lugarNacimiento": "Humacao",
-        "apodo": "Apache",
+        "apodo": "Toñín",
         "logroOlimpico": "Participó en Olimpiadas de Roma 1960, abanderado de PR",
         "carreraProfesional": "Jugó para el Real Madrid en España",
-        "competencias": ["Juegos Centroamericanos 1959", "Panamericanos 1959", "Olimpiadas Roma 1960"],
-        "logros": ["Olimpiadas Roma 1960 (abanderado PR)", "Juegos Centroamericanos 1959", "Panamericanos 1959", "Real Madrid (carrera profesional)"],
-        "reconocimientos": ["Abanderado de Puerto Rico en Olimpiadas 1960"],
+        "competencias": [
+          "Juegos Centroamericanos 1959",
+          "Panamericanos 1959",
+          "Olimpiadas Roma 1960"
+        ],
+        "logros": [
+          "Olimpiadas Roma 1960 (abanderado PR)",
+          "Juegos Centroamericanos 1959",
+          "Panamericanos 1959",
+          "Real Madrid (carrera profesional)"
+        ],
+        "reconocimientos": [
+          "Abanderado de Puerto Rico en Olimpiadas 1960"
+        ],
         "foto": "/images/exaltados/jose-casillas.jpg",
         "estado": "activo"
       }
@@ -1263,7 +1450,10 @@
         "nombre": "Richard (Timmy) Boyle",
         "apellidos": "Boyle",
         "nombreCompleto": "Richard (Timmy) Boyle",
-        "deporte": ["Baloncesto", "Voleibol"],
+        "deporte": [
+          "Baloncesto",
+          "Voleibol"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
@@ -1271,7 +1461,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Timmy",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1286,7 +1476,9 @@
         "nombre": "Edwin Torres González",
         "apellidos": "Torres González",
         "nombreCompleto": "Edwin Torres González",
-        "deporte": ["Ciclismo"],
+        "deporte": [
+          "Ciclismo"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1297,10 +1489,24 @@
         "apodo": "El Gallo Torres",
         "participacionOlimpica": "18º lugar en 1000m contrarreloj, Olimpiadas México 1968",
         "record": "Récord de PR en 1000m (1.0765) aún vigente",
-        "campeonatos": ["Campeón de PR (1967-1968)", "Ganador 4ta Vuelta Ciclística de PR (1969)"],
-        "victoriasInternacionales1968": ["Tour de Florida", "Tour de Tijuana", "Olympic Countdown Winnipeg"],
-        "logros": ["18º lugar 1000m contrarreloj, Olimpiadas México 1968", "Récord PR en 1000m (aún vigente)", "Campeón de PR (1967-1968)", "Ganador 4ta Vuelta Ciclística PR (1969)"],
-        "reconocimientos": ["Récord nacional vigente desde 1968"],
+        "campeonatos": [
+          "Campeón de PR (1967-1968)",
+          "Ganador 4ta Vuelta Ciclística de PR (1969)"
+        ],
+        "victoriasInternacionales1968": [
+          "Tour de Florida",
+          "Tour de Tijuana",
+          "Olympic Countdown Winnipeg"
+        ],
+        "logros": [
+          "18º lugar 1000m contrarreloj, Olimpiadas México 1968",
+          "Récord PR en 1000m (aún vigente)",
+          "Campeón de PR (1967-1968)",
+          "Ganador 4ta Vuelta Ciclística PR (1969)"
+        ],
+        "reconocimientos": [
+          "Récord nacional vigente desde 1968"
+        ],
         "foto": null,
         "estado": "activo"
       }
@@ -1313,7 +1519,9 @@
         "nombre": "José (Jossie) Marrero Rodríguez",
         "apellidos": "Marrero Rodríguez",
         "nombreCompleto": "José (Jossie) Marrero Rodríguez",
-        "deporte": ["Levantamiento de Pesas"],
+        "deporte": [
+          "Levantamiento de Pesas"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1321,7 +1529,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Josie",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1332,7 +1540,9 @@
         "nombre": "Andrés Vargas Castro",
         "apellidos": "Vargas Castro",
         "nombreCompleto": "Andrés Vargas Castro",
-        "deporte": ["Levantamiento de Pesas"],
+        "deporte": [
+          "Levantamiento de Pesas"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1351,7 +1561,9 @@
         "nombre": "Jorge David de León Burgos",
         "apellidos": "de León Burgos",
         "nombreCompleto": "Jorge David de León Burgos",
-        "deporte": ["Levantamiento de Pesas"],
+        "deporte": [
+          "Levantamiento de Pesas"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2004,
         "exaltacion": "3ra. Exaltación",
@@ -1370,7 +1582,9 @@
         "nombre": "Porfirio de León Burgos",
         "apellidos": "de León Burgos",
         "nombreCompleto": "Porfirio de León Burgos",
-        "deporte": ["Levantamiento de Pesas"],
+        "deporte": [
+          "Levantamiento de Pesas"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2004,
         "exaltacion": "3ra. Exaltación",
@@ -1389,7 +1603,9 @@
         "nombre": "Jesús (Chu) Silva Alamo",
         "apellidos": "Silva Alamo",
         "nombreCompleto": "Jesús (Chu) Silva Alamo",
-        "deporte": ["Levantamiento de Pesas"],
+        "deporte": [
+          "Levantamiento de Pesas"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2004,
         "exaltacion": "3ra. Exaltación",
@@ -1397,7 +1613,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Chú",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1408,7 +1624,9 @@
         "nombre": "Ismael Rivera Tirado",
         "apellidos": "Rivera Tirado",
         "nombreCompleto": "Ismael Rivera Tirado",
-        "deporte": ["Levantamiento de Pesas"],
+        "deporte": [
+          "Levantamiento de Pesas"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
@@ -1429,7 +1647,9 @@
         "nombre": "Gilberto (Gilbert) López",
         "apellidos": "López",
         "nombreCompleto": "Gilberto (Gilbert) López",
-        "deporte": ["Levantamiento de Pesas"],
+        "deporte": [
+          "Levantamiento de Pesas"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -1437,7 +1657,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Gilbert",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1452,7 +1672,9 @@
         "nombre": "Edwin Mojica Rodríguez",
         "apellidos": "Mojica Rodríguez",
         "nombreCompleto": "Edwin Mojica Rodríguez",
-        "deporte": ["Lucha Olímpica"],
+        "deporte": [
+          "Lucha Olímpica"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2004,
         "exaltacion": "3ra. Exaltación",
@@ -1471,7 +1693,9 @@
         "nombre": "José Elías Betancourt",
         "apellidos": "Betancourt",
         "nombreCompleto": "José Elías Betancourt",
-        "deporte": ["Lucha Olímpica"],
+        "deporte": [
+          "Lucha Olímpica"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -1486,8 +1710,14 @@
           "atlanta1996": "Peso semipesado (puesto 20)"
         },
         "carreraAcademica": "Profesor en UPR Río Piedras",
-        "logros": ["Tres participaciones olímpicas (1984, 1992, 1996)", "Campeón en más de 33 competencias internacionales", "7 veces Luchador del Año"],
-        "reconocimientos": ["7 veces Luchador del Año por el Comité Olímpico de PR"],
+        "logros": [
+          "Tres participaciones olímpicas (1984, 1992, 1996)",
+          "Campeón en más de 33 competencias internacionales",
+          "7 veces Luchador del Año"
+        ],
+        "reconocimientos": [
+          "7 veces Luchador del Año por el Comité Olímpico de PR"
+        ],
         "foto": null,
         "estado": "activo"
       }
@@ -1500,7 +1730,9 @@
         "nombre": "Norma D. Rosario",
         "apellidos": "Rosario",
         "nombreCompleto": "Norma D. Rosario",
-        "deporte": ["Natación"],
+        "deporte": [
+          "Natación"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -1512,14 +1744,17 @@
         "logros": [],
         "reconocimientos": [],
         "foto": null,
-        "estado": "activo"
+        "estado": "activo",
+        "genero": "femenino"
       },
       {
         "id": "lourdes-vega-gonzalez",
         "nombre": "Lourdes Vega González",
         "apellidos": "Vega González",
         "nombreCompleto": "Lourdes Vega González",
-        "deporte": ["Natación"],
+        "deporte": [
+          "Natación"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
@@ -1531,7 +1766,8 @@
         "logros": [],
         "reconocimientos": [],
         "foto": null,
-        "estado": "activo"
+        "estado": "activo",
+        "genero": "femenino"
       }
     ]
   },
@@ -1542,7 +1778,9 @@
         "nombre": "Manuel Roig Díaz",
         "apellidos": "Roig Díaz",
         "nombreCompleto": "Manuel Roig Díaz",
-        "deporte": ["Paso Fino"],
+        "deporte": [
+          "Paso Fino"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1558,10 +1796,12 @@
       },
       {
         "id": "catalino-santos",
-        "nombre": "Catalino Santos",
-        "apellidos": "Santos",
-        "nombreCompleto": "Catalino Santos",
-        "deporte": ["Paso Fino"],
+        "nombre": "Catalino",
+        "apellidos": "Santos Cruz",
+        "nombreCompleto": "Catalino (Catino) Santos Cruz",
+        "deporte": [
+          "Paso Fino"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
@@ -1569,7 +1809,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Catino",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1584,7 +1824,9 @@
         "nombre": "Elpidio Mojica Díaz",
         "apellidos": "Mojica Díaz",
         "nombreCompleto": "Elpidio Mojica Díaz",
-        "deporte": ["Tiro"],
+        "deporte": [
+          "Tiro"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
@@ -1603,7 +1845,9 @@
         "nombre": "Aurelio (Gerald) López",
         "apellidos": "López",
         "nombreCompleto": "Aurelio (Gerald) López",
-        "deporte": ["Tiro"],
+        "deporte": [
+          "Tiro"
+        ],
         "categoria": "atleta",
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
@@ -1611,7 +1855,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Gerald",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1626,7 +1870,9 @@
         "nombre": "José M. (Pepe) López",
         "apellidos": "López",
         "nombreCompleto": "José M. (Pepe) López",
-        "deporte": ["Tenis"],
+        "deporte": [
+          "Tenis"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2012,
         "exaltacion": "7ma. Exaltación",
@@ -1634,7 +1880,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": null,
+        "apodo": "Pepe",
         "logros": [],
         "reconocimientos": [],
         "foto": null,
@@ -1649,7 +1895,9 @@
         "nombre": "Agripino Roig Guzmán",
         "apellidos": "Roig Guzmán",
         "nombreCompleto": "Agripino Roig Guzmán",
-        "deporte": ["Deportes Varios"],
+        "deporte": [
+          "Deportes Varios"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1659,10 +1907,19 @@
         "lugarNacimiento": null,
         "apodo": null,
         "familia": "Parte de la familia propietaria de Central Roig",
-        "deportesPromovidos": ["boxeo", "gallos", "paso fino"],
+        "deportesPromovidos": [
+          "boxeo",
+          "gallos",
+          "paso fino"
+        ],
         "logroPionero": "Organizó una de las primeras peleas oficiales de boxeo en PR (1921)",
-        "logros": ["Organizó primera pelea oficial de boxeo en PR (1921)", "Promoción de múltiples deportes"],
-        "reconocimientos": ["Pionero en la organización deportiva puertorriqueña"],
+        "logros": [
+          "Organizó primera pelea oficial de boxeo en PR (1921)",
+          "Promoción de múltiples deportes"
+        ],
+        "reconocimientos": [
+          "Pionero en la organización deportiva puertorriqueña"
+        ],
         "foto": null,
         "estado": "activo"
       },
@@ -1671,7 +1928,9 @@
         "nombre": "Pedro J. Dávila Poupart",
         "apellidos": "Dávila Poupart",
         "nombreCompleto": "Pedro J. Dávila Poupart",
-        "deporte": ["Deportes Varios"],
+        "deporte": [
+          "Deportes Varios"
+        ],
         "categoria": "propulsor",
         "anoExaltacion": 2008,
         "exaltacion": "5ta. Exaltación",
@@ -1679,16 +1938,27 @@
         "fechaNacimiento": "1940-11-15",
         "fechaFallecimiento": null,
         "lugarNacimiento": "Humacao",
-        "apodo": null,
+        "apodo": "Peyo",
         "carreraAcademica": "Profesor UPR Humacao (1962-1994)",
         "rolesPrincipales": {
           "miembroFundador": "Miembro fundador y secretario del Pabellón (1998)",
           "fundadorClub": "Fundador del Club de Atletismo de Humacao (1978)",
           "apoderado": "Apoderado del equipo Doble A de Humacao (12 años)"
         },
-        "deportesPromovidos": ["Béisbol", "atletismo", "boxeo"],
-        "logros": ["32 años como profesor UPR Humacao", "Miembro fundador del Pabellón (1998)", "Fundador Club de Atletismo Humacao (1978)", "12 años como apoderado equipo Doble A"],
-        "reconocimientos": ["Miembro fundador del Pabellón de la Fama"],
+        "deportesPromovidos": [
+          "Béisbol",
+          "atletismo",
+          "boxeo"
+        ],
+        "logros": [
+          "32 años como profesor UPR Humacao",
+          "Miembro fundador del Pabellón (1998)",
+          "Fundador Club de Atletismo Humacao (1978)",
+          "12 años como apoderado equipo Doble A"
+        ],
+        "reconocimientos": [
+          "Miembro fundador del Pabellón de la Fama"
+        ],
         "foto": null,
         "estado": "activo"
       }
@@ -1699,7 +1969,9 @@
         "nombre": "Julio Francis Edwards",
         "apellidos": "Francis Edwards",
         "nombreCompleto": "Julio Francis Edwards",
-        "deporte": ["Cronista Deportivo"],
+        "deporte": [
+          "Cronista Deportivo"
+        ],
         "categoria": "cronista",
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
@@ -1710,8 +1982,12 @@
         "apodo": null,
         "rol": "Cronista deportivo",
         "contribucion": "Documentó la historia deportiva de Humacao a través del periodismo",
-        "logros": ["Documentó la historia deportiva humacaeña"],
-        "reconocimientos": ["Incluido en la primera ceremonia de exaltación"],
+        "logros": [
+          "Documentó la historia deportiva humacaeña"
+        ],
+        "reconocimientos": [
+          "Incluido en la primera ceremonia de exaltación"
+        ],
         "foto": "/images/exaltados/julio-edwards.jpg",
         "estado": "activo"
       }

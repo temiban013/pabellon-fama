@@ -2,7 +2,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 
 export const rev07Exaltados: ExaltadoRevista[] = [
   {
-    id: 'exaltado-rev07-001',
+    id: 'angel-luis-tito-cucu-alcaraz',
     nombre: 'Ángel Luis',
     apellidos: 'Alcaráz',
     apodo: 'Tito Cucú',
@@ -28,7 +28,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-002',
+    id: 'luis-f-baby-carrasquillo',
     nombre: 'Luis F.',
     apellidos: 'Carrasquillo',
     apodo: 'Baby',
@@ -54,7 +54,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-003',
+    id: 'samuel-sammy-garcia',
     nombre: 'Samuel',
     apellidos: 'García',
     apodo: 'Sammy',
@@ -81,7 +81,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-004',
+    id: 'jose-m-pepe-lopez',
     nombre: 'José M.',
     apellidos: 'López',
     apodo: 'Pepe',
@@ -106,7 +106,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-005',
+    id: 'gilberto-gilbert-lopez',
     nombre: 'Gilberto',
     apellidos: 'López',
     apodo: 'Gilbert',
@@ -130,7 +130,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-006',
+    id: 'esteban-ocasio',
     nombre: 'Esteban',
     apellidos: 'Ocasio',
     categoria: 'ATLETA',
@@ -155,7 +155,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-007',
+    id: 'rafael-rafa-ocasio',
     nombre: 'Rafael',
     apellidos: 'Ocasio',
     apodo: 'Rafa',
@@ -180,7 +180,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-008',
+    id: 'inocencio-ino-olmeda',
     nombre: 'Inocencio',
     apellidos: 'Olmeda',
     apodo: 'Ino',
@@ -205,7 +205,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-009',
+    id: 'rafael-perez',
     nombre: 'Rafael',
     apellidos: 'Pérez',
     categoria: 'PROPULSOR',
@@ -230,7 +230,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
     }
   },
   {
-    id: 'exaltado-rev07-010',
+    id: 'norma-d-rosario',
     nombre: 'Norma D.',
     apellidos: 'Rosario',
     categoria: 'PROPULSOR',

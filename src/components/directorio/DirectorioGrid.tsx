@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ExaltadoCard } from "./ExaltadoCard";
-import { ExaltadoModal } from "./ExaltadoModal";
 import { Pagination } from "./Pagination";
 import { type Exaltado } from "@/lib/types";
 
@@ -12,29 +11,20 @@ interface DirectorioGridProps {
   showPagination?: boolean;
 }
 
-export function DirectorioGrid({ 
-  exaltados, 
+export function DirectorioGrid({
+  exaltados,
   itemsPerPage = 12,
-  showPagination = true 
+  showPagination = true
 }: DirectorioGridProps) {
-  const [selectedExaltado, setSelectedExaltado] = useState<Exaltado | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Calcular paginación
   const totalItems = exaltados.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedExaltados = showPagination 
+  const paginatedExaltados = showPagination
     ? exaltados.slice(startIndex, startIndex + itemsPerPage)
     : exaltados;
-
-  const handleExaltadoClick = (exaltado: Exaltado) => {
-    setSelectedExaltado(exaltado);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedExaltado(null);
-  };
 
   if (exaltados.length === 0) {
     return (
@@ -59,7 +49,6 @@ export function DirectorioGrid({
             key={exaltado.id}
             exaltado={exaltado}
             viewMode="grid"
-            onClick={() => handleExaltadoClick(exaltado)}
           />
         ))}
       </div>
@@ -73,14 +62,6 @@ export function DirectorioGrid({
             onPageChange={setCurrentPage}
           />
         </div>
-      )}
-
-      {/* Modal de detalles */}
-      {selectedExaltado && (
-        <ExaltadoModal
-          exaltado={selectedExaltado}
-          onClose={handleCloseModal}
-        />
       )}
     </>
   );

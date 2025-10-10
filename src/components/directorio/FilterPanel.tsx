@@ -87,6 +87,7 @@ export function FilterPanel({
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     deportes: true,
     categorias: false,
+    genero: false,
     anos: false,
     ordenamiento: false,
   });
@@ -119,6 +120,18 @@ export function FilterPanel({
     onFiltersChange({
       ...filters,
       categoria: newCategorias.length > 0 ? newCategorias : undefined,
+    });
+  };
+
+  const handleGeneroChange = (genero: "masculino" | "femenino" | "equipo", checked: boolean) => {
+    const currentGeneros = filters.genero || [];
+    const newGeneros = checked
+      ? [...currentGeneros, genero]
+      : currentGeneros.filter((g) => g !== genero);
+
+    onFiltersChange({
+      ...filters,
+      genero: newGeneros.length > 0 ? newGeneros : undefined,
     });
   };
 
@@ -223,6 +236,43 @@ export function FilterPanel({
                 </span>
               </label>
             ))}
+          </div>
+        </FilterSection>
+
+        {/* Género */}
+        <FilterSection
+          title="Género"
+          isOpen={openSections.genero}
+          onToggle={() => toggleSection("genero")}
+        >
+          <div className="space-y-2">
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={filters.genero?.includes("masculino") || false}
+                onChange={(e) => handleGeneroChange("masculino", e.target.checked)}
+                className="rounded border-gray-300 text-pabellon-gold-600 focus:ring-pabellon-gold-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Masculino</span>
+            </label>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={filters.genero?.includes("femenino") || false}
+                onChange={(e) => handleGeneroChange("femenino", e.target.checked)}
+                className="rounded border-gray-300 text-pabellon-gold-600 focus:ring-pabellon-gold-500"
+              />
+              <span className="ml-2 text-gray-700">Femenino</span>
+            </label>
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={filters.genero?.includes("equipo") || false}
+                onChange={(e) => handleGeneroChange("equipo", e.target.checked)}
+                className="rounded border-gray-300 text-pabellon-gold-600 focus:ring-pabellon-gold-500"
+              />
+              <span className="ml-2 text-sm text-gray-700">Equipos</span>
+            </label>
           </div>
         </FilterSection>
 
@@ -344,6 +394,12 @@ export function FilterPanel({
               <div className="text-gray-600">
                 <span className="font-medium">Categorías:</span>{" "}
                 {filters.categoria.map(cat => categoriasLabels[cat] || capitalize(cat)).join(", ")}
+              </div>
+            )}
+            {filters.genero?.length && (
+              <div className="text-gray-600">
+                <span className="font-medium">Género:</span>{" "}
+                {filters.genero.map(g => capitalize(g)).join(", ")}
               </div>
             )}
             {(filters.anoDesde || filters.anoHasta) && (

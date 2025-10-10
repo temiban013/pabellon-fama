@@ -20,6 +20,7 @@ export interface Exaltado {
   galeria?: string[];
   estadisticas?: EstadisticaDeportiva[];
   estado: "activo" | "fallecido";
+  genero?: "masculino" | "femenino" | "equipo";
   // New biographical fields
   fechaNacimiento?: string | null;
   fechaFallecimiento?: string | null;
@@ -348,6 +349,7 @@ export interface PaginationParams {
 export interface FiltrosDirectorio {
   deporte?: string[];
   categoria?: CategoriaExaltado[];
+  genero?: ("masculino" | "femenino" | "equipo")[];
   anoDesde?: number;
   anoHasta?: number;
   busqueda?: string;

@@ -14,11 +14,39 @@ interface ExaltadoPageProps {
   }>;
 }
 
-// Metadata dinámica para cada exaltado
+// Metadata dinámica para cada exaltado (Sprint 10 - Enhanced SEO)
 export async function generateMetadata({
   params,
 }: ExaltadoPageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  // First check in revista data (priority)
+  const exaltadoRevista = todosLosExaltados.find((e) => e.id === slug);
+
+  if (exaltadoRevista) {
+    const nombreCompleto = `${exaltadoRevista.nombre}${exaltadoRevista.apodo ? ` "${exaltadoRevista.apodo}"` : ''} ${exaltadoRevista.apellidos}`;
+    const deportes = exaltadoRevista.deportes.join(", ");
+    const biografia = exaltadoRevista.contenido.biografia.substring(0, 155);
+
+    return generateSEOMetadata({
+      title: `${nombreCompleto} - Exaltado PFDH`,
+      description: `${nombreCompleto}, exaltado al Pabellón de la Fama del Deporte Humacaeño en ${exaltadoRevista.anoExaltacion}. ${deportes} - ${biografia}...`,
+      keywords: [
+        exaltadoRevista.nombre,
+        exaltadoRevista.apellidos,
+        ...exaltadoRevista.deportes,
+        "exaltado",
+        String(exaltadoRevista.anoExaltacion),
+        "Humacao",
+        "Pabellón de la Fama",
+      ],
+      image: `/images/exaltados/${exaltadoRevista.id}.jpg`,
+      url: `/directorio/${slug}`,
+      type: "profile",
+    });
+  }
+
+  // Fallback to old data
   const exaltado = exaltados.find((e) => e.slug === slug);
 
   if (!exaltado) {
@@ -48,10 +76,11 @@ export async function generateMetadata({
   });
 }
 
-// Generar páginas estáticas para todos los exaltados
+// Generar páginas estáticas para todos los 81 exaltados (Sprint 10)
 export function generateStaticParams() {
-  return exaltados.map((exaltado) => ({
-    slug: exaltado.slug,
+  // Use todosLosExaltados from revista system (all 81 exaltados)
+  return todosLosExaltados.map((exaltado) => ({
+    slug: exaltado.id,
   }));
 }
 

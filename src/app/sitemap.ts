@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { exaltados } from "@/data/exaltados";
+import { todosLosExaltados } from "@/data/exaltados-all";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 
@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/directorio`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/revistas`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.9,
@@ -58,33 +64,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Páginas individuales de exaltados
-  const exaltadosPages: MetadataRoute.Sitemap = exaltados.map((exaltado) => ({
-    url: `${baseUrl}/directorio/${exaltado.slug}`,
+  // Páginas de revistas (8 revistas)
+  const revistaPages: MetadataRoute.Sitemap = Array.from({ length: 8 }, (_, i) => ({
+    url: `${baseUrl}/revistas/${i + 1}`,
+    lastModified: currentDate,
+    changeFrequency: "yearly" as const,
+    priority: 0.8,
+  }));
+
+  // Páginas individuales de exaltados (81 total - todos con slugs semánticos)
+  const exaltadosPages: MetadataRoute.Sitemap = todosLosExaltados.map((exaltado) => ({
+    url: `${baseUrl}/directorio/${exaltado.id}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
-    priority: 0.6,
+    priority: 0.8, // Increased priority for individual profiles
   }));
 
   // Páginas de categorías de deporte
-  const deportes = Array.from(new Set(exaltados.flatMap((e) => e.deporte)));
+  const deportes = Array.from(new Set(todosLosExaltados.flatMap((e) => e.deportes)));
   const deportePages: MetadataRoute.Sitemap = deportes.map((deporte) => ({
     url: `${baseUrl}/directorio/deporte/${deporte
       .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
       .replace(/\s+/g, "-")}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
-    priority: 0.5,
+    priority: 0.7,
   }));
 
-  // Páginas de años de exaltación
-  const years = Array.from(new Set(exaltados.map((e) => e.yearInducted)));
-  const yearPages: MetadataRoute.Sitemap = years.map((year) => ({
-    url: `${baseUrl}/directorio/año/${year}`,
-    lastModified: currentDate,
-    changeFrequency: "yearly" as const,
-    priority: 0.4,
-  }));
-
-  return [...mainPages, ...exaltadosPages, ...deportePages, ...yearPages];
+  return [...mainPages, ...revistaPages, ...exaltadosPages, ...deportePages];
 }

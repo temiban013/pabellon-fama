@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import { ExaltadoCard } from "./ExaltadoCard";
 import { SearchBar } from "./SearchBar";
 import { FilterPanel } from "./FilterPanel";
 import { ViewToggle } from "./ViewToggle";
-import { ExaltadoModal } from "./ExaltadoModal";
 import { Pagination } from "./Pagination";
 import {
   type Exaltado,
@@ -66,17 +66,33 @@ interface DirectorioClientProps {
 }
 
 export function DirectorioClient({ className = "" }: DirectorioClientProps) {
+  const searchParams = useSearchParams();
+
+  // Read initial filters from URL params
+  const getInitialFilters = useCallback((): FiltrosDirectorio => {
+    const initialFilters: FiltrosDirectorio = {};
+
+    const deporteParam = searchParams.get("deporte");
+    if (deporteParam) {
+      initialFilters.deporte = [deporteParam];
+    }
+
+    const categoriaParam = searchParams.get("categoria");
+    if (categoriaParam) {
+      initialFilters.categoria = [categoriaParam as CategoriaExaltado];
+    }
+
+    return initialFilters;
+  }, [searchParams]);
+
   // Estados principales
   const [allExaltados] = useState<Exaltado[]>(flattenExaltadosData());
   const [filteredExaltados, setFilteredExaltados] = useState<Exaltado[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filters, setFilters] = useState<FiltrosDirectorio>({});
+  const [filters, setFilters] = useState<FiltrosDirectorio>(getInitialFilters);
   const [sortBy, setSortBy] = useState<SortOption>("nombre");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
-  const [selectedExaltado, setSelectedExaltado] = useState<Exaltado | null>(
-    null
-  );
   const [isLoading, setIsLoading] = useState(true);
 
   // Paginación
@@ -168,6 +184,13 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
         );
       }
 
+      // Aplicar filtros por género
+      if (filters.genero?.length) {
+        filtered = filtered.filter((exaltado) =>
+          exaltado.genero && filters.genero?.includes(exaltado.genero)
+        );
+      }
+
       // Aplicar filtros por año
       if (filters.anoDesde) {
         filtered = filtered.filter(
@@ -243,19 +266,29 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
     [searchTerm, filters, applyFiltersAndSort]
   );
 
-  const handleExaltadoClick = useCallback((exaltado: Exaltado) => {
-    setSelectedExaltado(exaltado);
-  }, []);
-
-  const handleCloseModal = useCallback(() => {
-    setSelectedExaltado(null);
-  }, []);
-
-  // Inicializar datos
+  // Inicializar datos y aplicar filtros desde URL
   useEffect(() => {
-    applyFiltersAndSort("", {}, "nombre", "asc");
+    const deporteParam = searchParams.get("deporte");
+    const categoriaParam = searchParams.get("categoria");
+
+    const urlFilters: FiltrosDirectorio = {};
+
+    if (deporteParam) {
+      urlFilters.deporte = [deporteParam];
+    }
+
+    if (categoriaParam) {
+      urlFilters.categoria = [categoriaParam as CategoriaExaltado];
+    }
+
+    // Always update filters state with URL params (or empty if no params)
+    setFilters(urlFilters);
+
+    // Apply filters
+    applyFiltersAndSort("", urlFilters, sortBy, sortDirection);
     setIsLoading(false);
-  }, [applyFiltersAndSort]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   // Calcular datos para paginación
   const totalItems = filteredExaltados.length;
@@ -376,7 +409,6 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
                       key={exaltado.id}
                       exaltado={exaltado}
                       viewMode={viewMode}
-                      onClick={() => handleExaltadoClick(exaltado)}
                     />
                   ))}
                 </div>
@@ -418,14 +450,6 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
             )}
           </div>
         </div>
-
-        {/* Modal de detalles */}
-        {selectedExaltado && (
-          <ExaltadoModal
-            exaltado={selectedExaltado}
-            onClose={handleCloseModal}
-          />
-        )}
       </div>
     </section>
   );

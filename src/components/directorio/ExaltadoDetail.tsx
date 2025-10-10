@@ -1,14 +1,16 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ChevronLeft, Trophy, Calendar, MapPin, User, Medal, Star } from 'lucide-react';
+import Link from "next/link";
+import { type Exaltado } from "@/lib/types";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
+import { ShareButtons } from "@/components/shared/ShareButtons";
+import { ExaltadoDetailLayout } from "@/components/shared/ExaltadoDetailLayout";
 
 interface ExaltadoDetailProps {
   exaltado: {
     id: string;
     nombre: string;
+    apellidos?: string;
     nombreCompleto: string;
     name: string;
     deporte: string[];
@@ -28,167 +30,130 @@ interface ExaltadoDetailProps {
     logros?: string[];
     achievements?: string[];
     reconocimientos?: string[];
-    estado: 'activo' | 'fallecido';
+    estado: "activo" | "fallecido";
     slug: string;
   };
 }
 
+/**
+ * Full page component for exaltado details
+ * Sprint 10 - SEO & Navigation Unification
+ * Uses shared ExaltadoDetailLayout matching modal design
+ */
 export function ExaltadoDetail({ exaltado }: ExaltadoDetailProps) {
-  const [imageError, setImageError] = useState(false);
-  
-  const imageSrc = exaltado.foto || exaltado.photo || '/images/default-athlete.jpg';
   const displayName = exaltado.nombreCompleto || exaltado.name;
-  const displayBio = exaltado.biografia || exaltado.biography;
-  const displaySport = exaltado.deporte?.join(', ') || exaltado.sport;
-  const displayYear = exaltado.anoExaltacion || exaltado.yearInducted;
-  const displayAchievements = exaltado.logros || exaltado.achievements || [];
-  const displayRecognitions = exaltado.reconocimientos || [];
+  const firstName = exaltado.nombre || displayName.split(" ")[0];
+
+  // Convert hybrid data structure to Exaltado type
+  const exaltadoData: Exaltado = {
+    id: exaltado.id,
+    nombre: firstName,
+    apellidos: exaltado.apellidos || displayName.split(" ").slice(1).join(" "),
+    nombreCompleto: displayName,
+    deporte: exaltado.deporte || [exaltado.sport],
+    categoria: exaltado.categoria as Exaltado["categoria"],
+    anoExaltacion: exaltado.anoExaltacion || exaltado.yearInducted,
+    exaltacion: exaltado.exaltacion,
+    biografia: exaltado.biografia || exaltado.biography,
+    logros: exaltado.logros || exaltado.achievements || [],
+    reconocimientos: exaltado.reconocimientos || [],
+    foto: exaltado.foto || exaltado.photo,
+    estado: exaltado.estado,
+    fechaNacimiento: exaltado.fechaNacimiento ?? undefined,
+    fechaFallecimiento: exaltado.fechaFallecimiento ?? undefined,
+    lugarNacimiento: exaltado.lugarNacimiento ?? undefined,
+    apodo: exaltado.apodo ?? undefined,
+  };
+
+  // Breadcrumb navigation
+  const breadcrumbItems = [
+    { label: "Directorio", href: "/directorio" },
+    { label: displayName },
+  ];
+
+  // Share data
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
+  const currentUrl = `${baseUrl}/directorio/${exaltado.slug}`;
+
+  const getSportEmoji = (deporte: string) => {
+    const emojis = {
+      Atletismo: "🏃",
+      Béisbol: "⚾",
+      Baloncesto: "🏀",
+      Boxeo: "🥊",
+      Fútbol: "⚽",
+      Voleibol: "🏐",
+      Natación: "🏊",
+      Ciclismo: "🚴",
+      Tenis: "🎾",
+      Golf: "⛳",
+      "Paso Fino": "🐎",
+      "Levantamiento de pesas": "🏋️",
+      "Lucha Olímpica": "🤼",
+      "Artes Marciales": "🥋",
+      Tiro: "🎯",
+      Gallos: "🐓",
+      "Deportes Varios": "🏆",
+      "Cronista Deportivo": "📝",
+    };
+    return emojis[deporte as keyof typeof emojis] || "🏆";
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header con navegación */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
-          <Link 
-            href="/directorio" 
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5 mr-1" />
-            Volver al Directorio
-          </Link>
+      {/* Header with green gradient matching modal */}
+      <div className="bg-gradient-to-r from-pabellon-green-800 to-pabellon-green-900 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <Breadcrumbs items={breadcrumbItems} variant="light" />
+
+          <div className="mt-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
+              {displayName}
+            </h1>
+            <div className="flex flex-wrap items-center gap-2">
+              {exaltadoData.deporte.map((deporte, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center gap-1 sm:gap-2 bg-white bg-opacity-20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-medium"
+                >
+                  <span className="text-lg sm:text-xl">
+                    {getSportEmoji(deporte)}
+                  </span>
+                  <span className="hidden sm:inline">{deporte}</span>
+                  <span className="sm:hidden">{deporte.split(" ")[0]}</span>
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Contenido principal */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="md:flex">
-            {/* Imagen */}
-            <div className="md:w-1/3 bg-gray-100">
-              <div className="relative aspect-[3/4] w-full">
-                <Image
-                  src={imageError ? '/images/default-athlete.jpg' : imageSrc}
-                  alt={displayName}
-                  fill
-                  className="object-cover"
-                  onError={() => setImageError(true)}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  priority
-                />
-              </div>
-            </div>
+      {/* Main content */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        {/* Share buttons */}
+        <div className="mb-6">
+          <ShareButtons
+            title={displayName}
+            url={currentUrl}
+            description={`${displayName}, exaltado al Pabellón de la Fama del Deporte Humacaeño en ${exaltadoData.anoExaltacion}`}
+          />
+        </div>
 
-            {/* Información */}
-            <div className="md:w-2/3 p-6 md:p-8">
-              {/* Encabezado */}
-              <div className="mb-6">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                  {displayName}
-                </h1>
-                {exaltado.apodo && (
-                  <p className="text-lg text-gray-600 italic">&ldquo;{exaltado.apodo}&rdquo;</p>
-                )}
-                
-                {/* Badges */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                    <Trophy className="w-4 h-4 mr-1" />
-                    {displaySport}
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    Exaltado {displayYear}
-                  </span>
-                  {exaltado.exaltacion && (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-                      <Star className="w-4 h-4 mr-1" />
-                      {exaltado.exaltacion}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Información personal */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                {exaltado.fechaNacimiento && (
-                  <div className="flex items-start">
-                    <User className="w-5 h-5 text-gray-400 mr-2 mt-0.5" />
-                    <div>
-                      <p className="text-sm text-gray-600">Fecha de Nacimiento</p>
-                      <p className="font-medium">{exaltado.fechaNacimiento}</p>
-                    </div>
-                  </div>
-                )}
-                {exaltado.lugarNacimiento && (
-                  <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-gray-400 mr-2 mt-0.5" />
-                    <div>
-                      <p className="text-sm text-gray-600">Lugar de Nacimiento</p>
-                      <p className="font-medium">{exaltado.lugarNacimiento}</p>
-                    </div>
-                  </div>
-                )}
-                {exaltado.fechaFallecimiento && (
-                  <div className="flex items-start">
-                    <User className="w-5 h-5 text-gray-400 mr-2 mt-0.5" />
-                    <div>
-                      <p className="text-sm text-gray-600">Fecha de Fallecimiento</p>
-                      <p className="font-medium">{exaltado.fechaFallecimiento}</p>
-                    </div>
-                  </div>
-                )}
-                <div className="flex items-start">
-                  <User className="w-5 h-5 text-gray-400 mr-2 mt-0.5" />
-                  <div>
-                    <p className="text-sm text-gray-600">Categoría</p>
-                    <p className="font-medium capitalize">{exaltado.categoria.replace('-', ' ')}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Biografía */}
-              <div className="mb-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Biografía</h2>
-                <p className="text-gray-700 leading-relaxed">{displayBio}</p>
-              </div>
-
-              {/* Logros */}
-              {displayAchievements.length > 0 && (
-                <div className="mb-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center">
-                    <Medal className="w-5 h-5 mr-2 text-yellow-500" />
-                    Logros Destacados
-                  </h2>
-                  <ul className="space-y-2">
-                    {displayAchievements.map((logro, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
-                        <span className="text-gray-700">{logro}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Reconocimientos */}
-              {displayRecognitions.length > 0 && (
-                <div className="mb-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center">
-                    <Star className="w-5 h-5 mr-2 text-yellow-500" />
-                    Reconocimientos
-                  </h2>
-                  <ul className="space-y-2">
-                    {displayRecognitions.map((reconocimiento, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-green-600 mr-2">•</span>
-                        <span className="text-gray-700">{reconocimiento}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+        {/* Exaltado details using shared layout */}
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="p-4 sm:p-6 lg:p-8">
+            <ExaltadoDetailLayout exaltado={exaltadoData} />
           </div>
+        </div>
+
+        {/* Back to directory link */}
+        <div className="mt-6 sm:mt-8 text-center">
+          <Link
+            href="/directorio"
+            className="inline-flex items-center text-pabellon-green-600 hover:text-pabellon-green-800 font-medium transition-colors"
+          >
+            ← Volver al Directorio
+          </Link>
         </div>
       </div>
     </div>
