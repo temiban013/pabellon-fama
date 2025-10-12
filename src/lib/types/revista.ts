@@ -18,6 +18,7 @@ export interface RevistaMetadata {
     propulsores: number;
     postumos: number;
     comunicadores?: number;
+    equipos?: number;
   };
   rangoPaginas: {
     biografias: [number, number];

@@ -58,5 +58,9 @@ next-env.d.ts
 .project/
 CLAUDE.md
 
-# Scripts 
+# Scripts
 /scripts/
+
+# Photo extraction work (temporary - will be re-extracted and committed separately)
+public/images/exaltados/*.jpg
+public/images/exaltados-backup-400x400/

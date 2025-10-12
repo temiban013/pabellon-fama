@@ -110,8 +110,8 @@ export const rev06Exaltados: ExaltadoRevista[] = [
   {
     id: 'milton-rosario-soto',
     nombre: 'Milton',
-    apellidos: 'Rosario',
-    
+    apellidos: 'Rosario Soto',
+
     categoria: 'PROPULSOR',
     deportes: ['Voleibol', 'Béisbol', 'Baloncesto', 'Softbol', 'Pista y Campo', 'Pesas'],
     anoExaltacion: 2010,

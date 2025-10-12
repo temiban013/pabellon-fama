@@ -140,7 +140,7 @@ Luego de su exitosa carrera deportiva representando a Puerto Rico en distintos p
   {
     id: 'pedro-pena-flecha',
     nombre: 'Pedro',
-    apellidos: 'Peña',
+    apellidos: 'Peña Flecha',
     apodo: 'Toribio',
     categoria: 'ATLETA',
     deportes: ['Béisbol'],

@@ -13,52 +13,47 @@ import {
   type CategoriaExaltado,
 } from "@/lib/types";
 import { debounce } from "@/lib/utils";
-import exaltadosData from "@/data/exaltados.json";
+import { todosLosExaltados } from "@/data/exaltados-all";
+import type { ExaltadoRevista } from "@/lib/types/revista";
 
 type ViewMode = "grid" | "list";
 type SortOption = "nombre" | "ano" | "deporte";
 type SortDirection = "asc" | "desc";
 
-// Función para aplanar los datos organizados por deporte en una lista
-function flattenExaltadosData(): Exaltado[] {
-  const exaltados: Exaltado[] = [];
+// Mapeo de categorías de revista a las categorías del tipo
+const categoriaMap: Record<string, CategoriaExaltado> = {
+  "ATLETA": "atleta",
+  "PROPULSOR": "propulsor",
+  "DIRIGENTE": "dirigente",
+  "COMUNICADOR": "cronista",
+  "PÓSTUMO": "atleta", // Póstumo es más un estado, la mayoría son atletas
+  "EQUIPO": "equipo",
+};
 
-  // Mapeo de categorías del JSON a las categorías del tipo
-  const categoriaMap: Record<string, CategoriaExaltado> = {
-    atletas: "atleta",
-    jugadores: "jugador",
-    boxeadores: "boxeador",
-    propulsores: "propulsor",
-    dirigentes: "dirigente",
-    cronistas: "cronista",
-    equipos: "equipo",
-    entrenadores: "entrenador",
-    promotores: "promotor",
-    comentaristas: "comentarista",
-    arbitros: "arbitro",
-    benefactores: "benefactor",
+// Función para transformar ExaltadoRevista a Exaltado
+function transformExaltadoRevista(exaltadoRevista: ExaltadoRevista): Exaltado {
+  // Construct nombreCompleto from nombre + apellidos
+  const nombreCompleto = `${exaltadoRevista.nombre} ${exaltadoRevista.apellidos}`.trim();
+
+  return {
+    id: exaltadoRevista.id,
+    nombre: exaltadoRevista.nombre,
+    apellidos: exaltadoRevista.apellidos,
+    nombreCompleto,
+    deporte: exaltadoRevista.deportes,
+    categoria: categoriaMap[exaltadoRevista.categoria] || "atleta",
+    anoExaltacion: exaltadoRevista.anoExaltacion,
+    biografia: exaltadoRevista.contenido.biografia,
+    logros: exaltadoRevista.contenido.logros || [],
+    reconocimientos: exaltadoRevista.contenido.reconocimientos || [],
+    estado: "activo", // Default - we can enhance this later with actual data
+    apodo: exaltadoRevista.apodo || null,
   };
+}
 
-  Object.entries(exaltadosData).forEach(([deporte, categorias]) => {
-    if (deporte === "estadisticas") return;
-
-    // Verificar que categorias sea un objeto válido
-    if (categorias && typeof categorias === 'object' && !Array.isArray(categorias)) {
-      Object.entries(categorias).forEach(([categoria, personas]) => {
-        // Verificar que personas sea un array
-        if (Array.isArray(personas)) {
-          personas.forEach((persona) => {
-            exaltados.push({
-              ...persona,
-              categoria: categoriaMap[categoria] || "atleta",
-            });
-          });
-        }
-      });
-    }
-  });
-
-  return exaltados;
+// Función para obtener todos los exaltados transformados
+function getAllExaltados(): Exaltado[] {
+  return todosLosExaltados.map(transformExaltadoRevista);
 }
 
 interface DirectorioClientProps {
@@ -86,7 +81,7 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
   }, [searchParams]);
 
   // Estados principales
-  const [allExaltados] = useState<Exaltado[]>(flattenExaltadosData());
+  const [allExaltados] = useState<Exaltado[]>(getAllExaltados());
   const [filteredExaltados, setFilteredExaltados] = useState<Exaltado[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState<FiltrosDirectorio>(getInitialFilters);

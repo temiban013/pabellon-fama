@@ -40,10 +40,20 @@ export function ExaltadoCard({
 
   // Función para obtener el nombre completo con apodo
   const getFullName = () => {
+    // Use nombreCompleto field which already has the correct full name
+    // to avoid duplication issues when nombre contains the full name
     if (exaltado.apodo) {
-      return `${exaltado.nombre} "${exaltado.apodo}" ${exaltado.apellidos}`;
+      // Insert apodo into nombreCompleto
+      // nombreCompleto has the format "FirstName LastName"
+      const parts = exaltado.nombreCompleto.split(' ');
+      if (parts.length >= 2) {
+        // Insert apodo after first name
+        return `${parts[0]} "${exaltado.apodo}" ${parts.slice(1).join(' ')}`;
+      }
+      // Fallback if name format is unexpected
+      return `${exaltado.nombreCompleto} "${exaltado.apodo}"`;
     }
-    return `${exaltado.nombre} ${exaltado.apellidos}`;
+    return exaltado.nombreCompleto;
   };
 
   // Función para obtener color de categoría

@@ -28,7 +28,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     }
   },
 
-  // Sprint 2: Revista #02 (2002) - 8 exaltados
+  // Sprint 2: Revista #02 (2002) - 9 exaltados
   {
     numero: 2,
     year: 2002,
@@ -38,11 +38,12 @@ export const revistasMetadata: RevistaMetadata[] = [
     pdfUrl: '/revistas/completas/revista-02.pdf',
     portadaUrl: '/revistas/portadas/rev02.jpg',
     totalPaginas: 43,
-    exaltadosCount: 8,
+    exaltadosCount: 9,
     categorias: {
       deportistas: 4,
       propulsores: 2,
-      postumos: 2
+      postumos: 2,
+      equipos: 1
     },
     rangoPaginas: {
       biografias: [16, 23],
@@ -72,7 +73,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     }
   },
 
-  // Sprint 4: Revista #04 (2006) - 9 exaltados
+  // Sprint 4: Revista #04 (2006) - 10 exaltados
   {
     numero: 4,
     year: 2006,
@@ -82,11 +83,12 @@ export const revistasMetadata: RevistaMetadata[] = [
     pdfUrl: '/revistas/completas/revista-04.pdf',
     portadaUrl: '/revistas/portadas/rev04.jpg',
     totalPaginas: 36,
-    exaltadosCount: 9,
+    exaltadosCount: 10,
     categorias: {
       deportistas: 7,
       propulsores: 1,
-      postumos: 1
+      postumos: 1,
+      equipos: 1
     },
     rangoPaginas: {
       biografias: [14, 25],
@@ -107,8 +109,9 @@ export const revistasMetadata: RevistaMetadata[] = [
     exaltadosCount: 9,
     categorias: {
       deportistas: 7,
-      propulsores: 2,
-      postumos: 0
+      propulsores: 1,
+      postumos: 0,
+      equipos: 1
     },
     rangoPaginas: {
       biografias: [13, 21],

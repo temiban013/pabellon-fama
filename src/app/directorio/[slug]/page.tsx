@@ -40,7 +40,6 @@ export async function generateMetadata({
         "Humacao",
         "Pabellón de la Fama",
       ],
-      image: `/images/exaltados/${exaltadoRevista.id}.jpg`,
       url: `/directorio/${slug}`,
       type: "profile",
     });
@@ -92,12 +91,6 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
 
   // Si se encuentra en revistas, convertir al formato esperado
   if (exaltadoRevista) {
-    // Intentar varias variaciones de nombre de foto
-    const fotoVariaciones = [
-      `/images/exaltados/${exaltadoRevista.id}.jpg`,
-      `/images/exaltados/${exaltadoRevista.nombre.toLowerCase()}-${exaltadoRevista.apellidos.toLowerCase().split(' ')[0]}.jpg`,
-    ];
-
     const exaltadoAdaptado = {
       id: exaltadoRevista.id,
       nombre: exaltadoRevista.nombre,
@@ -110,9 +103,6 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
       yearInducted: exaltadoRevista.anoExaltacion,
       biografia: exaltadoRevista.contenido.biografia,
       biography: exaltadoRevista.contenido.biografia,
-      // Usar la primera variación por defecto, el componente tiene fallback
-      foto: fotoVariaciones[0],
-      photo: fotoVariaciones[0],
       apodo: exaltadoRevista.apodo,
       logros: exaltadoRevista.contenido.logros,
       achievements: exaltadoRevista.contenido.logros,

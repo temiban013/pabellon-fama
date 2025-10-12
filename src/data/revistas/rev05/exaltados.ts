@@ -50,7 +50,7 @@ En el año 2000, jugó con los Juyeros de Maunabo, siendo líder de bateo del eq
   {
     id: 'francisco-paco-rey-vazquez',
     nombre: 'Francisco',
-    apellidos: 'Rey',
+    apellidos: 'Rey Vázquez',
     apodo: 'Paco',
     categoria: 'ATLETA',
     deportes: ['Fútbol'],
