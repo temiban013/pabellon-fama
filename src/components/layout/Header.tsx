@@ -17,7 +17,6 @@ const navigation: NavigationItem[] = [
   { name: "Directorio de Exaltados", href: "/directorio" },
   { name: "Historia", href: "/historia" },
   { name: "Enlaces", href: "/enlaces" },
-  { name: "Museo", href: "/museo" },
   { name: "Horario", href: "/horario" },
   { name: "Calendario", href: "/calendario" },
 ];

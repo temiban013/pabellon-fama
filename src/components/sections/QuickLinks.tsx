@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
-  BookOpenIcon,
-  VideoCameraIcon,
+  CalendarIcon,
   ClockIcon,
   NewspaperIcon,
   ArrowTopRightOnSquareIcon,
@@ -23,10 +22,10 @@ interface QuickLinkItem {
 
 const quickLinks: QuickLinkItem[] = [
   {
-    name: "Biblioteca",
-    href: "/enlaces",
-    description: "Recursos y documentos históricos",
-    icon: BookOpenIcon,
+    name: "Calendario",
+    href: "/calendario",
+    description: "Eventos y actividades del Pabellón",
+    icon: CalendarIcon,
     external: false,
     bgGradient: "from-pabellon-green-50 to-pabellon-green-100",
     borderColor: "border-pabellon-green-200",
@@ -34,19 +33,6 @@ const quickLinks: QuickLinkItem[] = [
     hoverIconColor: "group-hover:text-pabellon-gold-600",
     textColor: "text-pabellon-green-800",
     hoverTextColor: "group-hover:text-pabellon-green-900",
-  },
-  {
-    name: "YouTube",
-    href: "#",
-    description: "Videos y documentales deportivos (próximamente)",
-    icon: VideoCameraIcon,
-    external: false,
-    bgGradient: "from-red-50 to-red-100",
-    borderColor: "border-red-200",
-    iconColor: "text-red-700",
-    hoverIconColor: "group-hover:text-pabellon-gold-600",
-    textColor: "text-red-800",
-    hoverTextColor: "group-hover:text-red-900",
   },
   {
     name: "Blog",
@@ -99,7 +85,7 @@ export function QuickLinks({ className = "" }: QuickLinksProps) {
         </div>
 
         {/* Grid de enlaces rápidos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {quickLinks.map((link, index) => {
             const LinkComponent = link.external ? "a" : Link;
             const linkProps = link.external
@@ -163,8 +149,8 @@ export function QuickLinks({ className = "" }: QuickLinksProps) {
               ¿Necesitas más información?
             </h4>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Explora nuestro directorio completo de exaltados o contáctanos
-              directamente
+              Explora nuestros exaltados, conoce nuestra historia y accede a
+              recursos digitales
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -174,16 +160,16 @@ export function QuickLinks({ className = "" }: QuickLinksProps) {
                 Ver Exaltados
               </Link>
               <Link
-                href="/horario"
+                href="/historia"
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-pabellon-green-700 text-pabellon-green-700 font-medium rounded-lg hover:bg-pabellon-green-700 hover:text-white transition-all duration-200"
               >
-                Ver Horarios
+                Ver Historia
               </Link>
               <Link
-                href="/museo"
+                href="/enlaces"
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-pabellon-green-700 text-pabellon-green-700 font-medium rounded-lg hover:bg-pabellon-green-700 hover:text-white transition-all duration-200"
               >
-                Tour Virtual
+                Ver Enlaces
               </Link>
             </div>
           </div>

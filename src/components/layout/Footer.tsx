@@ -19,20 +19,18 @@ export function Footer({ className = "" }: FooterProps) {
       ],
     },
     {
-      title: "Museo",
+      title: "Recursos",
       links: [
-        { name: "Museo Manuel Rivera Guevara", href: "/museo" },
-        { name: "Exhibiciones", href: "/museo#exhibiciones" },
-        { name: "Tour Virtual", href: "/museo#tour" },
+        { name: "Revistas Oficiales", href: "/revistas" },
+        { name: "Galería Histórica", href: "/enlaces/galeria-historica" },
+        { name: "Blog Oficial", href: "https://pabellonfdh.blogspot.com" },
         { name: "Horarios de Visita", href: "/horario" },
       ],
     },
     {
       title: "Enlaces",
       links: [
-        { name: "Biblioteca", href: "/enlaces#biblioteca" },
-        { name: "Blog", href: "/enlaces#blog" },
-        { name: "YouTube", href: "/enlaces#youtube" },
+        { name: "Biblioteca", href: "/enlaces" },
         { name: "Horario y Contacto", href: "/horario" },
       ],
     },
@@ -109,20 +107,15 @@ export function Footer({ className = "" }: FooterProps) {
                 Síguenos
               </h4>
               <div className="flex space-x-4">
-                <Link
-                  href="/enlaces#youtube"
+                <a
+                  href="https://pabellonfdh.blogspot.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-pabellon-green-200 hover:text-pabellon-gold-300 transition-colors"
-                  aria-label="YouTube"
+                  aria-label="Blog Oficial"
                 >
-                  🎥 YouTube
-                </Link>
-                <Link
-                  href="/enlaces#blog"
-                  className="text-pabellon-green-200 hover:text-pabellon-gold-300 transition-colors"
-                  aria-label="Blog"
-                >
-                  📝 Blog
-                </Link>
+                  📝 Blog Oficial
+                </a>
               </div>
             </div>
           </div>
@@ -133,9 +126,6 @@ export function Footer({ className = "" }: FooterProps) {
           <p className="text-pabellon-green-200 text-sm">
             © {currentYear} Pabellón de la Fama del Deporte Humacaeño. Todos los
             derechos reservados.
-          </p>
-          <p className="text-pabellon-green-300 text-xs mt-2">
-            Museo Manuel Rivera Guevara
           </p>
         </div>
       </div>

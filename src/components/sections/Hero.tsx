@@ -75,10 +75,10 @@ export function Hero({ className = "" }: HeroProps) {
                 Ver Exaltados
               </Link>
               <Link
-                href="/museo"
+                href="/revistas"
                 className="bg-white border-2 border-pabellon-green-700 text-pabellon-green-700 hover:bg-pabellon-green-700 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 inline-flex items-center justify-center min-w-[200px]"
               >
-                Visitar Museo
+                Ver Revistas
               </Link>
             </div>
           </div>

@@ -41,31 +41,10 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 />
 
-                {/* Overlay con información adicional */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Link
-                      href="/museo"
-                      className="bg-white text-pabellon-green-800 px-8 py-3 rounded-lg font-semibold shadow-xl hover:bg-pabellon-gold-50 transition-all duration-200 transform scale-95 group-hover:scale-100 inline-flex items-center gap-2"
-                    >
-                      <span>🏛️</span>
-                      Explorar Museo Virtual
-                    </Link>
-                  </div>
-                </div>
-
                 {/* Badge del museo en la esquina */}
                 <div className="absolute top-4 left-4 bg-pabellon-green-800 bg-opacity-90 text-white px-3 py-1 rounded-lg text-sm font-medium backdrop-blur-sm">
                   <span className="block">Museo Manuel</span>
                   <span className="block">Rivera Guevara</span>
-                </div>
-
-                {/* Indicador de tour virtual */}
-                <div className="absolute top-4 right-4 bg-pabellon-gold-500 bg-opacity-90 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm animate-pulse">
-                  <span className="flex items-center gap-1">
-                    <span>📸</span>
-                    Tour Virtual
-                  </span>
                 </div>
               </div>
             </div>
@@ -75,7 +54,7 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-pabellon-gold-200 hover:shadow-xl transition-shadow duration-300">
               <div className="text-3xl font-bold text-pabellon-gold-600 mb-2">
-                150+
+                81
               </div>
               <p className="text-pabellon-green-700 font-medium">
                 Atletas Exaltados
@@ -97,7 +76,7 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
 
             <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-pabellon-gold-200 hover:shadow-xl transition-shadow duration-300">
               <div className="text-3xl font-bold text-pabellon-gold-600 mb-2">
-                20+
+                17
               </div>
               <p className="text-pabellon-green-700 font-medium">
                 Disciplinas Deportivas
@@ -112,26 +91,18 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
           <div className="mt-8 text-center">
             <div className="bg-gradient-to-r from-pabellon-green-50 to-pabellon-gold-50 rounded-2xl p-6 border border-pabellon-gold-200">
               <h4 className="text-lg font-semibold text-pabellon-green-800 mb-3">
-                🎯 Experiencia Completa del Museo
+                🎯 Visita Nuestro Museo
               </h4>
               <p className="text-pabellon-green-700 mb-4 max-w-2xl mx-auto">
-                Explora nuestras exhibiciones permanentes, archivo histórico y
-                conoce la rica tradición deportiva humacaeña
+                Conoce la rica tradición deportiva humacaeña en nuestro museo físico
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex justify-center">
                 <Link
-                  href="/museo#tour-virtual"
+                  href="/horario"
                   className="inline-flex items-center justify-center px-6 py-3 bg-pabellon-green-700 text-white font-medium rounded-lg hover:bg-pabellon-green-800 transition-colors duration-200"
                 >
-                  <span className="mr-2">🎬</span>
-                  Tour Virtual
-                </Link>
-                <Link
-                  href="#"
-                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-pabellon-green-700 text-pabellon-green-700 font-medium rounded-lg hover:bg-pabellon-green-700 hover:text-white transition-all duration-200"
-                >
                   <span className="mr-2">🕒</span>
-                  Horarios de Visita
+                  Ver Horarios de Visita
                 </Link>
               </div>
             </div>

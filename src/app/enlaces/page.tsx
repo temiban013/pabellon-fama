@@ -5,12 +5,9 @@ import {
   ArrowLeft,
   ExternalLink,
   BookOpen,
-  Youtube,
   Globe,
   FileText,
   Camera,
-  Radio,
-  Users,
   Award,
   Clock,
 } from "lucide-react";
@@ -18,9 +15,9 @@ import {
 export const metadata: Metadata = {
   title: "Enlaces y Recursos | PFDH",
   description:
-    "Accede a la biblioteca, blog, YouTube y otros recursos del Pabellón de la Fama del Deporte Humacaeño",
+    "Accede a la biblioteca, blog oficial y galería histórica del Pabellón de la Fama del Deporte Humacaeño",
   keywords:
-    "enlaces, recursos, biblioteca, blog, youtube, PFDH, humacao, deportes",
+    "enlaces, recursos, biblioteca, blog, galeria historica, revistas, PFDH, humacao, deportes",
   openGraph: {
     title: "Enlaces y Recursos - Pabellón de la Fama del Deporte Humacaeño",
     description: "Encuentra todos los recursos digitales y contenido del PFDH",
@@ -65,39 +62,6 @@ const recursosEnlaces: RecursoEnlace[] = [
       "78 biografías de exaltados, historia completa de 8 exaltaciones",
   },
   {
-    id: "biblioteca-digital",
-    titulo: "Biblioteca Digital Deportiva",
-    descripcion:
-      "Colección de documentos históricos, fotografías, recortes de prensa y material de archivo sobre el deporte humacaeño.",
-    url: "#biblioteca-digital",
-    tipo: "biblioteca",
-    icono: BookOpen,
-    activo: false,
-    contenidoEspecial: "Próximamente disponible - En desarrollo",
-  },
-  {
-    id: "youtube-oficial",
-    titulo: "Canal YouTube PFDH",
-    descripcion:
-      "Videos de ceremonias de exaltación, entrevistas con atletas, documentales deportivos y cobertura de eventos especiales.",
-    url: "#youtube-pfdh",
-    tipo: "video",
-    icono: Youtube,
-    activo: false,
-    contenidoEspecial: "Videos de las 8 ceremonias y documentales",
-  },
-  {
-    id: "radio-walo",
-    titulo: "Programa Radial - Radio WALO",
-    descripcion:
-      'Archivo del programa "El Pabellón de la Fama del Deporte Informa" transmitido por Radio WALO.',
-    url: "#radio-walo",
-    tipo: "radio",
-    icono: Radio,
-    activo: false,
-    contenidoEspecial: "Programa histórico con entrevistas exclusivas",
-  },
-  {
     id: "exposiciones-fotograficas",
     titulo: "Exposiciones Fotográficas",
     descripcion:
@@ -120,28 +84,6 @@ const recursosEnlaces: RecursoEnlace[] = [
     activo: true,
     destacado: true,
     contenidoEspecial: "8 revistas oficiales con 81 biografías de exaltados",
-  },
-  {
-    id: "pabellones-hermanos",
-    titulo: "Pabellones Hermanos",
-    descripcion:
-      "Enlaces a los pabellones de la fama de Maunabo, Yabucoa y San Lorenzo, apadrinados por el PFDH.",
-    url: "#pabellones-hermanos",
-    tipo: "social",
-    icono: Users,
-    activo: false,
-    contenidoEspecial: "Red de pabellones del este de Puerto Rico",
-  },
-  {
-    id: "archivo-ceremonias",
-    titulo: "Archivo de Ceremonias",
-    descripcion:
-      "Documentación completa de las 8 ceremonias de exaltación realizadas desde el año 2000.",
-    url: "#ceremonias",
-    tipo: "documento",
-    icono: Award,
-    activo: false,
-    contenidoEspecial: "Revistas conmemorativas y serigrafías",
   },
 ];
 
@@ -271,7 +213,6 @@ const RecursoCard = ({ recurso }: { recurso: RecursoEnlace }) => {
 
 export default function EnlacesPage() {
   const recursosActivos = recursosEnlaces.filter((r) => r.activo);
-  const recursosEnDesarrollo = recursosEnlaces.filter((r) => !r.activo);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -325,58 +266,31 @@ export default function EnlacesPage() {
           )}
         </div>
 
-        {/* Recursos en Desarrollo */}
-        <div className="mb-12">
-          <div className="flex items-center mb-8">
-            <div className="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
-            <h2 className="text-3xl font-bold text-gray-900">En Desarrollo</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recursosEnDesarrollo.map((recurso) => (
-              <RecursoCard key={recurso.id} recurso={recurso} />
-            ))}
-          </div>
-        </div>
-
         {/* Información Adicional */}
         <div className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Desarrollo Digital en Progreso
+            Información de Contacto
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">
-                🚀 Próximas Implementaciones
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li>• Biblioteca digital con documentos históricos</li>
-                <li>• Canal YouTube oficial con videos ceremonilaes</li>
-                <li>• Archivo completo del programa radial</li>
-                <li>• Galería de exposiciones fotográficas</li>
-                <li>• Portal de publicaciones digitales</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-orange-600 mb-4">
-                📞 Información y Sugerencias
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-orange-600 mb-4 text-center">
+                📞 Contáctanos
               </h3>
               <div className="space-y-3 text-gray-700">
-                <p>
+                <p className="text-center">
                   <strong>Teléfono:</strong> 787-410-1237
                 </p>
-                <p>
+                <p className="text-center">
                   <strong>Email:</strong> informa@pfdh.org
                 </p>
-                <p>
+                <p className="text-center">
                   <strong>Ubicación:</strong> Centro Cultural Antonia Sáez
                 </p>
-                <p>
+                <p className="text-center">
                   <strong>Horario:</strong> Lunes a Viernes, 8:00 AM - 4:00 PM
                 </p>
-                <p className="text-sm">
+                <p className="text-sm text-center mt-4">
                   ¿Tienes contenido histórico que te gustaría compartir?
                   Contáctanos para contribuir a nuestro archivo digital.
                 </p>
