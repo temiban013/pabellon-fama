@@ -4,7 +4,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRevistaByNumero, getAllRevistas } from "@/data/revistas";
 import { getExaltadosPorRevista } from "@/data/exaltados-all";
-import { ChevronLeft, Download, Calendar, Users, BookOpen } from "lucide-react";
+import { getFotosByRevista } from "@/data/fotos-historicas";
+import { PhotoGrid } from "@/components/galeria/PhotoGrid";
+import { ChevronLeft, Download, Calendar, Users, BookOpen, Camera, ExternalLink } from "lucide-react";
 
 interface RevistaPageProps {
   params: Promise<{
@@ -54,6 +56,7 @@ export default async function RevistaPage({ params }: RevistaPageProps) {
   }
 
   const exaltados = getExaltadosPorRevista(numeroRevista);
+  const fotosHistoricas = getFotosByRevista(numeroRevista);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -249,6 +252,49 @@ export default async function RevistaPage({ params }: RevistaPageProps) {
           )}
         </div>
       </section>
+
+      {/* Historical Photos Section */}
+      {fotosHistoricas.length > 0 && (
+        <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <div className="bg-pabellon-green-600 p-3 rounded-lg">
+                  <Camera className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-pabellon-green-800">
+                    Fotos Históricas
+                  </h2>
+                  <p className="text-gray-600 mt-1">
+                    {fotosHistoricas.length} {fotosHistoricas.length === 1 ? 'fotografía histórica' : 'fotografías históricas'} de esta revista
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                href="/enlaces/galeria-historica"
+                className="inline-flex items-center gap-2 text-pabellon-green-700 hover:text-pabellon-green-800 font-semibold transition-colors group"
+              >
+                Ver colección completa
+                <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <PhotoGrid fotos={fotosHistoricas} compact />
+
+            <div className="mt-8 text-center">
+              <Link
+                href="/enlaces/galeria-historica"
+                className="inline-flex items-center gap-2 bg-pabellon-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pabellon-green-700 transition-colors shadow-lg hover:shadow-xl"
+              >
+                <Camera className="h-5 w-5" />
+                Explorar Galería Completa ({fotosHistoricas.length} fotos)
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

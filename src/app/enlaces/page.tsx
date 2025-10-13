@@ -101,12 +101,13 @@ const recursosEnlaces: RecursoEnlace[] = [
     id: "exposiciones-fotograficas",
     titulo: "Exposiciones Fotográficas",
     descripcion:
-      "Galería virtual de las exposiciones fotográficas sobre la historia deportiva de Humacao realizadas por el PFDH.",
-    url: "#exposiciones",
+      "Galería virtual con 19 páginas de fotografías históricas sobre la historia deportiva de Humacao desde la década de 1930 hasta 2015.",
+    url: "/enlaces/galeria-historica",
     tipo: "educativo",
     icono: Camera,
-    activo: false,
-    contenidoEspecial: "Historia visual del deporte humacaeño",
+    activo: true,
+    destacado: true,
+    contenidoEspecial: "19 fotografías históricas de 6 revistas diferentes",
   },
   {
     id: "publicaciones",
