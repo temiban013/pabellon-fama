@@ -3,6 +3,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev07Exaltados: ExaltadoRevista[] = [
   {
     id: 'angel-luis-tito-cucu-alcaraz',
+    foto: '/images/exaltados/angel-luis-tito-cucu-alcaraz.jpg',
     nombre: 'Ángel Luis',
     apellidos: 'Alcaráz',
     apodo: 'Tito Cucú',
@@ -29,6 +30,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'luis-f-baby-carrasquillo',
+    foto: '/images/exaltados/luis-f-baby-carrasquillo.jpg',
     nombre: 'Luis F.',
     apellidos: 'Carrasquillo',
     apodo: 'Baby',
@@ -55,6 +57,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'samuel-sammy-garcia',
+    foto: '/images/exaltados/samuel-sammy-garcia.jpg',
     nombre: 'Samuel',
     apellidos: 'García',
     apodo: 'Sammy',
@@ -82,6 +85,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'jose-m-pepe-lopez',
+    foto: '/images/exaltados/jose-m-pepe-lopez.jpg',
     nombre: 'José M.',
     apellidos: 'López',
     apodo: 'Pepe',
@@ -107,6 +111,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'gilberto-gilbert-lopez',
+    foto: '/images/exaltados/gilberto-gilbert-lopez.jpg',
     nombre: 'Gilberto',
     apellidos: 'López',
     apodo: 'Gilbert',
@@ -131,6 +136,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'esteban-ocasio',
+    foto: '/images/exaltados/esteban-ocasio.jpg',
     nombre: 'Esteban',
     apellidos: 'Ocasio',
     categoria: 'ATLETA',
@@ -156,6 +162,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'rafael-rafa-ocasio',
+    foto: '/images/exaltados/rafael-rafa-ocasio.jpg',
     nombre: 'Rafael',
     apellidos: 'Ocasio',
     apodo: 'Rafa',
@@ -181,6 +188,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'inocencio-ino-olmeda',
+    foto: '/images/exaltados/inocencio-ino-olmeda.jpg',
     nombre: 'Inocencio',
     apellidos: 'Olmeda',
     apodo: 'Ino',
@@ -206,6 +214,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'rafael-perez',
+    foto: '/images/exaltados/rafael-perez.jpg',
     nombre: 'Rafael',
     apellidos: 'Pérez',
     categoria: 'PROPULSOR',
@@ -231,6 +240,7 @@ export const rev07Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'norma-d-rosario',
+    foto: '/images/exaltados/norma-d-rosario.jpg',
     nombre: 'Norma D.',
     apellidos: 'Rosario',
     categoria: 'PROPULSOR',

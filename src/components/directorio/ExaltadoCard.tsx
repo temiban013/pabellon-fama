@@ -115,6 +115,7 @@ export function ExaltadoCard({
                   alt={`Foto de ${exaltado.nombre}`}
                   fill
                   className="object-cover"
+                  style={{ objectPosition: 'center 20%' }}
                   sizes="64px"
                 />
               ) : (
@@ -173,13 +174,14 @@ export function ExaltadoCard({
       className={`card-pabellon group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-pabellon-lg block ${className}`}
     >
       {/* Imagen/Avatar */}
-      <div className="relative h-48 bg-gradient-to-br from-pabellon-green-50 to-pabellon-gold-50 rounded-t-lg overflow-hidden">
+      <div className="relative h-60 bg-gradient-to-br from-pabellon-green-50 to-pabellon-gold-50 rounded-t-lg overflow-hidden">
         {exaltado.foto ? (
           <Image
             src={exaltado.foto}
             alt={`Foto de ${exaltado.nombre}`}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-300"
+            style={{ objectPosition: 'center 20%' }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
           />
         ) : (

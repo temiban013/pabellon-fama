@@ -15,6 +15,8 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev02Exaltados: ExaltadoRevista[] = [
   {
     id: 'elpidio-mojica-diaz',
+
+    foto: '/images/exaltados/elpidio-mojica-diaz.jpg',
     nombre: 'Elpidio',
     apellidos: 'Mojica Díaz',
     categoria: 'ATLETA',
@@ -38,6 +40,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'jaime-tolentino',
+
+    foto: '/images/exaltados/jaime-tolentino.jpg',
     nombre: 'Jaime',
     apellidos: 'Tolentino Villarín',
     categoria: 'ATLETA',
@@ -61,6 +65,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'miguel-lopez-reyes',
+
+    foto: '/images/exaltados/miguel-lopez-reyes.jpg',
     nombre: 'Miguel A.',
     apellidos: 'López Reyes',
     categoria: 'ATLETA',
@@ -86,6 +92,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'pedro-jose-pepito-alvarez',
+
+    foto: '/images/exaltados/pedro-jose-pepito-alvarez.jpg',
     nombre: 'Pedro José',
     apodo: 'Pepito',
     apellidos: 'Álvarez',
@@ -112,6 +120,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'pablo-davila-escribano',
+
+    foto: '/images/exaltados/pablo-davila-escribano.jpg',
     nombre: 'Pablo',
     apellidos: 'Dávila Escribano',
     categoria: 'PROPULSOR',
@@ -135,6 +145,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'jose-manuel-chemane-carradero',
+
+    foto: '/images/exaltados/jose-manuel-chemane-carradero.jpg',
     nombre: 'José Manuel',
     apodo: 'Chemane',
     apellidos: 'Carradero',
@@ -163,6 +175,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'gladys-diaz',
+
+    foto: '/images/exaltados/gladys-diaz.jpg',
     nombre: 'Gladys',
     apellidos: 'Díaz Carrillo',
     categoria: 'PÓSTUMO',
@@ -186,6 +200,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'catalino-santos',
+
+    foto: '/images/exaltados/catalino-santos.jpg',
     nombre: 'Catalino',
     apodo: 'Catino',
     apellidos: 'Santos Cruz',
@@ -212,6 +228,8 @@ export const rev02Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'equipo-1951',
+
+    foto: '/images/exaltados/equipo-1951.jpg',
     nombre: 'Equipo Humacao Doble A',
     apellidos: '(1951)',
     categoria: 'EQUIPO',

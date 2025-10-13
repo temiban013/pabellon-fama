@@ -12,6 +12,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev05Exaltados: ExaltadoRevista[] = [
   {
     id: 'jose-miguel-pochy-figueroa',
+    foto: '/images/exaltados/jose-miguel-pochy-figueroa.jpg',
     nombre: 'Miguel A.',
     apellidos: 'Figueroa',
     apodo: 'Pochy',
@@ -49,6 +50,7 @@ En el año 2000, jugó con los Juyeros de Maunabo, siendo líder de bateo del eq
   },
   {
     id: 'francisco-paco-rey-vazquez',
+    foto: '/images/exaltados/francisco-paco-rey-vazquez.jpg',
     nombre: 'Francisco',
     apellidos: 'Rey Vázquez',
     apodo: 'Paco',
@@ -87,6 +89,7 @@ Para el 1970, fungió como Secretario de la Asociación de Fútbol Aficionado de
   },
   {
     id: 'candido-candy-maldonado',
+    foto: '/images/exaltados/candido-candy-maldonado.jpg',
     nombre: 'Cándido',
     apellidos: 'Maldonado',
     apodo: 'Candy',
@@ -132,6 +135,7 @@ Entre sus muchos logros en Grandes Ligas podemos señalar los siguientes:
   },
   {
     id: 'angel-mane-rosa-lopez',
+    foto: '/images/exaltados/angel-mane-rosa-lopez.jpg',
     nombre: 'Angel Manuel',
     apellidos: 'Rosa López',
     apodo: 'Mane',
@@ -158,6 +162,7 @@ Participó como delegado en los Juegos de Buena Voluntad en Seattle en 1988. Por
   },
   {
     id: 'juan-luis-gomez-rivera',
+    foto: '/images/exaltados/juan-luis-gomez-rivera.jpg',
     nombre: 'Juan Luis',
     apellidos: 'Gómez Rivera',
     categoria: 'ATLETA',
@@ -199,6 +204,7 @@ En las Justas Intramurales de la Escuela Superior de 1949 ganó los 100, 200 y 4
   },
   {
     id: 'pedro-j-davila-poupart',
+    foto: '/images/exaltados/pedro-j-davila-poupart.jpg',
     nombre: 'Pedro J.',
     apellidos: 'Dávila Poupart',
     apodo: 'Peyo',
@@ -231,6 +237,7 @@ Como profesor universitario y líder comunitario es un gran propulsor de las act
   },
   {
     id: 'carlos-carlitos-vazquez-torres',
+    foto: '/images/exaltados/carlos-carlitos-vazquez-torres.jpg',
     nombre: 'Carlos',
     apellidos: 'Vázquez Torres',
     categoria: 'ATLETA',
@@ -272,6 +279,7 @@ En la actualidad y en su vida de comerciante sigue pendiente y colaborando con e
   },
   {
     id: 'jose-elias-betancourt',
+    foto: '/images/exaltados/jose-elias-betancourt.jpg',
     nombre: 'José Elías',
     apellidos: 'Betancourt Rosario',
     categoria: 'ATLETA',
@@ -320,6 +328,7 @@ Una larga e impresionante carrera profesional como Asistente de Terapia Física 
   },
   {
     id: 'equipo-juvenil-futbol',
+    foto: '/images/exaltados/equipo-juvenil-futbol.jpg',
     nombre: 'Equipo Juvenil Fútbol Jumacao F.C.',
     apellidos: '(1958)',
     categoria: 'EQUIPO',

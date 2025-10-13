@@ -29,6 +29,7 @@ export interface RevistaMetadata {
 
 export interface ExaltadoRevista {
   id: string;
+  foto?: string;
   nombre: string;
   apodo?: string;
   apellidos: string;

@@ -3,6 +3,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev03Exaltados: ExaltadoRevista[] = [
   {
     id: 'jorge-david-de-leon-burgos',
+    foto: '/images/exaltados/jorge-david-de-leon-burgos.jpg',
     nombre: 'Jorge David',
     apellidos: 'de León Burgos',
     categoria: 'ATLETA',
@@ -32,6 +33,7 @@ Actualmente reside en Maryland, USA, donde trabaja como ingeniero mecánico para
   },
   {
     id: 'porfirio-de-leon-burgos',
+    foto: '/images/exaltados/porfirio-de-leon-burgos.jpg',
     nombre: 'Porfirio',
     apellidos: 'de León Burgos',
     categoria: 'ATLETA',
@@ -75,6 +77,7 @@ El pueblo de Humacao vive orgulloso de este hombre pequeño en estatura pero gra
   },
   {
     id: 'edwin-mojica-rodriguez',
+    foto: '/images/exaltados/edwin-mojica-rodriguez.jpg',
     nombre: 'Edwin',
     apellidos: 'Mojica Rodríguez',
     categoria: 'ATLETA',
@@ -110,6 +113,7 @@ Su carrera deportiva es extensa y fructífera. Edwin Mojica Rodríguez es un dep
   },
   {
     id: 'jesus-chu-silva-alamo',
+    foto: '/images/exaltados/jesus-chu-silva-alamo.jpg',
     nombre: 'Jesús',
     apellidos: 'Silva Álamo',
     apodo: 'Chú',
@@ -139,6 +143,7 @@ Luego de su exitosa carrera deportiva representando a Puerto Rico en distintos p
   },
   {
     id: 'pedro-pena-flecha',
+    foto: '/images/exaltados/pedro-pena-flecha.jpg',
     nombre: 'Pedro',
     apellidos: 'Peña Flecha',
     apodo: 'Toribio',
@@ -186,6 +191,7 @@ La Legión Americana le rindió un homenaje póstumo en conmemoración de su ges
   },
   {
     id: 'angela-wilkes',
+    foto: '/images/exaltados/angela-wilkes.jpg',
     nombre: 'Ángela',
     apellidos: 'Wilkes',
     categoria: 'ATLETA',
@@ -212,6 +218,7 @@ No obstante continuó su participación a nivel estatal, cosechando nuevos triun
   },
   {
     id: 'rafael-lopez-paredes',
+    foto: '/images/exaltados/rafael-lopez-paredes.jpg',
     nombre: 'Rafael',
     apellidos: 'López Paredes',
     apodo: 'Don Felo',

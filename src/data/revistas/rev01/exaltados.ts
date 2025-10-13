@@ -12,6 +12,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev01Exaltados: ExaltadoRevista[] = [
   {
     id: 'julio-yuyo-maldonado',
+    foto: '/images/exaltados/julio-yuyo-maldonado.jpg',
     nombre: 'Julio',
     apodo: 'Yuyo',
     apellidos: 'Luzunaris Maldonado',
@@ -31,6 +32,7 @@ export const rev01Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'carmen-paciencia-marrero',
+    foto: '/images/exaltados/carmen-paciencia-marrero.jpg',
     nombre: 'Carmen',
     apodo: 'Paciencia',
     apellidos: 'Marrero Berrios',
@@ -50,6 +52,7 @@ export const rev01Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'juan-tulier',
+    foto: '/images/exaltados/juan-tulier.jpg',
     nombre: 'Juan',
     apodo: 'Saso',
     apellidos: 'Tuller Cruz',
@@ -69,6 +72,7 @@ export const rev01Exaltados: ExaltadoRevista[] = [
 
   {
     id: 'jose-casillas',
+    foto: '/images/exaltados/jose-casillas.jpg',
     nombre: 'José',
     apodo: 'Toñín',
     apellidos: 'Casillas',
@@ -94,6 +98,7 @@ En 1960, el humacaeño nos representó en los Juegos Olímpicos celebrados en Ro
 
   {
     id: 'julio-cora',
+    foto: '/images/exaltados/julio-cora.jpg',
     nombre: 'Julio',
     apodo: 'Yuyo',
     apellidos: 'S. Cora',
@@ -123,6 +128,7 @@ Culminó su carrera al ser exaltado al Recinto de los Inmortales del Béisbol Af
 
   {
     id: 'carlos-memelo-lopez',
+    foto: '/images/exaltados/carlos-memelo-lopez.jpg',
     nombre: 'Carlos',
     apodo: 'Menelo',
     apellidos: 'López Sánchez',
@@ -152,6 +158,7 @@ Fue exaltado al Recinto de los Inmortales del Béisbol Aficionado de Puerto Rico
 
   {
     id: 'melquiades-silva-anderson',
+    foto: '/images/exaltados/melquiades-silva-anderson.jpg',
     nombre: 'Melquíades',
     apodo: undefined,
     apellidos: 'Silva Anderson',
@@ -177,6 +184,7 @@ Una vez retirado como jugador, se dedicó a organizar equipos de pequeñas ligas
 
   {
     id: 'edwin-torres-gonzalez',
+    foto: '/images/exaltados/edwin-torres-gonzalez.jpg',
     nombre: 'Edwin',
     apodo: undefined,
     apellidos: 'Torres González',
@@ -196,6 +204,7 @@ Una vez retirado como jugador, se dedicó a organizar equipos de pequeñas ligas
 
   {
     id: 'jose-jossie-marrero-rodriguez',
+    foto: '/images/exaltados/jose-jossie-marrero-rodriguez.jpg',
     nombre: 'José',
     apodo: 'Josie',
     apellidos: 'Marrero Rodríguez',
@@ -215,6 +224,7 @@ Una vez retirado como jugador, se dedicó a organizar equipos de pequeñas ligas
 
   {
     id: 'andres-vargas-castro',
+    foto: '/images/exaltados/andres-vargas-castro.jpg',
     nombre: 'Andres',
     apodo: undefined,
     apellidos: 'Vargas Castro',
@@ -247,6 +257,7 @@ Desde 1996 preside la Federación de Levantamiento de Pesas de Puerto Rico.`,
 
   {
     id: 'osvaldo-gil',
+    foto: '/images/exaltados/osvaldo-gil.jpg',
     nombre: 'Osvaldo',
     apodo: undefined,
     apellidos: 'Gil Bosch',
@@ -278,6 +289,7 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
 
   {
     id: 'miguel-luzunaris-soto',
+    foto: '/images/exaltados/miguel-luzunaris-soto.jpg',
     nombre: 'Miguel',
     apodo: undefined,
     apellidos: 'Luzunaris Soto',
@@ -297,6 +309,7 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
 
   {
     id: 'pedro-tolentino',
+    foto: '/images/exaltados/pedro-tolentino.jpg',
     nombre: 'Pedro',
     apodo: undefined,
     apellidos: 'Tolentino Berberena',
@@ -316,6 +329,7 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
 
   {
     id: 'manuel-rivera-guevara',
+    foto: '/images/exaltados/manuel-rivera-guevara.jpg',
     nombre: 'Manuel',
     apodo: undefined,
     apellidos: 'Rivera Guevarra',
@@ -335,6 +349,7 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
 
   {
     id: 'jacinto-hernandez',
+    foto: '/images/exaltados/jacinto-hernandez.jpg',
     nombre: 'Jacinto',
     apodo: 'Jáyase',
     apellidos: 'Hernández',
@@ -354,6 +369,7 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
 
   {
     id: 'julio-edwards',
+    foto: '/images/exaltados/julio-edwards.jpg',
     nombre: 'Julio',
     apodo: undefined,
     apellidos: 'Francis Edwards',
@@ -383,6 +399,7 @@ Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el año 1977
 
   {
     id: 'nestor-morales',
+    foto: '/images/exaltados/nestor-morales.jpg',
     nombre: 'Néstor',
     apodo: undefined,
     apellidos: 'Morales Santiago',
@@ -402,6 +419,7 @@ Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el año 1977
 
   {
     id: 'manuel-roig-diaz',
+    foto: '/images/exaltados/manuel-roig-diaz.jpg',
     nombre: 'Manuel',
     apodo: undefined,
     apellidos: 'Roig Díaz',
@@ -421,6 +439,7 @@ Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el año 1977
 
   {
     id: 'emilio-huyke-colon',
+    foto: '/images/exaltados/emilio-huyke-colon.jpg',
     nombre: 'Emilio',
     apodo: undefined,
     apellidos: 'E. Huyke Colón',
@@ -454,6 +473,7 @@ Fue instalado al Pabellón de la Fama del Deporte Puertorriqueño como propulsor
 
   {
     id: 'pedro-matojo-cruz',
+    foto: '/images/exaltados/pedro-matojo-cruz.jpg',
     nombre: 'Pedro',
     apodo: 'Matojo',
     apellidos: 'Cruz',
@@ -483,6 +503,7 @@ Murió luego de una fructífera vida en el 1988.`,
 
   {
     id: 'antonio-montanez-torres',
+    foto: '/images/exaltados/antonio-montanez-torres.jpg',
     nombre: 'Antonio',
     apodo: undefined,
     apellidos: 'Montañez Torres',
@@ -502,6 +523,7 @@ Murió luego de una fructífera vida en el 1988.`,
 
   {
     id: 'ismael-garcia-perez',
+    foto: '/images/exaltados/ismael-garcia-perez.jpg',
     nombre: 'Ismael',
     apodo: undefined,
     apellidos: 'García Pérez',
@@ -521,6 +543,7 @@ Murió luego de una fructífera vida en el 1988.`,
 
   {
     id: 'agripino-roig-guzman',
+    foto: '/images/exaltados/agripino-roig-guzman.jpg',
     nombre: 'Agripino',
     apodo: undefined,
     apellidos: 'Roig Guzmán',

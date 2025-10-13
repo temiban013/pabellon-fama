@@ -1,8 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarIcon } from "@heroicons/react/24/outline";
+import { CalendarIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { type Exaltado } from "@/lib/types";
 import { getInitials, capitalize } from "@/lib/utils";
 import { formatBiography } from "@/lib/utils/biography";
@@ -15,9 +16,31 @@ interface ExaltadoDetailLayoutProps {
  * Shared layout component for displaying exaltado details
  * Used by both ExaltadoModal and full page routes
  * Sprint 10 - SEO & Navigation Unification
+ * Sprint 11A Phase 5 - Photo zoom modal
  */
 export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
   const initials = getInitials(exaltado.nombre);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isPhotoModalOpen) {
+        setIsPhotoModalOpen(false);
+      }
+    };
+
+    if (isPhotoModalOpen) {
+      document.addEventListener("keydown", handleEscape);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [isPhotoModalOpen]);
 
   const getSportEmoji = (deporte: string) => {
     const emojis = {
@@ -67,15 +90,27 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
       {/* Imagen y datos básicos */}
       <div className="lg:col-span-1">
         {/* Imagen */}
-        <div className="relative h-48 sm:h-64 lg:h-72 bg-gradient-to-br from-pabellon-green-50 to-pabellon-gold-50 rounded-lg overflow-hidden border border-pabellon-gold-200 mb-4 sm:mb-6">
+        <div className="relative h-60 sm:h-80 lg:h-96 bg-gradient-to-br from-pabellon-green-50 to-pabellon-gold-50 rounded-lg overflow-hidden border border-pabellon-gold-200 mb-4 sm:mb-6 group">
           {exaltado.foto ? (
-            <Image
-              src={exaltado.foto}
-              alt={`Foto de ${exaltado.nombre}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 25vw"
-            />
+            <>
+              <Image
+                src={exaltado.foto}
+                alt={`Foto de ${exaltado.nombre}`}
+                fill
+                className="object-cover"
+                style={{ objectPosition: 'center 20%' }}
+                sizes="(max-width: 1024px) 100vw, 25vw"
+              />
+              {/* Enlarge button overlay */}
+              <button
+                onClick={() => setIsPhotoModalOpen(true)}
+                className="absolute top-2 right-2 bg-pabellon-green-800 bg-opacity-80 hover:bg-opacity-100 text-white p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-pabellon-gold-400"
+                title="Ampliar foto"
+                aria-label="Ampliar foto"
+              >
+                <MagnifyingGlassIcon className="w-5 h-5" />
+              </button>
+            </>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-pabellon-gold-400 to-pabellon-gold-600 flex items-center justify-center text-white font-bold text-2xl sm:text-4xl shadow-lg">
@@ -640,6 +675,50 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
           )}
         </div>
       </div>
+
+      {/* Photo zoom modal */}
+      {isPhotoModalOpen && exaltado.foto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+          onClick={() => setIsPhotoModalOpen(false)}
+        >
+          <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            {/* Close button */}
+            <button
+              onClick={() => setIsPhotoModalOpen(false)}
+              className="absolute top-4 right-4 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-pabellon-gold-400"
+              title="Cerrar"
+              aria-label="Cerrar modal"
+            >
+              <XMarkIcon className="w-6 h-6" />
+            </button>
+
+            {/* Image container */}
+            <div
+              className="relative w-full h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={exaltado.foto}
+                alt={`Foto ampliada de ${exaltado.nombre}`}
+                fill
+                className="object-contain"
+                sizes="90vw"
+                quality={100}
+                priority
+              />
+            </div>
+
+            {/* Caption */}
+            <div className="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white px-4 py-2 rounded-lg text-center">
+              <p className="font-semibold text-lg">{exaltado.nombreCompleto}</p>
+              {exaltado.apodo && (
+                <p className="text-sm text-gray-300">&quot;{exaltado.apodo}&quot;</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

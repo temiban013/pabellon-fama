@@ -17,6 +17,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev04Exaltados: ExaltadoRevista[] = [
   {
     id: 'juan-ramon-garcia',
+    foto: '/images/exaltados/juan-ramon-garcia.jpg',
     nombre: 'Juan Ramón',
     apellidos: 'García',
     categoria: 'ATLETA',
@@ -48,6 +49,7 @@ Laboró en el Gobierno Federal por veintiocho años y medio, estableció un nego
 
   {
     id: 'ivan-carradero-muriel',
+    foto: '/images/exaltados/ivan-carradero-muriel.jpg',
     nombre: 'Iván',
     apellidos: 'Carradero Muriel',
     categoria: 'ATLETA',
@@ -82,6 +84,7 @@ El 24 de noviembre de 1991 fue exaltado al Recinto de los Inmortales del Béisbo
 
   {
     id: 'ruben-conejo-lopez',
+    foto: '/images/exaltados/ruben-conejo-lopez.jpg',
     nombre: 'Rubén',
     apodo: 'Conejo',
     apellidos: 'López',
@@ -109,6 +112,7 @@ Su irrefutable liderato y reconocida sapiencia del juego-que más tarde lo convi
 
   {
     id: 'angel-pipa-sierra-ruffat',
+    foto: '/images/exaltados/angel-pipa-sierra-ruffat.jpg',
     nombre: 'Ángel',
     apodo: 'Pipá',
     apellidos: 'Sierra Ruffat',
@@ -145,6 +149,7 @@ En el 1995 fue exaltado al Recinto de los Inmortales del Béisbol Aficionado de 
 
   {
     id: 'luis-fernando-rivera',
+    foto: '/images/exaltados/luis-fernando-rivera.jpg',
     nombre: 'Luis Fernando',
     apellidos: 'Rivera',
     categoria: 'ATLETA',
@@ -174,6 +179,7 @@ En el profesionalismo, tuvo veinticinco (25) combates con un saldo de dieciocho 
 
   {
     id: 'alfredo-del-valle-baltes',
+    foto: '/images/exaltados/alfredo-del-valle-baltes.jpg',
     nombre: 'Alfredo',
     apellidos: 'del Valle Baltes',
     categoria: 'ATLETA',
@@ -210,6 +216,7 @@ Su expriencia de trabajo inluye a la Compañía de Parques Nacionales, Secretari
 
   {
     id: 'clotilde-villegas-pinero',
+    foto: '/images/exaltados/clotilde-villegas-pinero.jpg',
     nombre: 'Clotilde',
     apellidos: 'Villegas Piñero',
     categoria: 'ATLETA',
@@ -235,6 +242,7 @@ Este triunfo le ganó un lugar en la Selección Nacional para ser una de las atl
 
   {
     id: 'luis-curbelo-rivera',
+    foto: '/images/exaltados/luis-curbelo-rivera.jpg',
     nombre: 'Luis',
     apellidos: 'Curbelo Rivera',
     categoria: 'ATLETA',
@@ -273,6 +281,7 @@ Falleció a los 43 años luego de una brillante hoja de servicio público con el
 
   {
     id: 'manuel-mediavilla',
+    foto: '/images/exaltados/manuel-mediavilla.jpg',
     nombre: 'Manuel',
     apellidos: 'Mediavilla',
     categoria: 'PROPULSOR',
@@ -305,6 +314,7 @@ Los gastos para esas instalaciones, equipos, materiales y viajes eran donados po
   // EQUIPO - Equipo Doble A 1960
   {
     id: 'equipo-1960',
+    foto: '/images/exaltados/equipo-1960.jpg',
     nombre: 'Equipo Humacao Doble A',
     apellidos: '(1960)',
     categoria: 'EQUIPO',

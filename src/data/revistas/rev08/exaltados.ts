@@ -3,6 +3,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev08Exaltados: ExaltadoRevista[] = [
   {
     id: 'luis-r-alvarez-vazquez',
+    foto: '/images/exaltados/luis-r-alvarez-vazquez.jpg',
     nombre: 'Luis Reinaldo',
     apellidos: 'Álvarez Vázquez',
     apodo: 'Prof. Luis R. Álvarez',
@@ -31,6 +32,7 @@ En el tenis fue miembro fundador y primer Presidente del Jumacao Tenis Club del 
   },
   {
     id: 'miguel-papuso-garcia-cruz',
+    foto: '/images/exaltados/miguel-papuso-garcia-cruz.jpg',
     nombre: 'Miguel A.',
     apellidos: 'García Cruz',
     apodo: 'Papuso',
@@ -60,6 +62,7 @@ Representó a la UPR de Humacao en Béisbol, más destacado en Voleibol y Pista 
   },
   {
     id: 'juan-de-dios-ortiz',
+    foto: '/images/exaltados/juan-de-dios-ortiz.jpg',
     nombre: 'Juan',
     apellidos: 'De Dios Ortiz',
     categoria: 'ATLETA',
@@ -90,6 +93,7 @@ Este Quijote de la Clase A trajo grandes logros, logrando exposición nacional q
   },
   {
     id: 'fernando-maldonado-lopez',
+    foto: '/images/exaltados/fernando-maldonado-lopez.jpg',
     nombre: 'Fernando',
     apellidos: 'Maldonado López',
     categoria: 'ATLETA',
@@ -122,6 +126,7 @@ Su relación con Ismael García fue de respeto, confianza como de padre e hijo. 
   },
   {
     id: 'ismael-rivera-tirado',
+    foto: '/images/exaltados/ismael-rivera-tirado.jpg',
     nombre: 'Ismael',
     apellidos: 'Rivera Tirado',
     categoria: 'PÓSTUMO',
@@ -157,6 +162,7 @@ Ismael Rivera Tirado un Campeón de mucha cría, fajón como ninguno, esposo, pa
   },
   {
     id: 'lourdes-vega-gonzalez',
+    foto: '/images/exaltados/lourdes-vega-gonzalez.jpg',
     nombre: 'Lourdes',
     apellidos: 'Vega González',
     categoria: 'ATLETA',

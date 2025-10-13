@@ -61,6 +61,6 @@ CLAUDE.md
 # Scripts
 /scripts/
 
-# Photo extraction work (temporary - will be re-extracted and committed separately)
-public/images/exaltados/*.jpg
-public/images/exaltados-backup-400x400/
+
+# IDEs and editors
+.vscode/

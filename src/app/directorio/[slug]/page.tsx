@@ -107,6 +107,8 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
       logros: exaltadoRevista.contenido.logros,
       achievements: exaltadoRevista.contenido.logros,
       reconocimientos: exaltadoRevista.contenido.reconocimientos || [],
+      foto: exaltadoRevista.foto,
+      photo: exaltadoRevista.foto,
       estado: 'activo' as const,
       slug: exaltadoRevista.id,
     };

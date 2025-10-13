@@ -2,6 +2,7 @@ import { ExaltadoRevista } from '@/lib/types/revista';
 export const rev06Exaltados: ExaltadoRevista[] = [
   {
     id: 'richard-timmy-boyle',
+    foto: '/images/exaltados/richard-timmy-boyle.jpg',
     nombre: 'Richard',
     apellidos: 'Boyle',
     
@@ -29,6 +30,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'aurelio-gerald-lopez',
+    foto: '/images/exaltados/aurelio-gerald-lopez.jpg',
     nombre: 'Aurelio',
     apellidos: 'López',
     
@@ -55,6 +57,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'john-impo-martinez',
+    foto: '/images/exaltados/john-impo-martinez.jpg',
     nombre: 'John',
     apellidos: 'Martínez',
     
@@ -80,6 +83,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'angel-lalin-rodriguez',
+    foto: '/images/exaltados/angel-lalin-rodriguez.jpg',
     nombre: 'Ángel',
     apellidos: 'Rodríguez',
     
@@ -109,6 +113,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'milton-rosario-soto',
+    foto: '/images/exaltados/milton-rosario-soto.jpg',
     nombre: 'Milton',
     apellidos: 'Rosario Soto',
 
@@ -139,6 +144,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'marcelino-torres',
+    foto: '/images/exaltados/marcelino-torres.jpg',
     nombre: 'Marcelino',
     apellidos: 'Torres',
     
@@ -167,6 +173,7 @@ export const rev06Exaltados: ExaltadoRevista[] = [
   },
   {
     id: 'luis-humberto-torres',
+    foto: '/images/exaltados/luis-humberto-torres.jpg',
     nombre: 'Luis Humberto',
     apellidos: 'Torres',
     
