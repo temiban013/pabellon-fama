@@ -63,7 +63,17 @@ export const rev01Exaltados: ExaltadoRevista[] = [
     paginaInicio: 16,
     paginaFin: 16,
     contenido: {
-      biografia: `g dd E ide 3: Y Juan "Saso" Tuller Cruz n" o e: | la Federación de Fútbol de Puerto Rico., IN | Saso fue jugador activo por 40 años de ¡AA SS | los cuales fue miembro jugador de la Selección ds) de | Nacional por 28 años, participando en cinco 4 | Juegos Centroamericanos y del Caribe IB | (Venezuela 1959, Jamaica 1962, Puerto Rico OOOS=%] ETT TT E--__ 1966, Panamá 1970, y República Dominicana 1974), Copa del Caribe en Martinica y Guadalupe y muchos otros eventos Aunque nacido en Santurce, se internacionales. Entrenador de la Selección considera así mismo humacaeño por Nacional en Cuba 1982, además de haber sido sentimiento y adopción, ya que desde los 16 entrenador de varios equipos en Puerto Rico años, el pueblo de Humacao lo recibe como Como: Yabucoa por 25 años, Jumacao por 6 un hijo. Ya a los 16 años, Saso Tuller era años y otros equipos. En 1999 dirigió el equipo jugador de categoría superior con el equipo de Humacao de la Liga Mayor de Fútbol Arqueros Verdes, de mucha tradición en el Nacional siendo el apoderado el Ledo. fútbol puertorriqueño y también con la Francisco Betancourt Ibern. selección de Puerto Rico, con la que estuvo También completó cursos de entrenador 28 años. e instructor de la Academia FIFA y otros cursos En 1959, decide dedicar los fines de internacionales. Se graduó de agrónomo en el semana, días feriados y vacaciones al Colegio de Mayaguez en el 1959, institución a desarrollo del fútbol en la zona este de Puerto la cual representó en el fútbol intercolegial. Rico, zona que lo vio crecer y desarrollarse Cuando en el 1989, el Departamento de en este deporte. Comenzando en Humacao, Recreación y Deportes, crea el Programa de su pueblo adoptivo, crea una liga de seis Masificación de Deportes de poco desarrollo en equipos de categoría juvenil, que llegó a ser Puerto Rico, Saso es nombrado como su tan famosa como el fútbol de toda la Isla. Los representante en toda la isla y comienza Satélites, "River Side", "Hot Corner Boys", nuevamente a enseñar el fútbol y a desarrollar "Sea Lyons", fueron algunos de los famosos ligas y torneos. Actualmente continúa | equipos de aquella liga de los cuales se formó trabajando para el Departamento de Recreación el equipo superior "Jumacao" del cual Saso y Deportes en dicho puesto. Fue exaltado al fue jugador, capitán y entrenador, llevándolos Salón de la Fama del Deporte Puertorriqueño a ganar La Copa Constitución, organizada por en el 1991.`,
+      biografia: `Aunque nacido en Santurce, se considera así mismo humacaeño por sentimiento y adopción, ya que desde los 16 años, el pueblo de Humacao lo recibe como un hijo. Ya a los 16 años, Saso Tuller era jugador de categoría superior con el equipo Arqueros Verdes, de mucha tradición en el fútbol puertorriqueño y también con la selección de Puerto Rico, con la que estuvo 28 años.
+
+En 1959, decide dedicar los fines de semana, días feriados y vacaciones al desarrollo del fútbol en la zona este de Puerto Rico, zona que lo vio crecer y desarrollarse en este deporte. Comenzando en Humacao, su pueblo adoptivo, crea una liga de seis equipos de categoría juvenil, que llegó a ser tan famosa como el fútbol de toda la Isla. Los Satélites, "River Side", "Hot Corner Boys", "Sea Lyons", fueron algunos de los famosos equipos de aquella liga de los cuales se formó el equipo superior "Jumacao" del cual Saso fue jugador, capitán y entrenador, llevándolos a ganar la Copa Constitución, organizada por la Federación de Fútbol de Puerto Rico.
+
+Saso fue jugador activo por 40 años de los cuales fue miembro jugador de la Selección Nacional por 28 años, participando en cinco Juegos Centroamericanos y del Caribe (Venezuela 1959, Jamaica 1962, Puerto Rico 1966, Panamá 1970, y República Dominicana 1974), Copa del Caribe en Martinica y Guadalupe y muchos otros eventos internacionales. Entrenador de la Selección Nacional en Cuba 1982, además de haber sido entrenador de varios equipos en Puerto Rico como: Yabucoa por 25 años, Jumacao por 6 años y otros equipos. En 1999 dirigió el equipo de Humacao de la Liga Mayor de Fútbol Nacional siendo el apoderado el Lcdo. Francisco Betancourt Ibern.
+
+También completó cursos de entrenador e instructor de la Academia FIFA y otros cursos internacionales. Se graduó de agrónomo en el Colegio de Mayagüez en el 1959, institución a la cual representó en el fútbol intercolegial.
+
+Cuando en el 1989, el Departamento de Recreación y Deportes, crea el Programa de Masificación de Deportes de poco desarrollo en Puerto Rico, Saso es nombrado como su representante en toda la isla y comienza nuevamente a enseñar el fútbol y a desarrollar ligas y torneos. Actualmente continúa trabajando para el Departamento de Recreación y Deportes en dicho puesto.
+
+Fue exaltado al Salón de la Fama del Deporte Puertorriqueño en el 1991.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -195,7 +205,19 @@ Una vez retirado como jugador, se dedicó a organizar equipos de pequeñas ligas
     paginaInicio: 21,
     paginaFin: 21,
     contenido: {
-      biografia: `f o AS Edwin y e Torres iS González ' E | MA d; a Mud. Aa ejército de los Estados Unidos. En la EA A competencia de Canadá conocida como el 3 | Ecol E Conteo Olímpico obtuvo medalla de oro. ll: En 1968, Edwin representó airosamente ye 1 a Puerto Rico en los Juegos Olímpicos EE LS ES | Mundiales en México y llegó a la meta en ES cs __j el número 18. Compitió entre los 42 a Ho" A mejores ciclistas del mundo en el evento ES de los 1,000 metros contra el reloj. Al, Ex Lap llegar a la meta en el turno 18, hizo un récord de 1:7:48 (un minuto con siete: ye segundos y cuarenta y ocho centésimas), mejorando así el récord panamericano. Entre los competidores latinoamericanos ón llegó tercero. Nació el 22 de diciembre de 1946 pe Participó en el Kugier Anderson Memorial Tour Humacao, Es hijo de don Eusebio Torres of Somerville. Este evento equivale al Kentucky Custodio y. de doña Gloria González Derby de ciclismo en los Estados Unidos. Tomaron ps "El Gallo", como se le conoce practicó el parte 167 corredores del mundo y Siegried Kock, deporte del ciclismo desde los 14 años. Campeón Nacional de Alemania finalizó primero. Obtuvo una medalla de bronce en los Décimos En el segundo puesto con otro trofeo y una medalla Juegos Centroamericanos y del Caribe a la de plata, quedó Edwin Torres. edad de 17 años. Esta perseverancia en la competencia deportiva En el año 1965 ingresó al ejército. le valió a Edwin ser nombrado como Hombre Joven Participó en varias competencias celebradas Destacado del 1968, por la Cámara de Comercio en Florida y Canadá donde representó al Junior, junto a otros siete jóvenes puertorriqueños.: | | e Ll ñ p.—`,
+      biografia: `Nació el 22 de diciembre de 1946 en Humacao. Es hijo de don Eusebio Torres Custodio y de doña Gloria González.
+
+"El Gallo", como se le conoce, practicó el deporte del ciclismo desde los 14 años.
+
+Obtuvo una medalla de bronce en los Décimos Juegos Centroamericanos y del Caribe a la edad de 17 años.
+
+En el año 1965 ingresó al ejército de los Estados Unidos. Participó en varias competencias celebradas en Florida y Canadá donde representó al ejército de los Estados Unidos. En la competencia de Canadá conocida como el Conteo Olímpico obtuvo medalla de oro.
+
+En 1968, Edwin representó airosamente a Puerto Rico en los Juegos Olímpicos Mundiales en México y llegó a la meta en el número 18. Compitió entre los 42 mejores ciclistas del mundo en el evento de los 1,000 metros contra el reloj. Al llegar a la meta en el turno 18, hizo un récord de 1:07:48 (un minuto con siete segundos y cuarenta y ocho centésimas), mejorando así el récord panamericano. Entre los competidores latinoamericanos llegó tercero.
+
+Participó en el Kugier Anderson Memorial Tour of Somerville. Este evento equivale al Kentucky Derby de ciclismo en los Estados Unidos. Tomaron parte 167 corredores del mundo y Siegfried Kock, Campeón Nacional de Alemania, finalizó primero. En el segundo puesto con otro trofeo y una medalla de plata, quedó Edwin Torres.
+
+Esta perseverancia en la competencia deportiva le valió a Edwin ser nombrado como Hombre Joven Destacado del 1968, por la Cámara de Comercio Junior, junto a otros siete jóvenes puertorriqueños.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -215,7 +237,33 @@ Una vez retirado como jugador, se dedicó a organizar equipos de pequeñas ligas
     paginaInicio: 22,
     paginaFin: 22,
     contenido: {
-      biografia: `Ll LL CUM._ \$. di e! Nació en el vecino pueblo de Yabucoa el primero nacional de P. R. de septiembre del 1944. La ciudad de Humacao le 1998 -Venezuela, Maracaibo entrenador reconoce como hijo adoptivo. partir del 1962 ganó designado su primer título de Campeón Nacional Novicio en Actualmente continúa prestando sus alzadas olímpicas en el peso ligero. Por espacio de servicios como entrenador y Presidente de la 16 años este versátil pesista y fisiculturista logró Liga de Humacao, en el «Club» de Pesas una extensa cadena de victorias en las tres facetas ubicado en el antiguo Parque Jacinto del entrenamiento con pesas: levantamiento Hernández. Ha participado en eventos en: olímpico, alzadas libres y fisicultura. 1979 Puerto Rico San Juan entrenador Ha sido entrenador del Club de Levantamiento 1983 Venezuela Caracas entrenador de Pesas en Humacao, organización deportiva que 1987 Estados Unidos Indianapolis ha presidido por más de 25 años. En su doble entrenador función de presidente y entrenador, ha participado 1991 Cuba Santiago entrenador en el desarrollo y preparación de más de mil Como entrenador del seleccionado pesistas. "Varsity" del Colegio Universitario de Ha participado en los siguientes Juegos Humacao, ha alcanzado excelentes resultados. Centroamericanos y del Caribe: Más de 35 medallas otorgadas a sus pesistas 1970 -Panamá, Ciudad de Panamá universitarios, así lo confirman. Muchos de | Competidor estos pesistas del CUH han llegado a | 1978 -Colombia, Ciudad de Medellín competencias internacionales. entrenador Ha guiado, a la cual conocemos como la | 1982 -Cuba, Santiago de Cuba entrenador Liga de Levantadores de Pesas de Humacao, | 1986 -Rep. Dominicana, Santiago de los a 19 títulos siendo la liga más destacada del Caballeros entrenador y delegado año y ha participado en la preparación física 1990 -México, Ciudad de México y técnica de tres pesistas a Juegos Olímpicos. ' 1993 -Puerto Rico, Ponce delegado y Su larga y fructífera carrera lo han hecho | entrenador merecedor de valiosos reconocimientos en 1997 -Guatemala, Copa Guatemala entrenador fuera de Puerto Rico, he, ue o 1 18 A |`,
+      biografia: `Nació en el vecino pueblo de Yabucoa el primero de septiembre del 1944. La ciudad de Humacao le reconoce como hijo adoptivo. A partir del 1962 ganó su primer título de Campeón Nacional Novicio en alzadas olímpicas en el peso ligero. Por espacio de 16 años este versátil pesista y fisiculturista logró una extensa cadena de victorias en las tres facetas del entrenamiento con pesas: levantamiento olímpico, alzadas libres y fisicultura.
+
+Ha sido entrenador del Club de Levantamiento de Pesas en Humacao, organización deportiva que ha presidido por más de 25 años. En su doble función de presidente y entrenador, ha participado en el desarrollo y preparación de más de mil pesistas.
+
+Ha participado en los siguientes Juegos Centroamericanos y del Caribe:
+- 1970: Panamá, Ciudad de Panamá (competidor)
+- 1978: Colombia, Ciudad de Medellín (entrenador)
+- 1982: Cuba, Santiago de Cuba (entrenador)
+- 1986: República Dominicana, Santiago de los Caballeros (entrenador y delegado)
+- 1990: México, Ciudad de México (entrenador)
+- 1993: Puerto Rico, Ponce (delegado y entrenador)
+- 1997: Guatemala, Copa Guatemala (entrenador)
+- 1998: Venezuela, Maracaibo (entrenador designado nacional de P.R.)
+
+Ha participado en eventos en:
+- 1979: Puerto Rico, San Juan (entrenador)
+- 1983: Venezuela, Caracas (entrenador)
+- 1987: Estados Unidos, Indianapolis (entrenador)
+- 1991: Cuba, Santiago (entrenador)
+
+Como entrenador del seleccionado "Varsity" del Colegio Universitario de Humacao, ha alcanzado excelentes resultados. Más de 35 medallas otorgadas a sus pesistas universitarios, así lo confirman. Muchos de estos pesistas del CUH han llegado a competencias internacionales.
+
+Ha guiado a la Liga de Levantadores de Pesas de Humacao a 19 títulos siendo la liga más destacada del año y ha participado en la preparación física y técnica de tres pesistas a Juegos Olímpicos.
+
+Su larga y fructífera carrera lo han hecho merecedor de valiosos reconocimientos dentro y fuera de Puerto Rico.
+
+Actualmente continúa prestando sus servicios como entrenador y Presidente de la Liga de Humacao, en el Club de Pesas ubicado en el antiguo Parque Jacinto Hernández.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -320,7 +368,36 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
     paginaInicio: 26,
     paginaFin: 26,
     contenido: {
-      biografia: `XX 0 uN Pedro Tolentino ES DS. ¡Ed ss á «Club» de Boxeo de Humacao en las elecciones _—..5 A 4% de la Federación de Boxeo. continuación A o señalamos su participación deportiva: Cs E «Miembro del Comité Organizador del Primer, EA e Segundo y Tercer Torneo Internacional Juan E. e Venegas (1990-93) y del Primer Torneo A Internacional José "Cheo" Aponte Torres en 1997, A, «Juez árbitro y Delegado del equipo de boxeo o representando a Puerto Rico en el Primer Torneo i Internacional Julio Gerlein Comelin en | Barranquilla, Colombia en 1988. «Juez árbitro por Puerto Rico en el Octavo Torneo Internacional Batalla de Carabobo en Puerto Cabello, Venezuela en 1988. «Juez árbitro por Puerto Rico en el Torneo Nació el 22 de febrero de 1932 en Humacao. Internacional Copa Martín Polar en Cumaná, A a 39 Pa ÓN lenezuela en 1988 Practicó el "softball", béisbol y atletismo. Venezuela en 85. le boxe e Cosechó grandes triunfos en el atletismo «Delegado del equipo de ct que ei a »] Dad: 2 2 » 2 Y 2 0 e De | representando a su escuela en la década del 50. Puerto Rico en el dc o A Se destacó en la pértiga, en los relevos de 4 "6tmo en Barquisimeto, Venezuela en |; «Miembro del Comité Organizador del Segundo | 100 mts. y 4 400 mts. Ñ A a | Campeonato Panamericano en Salinas, Puerto Rico | Durante su trayectoria deportiva asume los en 1993, siguientes puestos en organismos que rigen el «Delegado del equipo de boxeo que representó a boxeo: Puerto Rico en el Tercer Campeonato: " Panamericano en Buenos Aires, Argentina en 1994 *Vice-presidente Región Este. ' 4 mb Li 8 «Miembro del Comité Organizador del Quinto «Secretario Región Centro Oriental Campeonato Mundial Juvenil en Bayamón, Puerto ES; ico en 198 «Presidente Región Centro Oriental Rico en 1985. ' al «Delegado del equipo de boxeo representando a «Delegado Región Centro Oriental Puerto Rico en el Séptimo Campeonato Mundial ze o a A 1 2 | «Síndico Región Centro-Sur en Tampere, Finlandia en 1993, | a «Tesorero del Comité Organizador del Torneo Pre- | eSecretario Federación Puertorriqueña de Olímpico de Boxeo Atlanta 96 en Guaynabo, boxeo. Puerto Rico en 1996. »Vice-Presidente Federación Puertorriqueña Delegado del equipo de boxeo que representó a qe Puerto Rico en el Torneo Pre-Olímpico de Boxeo ) | de Boxeo Aficionado. DOM | ab Barcelona 92 en Santo Domingo, República | «Delegado Alterno de la Federación Dominicana en 1992. Puertorriqueña de Boxeo Aficionado en el «Juez árbitro por Puerto Rico en los XI Juegos á | Comité Olímpico de PR. Deportivos Panamericanos celebrados en La | «Secretario-Tesorero del Comité Pro-Rescate Habana, Cuba en 1991, Nm del Boxeo Profesional. «Delegado del equipo de boxeo olímpico que representó a Puerto Rico en los XXV Juegos Es en el boxeo donde cosecha unos logros Olímpicos Mundiales celebrados en Barcelona, extraordinarios destacándose como un dedicado España en 1992, en donde su equipo ganó una propulsor del boxeo para representar con dignidad medalla de bronce, la única que obtuvo Puerto Rico nuestra Ciudad. Incursionó en el Boxeo enestos Juegos. Aficionado en el 1978 como miembro de la: sia e «Director Técnico del De directiva del «Club» de Boxeo de Humacao. En XVI porte: de BOxgo enla 1983, es electo Vice-Presidente de la Región Este II Juegos Deportivos Centroamericanos y del hasta 1984, donde fue delegado votante por el Caribe, Ponce 93. Ed`,
+      biografia: `Nació el 22 de febrero de 1932 en Humacao. Practicó el softball, béisbol y atletismo. Cosechó grandes triunfos en el atletismo representando a su escuela en la década del 50. Se destacó en la pértiga, en los relevos de 4x100 metros y 4x400 metros.
+
+Durante su trayectoria deportiva asume los siguientes puestos en organismos que rigen el boxeo:
+- Vice-presidente Región Este
+- Secretario Región Centro Oriental
+- Presidente Región Centro Oriental
+- Delegado Región Centro Oriental
+- Síndico Región Centro-Sur
+- Secretario Federación Puertorriqueña de Boxeo
+- Vice-Presidente Federación Puertorriqueña de Boxeo Aficionado
+- Delegado Alterno de la Federación Puertorriqueña de Boxeo Aficionado en el Comité Olímpico de PR
+- Secretario-Tesorero del Comité Pro-Rescate del Boxeo Profesional
+
+Es en el boxeo donde cosecha unos logros extraordinarios destacándose como un dedicado propulsor del boxeo para representar con dignidad nuestra Ciudad. Incursionó en el Boxeo Aficionado en el 1978 como miembro de la directiva del Club de Boxeo de Humacao. En 1983, es electo Vice-Presidente de la Región Este hasta 1984, donde fue delegado votante por el Club de Boxeo de Humacao en las elecciones de la Federación de Boxeo.
+
+A continuación señalamos su participación deportiva:
+- Miembro del Comité Organizador del Primer, Segundo y Tercer Torneo Internacional Juan E. Venegas (1990-93) y del Primer Torneo Internacional José "Cheo" Aponte Torres en 1997
+- Juez árbitro y Delegado del equipo de boxeo representando a Puerto Rico en el Primer Torneo Internacional Julio Gerlein Comelin en Barranquilla, Colombia en 1988
+- Juez árbitro por Puerto Rico en el Octavo Torneo Internacional Batalla de Carabobo en Puerto Cabello, Venezuela en 1988
+- Juez árbitro por Puerto Rico en el Torneo Internacional Copa Martín Polar en Cumaná, Venezuela en 1988
+- Delegado del equipo de boxeo que representó a Puerto Rico en el Sexto Campeonato Centroamericano en Barquisimeto, Venezuela en 1985
+- Miembro del Comité Organizador del Segundo Campeonato Panamericano en Salinas, Puerto Rico en 1993
+- Delegado del equipo de boxeo que representó a Puerto Rico en el Tercer Campeonato Panamericano en Buenos Aires, Argentina en 1994
+- Miembro del Comité Organizador del Quinto Campeonato Mundial Juvenil en Bayamón, Puerto Rico en 1985
+- Delegado del equipo de boxeo representando a Puerto Rico en el Séptimo Campeonato Mundial en Tampere, Finlandia en 1993
+- Tesorero del Comité Organizador del Torneo Pre-Olímpico de Boxeo Atlanta 96 en Guaynabo, Puerto Rico en 1996
+- Delegado del equipo de boxeo que representó a Puerto Rico en el Torneo Pre-Olímpico de Boxeo Barcelona 92 en Santo Domingo, República Dominicana en 1992
+- Juez árbitro por Puerto Rico en los XI Juegos Deportivos Panamericanos celebrados en La Habana, Cuba en 1991
+- Delegado del equipo de boxeo olímpico que representó a Puerto Rico en los XXV Juegos Olímpicos Mundiales celebrados en Barcelona, España en 1992, en donde su equipo ganó una medalla de bronce, la única que obtuvo Puerto Rico en estos Juegos
+- Director Técnico del Deporte de Boxeo en los II Juegos Deportivos Centroamericanos y del Caribe, Ponce 93`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -340,7 +417,25 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
     paginaInicio: 27,
     paginaFin: 27,
     contenido: {
-      biografia: `EXALTADOS E os la >? | POSTUMAMENTE a Manuel Rivera Guevara MD ES 7 e a 1 EN ES 4 AP | G« | as os Nació el 5 de enero de 1935 en Las 4X100 y 4X 400 metros. Triunfó en ambos relevos. Piedras. Sus padres fueron don Ramón Rivera Por segunda ocasión obtiene la selección como y doña Amelia Guevara. Vivió en Las Piedras Atleta Más Destacado. hasta la edad de 10 años y luego se trasladó a Humacao. En 1959 participa en los VIII Juegos Estudió en la Escuela Intermedia Juan Centroamericanos en Caracas, Venezuela. Obtuvo Ponce de León donde se destacó a nivel nacional medalla de oro en 100 y 200 metros y en el relevo en la carrera de 100 y 200 mts. En el año 4 por 100 metros. Finaliza la competencia con tres 1954 representó a P. R. en los Juegos medallas de oro y una de plata ganándose la Centroamericanos en México en los eventos de admiración del pueblo venezolano. 100 y 200 metros, y en ambos relevos. Participó en el relevo de 4 400 que obtuvo En el año 1955 tuvo una destacada medalla de bronce en los Juegos Panamericanos participación logrando tiempos de 10.4 en 100 celebrado ese mismo año en Chicago. metros y 21.4 en 200 metros, lo que le valió En 1960 fue seleccionado como el Atleta para consagrase como uno de los atletas más Más Destacado de P. R. por la Administración de destacados de la región panamericana. Parques y Recreo que dirigía Julio Enrique En su primera participación colegial Monagas. como atleta representando a la Universidad En 1961 comienza su carrera cOmO Ia Católica de Ponce ganó 100 y 200 mts tro de Educación Física en la Escuela Superior derrotando a Rubén Díaz y Norberto Cruz, dos Ana Roqué. En 1963 fue reclutado como de los mejores corredores de la época. entrenador para atletas del Colegio Regional de En 1958 pasó a la Universidad de Puerto Humacao por el Prof. Nolan Comas. En 1981 lus Rico y participó en la Justas obteniendo la exaltado al Pabellón de la Fama del Deporte a primera posición en los 100 metros y 200 Puertorriqueño. Falleció el 14 de julio de 1994 Sa ¿8 metros. Además participó en los relevos de Gurabo. «cul`,
+      biografia: `Nació el 5 de enero de 1935 en Las Piedras. Sus padres fueron don Ramón Rivera y doña Amelia Guevara. Vivió en Las Piedras hasta la edad de 10 años y luego se trasladó a Humacao.
+
+Estudió en la Escuela Intermedia Juan Ponce de León donde se destacó a nivel nacional en la carrera de 100 y 200 metros. En el año 1954 representó a Puerto Rico en los Juegos Centroamericanos en México en los eventos de 100 y 200 metros, y en ambos relevos.
+
+En el año 1955 tuvo una destacada participación logrando tiempos de 10.4 en 100 metros y 21.4 en 200 metros, lo que le valió para consagrarse como uno de los atletas más destacados de la región panamericana.
+
+En su primera participación colegial como atleta representando a la Universidad Católica de Ponce ganó 100 y 200 metros derrotando a Rubén Díaz y Norberto Cruz, dos de los mejores corredores de la época.
+
+En 1958 pasó a la Universidad de Puerto Rico y participó en las Justas obteniendo la primera posición en los 100 metros y 200 metros. Además participó en los relevos de 4x100 y 4x400 metros. Triunfó en ambos relevos. Por segunda ocasión obtiene la selección como Atleta Más Destacado.
+
+En 1959 participa en los VIII Juegos Centroamericanos en Caracas, Venezuela. Obtuvo medalla de oro en 100 y 200 metros y en el relevo 4 por 100 metros. Finaliza la competencia con tres medallas de oro y una de plata ganándose la admiración del pueblo venezolano.
+
+Participó en el relevo de 4x400 que obtuvo medalla de bronce en los Juegos Panamericanos celebrado ese mismo año en Chicago.
+
+En 1960 fue seleccionado como el Atleta Más Destacado de Puerto Rico por la Administración de Parques y Recreo que dirigía Julio Enrique Monagas.
+
+En 1961 comienza su carrera como Maestro de Educación Física en la Escuela Superior Ana Roqué. En 1963 fue reclutado como entrenador para atletas del Colegio Regional de Humacao por el Prof. Nolan Comas.
+
+En 1981 fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño. Falleció el 14 de julio de 1994 en Gurabo.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -360,7 +455,17 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
     paginaInicio: 28,
     paginaFin: 28,
     contenido: {
-      biografia: `Pu A A A A TERA AA A 0 AAA 2 >| SS O O ENTIENDA ES PA xx... (O 7 Jacinto Jáyase" Hernánd Fue uno de los más destacados y corpulentos En el 1931 participó con el equipo de peloteros y una de las figuras más querida de la Juncos demostrando su gran calidad de fanaticada humacaeña. Sus kilométricos jonrones jugador excepcional. Conectó un recorrieron los distintos parques de la Isla dándole extraordinario cuadrangular para agenciarse la emoción al deporte del béisbol semi-pro. el campeonato. Durante la temporada de | "Jáyase" perteneció al selecto grupo de Frank 1938-39 a JUSÓ semi, pro con el Hernández, Thomson Carrillo, Camarón Sosa, Pepe "4WIPo de Humacao. Santana, Yayo, Carlos Cartagena, Agapito Jiménez, Se desempeño como alcaide de la Tomás el Chivo y otros deportistas. cárcel de Humacao. El parque atlético de la Para el 1908"Jáyase" fue mascota del primer ciudad lleva su nombre en reconocimiento a! equipo que se organizó en Humacao. Participó con gesta deportiva. Fue exaltado al Pabellón los equipos de Yabucoa, Juncos y Fajardo cuando Ye la Fama del Deporte Puertorriqueño en el Humacao no contaba con un equipo, 1967, 24`,
+      biografia: `Fue uno de los más destacados y corpulentos peloteros y una de las figuras más queridas de la fanaticada humacaeña. Sus kilométricos jonrones recorrieron los distintos parques de la Isla dándole emoción al deporte del béisbol semi-profesional.
+
+"Jáyase" perteneció al selecto grupo de Frank Hernández, Thomson Carrillo, Camarón Sosa, Pepe Santana, Yayo, Carlos Cartagena, Agapito Jiménez, Tomás el Chivo y otros deportistas.
+
+Para el 1908, "Jáyase" fue mascota del primer equipo que se organizó en Humacao. Participó con los equipos de Yabucoa, Juncos y Fajardo cuando Humacao no contaba con un equipo.
+
+En el 1931 participó con el equipo de Juncos demostrando su gran calidad de jugador excepcional. Conectó un extraordinario cuadrangular para agenciarse el campeonato. Durante la temporada de 1938-39 jugó semi-profesional con el equipo de Humacao.
+
+Se desempeñó como alcaide de la cárcel de Humacao. El parque atlético de la ciudad lleva su nombre en reconocimiento a su gesta deportiva.
+
+Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el 1967.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -410,7 +515,21 @@ Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el año 1977
     paginaInicio: 30,
     paginaFin: 30,
     contenido: {
-      biografia: `f Néstor Morales Santiago Es hijo de que jamás podrá doña Elisa Santiago olvidar. Cuando y don Gregorio jugaba en la selección Morales. Nace un sii, E de la COLICEBA, primero de julio de a A fue escogido como el 1941 en el barrio Río jugador más valioso Abajo de Humacao. en el Torneo Mundial gg -— | de la FEMBA en Para el año 1958 de | Italia, donde obtuvo pasa a ser parte 4 e la Triple Corona: integrante del equipo MN campeón bate:.429, Grises Orientales de e e líder en cuadran- Humacao, donde "3 UE gulares: 4, líder en estuvo jugando hasta Y Ey carreras empujadas: el año 1971. En el ud SE 9, bateo acumulado: año 1959 fue 7 DS.893 y líder en dobles proclamado Jugador OS a e con 4. Por su Novato del Año. a de o a magnífica actuación EOL E a recibe el Trofeo El 1964 fue una Pc. SS \$ Roberto Clemente, fecha memorable en " a E » instituído por la su vida como GN; o é Federación Italiana pelotero al ganar la HAHN. NW 0 Fi Ñ Í de Béisbol Afi- Triple Corona: A: 3 JM a E; ] 5 cionado para el líder Campeón en WN/ / E Ds e A del torneo en cuadrangulares, | / E E O 4 cuadrangulares. Fue carreras empujadas y \$ Ñ:;: | ¿ El -—. E Se contra Italia durante en bateo. Y HN ¿DN / la cele-bración del y ES tercer partido que los En el año 1969 italianos lo bauti- participó de la Serie Mundial de Béisbol Aficionado zaron como «El Bambino Boricua «. que se celebró en Santo Domingo. Su bateo en esta serie fue de.373. Jugando para el equipo de Comerío en la Liga Central, impuso una nueva marca al batear dos Ya para el año 1971, logra romper la marca de cuadrangulares en una misma entrada e imponer una cuadrangulares que tenía Guillo Rosado. Ensus doce nueva marca en la COLICEBA al batear cuatro temporadas había logrado 53 cuadrangulares. Durante cuadrangulares en un doble juego. Logra su ansiada los años 1973 a 1975, juega con el equipo de los meta de los 500 incogibles y se convierte en el cuarto Vaqueros de Bayamón donde, en su primera jugador que lo logra en la Federación de Béisbol participación es seleccionado «El Pelotero Cumbre». Aficionado. al ser la figura predominante en las dos importantes victorias de los Vaqueros frente a los Cardenales de Fue dirigente del equipo Taíno de Las Piedras y el Río Piedras en el inicio de la serie final de la sección primer pelotero en llegar a la marca de 100 metropolitana, Bateó.556 (5-9), empujando 6 carreras cuadrangulares y 600 incogibles dentro de la y anotando 2. Entre sus hits figuraron dos Federación. En el año de 1983 fue el apoderado del cuadrangulares. equipo Los Grises de Humacao. Hay muchas emociones y gratos recuerdos en el Fue exaltado al Pabellón de la Fama del corazón y en la memoria de Néstor, Pero existe uno Deporte Puertorriqueño en el 1995, | 26`,
+      biografia: `Es hijo de doña Elisa Santiago y don Gregorio Morales. Nace un primero de julio de 1941 en el barrio Río Abajo de Humacao.
+
+Para el año 1958 pasa a ser parte integrante del equipo Grises Orientales de Humacao, donde estuvo jugando hasta el año 1971. En el año 1959 fue proclamado Jugador Novato del Año.
+
+El 1964 fue una fecha memorable en su vida como pelotero al ganar la Triple Corona: Campeón en cuadrangulares, carreras empujadas y en bateo.
+
+En el año 1969 participó de la Serie Mundial de Béisbol Aficionado que se celebró en Santo Domingo. Su bateo en esta serie fue de .373. Jugando para el equipo de Comerío en la Liga Central, impuso una nueva marca al batear dos cuadrangulares en una misma entrada e imponer una nueva marca en la COLICEBA al batear cuatro cuadrangulares en un doble juego. Logra su ansiada meta de los 500 incogibles y se convierte en el cuarto jugador que lo logra en la Federación de Béisbol Aficionado.
+
+Ya para el año 1971, logra romper la marca de cuadrangulares que tenía Guillo Rosado. En sus doce temporadas había logrado 53 cuadrangulares. Durante los años 1973 a 1975, juega con el equipo de los Vaqueros de Bayamón donde, en su primera participación es seleccionado "El Pelotero Cumbre" al ser la figura predominante en las dos importantes victorias de los Vaqueros frente a los Cardenales de Río Piedras en el inicio de la serie final de la sección metropolitana. Bateó .556 (5-9), empujando 6 carreras y anotando 2. Entre sus hits figuraron dos cuadrangulares.
+
+Fue dirigente del equipo Taíno de Las Piedras y el primer pelotero en llegar a la marca de 100 cuadrangulares y 600 incogibles dentro de la Federación. En el año de 1983 fue el apoderado del equipo Los Grises de Humacao.
+
+Hay muchas emociones y gratos recuerdos en el corazón y en la memoria de Néstor. Pero existe uno que jamás podrá olvidar. Cuando jugaba en la selección de la COLICEBA, fue escogido como el jugador más valioso en el Torneo Mundial de la FEMBA en Italia, donde obtuvo la Triple Corona: campeón bate: .429, líder en cuadrangulares: 4, líder en carreras empujadas: 9, bateo acumulado: .893 y líder en dobles con 4. Por su magnífica actuación recibe el Trofeo Roberto Clemente, instituido por la Federación Italiana de Béisbol Aficionado para el líder del torneo en cuadrangulares. Fue contra Italia durante la celebración del tercer partido que los italianos lo bautizaron como "El Bambino Boricua".
+
+Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el 1995.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -430,7 +549,19 @@ Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el año 1977
     paginaInicio: 31,
     paginaFin: 31,
     contenido: {
-      biografia: `Sn... A E A A "RW «7 Fiat. Ca E: Mo El 25 de noviembre de 1892, en el pueblo Federación de Caballos de Silla de Puerto Rico. De de Las Piedras, nació Manuel Roig Díaz, su famosa crianza se distinguen entre otros, los primogénito de Don Manuel Roig Hernández siguientes ejemplares: Garza, Yegua Sorpresa, y Doña Sixta Díaz. Desde muy tempranaedad Maravilla Jr. Faraón, Conde Danilo, Copa Real y muestra una gran afición por los caballos de Noche Buena Jr. paso fino. Comenzó a practicar este deporte Como hecho insólito, se cuenta que en las en la "Hacienda Mascarbó" propiedad de su competencias estatales en el 1944 ganó 5 trofeos (4 señor padre. Esta gran afición va haciéndose primeros y un tercero.) más profunda al correr de los años; de ahí que Don Manolo, como se le conocía, montó dos de dedique la mayor parte de su vida a la crianza los hijos de Dulce Sueño y varios nietos, Conde de caballos de "Paso Fino" y a fomentar éste Danilo, El Garza, Adonis y Batalla. Decía él, que deporte, "el deporte nacional de Puerto Rico". Dulce Sueño (propiedad de Don Genaro Cautiño) Para el año 1915 ya lidiaba en los concur- fue el caballo más completo que montó. sos de caballos de silla con la flor y nata de Por su esbelta figura y gran destreza en el manejo montadores de todo Puerto Rico que se de las bridas y en dar colorido y elegancia en las reunían en Caguas. De estos podemos Competencias Estatales e Insulares se le menciona | Ñ mencionar a Ventura Fajardo, Ezequiel como «El Caballero de la Brida». | ¡a Y. E CP.. y Mis. Angulo, Sasión Podes. Lale Lugo Er edra, Don Manolo trasmitió a sus hijos sus grandes eN FDI1C 10),.. | EPUARE —DBarH y /0aquin Quiñones conocimientos y habilidades en el deporte de XL larrasquilic, dl des LIA —> ER equitación. ci cio El 2 de marzo de 1943 junto a un grupo e de distinguidos caballeros fundó la ¿il e e 3 EN ss a | ad. ld ] 0 e rá es: eii. 38 5 '. -— ARAN E`,
+      biografia: `El 25 de noviembre de 1892, en el pueblo de Las Piedras, nació Manuel Roig Díaz, primogénito de Don Manuel Roig Hernández y Doña Sixta Díaz. Desde muy temprana edad muestra una gran afición por los caballos de paso fino. Comenzó a practicar este deporte en la "Hacienda Mascarbó" propiedad de su señor padre. Esta gran afición va haciéndose más profunda al correr de los años; de ahí que dedique la mayor parte de su vida a la crianza de caballos de "Paso Fino" y a fomentar éste deporte, "el deporte nacional de Puerto Rico".
+
+Para el año 1915 ya lidiaba en los concursos de caballos de silla con la flor y nata de montadores de todo Puerto Rico que se reunían en Caguas. De estos podemos mencionar a Ventura Fajardo, Ezequiel Angulo, Sasión Podes, Lale Lugo de Piedra, Perucho Flores, Eduardo Baró y Joaquín Quiñones Arrasquillo, además de Luis Arzuaga.
+
+El 2 de marzo de 1943 junto a un grupo de distinguidos caballeros fundó la Federación de Caballos de Silla de Puerto Rico. De su famosa crianza se distinguen entre otros, los siguientes ejemplares: Garza, Yegua Sorpresa, Maravilla Jr., Faraón, Conde Danilo, Copa Real y Noche Buena Jr.
+
+Como hecho insólito, se cuenta que en las competencias estatales en el 1944 ganó 5 trofeos (4 primeros y un tercero).
+
+Don Manolo, como se le conocía, montó dos de los hijos de Dulce Sueño y varios nietos: Conde Danilo, El Garza, Adonis y Batalla. Decía él, que Dulce Sueño (propiedad de Don Genaro Cautiño) fue el caballo más completo que montó.
+
+Por su esbelta figura y gran destreza en el manejo de las bridas y en dar colorido y elegancia en las Competencias Estatales e Insulares se le conoció como "El Caballero de la Brida".
+
+Don Manolo transmitió a sus hijos sus grandes conocimientos y habilidades en el deporte de equitación.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
@@ -534,7 +665,19 @@ Murió luego de una fructífera vida en el 1988.`,
     paginaInicio: 35,
     paginaFin: 35,
     contenido: {
-      biografia: `MÁ | | PE: smael var Cia Perez: ú Ñ Nació en la Barriada La Marina Hijo de Comisión de Clasificación de Boxeadores y del Don Gaspar García y Doña Andreina Pérez. Comité de Disciplina. Produjo alrededor de 17 Estudió en las escuelas Antonia Sáez, Juan Peña campeones nacionales y 47 internacionales. Fue Reyes, Ponce de León y Ana Roqué. un claro ejemplo de la dedicación, perseverancia Desde muy joven participó activamente a excelente pa humano. e y en los deportes particularmente en el boxeo. En Se destacó como líder cívico, social y el año 1967 se inició en la Federación nd e a ) Puertorriqueña de Boxeo Aficionado como En sl uo 63 se inició en la Fraternidad «Junx- PRA A Nin-Vex» entidad que se preocupaba por los Como propulsor del boxeo logró llevar a problemas sociales de ib Ciudad. Con esta Rafael Velázquez en los Jr. Mosca, Andrés Báez organización organizó la primera carrera de larga en los moscas e Hiram Figueroa en los ligeros pp vn pueblo y Ho dos fiestas:. ¿ patronales. Re a la Fre al título nacional en el 1973. Más adelante llevó ces dE caRaciO +3 raternidad PES al centro en los gallos y pluma a Fernando dedicarse a ayudar a jóvenes que practicaban. boxeo. Rivera. F,: En el 1982 tuvo tres internacionales en e el E fundó el a de Atletismo., tal e er mí e y Miguel Olan en la categoría mosca, Efraín RN uego Paro AO:; pe ersonas. Espinosa y a German Díaz en la categoría ligera. É del eta ormó parte e Entrena el 1982 a Fernando Maldonado en los e ps A A Eee aus plumas y Olan en la Copa Mundo de Venezuela. organizó el Festival de Bomba y Plena y Música; Típica en el 1980. Maldonado obtuvo bronce. Un año más tarde Recibió ¡ bl ee k: ' innumerables reconocimien Pancho Rodríguez y Luis F. Ortiz fueron a los Pp ba 3 E y olímpicos en Los Angeles, Ortiz trajo plata entre los que se destaca el de sus compañeros de A Pancho al subcampeonato trabajo en el año 1994 por sus esfuerzos, labor y mundial gallo y trajo medalla de plata del dedicación de 30 años a la policía de Puerto Rico. Mundial de Seúl. Otro de sus pupilos, Santos Murió el 11 de marzo de 1997 dejando un | López, fue titular nacional en la categoría mosca. vacío muy profundo en los amantes del deporte | Por 12 años perteneció a la Junta de y en su pueblo que lo reconoce como uno de sus Directores de la Federación y fue miembro de la más preclaros hijos. | 3 E`,
+      biografia: `Nació en la Barriada La Marina. Es hijo de Don Gaspar García y Doña Andreina Pérez. Estudió en las escuelas Antonia Sáez, Juan Peña Reyes, Ponce de León y Ana Roqué.
+
+Desde muy joven participó activamente en los deportes, particularmente en el boxeo. En el año 1967 se inició en la Federación Puertorriqueña de Boxeo Aficionado como entrenador. En 1963 se inició en la Fraternidad "Junx-Nin-Vex", entidad que se preocupaba por los problemas sociales de la Ciudad. Con esta organización organizó la primera carrera de larga distancia del pueblo y de las dos fiestas patronales. Regresa a la Fraternidad en 1980 a dedicarse a ayudar a jóvenes que practicaban boxeo. En el 1975 fundó el Club de Atletismo.
+
+Como propulsor del boxeo logró llevar a Rafael Velázquez en los Junior Mosca, Andrés Báez en los moscas e Hiram Figueroa en los ligeros al título nacional en el 1973. Más adelante llevó al centro en los gallos y pluma a Fernando Rivera.
+
+En el 1982 tuvo tres internacionales: Efraín Espinosa y Miguel Olan en la categoría mosca, y German Díaz en la categoría ligera. Entrenó en el 1982 a Fernando Maldonado en los plumas y a Olan en la Copa Mundo de Venezuela. Maldonado obtuvo bronce. Un año más tarde Pancho Rodríguez y Luis F. Ortiz fueron a los Juegos Olímpicos en Los Angeles. Ortiz trajo plata. Pancho llegó al subcampeonato mundial de los gallos y trajo medalla de plata del Mundial de Seúl. Otro de sus pupilos, Santos López, fue titular nacional en la categoría mosca.
+
+Por 12 años perteneció a la Junta de Directores de la Federación y fue miembro de la Comisión de Clasificación de Boxeadores y del Comité de Disciplina. Produjo alrededor de 17 campeones nacionales y 47 internacionales. Fue un claro ejemplo de la dedicación, perseverancia y excelente ser humano.
+
+Se destacó como líder cívico, social y deportivo. Organizó el Festival de Bomba y Plena y Música Típica en el 1980. Recibió innumerables reconocimientos, entre los que se destaca el de sus compañeros de trabajo en el año 1994 por sus esfuerzos, labor y dedicación de 30 años a la policía de Puerto Rico.
+
+Murió el 11 de marzo de 1997 dejando un vacío muy profundo en los amantes del deporte y en su pueblo que lo reconoce como uno de sus más preclaros hijos.`,
       logros: [
         // TODO: Extraer logros principales de la biografía
       ],
