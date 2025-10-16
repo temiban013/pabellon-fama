@@ -19,7 +19,7 @@ interface Evento {
   id: string;
   titulo: string;
   descripcion: string;
-  fecha: Date;
+  fecha: string; // ISO date string to prevent hydration issues
   hora: string;
   ubicacion: string;
   tipo: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
@@ -34,7 +34,7 @@ const eventosEjemplo: Evento[] = [
     titulo: "Inauguración Museo Manuel Rivera Guevara",
     descripcion:
       "Ceremonia oficial de inauguración del museo físico en el Centro Cultural Dra. Antonia Sáez.",
-    fecha: new Date(2025, 5, 29), // 29 de junio de 2025
+    fecha: "2025-06-29", // 29 de junio de 2025
     hora: "10:00 AM",
     ubicacion: "Centro Cultural Dra. Antonia Sáez",
     tipo: "especial",
@@ -47,7 +47,7 @@ const eventosEjemplo: Evento[] = [
     titulo: "Visita Guiada Especial",
     descripcion:
       "Tour especial por las nuevas exhibiciones del museo con material exclusivo.",
-    fecha: new Date(2025, 6, 15), // 15 de julio de 2025
+    fecha: "2025-07-15", // 15 de julio de 2025
     hora: "2:00 PM",
     ubicacion: "Museo PFDH",
     tipo: "museo",
@@ -58,7 +58,7 @@ const eventosEjemplo: Evento[] = [
     id: "3",
     titulo: "Reunión Mensual Junta Directiva",
     descripcion: "Reunión ordinaria de la Junta de Directores del PFDH.",
-    fecha: new Date(2025, 7, 10), // 10 de agosto de 2025
+    fecha: "2025-08-10", // 10 de agosto de 2025
     hora: "6:00 PM",
     ubicacion: "Centro Cultural",
     tipo: "reunion",
@@ -68,7 +68,7 @@ const eventosEjemplo: Evento[] = [
     titulo: "Taller Educativo: Historia del Deporte",
     descripcion:
       "Taller interactivo sobre la historia deportiva de Humacao para estudiantes.",
-    fecha: new Date(2025, 7, 22), // 22 de agosto de 2025
+    fecha: "2025-08-22", // 22 de agosto de 2025
     hora: "9:00 AM",
     ubicacion: "Museo PFDH",
     tipo: "educativo",
@@ -80,7 +80,7 @@ const eventosEjemplo: Evento[] = [
     titulo: "IX Ceremonia de Exaltación",
     descripcion:
       "Novena ceremonia de exaltación al Pabellón de la Fama del Deporte Humacaeño.",
-    fecha: new Date(2025, 10, 15), // 15 de noviembre de 2025
+    fecha: "2025-11-15", // 15 de noviembre de 2025
     hora: "7:00 PM",
     ubicacion: "Teatro UPR Humacao",
     tipo: "ceremonia",
@@ -129,6 +129,7 @@ const getIconoEvento = (tipo: string) => {
 
 const EventoCard = ({ evento }: { evento: Evento }) => {
   const IconoEvento = getIconoEvento(evento.tipo);
+  const fechaEvento = new Date(evento.fecha);
 
   return (
     <div
@@ -153,7 +154,7 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
             <div className="text-sm text-gray-600 space-y-1">
               <div className="flex items-center">
                 <Clock className="h-4 w-4 mr-1" />
-                {evento.fecha.toLocaleDateString("es-PR", {
+                {fechaEvento.toLocaleDateString("es-PR", {
                   weekday: "long",
                   year: "numeric",
                   month: "long",
@@ -225,7 +226,7 @@ export default function CalendarioPage() {
       : eventosEjemplo.filter((evento) => evento.tipo === filtroTipo);
 
   const eventosOrdenados = eventosFiltrados.sort(
-    (a, b) => a.fecha.getTime() - b.fecha.getTime()
+    (a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime()
   );
 
   return (
