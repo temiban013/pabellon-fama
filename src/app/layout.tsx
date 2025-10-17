@@ -103,13 +103,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="geo.position" content="18.1500;-65.8333" />
         <meta name="ICBM" content="18.1500, -65.8333" />
 
-        {/* Performance Hints */}
-        <link
-          rel="preload"
-          href="/images/pabellon-logo.png"
-          as="image"
-          type="image/png"
-        />
+        {/* Performance Hints - Preload removed due to unused resource warning */}
         {/* Font preload commented out until we have actual custom fonts
         <link
           rel="preload"

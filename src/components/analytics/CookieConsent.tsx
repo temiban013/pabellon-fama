@@ -11,7 +11,8 @@ interface CookiePreferences {
 }
 
 export default function CookieConsent() {
-  const [showConsent, setShowConsent] = useState(false);
+  // Use null as initial state to prevent hydration mismatch
+  const [showConsent, setShowConsent] = useState<boolean | null>(null);
   const [showDetails, setShowDetails] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
     necessary: true,
@@ -20,10 +21,12 @@ export default function CookieConsent() {
   });
 
   useEffect(() => {
+    // Only run on client-side after hydration
     const consent = Cookies.get(COOKIE_SETTINGS.CONSENT_COOKIE);
     if (!consent) {
       setShowConsent(true);
     } else {
+      setShowConsent(false);
       const savedPreferences = Cookies.get(COOKIE_SETTINGS.PREFERENCES_COOKIE);
       if (savedPreferences) {
         try {
@@ -84,7 +87,8 @@ export default function CookieConsent() {
     }
   };
 
-  if (!showConsent) return null;
+  // Don't render anything until client-side hydration completes
+  if (showConsent !== true) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-pabellon-gold p-4 shadow-lg z-50 animate-slide-up">
