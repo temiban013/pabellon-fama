@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ArrowLeft,
   Calendar as CalendarIcon,
@@ -13,6 +13,7 @@ import {
   Star,
   Trophy,
   BookOpen,
+  Loader2,
 } from "lucide-react";
 
 interface Evento {
@@ -20,75 +21,27 @@ interface Evento {
   titulo: string;
   descripcion: string;
   fecha: string; // ISO date string to prevent hydration issues
-  hora: string;
+  horaInicio: string;
+  horaFin?: string;
   ubicacion: string;
   tipo: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
-  destacado?: boolean;
-  capacidad?: number;
-  requiereReservacion?: boolean;
+  requiresRegistro?: boolean;
+  capacidadMaxima?: number;
 }
 
-const eventosEjemplo: Evento[] = [
-  {
-    id: "1",
-    titulo: "Inauguración Museo Manuel Rivera Guevara",
-    descripcion:
-      "Ceremonia oficial de inauguración del museo físico en el Centro Cultural Dra. Antonia Sáez.",
-    fecha: "2025-06-29", // 29 de junio de 2025
-    hora: "10:00 AM",
-    ubicacion: "Centro Cultural Dra. Antonia Sáez",
-    tipo: "especial",
-    destacado: true,
-    capacidad: 200,
-    requiereReservacion: true,
-  },
-  {
-    id: "2",
-    titulo: "Visita Guiada Especial",
-    descripcion:
-      "Tour especial por las nuevas exhibiciones del museo con material exclusivo.",
-    fecha: "2025-07-15", // 15 de julio de 2025
-    hora: "2:00 PM",
-    ubicacion: "Museo PFDH",
-    tipo: "museo",
-    capacidad: 25,
-    requiereReservacion: true,
-  },
-  {
-    id: "3",
-    titulo: "Reunión Mensual Junta Directiva",
-    descripcion: "Reunión ordinaria de la Junta de Directores del PFDH.",
-    fecha: "2025-08-10", // 10 de agosto de 2025
-    hora: "6:00 PM",
-    ubicacion: "Centro Cultural",
-    tipo: "reunion",
-  },
-  {
-    id: "4",
-    titulo: "Taller Educativo: Historia del Deporte",
-    descripcion:
-      "Taller interactivo sobre la historia deportiva de Humacao para estudiantes.",
-    fecha: "2025-08-22", // 22 de agosto de 2025
-    hora: "9:00 AM",
-    ubicacion: "Museo PFDH",
-    tipo: "educativo",
-    capacidad: 30,
-    requiereReservacion: true,
-  },
-  {
-    id: "5",
-    titulo: "IX Ceremonia de Exaltación",
-    descripcion:
-      "Novena ceremonia de exaltación al Pabellón de la Fama del Deporte Humacaeño.",
-    fecha: "2025-11-15", // 15 de noviembre de 2025
-    hora: "7:00 PM",
-    ubicacion: "Teatro UPR Humacao",
-    tipo: "ceremonia",
-    destacado: true,
-    capacidad: 500,
-    requiereReservacion: true,
-  },
-];
+// API Response type from /api/eventos
+interface EventoAPI {
+  id: string;
+  titulo: string;
+  descripcion: string;
+  fecha: Date;
+  horaInicio: string;
+  horaFin?: string;
+  ubicacion: string;
+  tipo: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
+  requiresRegistro?: boolean;
+  capacidadMaxima?: number;
+}
 
 const tiposEvento = [
   { valor: "todos", label: "Todos los eventos", color: "gray" },
@@ -141,9 +94,7 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
     <div
       className={`bg-white rounded-lg shadow-sm border-l-4 ${getColorEvento(
         evento.tipo
-      )} p-6 hover:shadow-md transition-all duration-300 ${
-        evento.destacado ? "ring-2 ring-orange-200" : ""
-      }`}
+      )} p-6 hover:shadow-md transition-all duration-300`}
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start">
@@ -153,9 +104,6 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
           <div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">
               {evento.titulo}
-              {evento.destacado && (
-                <Star className="inline h-4 w-4 ml-2 text-orange-500 fill-current" />
-              )}
             </h3>
             <div className="text-sm text-gray-600 space-y-1">
               <div className="flex items-center">
@@ -166,7 +114,8 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
                   month: "long",
                   day: "numeric",
                 })}{" "}
-                - {evento.hora}
+                - {evento.horaInicio}
+                {evento.horaFin && ` - ${evento.horaFin}`}
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-1" />
@@ -197,20 +146,20 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
 
       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
         <div className="flex items-center space-x-4 text-sm text-gray-600">
-          {evento.capacidad && (
+          {evento.capacidadMaxima && (
             <div className="flex items-center">
               <Users className="h-4 w-4 mr-1" />
-              Capacidad: {evento.capacidad}
+              Capacidad: {evento.capacidadMaxima}
             </div>
           )}
-          {evento.requiereReservacion && (
+          {evento.requiresRegistro && (
             <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">
               Requiere reservación
             </span>
           )}
         </div>
 
-        {evento.requiereReservacion && (
+        {evento.requiresRegistro && (
           <a
             href="tel:787-410-1237"
             className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
@@ -225,11 +174,60 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
 
 export default function CalendarioPage() {
   const [filtroTipo, setFiltroTipo] = useState("todos");
+  const [eventos, setEventos] = useState<Evento[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch events from Google Calendar API
+  useEffect(() => {
+    async function fetchEventos() {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/eventos?mode=upcoming&maxResults=50');
+
+        if (!response.ok) {
+          throw new Error('Error al cargar eventos');
+        }
+
+        const data = await response.json();
+
+        if (data.success && data.data) {
+          // Transform API response to component format
+          const eventosTransformados: Evento[] = (data.data as EventoAPI[]).map((evento) => ({
+            id: evento.id,
+            titulo: evento.titulo,
+            descripcion: evento.descripcion,
+            fecha: new Date(evento.fecha).toISOString().split('T')[0], // Convert to YYYY-MM-DD
+            horaInicio: evento.horaInicio,
+            horaFin: evento.horaFin,
+            ubicacion: evento.ubicacion,
+            tipo: evento.tipo,
+            requiresRegistro: evento.requiresRegistro,
+            capacidadMaxima: evento.capacidadMaxima,
+          }));
+
+          setEventos(eventosTransformados);
+        } else {
+          setEventos([]);
+        }
+      } catch (err) {
+        console.error('Error fetching eventos:', err);
+        setError(err instanceof Error ? err.message : 'Error desconocido');
+        setEventos([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEventos();
+  }, []);
 
   const eventosFiltrados =
     filtroTipo === "todos"
-      ? eventosEjemplo
-      : eventosEjemplo.filter((evento) => evento.tipo === filtroTipo);
+      ? eventos
+      : eventos.filter((evento) => evento.tipo === filtroTipo);
 
   const eventosOrdenados = eventosFiltrados.sort(
     (a, b) => parseDateLocal(a.fecha).getTime() - parseDateLocal(b.fecha).getTime()
@@ -287,44 +285,66 @@ export default function CalendarioPage() {
           </div>
         </div>
 
-        {/* Evento Destacado */}
-        {eventosOrdenados.find((e) => e.id === "5") && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              🌟 Próximo Evento Destacado
-            </h2>
-            <EventoCard evento={eventosOrdenados.find((e) => e.id === "5")!} />
+        {/* Loading State */}
+        {loading && (
+          <div className="flex flex-col items-center justify-center py-12">
+            <Loader2 className="h-12 w-12 text-blue-600 animate-spin mb-4" />
+            <p className="text-gray-600">Cargando eventos...</p>
           </div>
         )}
 
-        {/* Lista de Eventos */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Todos los Eventos
-          </h2>
+        {/* Error State */}
+        {error && !loading && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold text-red-900 mb-2">
+              Error al cargar eventos
+            </h3>
+            <p className="text-red-700">{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+            >
+              Reintentar
+            </button>
+          </div>
+        )}
 
-          {eventosOrdenados.length > 0 ? (
-            <div className="space-y-6">
-              {eventosOrdenados.map((evento) => (
-                <EventoCard key={evento.id} evento={evento} />
-              ))}
+        {/* Eventos Content */}
+        {!loading && !error && (
+          <>
+            {/* Lista de Eventos */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {filtroTipo === "todos" ? "Todos los Eventos" : tiposEvento.find(t => t.valor === filtroTipo)?.label}
+              </h2>
+
+              {eventosOrdenados.length > 0 ? (
+                <div className="space-y-6">
+                  {eventosOrdenados.map((evento) => (
+                    <EventoCard key={evento.id} evento={evento} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <CalendarIcon className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    No hay eventos programados
+                  </h3>
+                  <p className="text-gray-600">
+                    {filtroTipo === "todos"
+                      ? "No hay eventos programados actualmente en el calendario de pabellonfdh@gmail.com."
+                      : `No hay eventos de tipo "${
+                          tiposEvento.find((t) => t.valor === filtroTipo)?.label
+                        }" programados.`}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Los eventos se cargan desde Google Calendar en tiempo real.
+                  </p>
+                </div>
+              )}
             </div>
-          ) : (
-            <div className="text-center py-12">
-              <CalendarIcon className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
-                No hay eventos programados
-              </h3>
-              <p className="text-gray-600">
-                {filtroTipo === "todos"
-                  ? "No hay eventos programados actualmente."
-                  : `No hay eventos de tipo "${
-                      tiposEvento.find((t) => t.valor === filtroTipo)?.label
-                    }" programados.`}
-              </p>
-            </div>
-          )}
-        </div>
+          </>
+        )}
 
         {/* Información de contacto */}
         <div className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg p-8">
