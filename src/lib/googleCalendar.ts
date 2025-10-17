@@ -189,6 +189,7 @@ function transformGoogleEventToEvento(
         hour: "2-digit",
         minute: "2-digit",
         hour12: true,
+        timeZone: "America/Puerto_Rico",
       })
     : "Todo el día";
 
@@ -197,6 +198,7 @@ function transformGoogleEventToEvento(
         hour: "2-digit",
         minute: "2-digit",
         hour12: true,
+        timeZone: "America/Puerto_Rico",
       })
     : undefined;
 
