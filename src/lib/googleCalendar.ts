@@ -79,8 +79,11 @@ function extractMetadata(description: string = ""): EventoMetadata {
   if (metadataMatch) {
     const metadataBlock = metadataMatch[1];
 
-    // Parsear cada línea del bloque
-    const lines = metadataBlock.split("\n");
+    // Parsear usando comas O saltos de línea (Google Calendar a veces elimina los saltos)
+    // Primero intentar separar por saltos de línea, si no hay, usar comas
+    const separator = metadataBlock.includes("\n") ? "\n" : ",";
+    const lines = metadataBlock.split(separator);
+
     lines.forEach((line) => {
       const [key, value] = line.split(":").map((s) => s.trim());
 
@@ -94,16 +97,18 @@ function extractMetadata(description: string = ""): EventoMetadata {
                 "educativo",
                 "especial",
                 "reunion",
-              ].includes(value)
+              ].includes(value.toLowerCase())
             ) {
-              metadata.tipo = value as EventoMetadata["tipo"];
+              metadata.tipo = value.toLowerCase() as EventoMetadata["tipo"];
             }
             break;
           case "capacidad":
+          case "capacidadmaxima":
             metadata.capacidad = parseInt(value, 10);
             break;
           case "requierereservacion":
           case "requiere_reservacion":
+          case "requiereregistro":
             metadata.requiereReservacion = value.toLowerCase() === "true";
             break;
           case "destacado":
