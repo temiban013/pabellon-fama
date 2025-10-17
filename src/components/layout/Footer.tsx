@@ -6,7 +6,8 @@ interface FooterProps {
 }
 
 export function Footer({ className = "" }: FooterProps) {
-  const currentYear = new Date().getFullYear();
+  // Use static year to prevent hydration mismatch
+  const currentYear = 2025;
 
   const footerSections = [
     {

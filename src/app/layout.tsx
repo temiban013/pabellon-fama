@@ -168,10 +168,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </Suspense>
         <CookieConsent />
 
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager - using lazyOnload to prevent hydration mismatch */}
         <Script
           id="gtm-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

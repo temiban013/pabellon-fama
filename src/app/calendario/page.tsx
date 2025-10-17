@@ -127,9 +127,15 @@ const getIconoEvento = (tipo: string) => {
   }
 };
 
+// Parse date string in local timezone to prevent timezone shift issues
+const parseDateLocal = (dateString: string): Date => {
+  const [year, month, day] = dateString.split("-").map(Number);
+  return new Date(year, month - 1, day); // month is 0-indexed
+};
+
 const EventoCard = ({ evento }: { evento: Evento }) => {
   const IconoEvento = getIconoEvento(evento.tipo);
-  const fechaEvento = new Date(evento.fecha);
+  const fechaEvento = parseDateLocal(evento.fecha);
 
   return (
     <div
@@ -226,7 +232,7 @@ export default function CalendarioPage() {
       : eventosEjemplo.filter((evento) => evento.tipo === filtroTipo);
 
   const eventosOrdenados = eventosFiltrados.sort(
-    (a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime()
+    (a, b) => parseDateLocal(a.fecha).getTime() - parseDateLocal(b.fecha).getTime()
   );
 
   return (
