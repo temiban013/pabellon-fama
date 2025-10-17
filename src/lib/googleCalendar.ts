@@ -118,10 +118,25 @@ function extractMetadata(description: string = ""): EventoMetadata {
 }
 
 /**
- * Limpia la descripción removiendo el bloque de metadata
+ * Limpia la descripción removiendo el bloque de metadata y HTML tags
  */
 function cleanDescription(description: string = ""): string {
-  return description.replace(/---METADATA---\s*[\s\S]*?\s*---/i, "").trim();
+  // Remover bloque de metadata
+  let cleaned = description.replace(/---METADATA---\s*[\s\S]*?\s*---/i, "");
+
+  // Remover HTML tags (Google Calendar a veces formatea con HTML)
+  cleaned = cleaned.replace(/<[^>]*>/g, "");
+
+  // Decodificar entidades HTML comunes
+  cleaned = cleaned
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+
+  return cleaned.trim();
 }
 
 /**
