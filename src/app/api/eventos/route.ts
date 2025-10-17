@@ -13,7 +13,7 @@ const corsHeaders = {
     process.env.NODE_ENV === "production" ? "https://pabellon.org" : "*",
   "Access-Control-Allow-Methods": "GET, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
-  "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600", // Cache por 5 minutos
+  "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120", // Cache por 1 minuto
   "X-Content-Type-Options": "nosniff",
 };
 
