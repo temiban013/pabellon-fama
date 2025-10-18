@@ -214,7 +214,7 @@ export default function HorarioContactoPage() {
                     </p>
                     <p className="text-sm text-blue-700 mt-1">
                       Para grupos de 10 o más personas, se recomienda hacer
-                      reservación previa llamando al 787-410-1237 o escribiendo a informa@pfdh.org.
+                      reservación previa llamando al 787-410-1237 / 939-529-5732 o escribiendo a informa@pfdh.org.
                     </p>
                   </div>
                 </div>
@@ -270,6 +270,7 @@ export default function HorarioContactoPage() {
             titulo="Reservaciones y Consultas"
             contenido={[
               "📞 787-410-1237",
+              "📞 939-529-5732",
               "✉️ informa@pfdh.org"
             ]}
             icono={Phone}
@@ -285,6 +286,7 @@ export default function HorarioContactoPage() {
             contenido={[
               "Centro Cultural Dra. Antonia Sáez",
               "Humacao, Puerto Rico",
+              "P.O. Box 9078, Humacao, PR 00792",
             ]}
             icono={MapPin}
             color="orange"
@@ -372,6 +374,7 @@ export default function HorarioContactoPage() {
                     Centro Cultural Dra. Antonia Sáez
                   </p>
                   <p className="text-gray-500 text-sm">Humacao, Puerto Rico</p>
+                  <p className="text-gray-500 text-sm">P.O. Box 9078, Humacao, PR 00792</p>
                   <p className="text-gray-500 text-xs mt-2">
                     (Mapa interactivo disponible próximamente)
                   </p>

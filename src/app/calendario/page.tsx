@@ -362,12 +362,20 @@ export default function CalendarioPage() {
                 <p className="text-gray-600 mb-4">
                   Para eventos que requieren reservación
                 </p>
-                <a
-                  href="tel:787-410-1237"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
-                >
-                  787-410-1237
-                </a>
+                <div className="space-y-1">
+                  <a
+                    href="tel:787-410-1237"
+                    className="block text-blue-600 hover:text-blue-800 font-semibold"
+                  >
+                    787-410-1237
+                  </a>
+                  <a
+                    href="tel:939-529-5732"
+                    className="block text-blue-600 hover:text-blue-800 font-semibold"
+                  >
+                    939-529-5732
+                  </a>
+                </div>
                 <p className="text-gray-600 mt-2 text-sm">
                   informa@pfdh.org
                 </p>
@@ -383,8 +391,11 @@ export default function CalendarioPage() {
                 <p className="text-gray-600 mb-2">
                   Solicita eventos privados o educativos
                 </p>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 text-sm mb-2">
                   Centro Cultural Antonia Sáez
+                </p>
+                <p className="text-gray-600 text-sm mb-4">
+                  P.O. Box 9078, Humacao, PR 00792
                 </p>
                 <p className="text-gray-800 font-semibold">
                   Lunes a Viernes, 8:00 AM - 4:00 PM

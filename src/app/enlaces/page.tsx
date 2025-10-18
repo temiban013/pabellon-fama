@@ -10,6 +10,7 @@ import {
   Camera,
   Award,
   Clock,
+  Youtube,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -84,6 +85,18 @@ const recursosEnlaces: RecursoEnlace[] = [
     activo: true,
     destacado: true,
     contenidoEspecial: "8 revistas oficiales con 81 biografías de exaltados",
+  },
+  {
+    id: "youtube-channel",
+    titulo: "Canal de YouTube Oficial",
+    descripcion:
+      "Contenido audiovisual del Pabellón de la Fama del Deporte Humacaeño con entrevistas, eventos y documentación histórica.",
+    url: "https://www.youtube.com/@PabellonFDH",
+    tipo: "video",
+    icono: Youtube,
+    activo: true,
+    destacado: true,
+    contenidoEspecial: "Videos de eventos, entrevistas y contenido histórico",
   },
 ];
 
@@ -279,13 +292,16 @@ export default function EnlacesPage() {
               </h3>
               <div className="space-y-3 text-gray-700">
                 <p className="text-center">
-                  <strong>Teléfono:</strong> 787-410-1237
+                  <strong>Teléfono:</strong> 787-410-1237 / 939-529-5732
                 </p>
                 <p className="text-center">
                   <strong>Email:</strong> informa@pfdh.org
                 </p>
                 <p className="text-center">
-                  <strong>Ubicación:</strong> Centro Cultural Antonia Sáez
+                  <strong>Ubicación:</strong> Centro Cultural Antonia Sáez, Humacao, PR
+                </p>
+                <p className="text-center">
+                  <strong>Dirección Postal:</strong> P.O. Box 9078, Humacao, PR 00792
                 </p>
                 <p className="text-center">
                   <strong>Horario:</strong> Lunes a Viernes, 8:00 AM - 4:00 PM

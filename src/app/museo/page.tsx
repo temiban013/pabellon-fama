@@ -235,9 +235,7 @@ export default function MuseoPage() {
                   <span className="font-medium text-pabellon-green-700">
                     Sábados
                   </span>
-                  <span className="text-pabellon-green-600">
-                    10:00 AM - 2:00 PM
-                  </span>
+                  <span className="text-red-600">Cerrado</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-200">
                   <span className="font-medium text-pabellon-green-700">
@@ -281,6 +279,8 @@ export default function MuseoPage() {
                     Centro Cultural Dra. Antonia Sáez
                     <br />
                     Humacao, Puerto Rico 00791
+                    <br />
+                    P.O. Box 9078, Humacao, PR 00792
                   </p>
                 </div>
 
@@ -289,7 +289,7 @@ export default function MuseoPage() {
                     Contacto
                   </h4>
                   <p className="text-pabellon-green-600">
-                    📞 (787) 410-1237<br/>
+                    📞 (787) 410-1237 / (939) 529-5732<br/>
                     ✉️ informa@pfdh.org
                   </p>
                 </div>

@@ -14,6 +14,7 @@ export function Footer({ className = "" }: FooterProps) {
       title: "Pabellón de la Fama",
       links: [
         { name: "Directorio de Exaltados", href: "/directorio" },
+        { name: "Museo Virtual", href: "/museo" },
         { name: "Historia", href: "/historia" },
         { name: "Junta de Directores", href: "/junta" },
         { name: "Calendario", href: "/calendario" },
@@ -98,7 +99,8 @@ export function Footer({ className = "" }: FooterProps) {
               </h4>
               <div className="space-y-2 text-pabellon-green-200 text-sm">
                 <p>📍 Centro Cultural Antonia Sáez, Humacao, Puerto Rico</p>
-                <p>📞 (787) 410-1237</p>
+                <p>📮 P.O. Box 9078, Humacao, PR 00792</p>
+                <p>📞 (787) 410-1237 / (939) 529-5732</p>
                 <p>✉️ informa@pfdh.org</p>
               </div>
             </div>
@@ -107,7 +109,7 @@ export function Footer({ className = "" }: FooterProps) {
               <h4 className="text-lg font-semibold mb-3 text-pabellon-gold-400">
                 Síguenos
               </h4>
-              <div className="flex space-x-4">
+              <div className="flex flex-col space-y-2">
                 <a
                   href="https://pabellonfdh.blogspot.com"
                   target="_blank"
@@ -116,6 +118,15 @@ export function Footer({ className = "" }: FooterProps) {
                   aria-label="Blog Oficial"
                 >
                   📝 Blog Oficial
+                </a>
+                <a
+                  href="https://www.youtube.com/@PabellonFDH"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pabellon-green-200 hover:text-pabellon-gold-300 transition-colors"
+                  aria-label="Canal de YouTube"
+                >
+                  ▶️ YouTube
                 </a>
               </div>
             </div>

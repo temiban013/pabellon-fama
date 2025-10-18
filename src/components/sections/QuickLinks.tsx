@@ -4,6 +4,7 @@ import {
   ClockIcon,
   NewspaperIcon,
   ArrowTopRightOnSquareIcon,
+  PlayCircleIcon,
 } from "@heroicons/react/24/outline";
 
 interface QuickLinkItem {
@@ -60,6 +61,19 @@ const quickLinks: QuickLinkItem[] = [
     textColor: "text-pabellon-gold-800",
     hoverTextColor: "group-hover:text-pabellon-gold-900",
   },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@PabellonFDH",
+    description: "Videos, entrevistas y contenido histórico",
+    icon: PlayCircleIcon,
+    external: true,
+    bgGradient: "from-red-50 to-red-100",
+    borderColor: "border-red-200",
+    iconColor: "text-red-700",
+    hoverIconColor: "group-hover:text-pabellon-gold-600",
+    textColor: "text-red-800",
+    hoverTextColor: "group-hover:text-red-900",
+  },
 ];
 
 interface QuickLinksProps {
@@ -85,7 +99,7 @@ export function QuickLinks({ className = "" }: QuickLinksProps) {
         </div>
 
         {/* Grid de enlaces rápidos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {quickLinks.map((link, index) => {
             const LinkComponent = link.external ? "a" : Link;
             const linkProps = link.external

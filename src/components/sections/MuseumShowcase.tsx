@@ -27,9 +27,9 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
 
         {/* Imagen real del museo */}
         <div className="relative max-w-5xl mx-auto">
-          <div className="relative group">
+          <Link href="/museo" className="relative group block cursor-pointer">
             {/* Contenedor de la imagen con sombra y bordes */}
-            <div className="bg-white p-4 rounded-2xl shadow-2xl border border-pabellon-gold-200">
+            <div className="bg-white p-4 rounded-2xl shadow-2xl border border-pabellon-gold-200 transition-all duration-300 group-hover:shadow-3xl group-hover:border-pabellon-gold-400">
               {/* Imagen real del museo */}
               <div className="relative aspect-video rounded-lg overflow-hidden">
                 <Image
@@ -46,9 +46,16 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
                   <span className="block">Museo Manuel</span>
                   <span className="block">Rivera Guevara</span>
                 </div>
+
+                {/* Hover overlay para indicar que es clickeable */}
+                <div className="absolute inset-0 bg-pabellon-green-900 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white px-4 py-2 rounded-lg shadow-lg">
+                    <span className="text-pabellon-green-800 font-semibold">Ver Museo Virtual</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Información del museo */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">

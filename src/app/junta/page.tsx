@@ -255,12 +255,20 @@ export default function JuntaDirectoresPage() {
                 <p className="text-gray-600 mb-2">
                   Para coordinar reuniones o visitas oficiales
                 </p>
-                <a
-                  href="tel:787-410-1237"
-                  className="text-blue-600 hover:text-blue-800 font-semibold text-lg block"
-                >
-                  787-410-1237
-                </a>
+                <div className="space-y-1">
+                  <a
+                    href="tel:787-410-1237"
+                    className="text-blue-600 hover:text-blue-800 font-semibold text-lg block"
+                  >
+                    787-410-1237
+                  </a>
+                  <a
+                    href="tel:939-529-5732"
+                    className="text-blue-600 hover:text-blue-800 font-semibold text-lg block"
+                  >
+                    939-529-5732
+                  </a>
+                </div>
                 <a
                   href="mailto:informa@pfdh.org"
                   className="text-blue-600 hover:text-blue-800 font-medium mt-2 block"
@@ -278,6 +286,9 @@ export default function JuntaDirectoresPage() {
                 </h3>
                 <p className="text-gray-600 mb-2">
                   Centro Cultural Antonia Sáez
+                </p>
+                <p className="text-gray-600 mb-2">
+                  P.O. Box 9078, Humacao, PR 00792
                 </p>
                 <p className="text-gray-600 mb-2">
                   Horario de oficina: Lunes a Viernes
