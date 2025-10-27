@@ -53,6 +53,12 @@ next-env.d.ts
 /temp/
 /tmp/
 
+# Historical magazine scans (large JPEG files)
+/historical/
+
+# Archive/Backups (old docs and configs)
+.archive/
+
 # Claude
 .claude/
 .project/

@@ -1,28 +1,106 @@
-// app/api/registro/route.ts - Enhanced with admin support
+// app/api/registro/route.ts - Simplified with Resend email integration
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, readFile, mkdir } from "fs/promises";
-import { existsSync } from "fs";
-import path from "path";
+import { Resend } from "resend";
 import { validateRegistroApi } from "@/lib/validations";
 import { type RegistroUsuario } from "@/lib/types";
+
+// Initialize Resend client
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Rate limiting storage (in-memory, resets on deployment)
+// For production with multiple instances, use Redis or Vercel KV
+const rateLimits = new Map<
+  string,
+  { count: number; resetAt: number; firstAttempt: number }
+>();
+
+// Rate limit configuration
+const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
+const RATE_LIMIT_MAX_REQUESTS = 5; // Max 5 requests per window
+const RATE_LIMIT_CLEANUP_INTERVAL = 10 * 60 * 1000; // Clean up every 10 minutes
+
+// Cleanup old rate limit entries periodically
+let lastCleanup = Date.now();
+function cleanupRateLimits() {
+  const now = Date.now();
+  if (now - lastCleanup < RATE_LIMIT_CLEANUP_INTERVAL) return;
+
+  lastCleanup = now;
+  for (const [key, limit] of rateLimits.entries()) {
+    if (limit.resetAt < now) {
+      rateLimits.delete(key);
+    }
+  }
+}
+
+// Check rate limit for IP address
+function checkRateLimit(ip: string): {
+  allowed: boolean;
+  remaining: number;
+  resetAt: number;
+} {
+  cleanupRateLimits();
+
+  const now = Date.now();
+  const limit = rateLimits.get(ip);
+
+  // No previous requests or window expired
+  if (!limit || limit.resetAt < now) {
+    const resetAt = now + RATE_LIMIT_WINDOW;
+    rateLimits.set(ip, { count: 1, resetAt, firstAttempt: now });
+    return {
+      allowed: true,
+      remaining: RATE_LIMIT_MAX_REQUESTS - 1,
+      resetAt,
+    };
+  }
+
+  // Within rate limit
+  if (limit.count < RATE_LIMIT_MAX_REQUESTS) {
+    limit.count++;
+    return {
+      allowed: true,
+      remaining: RATE_LIMIT_MAX_REQUESTS - limit.count,
+      resetAt: limit.resetAt,
+    };
+  }
+
+  // Rate limit exceeded
+  return {
+    allowed: false,
+    remaining: 0,
+    resetAt: limit.resetAt,
+  };
+}
+
+// Get client IP address
+function getClientIp(request: NextRequest): string {
+  // Check various headers for IP (Vercel provides these)
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const realIp = request.headers.get("x-real-ip");
+  const cfConnectingIp = request.headers.get("cf-connecting-ip"); // Cloudflare
+
+  if (forwardedFor) {
+    // x-forwarded-for can be a comma-separated list, take the first one
+    return forwardedFor.split(",")[0].trim();
+  }
+
+  if (realIp) return realIp;
+  if (cfConnectingIp) return cfConnectingIp;
+
+  return "unknown";
+}
 
 // Headers para CORS y seguridad
 const corsHeaders = {
   "Access-Control-Allow-Origin":
     process.env.NODE_ENV === "production" ? "https://pabellon.org" : "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
   "Cache-Control": "no-store, max-age=0",
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
 };
-
-// Configuración de archivos
-const DATA_DIR = path.join(process.cwd(), "data");
-const REGISTRATIONS_FILE = path.join(DATA_DIR, "registraciones.json");
-
-// Clave administrativa (en producción debería estar en env variables)
-const ADMIN_KEY = process.env.ADMIN_KEY;
 
 // Función helper para respuestas de error
 function errorResponse(error: string, status: number = 400): NextResponse {
@@ -39,180 +117,234 @@ function successResponse(
 ): NextResponse {
   return NextResponse.json(
     { success: true, data, message },
-    { status: data === null ? 200 : 201, headers: corsHeaders }
+    { status: 201, headers: corsHeaders }
   );
 }
 
-// Función para asegurar que existe el directorio de datos
-async function ensureDataDirectory() {
-  if (!existsSync(DATA_DIR)) {
-    await mkdir(DATA_DIR, { recursive: true });
-  }
+// Función para escapar HTML y prevenir XSS
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
-// Función para leer registraciones existentes
-async function readExistingRegistrations(): Promise<RegistroUsuario[]> {
-  try {
-    if (!existsSync(REGISTRATIONS_FILE)) {
-      return [];
-    }
-    const data = await readFile(REGISTRATIONS_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Error leyendo registraciones:", error);
-    return [];
-  }
-}
+// Función para enviar email de notificación via Resend
+async function sendRegistrationEmail(
+  userData: Omit<RegistroUsuario, "id" | "fechaRegistro" | "activo">
+): Promise<void> {
+  const timestamp = new Date().toLocaleString("es-PR", {
+    timeZone: "America/Puerto_Rico",
+    dateStyle: "long",
+    timeStyle: "short",
+  });
 
-// Función para generar estadísticas
-function generateStatistics(registrations: RegistroUsuario[]) {
-  const now = new Date();
-  const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const oneMonthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-
-  // Contar por tipo de interés
-  const porInteres = registrations.reduce((acc, reg) => {
-    acc[reg.interes] = (acc[reg.interes] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
-
-  // Contar por fecha
-  const ultimaSemana = registrations.filter(
-    (reg) => reg.fechaRegistro && new Date(reg.fechaRegistro) >= oneWeekAgo
-  ).length;
-
-  const ultimoMes = registrations.filter(
-    (reg) => reg.fechaRegistro && new Date(reg.fechaRegistro) >= oneMonthAgo
-  ).length;
-
-  return {
-    total: registrations.length,
-    porInteres,
-    ultimaSemana,
-    ultimoMes,
-  };
-}
-
-// Función para verificar autenticación admin
-function verifyAdminAuth(request: NextRequest): boolean {
-  const key = request.nextUrl.searchParams.get("key");
-  return key === ADMIN_KEY;
-}
-
-// Función para guardar registración en archivo JSON
-async function saveToJsonFile(
-  userData: RegistroUsuario
-): Promise<RegistroUsuario> {
-  try {
-    await ensureDataDirectory();
-
-    // Leer registraciones existentes
-    const existingRegistrations = await readExistingRegistrations();
-
-    // Verificar si el email ya existe
-    const emailExists = existingRegistrations.some(
-      (reg) => reg.email === userData.email
-    );
-    if (emailExists) {
-      throw new Error("Este email ya está registrado");
-    }
-
-    // Crear nueva registración
-    const newRegistration: RegistroUsuario = {
-      id: `reg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      ...userData,
-      fechaRegistro: new Date(),
-      activo: true,
-    };
-
-    // Agregar a la lista
-    existingRegistrations.push(newRegistration);
-
-    // Guardar en archivo
-    await writeFile(
-      REGISTRATIONS_FILE,
-      JSON.stringify(existingRegistrations, null, 2),
-      "utf-8"
-    );
-
-    // Log para verificación
-    console.log("🎯 NUEVA REGISTRACIÓN GUARDADA:", {
-      timestamp: newRegistration.fechaRegistro?.toISOString(),
-      email: newRegistration.email,
-      nombre: newRegistration.nombre,
-      interes: newRegistration.interes,
-      id: newRegistration.id,
-      archivo: REGISTRATIONS_FILE,
-    });
-
-    return newRegistration;
-  } catch (error) {
-    console.error("❌ Error guardando registración:", error);
-    throw error;
-  }
-}
-
-// Función para enviar email de confirmación (mejorada)
-async function sendConfirmationEmail(userData: RegistroUsuario): Promise<void> {
-  // TODO: Implementar servicio de email real (SendGrid, Resend, etc.)
-
-  const emailContent = {
-    to: userData.email,
-    subject: "Bienvenido al Pabellón de la Fama del Deporte Humacaeño",
-    html: `
-      <h2>¡Bienvenido ${userData.nombre}!</h2>
-      <p>Gracias por registrarte en el Pabellón de la Fama del Deporte Humacaeño.</p>
-      <p><strong>Tus datos de registro:</strong></p>
-      <ul>
-        <li>Email: ${userData.email}</li>
-        <li>Tipo de interés: ${userData.interes}</li>
-        <li>Fecha de registro: ${userData.fechaRegistro?.toLocaleDateString(
-          "es-PR"
-        )}</li>
-      </ul>
-      <p>Te mantendremos informado sobre nuestras actividades y eventos.</p>
-      <hr>
-      <p><em>Pabellón de la Fama del Deporte Humacaeño - Museo Manuel Rivera Guevara</em></p>
-    `,
+  // Map interest types to Spanish labels
+  const interesLabels: Record<string, string> = {
+    general: "Interés General",
+    visitante: "Visitante del Museo",
+    investigador: "Investigador/Estudiante",
+    voluntario: "Voluntario",
   };
 
-  console.log("📧 EMAIL DE CONFIRMACIÓN (Simulado):", emailContent);
+  const interesLabel = interesLabels[userData.interes] || userData.interes;
 
-  // En producción, aquí irían servicios como:
-  // - SendGrid: await sgMail.send(emailContent)
-  // - Resend: await resend.emails.send(emailContent)
-  // - Nodemailer: await transporter.sendMail(emailContent)
+  // Escape all user input to prevent XSS
+  const safeNombre = userData.nombre ? escapeHtml(userData.nombre) : "Usuario";
+  const safeEmail = escapeHtml(userData.email);
+  const safeTelefono = userData.telefono ? escapeHtml(userData.telefono) : "No proporcionado";
+  const safeMensaje = userData.mensaje ? escapeHtml(userData.mensaje) : "";
 
-  // Simular delay de envío
-  await new Promise((resolve) => setTimeout(resolve, 200));
-}
-
-// Función para notificar a administradores
-async function notifyAdministrators(userData: RegistroUsuario): Promise<void> {
-  const adminNotification = {
-    to: ["admin@pabellon.org", "felix@pabellon.org"], // Emails de Kike y Felix
+  const { data, error } = await resend.emails.send({
+    from: "Pabellón PFDH <noreply@pfdh.org>",
+    to: "informa@pfdh.org",
+    replyTo: userData.email,
     subject: `Nueva Registración - ${userData.nombre}`,
     html: `
-      <h3>Nueva persona registrada en el sitio web</h3>
-      <p><strong>Detalles:</strong></p>
-      <ul>
-        <li>Nombre: ${userData.nombre}</li>
-        <li>Email: ${userData.email}</li>
-        <li>Teléfono: ${userData.telefono || "No proporcionado"}</li>
-        <li>Tipo de interés: ${userData.interes}</li>
-        <li>Mensaje: ${userData.mensaje || "Ninguno"}</li>
-        <li>Fecha: ${userData.fechaRegistro?.toLocaleString("es-PR")}</li>
-      </ul>
-      <p>Esta persona ha expresado interés como: <strong>${
-        userData.interes
-      }</strong></p>
-    `,
-  };
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+          }
+          .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+          }
+          .header h1 {
+            margin: 0;
+            font-size: 24px;
+          }
+          .content {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+          }
+          .info-section {
+            background: #f9fafb;
+            padding: 20px;
+            border-left: 4px solid #f59e0b;
+            margin: 20px 0;
+            border-radius: 4px;
+          }
+          .info-row {
+            margin: 12px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+          }
+          .info-row:last-child {
+            border-bottom: none;
+          }
+          .label {
+            font-weight: 600;
+            color: #1e3a8a;
+            display: inline-block;
+            min-width: 140px;
+          }
+          .value {
+            color: #374151;
+          }
+          .message-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+          }
+          .message-box h3 {
+            margin-top: 0;
+            color: #1e40af;
+            font-size: 16px;
+          }
+          .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 12px;
+          }
+          .badge {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>🏆 Nueva Persona Registrada</h1>
+          <p style="margin: 5px 0 0 0; opacity: 0.9;">Pabellón de la Fama del Deporte Humacaeño</p>
+        </div>
 
-  console.log(
-    "📨 NOTIFICACIÓN A ADMINISTRADORES (Simulado):",
-    adminNotification
-  );
+        <div class="content">
+          <p style="font-size: 16px; margin-top: 0;">
+            Se ha recibido una nueva registración a través del formulario del sitio web.
+          </p>
+
+          <div class="info-section">
+            <h2 style="margin-top: 0; color: #1e3a8a; font-size: 18px;">
+              📋 Información del Registro
+            </h2>
+
+            <div class="info-row">
+              <span class="label">Nombre:</span>
+              <span class="value"><strong>${safeNombre}</strong></span>
+            </div>
+
+            <div class="info-row">
+              <span class="label">Email:</span>
+              <span class="value">
+                <a href="mailto:${safeEmail}" style="color: #2563eb; text-decoration: none;">
+                  ${safeEmail}
+                </a>
+              </span>
+            </div>
+
+            <div class="info-row">
+              <span class="label">Teléfono:</span>
+              <span class="value">${safeTelefono}</span>
+            </div>
+
+            <div class="info-row">
+              <span class="label">Tipo de Interés:</span>
+              <span class="value">
+                <span class="badge">${interesLabel}</span>
+              </span>
+            </div>
+
+            <div class="info-row">
+              <span class="label">Fecha de Registro:</span>
+              <span class="value">${timestamp}</span>
+            </div>
+          </div>
+
+          ${
+            safeMensaje
+              ? `
+            <div class="message-box">
+              <h3>💬 Mensaje del Usuario</h3>
+              <p style="margin: 10px 0 0 0; white-space: pre-wrap;">${safeMensaje}</p>
+            </div>
+          `
+              : ""
+          }
+
+          <div style="background: #fef3c7; padding: 15px; border-radius: 6px; margin-top: 20px;">
+            <p style="margin: 0; font-size: 14px;">
+              <strong>💡 Tip:</strong> Puedes responder directamente a este email para contactar a
+              <strong>${safeNombre}</strong> en <strong>${safeEmail}</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="footer">
+          <p style="margin: 5px 0;">
+            Este email fue generado automáticamente desde el formulario de registro en
+            <strong>pfdh.org</strong>
+          </p>
+          <p style="margin: 5px 0; color: #9ca3af;">
+            Pabellón de la Fama del Deporte Humacaeño<br>
+            Centro Cultural Antonia Sáez, Humacao, Puerto Rico
+          </p>
+        </div>
+      </body>
+      </html>
+    `,
+  });
+
+  if (error) {
+    console.error("❌ Error enviando email via Resend:", error);
+    throw new Error(`Error enviando email: ${error.message}`);
+  }
+
+  console.log("✅ Email enviado exitosamente via Resend:", {
+    emailId: data?.id,
+    to: "informa@pfdh.org",
+    from: userData.email,
+    nombre: userData.nombre,
+    timestamp,
+  });
 }
 
 // Handler para OPTIONS (CORS preflight)
@@ -220,44 +352,43 @@ export async function OPTIONS() {
   return new NextResponse(null, { status: 200, headers: corsHeaders });
 }
 
-// Handler para GET (Admin dashboard data)
-export async function GET(request: NextRequest) {
-  try {
-    // Verificar autenticación administrativa
-    if (!verifyAdminAuth(request)) {
-      return errorResponse("Acceso no autorizado", 401);
-    }
-
-    // Leer todas las registraciones
-    const registrations = await readExistingRegistrations();
-
-    // Ordenar por fecha más reciente primero
-    const sortedRegistrations = registrations.sort((a, b) => {
-      const dateA = a.fechaRegistro ? new Date(a.fechaRegistro).getTime() : 0;
-      const dateB = b.fechaRegistro ? new Date(b.fechaRegistro).getTime() : 0;
-      return dateB - dateA;
-    });
-
-    // Generar estadísticas
-    const estadisticas = generateStatistics(registrations);
-
-    // Respuesta para el dashboard admin
-    const adminData = {
-      registraciones: sortedRegistrations,
-      estadisticas,
-      ultimaActualizacion: new Date().toISOString(),
-    };
-
-    return successResponse(adminData, "Datos administrativos obtenidos");
-  } catch (error) {
-    console.error("❌ Error en GET admin:", error);
-    return errorResponse("Error interno del servidor", 500);
-  }
-}
-
 // Handler principal para POST (Registro público)
 export async function POST(request: NextRequest) {
   try {
+    // Check rate limit first (before any processing)
+    const clientIp = getClientIp(request);
+    const rateLimit = checkRateLimit(clientIp);
+
+    if (!rateLimit.allowed) {
+      const minutesUntilReset = Math.ceil(
+        (rateLimit.resetAt - Date.now()) / 60000
+      );
+      console.warn(`⚠️ Rate limit exceeded for IP: ${clientIp}`);
+
+      return NextResponse.json(
+        {
+          success: false,
+          error: `Has excedido el límite de registros. Por favor, intenta nuevamente en ${minutesUntilReset} minutos.`,
+        },
+        {
+          status: 429,
+          headers: {
+            ...corsHeaders,
+            "X-RateLimit-Limit": RATE_LIMIT_MAX_REQUESTS.toString(),
+            "X-RateLimit-Remaining": "0",
+            "X-RateLimit-Reset": rateLimit.resetAt.toString(),
+            "Retry-After": (rateLimit.resetAt / 1000).toString(),
+          },
+        }
+      );
+    }
+
+    // Log rate limit status for monitoring
+    console.log(`✓ Rate limit check passed for IP ${clientIp}:`, {
+      remaining: rateLimit.remaining,
+      resetAt: new Date(rateLimit.resetAt).toISOString(),
+    });
+
     // Verificar Content-Type
     const contentType = request.headers.get("content-type");
     if (!contentType?.includes("application/json")) {
@@ -284,39 +415,27 @@ export async function POST(request: NextRequest) {
 
     const validatedData = validation.data;
 
-    // Guardar en archivo JSON (persistencia real)
-    const savedUser = await saveToJsonFile(validatedData);
-
-    // Intentar enviar emails (no fallar el registro si falla)
+    // Enviar email de notificación via Resend
     try {
-      await sendConfirmationEmail(savedUser);
-      await notifyAdministrators(savedUser);
+      await sendRegistrationEmail(validatedData);
     } catch (emailError) {
-      console.error(
-        "⚠️ Error enviando emails (registro exitoso igual):",
-        emailError
+      console.error("❌ Error enviando email:", emailError);
+      return errorResponse(
+        "Error al enviar la notificación. Por favor, intenta nuevamente o contáctanos directamente.",
+        500
       );
     }
 
     // Respuesta de éxito
     return successResponse(
       {
-        id: savedUser.id!,
-        email: savedUser.email,
-        mensaje: `¡Gracias ${savedUser.nombre}! Te has registrado exitosamente. Te mantendremos informado sobre nuestras actividades.`,
+        email: validatedData.email,
+        mensaje: `¡Gracias ${validatedData.nombre}! Te has registrado exitosamente. Te mantendremos informado sobre nuestras actividades.`,
       },
       "Registro completado exitosamente"
     );
   } catch (error) {
     console.error("❌ Error en API de registro:", error);
-
-    // Error específico de email duplicado
-    if (
-      error instanceof Error &&
-      error.message.includes("ya está registrado")
-    ) {
-      return errorResponse(error.message, 409);
-    }
 
     // No exponer detalles internos en producción
     const errorMessage =
@@ -324,13 +443,17 @@ export async function POST(request: NextRequest) {
         ? `Error interno: ${
             error instanceof Error ? error.message : "Unknown error"
           }`
-        : "Error interno del servidor";
+        : "Error interno del servidor. Por favor, intenta nuevamente.";
 
     return errorResponse(errorMessage, 500);
   }
 }
 
 // Otros métodos no permitidos
+export async function GET() {
+  return errorResponse("Método no permitido", 405);
+}
+
 export async function PUT() {
   return errorResponse("Método no permitido", 405);
 }
