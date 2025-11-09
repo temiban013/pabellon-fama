@@ -1,18 +1,15 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, useMemo } from "react";
 import { ExaltadoCard } from "./ExaltadoCard";
-import { SearchBar } from "./SearchBar";
-import { FilterPanel } from "./FilterPanel";
+import { SearchFilters } from "./SearchFilters";
 import { ViewToggle } from "./ViewToggle";
 import { Pagination } from "./Pagination";
+import { useAthleteFilter } from "@/hooks/useAthleteFilter";
 import {
   type Exaltado,
-  type FiltrosDirectorio,
   type CategoriaExaltado,
 } from "@/lib/types";
-import { debounce } from "@/lib/utils";
 import { todosLosExaltados } from "@/data/exaltados-all";
 import type { ExaltadoRevista } from "@/lib/types/revista";
 
@@ -62,333 +59,107 @@ interface DirectorioClientProps {
 }
 
 export function DirectorioClient({ className = "" }: DirectorioClientProps) {
-  const searchParams = useSearchParams();
+  // Obtener todos los exaltados
+  const allExaltados = useMemo(() => getAllExaltados(), []);
 
-  // Read initial filters from URL params
-  const getInitialFilters = useCallback((): FiltrosDirectorio => {
-    const initialFilters: FiltrosDirectorio = {};
+  // Usar el custom hook para filtrado avanzado
+  const {
+    filteredAthletes,
+    filters,
+    setSearchText,
+    setDeportes,
+    setDecada,
+    setCategorias,
+    setEstado,
+    clearAllFilters,
+    totalAthletes,
+    hasActiveFilters,
+    availableDeportes,
+    availableCategorias,
+  } = useAthleteFilter({
+    initialData: allExaltados,
+    debounceMs: 300,
+  });
 
-    const deporteParam = searchParams.get("deporte");
-    if (deporteParam) {
-      initialFilters.deporte = [deporteParam];
-    }
-
-    const categoriaParam = searchParams.get("categoria");
-    if (categoriaParam) {
-      initialFilters.categoria = [categoriaParam as CategoriaExaltado];
-    }
-
-    return initialFilters;
-  }, [searchParams]);
-
-  // Estados principales
-  const [allExaltados] = useState<Exaltado[]>(getAllExaltados());
-  const [filteredExaltados, setFilteredExaltados] = useState<Exaltado[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filters, setFilters] = useState<FiltrosDirectorio>(getInitialFilters);
-  const [sortBy, setSortBy] = useState<SortOption>("nombre");
-  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+  // Estados para UI
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
-  const [isLoading, setIsLoading] = useState(true);
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
 
-  // Aplicar filtros, búsqueda y ordenamiento
-  const applyFiltersAndSort = useCallback(
-    (
-      searchTerm: string,
-      filters: FiltrosDirectorio,
-      sortBy: SortOption,
-      direction: SortDirection
-    ) => {
-      let filtered = [...allExaltados];
-
-      // Aplicar búsqueda
-      if (searchTerm.trim()) {
-        const search = searchTerm.toLowerCase().trim();
-        filtered = filtered.filter(
-          (exaltado) => {
-            // Búsqueda en campos básicos
-            const basicFields = [
-              exaltado.nombre,
-              exaltado.apellidos,
-              exaltado.nombreCompleto,
-              exaltado.biografia,
-              exaltado.categoria,
-              exaltado.exaltacion,
-              exaltado.apodo,
-              exaltado.lugarNacimiento,
-              exaltado.especialidad,
-              exaltado.rol,
-              exaltado.posicion
-            ].filter(Boolean).some(field => 
-              field?.toString().toLowerCase().includes(search)
-            );
-
-            // Búsqueda en deportes
-            const deporteMatch = exaltado.deporte.some((d) => 
-              d.toLowerCase().includes(search)
-            );
-
-            // Búsqueda en logros y reconocimientos
-            const logrosMatch = Array.isArray(exaltado.logros) 
-              ? exaltado.logros.some(logro => 
-                  typeof logro === 'string' 
-                    ? logro.toLowerCase().includes(search)
-                    : logro.titulo?.toLowerCase().includes(search) ||
-                      logro.descripcion?.toLowerCase().includes(search)
-                )
-              : false;
-
-            const reconocimientosMatch = Array.isArray(exaltado.reconocimientos)
-              ? exaltado.reconocimientos.some(reconocimiento => 
-                  typeof reconocimiento === 'string'
-                    ? reconocimiento.toLowerCase().includes(search)
-                    : reconocimiento.titulo?.toLowerCase().includes(search) ||
-                      reconocimiento.otorgadoPor?.toLowerCase().includes(search)
-                )
-              : false;
-
-            // Búsqueda en equipos/clubes
-            const equiposMatch = exaltado.equipos?.some(equipo => 
-              equipo.toLowerCase().includes(search)
-            ) || false;
-
-            const clubesMatch = exaltado.clubes?.some(club => 
-              club.toLowerCase().includes(search)
-            ) || false;
-
-            return basicFields || deporteMatch || logrosMatch || 
-                   reconocimientosMatch || equiposMatch || clubesMatch;
-          }
-        );
-      }
-
-      // Aplicar filtros por deporte
-      if (filters.deporte?.length) {
-        filtered = filtered.filter((exaltado) =>
-          exaltado.deporte.some((d) => filters.deporte?.includes(d))
-        );
-      }
-
-      // Aplicar filtros por categoría
-      if (filters.categoria?.length) {
-        filtered = filtered.filter((exaltado) =>
-          filters.categoria?.includes(exaltado.categoria)
-        );
-      }
-
-      // Aplicar filtros por género
-      if (filters.genero?.length) {
-        filtered = filtered.filter((exaltado) =>
-          exaltado.genero && filters.genero?.includes(exaltado.genero)
-        );
-      }
-
-      // Aplicar filtros por año
-      if (filters.anoDesde) {
-        filtered = filtered.filter(
-          (exaltado) => exaltado.anoExaltacion >= filters.anoDesde!
-        );
-      }
-      if (filters.anoHasta) {
-        filtered = filtered.filter(
-          (exaltado) => exaltado.anoExaltacion <= filters.anoHasta!
-        );
-      }
-
-      // Aplicar ordenamiento
-      filtered.sort((a, b) => {
-        let comparison = 0;
-
-        switch (sortBy) {
-          case "nombre":
-            comparison = a.nombre.localeCompare(b.nombre, "es");
-            break;
-          case "ano":
-            comparison = a.anoExaltacion - b.anoExaltacion;
-            break;
-          case "deporte":
-            comparison = a.deporte[0].localeCompare(b.deporte[0], "es");
-            break;
-        }
-
-        return direction === "asc" ? comparison : -comparison;
-      });
-
-      setFilteredExaltados(filtered);
-    },
-    [allExaltados]
-  );
-
-  // Función de búsqueda con debounce
-  const debouncedSearch = useMemo(
-    () =>
-      debounce((term: unknown) => {
-        if (typeof term === "string") {
-          setCurrentPage(1); // Reset page when searching
-          applyFiltersAndSort(term, filters, sortBy, sortDirection);
-        }
-      }, 300),
-    [filters, sortBy, sortDirection, applyFiltersAndSort]
-  );
-
-  // Handlers
-  const handleSearchChange = useCallback(
-    (term: string) => {
-      setSearchTerm(term);
-      debouncedSearch(term as unknown);
-    },
-    [debouncedSearch]
-  );
-
-  const handleFilterChange = useCallback(
-    (newFilters: FiltrosDirectorio) => {
-      setFilters(newFilters);
-      setCurrentPage(1);
-      applyFiltersAndSort(searchTerm, newFilters, sortBy, sortDirection);
-    },
-    [searchTerm, sortBy, sortDirection, applyFiltersAndSort]
-  );
-
-  const handleSortChange = useCallback(
-    (field: SortOption, direction: SortDirection) => {
-      setSortBy(field);
-      setSortDirection(direction);
-      applyFiltersAndSort(searchTerm, filters, field, direction);
-    },
-    [searchTerm, filters, applyFiltersAndSort]
-  );
-
-  // Inicializar datos y aplicar filtros desde URL
-  useEffect(() => {
-    const deporteParam = searchParams.get("deporte");
-    const categoriaParam = searchParams.get("categoria");
-
-    const urlFilters: FiltrosDirectorio = {};
-
-    if (deporteParam) {
-      urlFilters.deporte = [deporteParam];
-    }
-
-    if (categoriaParam) {
-      urlFilters.categoria = [categoriaParam as CategoriaExaltado];
-    }
-
-    // Always update filters state with URL params (or empty if no params)
-    setFilters(urlFilters);
-
-    // Apply filters
-    applyFiltersAndSort("", urlFilters, sortBy, sortDirection);
-    setIsLoading(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  // Reset página cuando cambien los filtros
+  // Usamos un efecto para detectar cambios en filteredAthletes
+  const totalItems = filteredAthletes.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   // Calcular datos para paginación
-  const totalItems = filteredExaltados.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedExaltados = filteredExaltados.slice(
+  const paginatedExaltados = filteredAthletes.slice(
     startIndex,
     startIndex + itemsPerPage
   );
 
-  // Obtener listas únicas para filtros
-  const availableDeportes = useMemo(() => {
-    const deportes = new Set<string>();
-    allExaltados.forEach((exaltado) => {
-      exaltado.deporte.forEach((d) => deportes.add(d));
-    });
-    return Array.from(deportes).sort((a, b) => a.localeCompare(b, "es"));
-  }, [allExaltados]);
-
-  const availableCategorias = useMemo(() => {
-    const categorias = new Set(allExaltados.map((e) => e.categoria));
-    return Array.from(categorias).sort((a, b) => a.localeCompare(b, "es"));
-  }, [allExaltados]);
-
-  const availableAnos = useMemo(() => {
-    const anos = new Set(allExaltados.map((e) => e.anoExaltacion));
-    return Array.from(anos).sort((a, b) => a - b);
-  }, [allExaltados]);
-
-  if (isLoading) {
-    return (
-      <div className={`py-12 ${className}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-gray-200 h-64 rounded-lg"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <section className={`py-8 lg:py-12 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Controles principales */}
-        <div className="flex flex-col lg:flex-row gap-6 mb-8">
-          {/* Búsqueda */}
-          <div className="flex-1">
-            <SearchBar
-              value={searchTerm}
-              onChange={handleSearchChange}
-              placeholder="Buscar por nombre, apodo, deporte, biografía o logros..."
-            />
-          </div>
-
-          {/* Toggle de vista */}
+        {/* Header con toggle de vista */}
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-pabellon-green-800">
+            Directorio de Exaltados
+          </h2>
           <ViewToggle viewMode={viewMode} onChange={setViewMode} />
         </div>
 
         {/* Panel de filtros y resultados */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar con filtros */}
-          <div className="lg:w-80 flex-shrink-0">
-            <FilterPanel
-              filters={filters}
-              onFiltersChange={handleFilterChange}
-              sortBy={sortBy}
-              sortDirection={sortDirection}
-              onSortChange={handleSortChange}
-              availableDeportes={availableDeportes}
-              availableCategorias={availableCategorias}
-              availableAnos={availableAnos}
-            />
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+          {/* Sidebar con filtros avanzados */}
+          <div className="lg:w-96 flex-shrink-0">
+            <div className="lg:sticky lg:top-6">
+              <SearchFilters
+                filters={filters}
+                onSearchTextChange={(text) => {
+                  setSearchText(text);
+                  setCurrentPage(1);
+                }}
+                onDeportesChange={(deportes) => {
+                  setDeportes(deportes);
+                  setCurrentPage(1);
+                }}
+                onDecadaChange={(decada) => {
+                  setDecada(decada);
+                  setCurrentPage(1);
+                }}
+                onCategoriasChange={(categorias) => {
+                  setCategorias(categorias);
+                  setCurrentPage(1);
+                }}
+                onEstadoChange={(estado) => {
+                  setEstado(estado);
+                  setCurrentPage(1);
+                }}
+                onClearAll={() => {
+                  clearAllFilters();
+                  setCurrentPage(1);
+                }}
+                availableDeportes={availableDeportes}
+                availableCategorias={availableCategorias}
+                totalResults={totalItems}
+                totalAthletes={totalAthletes}
+              />
+            </div>
           </div>
 
           {/* Área principal de resultados */}
-          <div className="flex-1">
-            {/* Header de resultados */}
-            <div className="flex justify-between items-center mb-6">
-              <div>
-                <h2 className="text-xl font-semibold text-pabellon-green-800">
-                  {totalItems} exaltado{totalItems !== 1 ? "s" : ""}{" "}
-                  {searchTerm || Object.keys(filters).length > 0
-                    ? `encontrado${totalItems !== 1 ? "s" : ""}`
-                    : ""}
-                </h2>
-                {searchTerm && (
-                  <p className="text-sm text-gray-600 mt-1">
-                    Resultados para: &quot;{searchTerm}&quot;
-                  </p>
-                )}
-              </div>
-
-              {totalPages > 1 && (
-                <div className="text-sm text-gray-600">
+          <div className="flex-1 min-w-0">
+            {/* Header de paginación */}
+            {totalPages > 1 && (
+              <div className="flex justify-between items-center mb-4 text-sm text-gray-600">
+                <span>
                   Página {currentPage} de {totalPages}
-                </div>
-              )}
-            </div>
+                </span>
+              </div>
+            )}
 
             {/* Grid/Lista de exaltados */}
             {paginatedExaltados.length > 0 ? (
@@ -396,7 +167,7 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
                 <div
                   className={
                     viewMode === "grid"
-                      ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                      ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
                       : "space-y-4"
                   }
                 >
@@ -421,27 +192,27 @@ export function DirectorioClient({ className = "" }: DirectorioClientProps) {
                 )}
               </>
             ) : (
-              <div className="text-center py-12">
+              <div className="text-center py-12 bg-white rounded-lg shadow-md border-2 border-pabellon-brown">
                 <div className="text-6xl mb-4">🔍</div>
-                <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                <h3 className="text-xl font-semibold text-pabellon-green-800 mb-2">
                   No se encontraron exaltados
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  {searchTerm
-                    ? `No hay resultados para "${searchTerm}"`
-                    : "No hay exaltados que coincidan con los filtros seleccionados"}
+                <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                  {hasActiveFilters
+                    ? "Intenta ajustar los filtros para encontrar más resultados"
+                    : "No hay exaltados disponibles"}
                 </p>
-                <button
-                  onClick={() => {
-                    setSearchTerm("");
-                    setFilters({});
-                    setCurrentPage(1);
-                    applyFiltersAndSort("", {}, sortBy, sortDirection);
-                  }}
-                  className="btn-pabellon"
-                >
-                  Limpiar filtros
-                </button>
+                {hasActiveFilters && (
+                  <button
+                    onClick={() => {
+                      clearAllFilters();
+                      setCurrentPage(1);
+                    }}
+                    className="px-6 py-3 bg-pabellon-gold-600 text-white font-medium rounded-lg hover:bg-pabellon-gold-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pabellon-gold-500"
+                  >
+                    Limpiar todos los filtros
+                  </button>
+                )}
               </div>
             )}
           </div>
