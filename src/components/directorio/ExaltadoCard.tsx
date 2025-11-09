@@ -1,27 +1,15 @@
 "use client";
 
+import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { type Exaltado } from "@/lib/types";
 import { getInitials, capitalize } from "@/lib/utils";
-
-// Mapeo para mostrar nombres más descriptivos de categorías
-const categoriasLabels: Record<string, string> = {
-  atleta: "Atleta",
-  jugador: "Jugador",
-  boxeador: "Boxeador", 
-  propulsor: "Propulsor",
-  cronista: "Cronista Deportivo",
-  equipo: "Equipo",
-  promotor: "Promotor",
-  dirigente: "Dirigente",
-  entrenador: "Entrenador",
-  arbitro: "Árbitro",
-  comentarista: "Comentarista",
-  benefactor: "Benefactor",
-  "atleta-propulsor": "Atleta-Propulsor",
-  "jugador-propulsor": "Jugador-Propulsor",
-};
+import {
+  getCategoryColor,
+  getSportEmoji,
+  getCategoryLabel,
+} from "@/lib/constants/exaltados";
 
 interface ExaltadoCardProps {
   exaltado: Exaltado;
@@ -29,7 +17,8 @@ interface ExaltadoCardProps {
   className?: string;
 }
 
-export function ExaltadoCard({
+// Memoized component to prevent unnecessary re-renders when props haven't changed
+export const ExaltadoCard = memo(function ExaltadoCard({
   exaltado,
   viewMode,
   className = "",
@@ -54,49 +43,6 @@ export function ExaltadoCard({
       return `${exaltado.nombreCompleto} "${exaltado.apodo}"`;
     }
     return exaltado.nombreCompleto;
-  };
-
-  // Función para obtener color de categoría
-  const getCategoryColor = (categoria: string) => {
-    const colors = {
-      atleta: "bg-blue-100 text-blue-800",
-      jugador: "bg-green-100 text-green-800",
-      propulsor: "bg-purple-100 text-purple-800",
-      entrenador: "bg-orange-100 text-orange-800",
-      arbitro: "bg-yellow-100 text-yellow-800",
-      cronista: "bg-indigo-100 text-indigo-800",
-      equipo: "bg-red-100 text-red-800",
-      boxeador: "bg-red-100 text-red-800",
-      "atleta-propulsor": "bg-teal-100 text-teal-800",
-      "jugador-propulsor": "bg-cyan-100 text-cyan-800",
-    };
-    return (
-      colors[categoria as keyof typeof colors] || "bg-gray-100 text-gray-800"
-    );
-  };
-
-  const getSportEmoji = (deporte: string) => {
-    const emojis = {
-      Atletismo: "🏃",
-      Béisbol: "⚾",
-      Baloncesto: "🏀",
-      Boxeo: "🥊",
-      Fútbol: "⚽",
-      Voleibol: "🏐",
-      Natación: "🏊",
-      Ciclismo: "🚴",
-      Tenis: "🎾",
-      Golf: "⛳",
-      "Paso Fino": "🐎",
-      "Levantamiento de pesas": "🏋️",
-      "Lucha Olímpica": "🤼",
-      "Artes Marciales": "🥋",
-      Tiro: "🎯",
-      Gallos: "🐓",
-      "Deportes Varios": "🏆",
-      "Cronista Deportivo": "📝",
-    };
-    return emojis[deporte as keyof typeof emojis] || "🏆";
   };
 
   if (viewMode === "list") {
@@ -156,7 +102,7 @@ export function ExaltadoCard({
                 exaltado.categoria
               )}`}
             >
-              {categoriasLabels[exaltado.categoria] || capitalize(exaltado.categoria)}
+              {getCategoryLabel(exaltado.categoria)}
             </div>
             <div className="text-sm font-medium text-pabellon-gold-600">
               {exaltado.anoExaltacion}
@@ -199,7 +145,7 @@ export function ExaltadoCard({
               exaltado.categoria
             )}`}
           >
-            {categoriasLabels[exaltado.categoria] || capitalize(exaltado.categoria)}
+            {getCategoryLabel(exaltado.categoria)}
           </span>
         </div>
 
@@ -247,4 +193,4 @@ export function ExaltadoCard({
       </div>
     </Link>
   );
-}
+});

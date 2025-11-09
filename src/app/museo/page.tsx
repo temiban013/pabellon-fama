@@ -1,5 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import GoogleMap from "@/components/ui/GoogleMap";
+import dynamic from "next/dynamic";
+
+// Lazy load GoogleMap component for better performance
+const GoogleMap = dynamic(() => import("@/components/ui/GoogleMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-96 bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">
+      <p className="text-gray-500">Cargando mapa...</p>
+    </div>
+  ),
+});
 
 export const metadata: Metadata = {
   title:
