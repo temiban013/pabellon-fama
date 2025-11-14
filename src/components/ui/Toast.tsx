@@ -98,7 +98,12 @@ function ToastContainer({
   return (
     <div className="fixed top-4 right-4 z-50 flex flex-col space-y-3 max-w-sm w-full">
       {toasts.map((toast) => (
-        <ToastItem key={toast.id} toast={toast} onRemove={onRemove} />
+        <ToastItem
+          key={toast.id}
+          toast={toast}
+          onRemove={onRemove}
+          data-testid={`toast-${toast.type}`}
+        />
       ))}
     </div>
   );
@@ -108,9 +113,11 @@ function ToastContainer({
 function ToastItem({
   toast,
   onRemove,
+  "data-testid": testId,
 }: {
   toast: Toast;
   onRemove: (id: string) => void;
+  "data-testid"?: string;
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -158,6 +165,7 @@ function ToastItem({
 
   return (
     <div
+      data-testid={testId}
       className={cn(
         "transform transition-all duration-300 ease-in-out",
         "bg-white rounded-lg p-4 shadow-lg border",
@@ -174,9 +182,19 @@ function ToastItem({
         <div className="flex-shrink-0">{getIcon()}</div>
 
         <div className="ml-3 flex-1">
-          <h4 className="text-sm font-semibold text-gray-900">{toast.title}</h4>
+          <h4
+            data-testid={testId ? `${testId}-title` : undefined}
+            className="text-sm font-semibold text-gray-900"
+          >
+            {toast.title}
+          </h4>
           {toast.message && (
-            <p className="mt-1 text-sm text-gray-700">{toast.message}</p>
+            <p
+              data-testid={testId ? `${testId}-message` : undefined}
+              className="mt-1 text-sm text-gray-700"
+            >
+              {toast.message}
+            </p>
           )}
         </div>
 
