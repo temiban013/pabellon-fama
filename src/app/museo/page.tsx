@@ -1,15 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import dynamic from "next/dynamic";
-
-// Lazy load GoogleMap component for better performance
-const GoogleMap = dynamic(() => import("@/components/ui/GoogleMap"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-96 bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">
-      <p className="text-gray-500">Cargando mapa...</p>
-    </div>
-  ),
-});
+import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
 
 export const metadata: Metadata = {
   title:
@@ -308,9 +298,7 @@ export default function MuseoPage() {
                   <h4 className="font-semibold text-pabellon-green-700 mb-4">
                     Mapa de Ubicación
                   </h4>
-                  <GoogleMap 
-                    address="Centro Cultural Dra. Antonia Sáez, Humacao, Puerto Rico 00791"
-                  />
+                  <GoogleMapClient />
                 </div>
 
                 <div className="pt-6">
