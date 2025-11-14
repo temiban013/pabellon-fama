@@ -2,57 +2,51 @@ import { test, expect } from '@playwright/test';
 
 /**
  * E2E Tests para el flujo de Registro
- * Flujo: Home → Registro → Submit → Confirmation
+ * El formulario de registro está embebido en la página de inicio (homepage)
  */
 test.describe('Flujo de Registro', () => {
   test.beforeEach(async ({ page }) => {
-    // Navegar a la página de inicio
+    // Navegar a la página de inicio donde está el formulario
     await page.goto('/');
   });
 
   test('debe completar el flujo de registro exitosamente', async ({ page }) => {
-    // 1. Desde Home, navegar a la página de registro
-    await page.click('a[href*="registro"]');
-    await expect(page).toHaveURL(/.*registro/);
-
-    // 2. Verificar que el formulario de registro está presente
+    // 1. Verificar que el formulario de registro está presente en la homepage
     await expect(page.locator('form')).toBeVisible();
 
-    // 3. Llenar el formulario con datos válidos
+    // 2. Llenar el formulario con datos válidos
     await page.fill('input[name="nombre"]', 'Juan Pérez');
     await page.fill('input[name="email"]', 'juan.perez@example.com');
     await page.fill('input[name="telefono"]', '787-123-4567');
 
-    // 4. Seleccionar tipo de interés
+    // 3. Seleccionar tipo de interés
     await page.selectOption('select[name="interes"]', 'visitante');
 
-    // 5. Agregar mensaje opcional
+    // 4. Agregar mensaje opcional
     await page.fill(
       'textarea[name="mensaje"]',
       'Me gustaría visitar el Pabellón de la Fama'
     );
 
-    // 6. Enviar el formulario
+    // 5. Enviar el formulario
     await page.click('button[type="submit"]');
 
-    // 7. Esperar y verificar mensaje de confirmación
+    // 6. Esperar y verificar mensaje de confirmación
     await expect(
       page.locator('text=/gracias|éxito|registrado/i')
     ).toBeVisible({ timeout: 10000 });
 
-    // 8. Verificar que el formulario se ha limpiado o se muestra confirmación
-    const emailInput = page.locator('input[name="email"]');
-    const hasBeenCleared = (await emailInput.inputValue()) === '';
+    // 7. Verificar que se muestra la confirmación
     const confirmationVisible = await page
       .locator('text=/confirmación|éxito/i')
       .isVisible();
 
-    expect(hasBeenCleared || confirmationVisible).toBeTruthy();
+    expect(confirmationVisible).toBeTruthy();
   });
 
   test('debe mostrar errores de validación para datos inválidos', async ({ page }) => {
-    // Navegar a registro
-    await page.goto('/registro');
+    // El formulario ya está en la homepage
+    await expect(page.locator('form')).toBeVisible();
 
     // Intentar enviar formulario vacío
     await page.click('button[type="submit"]');
@@ -64,8 +58,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe validar formato de email', async ({ page }) => {
-    await page.goto('/registro');
-
     // Llenar con email inválido
     await page.fill('input[name="nombre"]', 'Juan Pérez');
     await page.fill('input[name="email"]', 'email-invalido');
@@ -80,8 +72,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe validar formato de teléfono', async ({ page }) => {
-    await page.goto('/registro');
-
     await page.fill('input[name="nombre"]', 'María González');
     await page.fill('input[name="email"]', 'maria@example.com');
     await page.fill('input[name="telefono"]', '123'); // Teléfono inválido
@@ -96,8 +86,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe permitir registro sin campos opcionales', async ({ page }) => {
-    await page.goto('/registro');
-
     // Llenar solo campos requeridos
     await page.fill('input[name="nombre"]', 'Carlos Rodríguez');
     await page.fill('input[name="email"]', 'carlos@example.com');
@@ -114,8 +102,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe mostrar indicador de carga durante el envío', async ({ page }) => {
-    await page.goto('/registro');
-
     await page.fill('input[name="nombre"]', 'Ana Martínez');
     await page.fill('input[name="email"]', 'ana@example.com');
     await page.selectOption('select[name="interes"]', 'voluntario');
@@ -135,8 +121,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe prevenir envíos múltiples', async ({ page }) => {
-    await page.goto('/registro');
-
     await page.fill('input[name="nombre"]', 'Pedro Sánchez');
     await page.fill('input[name="email"]', 'pedro@example.com');
     await page.selectOption('select[name="interes"]', 'general');
@@ -164,8 +148,6 @@ test.describe('Flujo de Registro', () => {
       });
     });
 
-    await page.goto('/registro');
-
     await page.fill('input[name="nombre"]', 'Test Usuario');
     await page.fill('input[name="email"]', 'test@example.com');
     await page.selectOption('select[name="interes"]', 'general');
@@ -179,8 +161,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe validar longitud mínima del nombre', async ({ page }) => {
-    await page.goto('/registro');
-
     await page.fill('input[name="nombre"]', 'J'); // Solo 1 carácter
     await page.fill('input[name="email"]', 'test@example.com');
     await page.selectOption('select[name="interes"]', 'general');
@@ -193,8 +173,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe validar longitud máxima del mensaje', async ({ page }) => {
-    await page.goto('/registro');
-
     await page.fill('input[name="nombre"]', 'Juan Pérez');
     await page.fill('input[name="email"]', 'juan@example.com');
     await page.selectOption('select[name="interes"]', 'general');
@@ -211,8 +189,6 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe ser accesible con teclado', async ({ page }) => {
-    await page.goto('/registro');
-
     // Navegar usando Tab
     await page.keyboard.press('Tab'); // Primer campo
     await page.keyboard.type('Roberto García');
@@ -244,8 +220,6 @@ test.describe('Flujo de Registro', () => {
       route.abort('failed');
     });
 
-    await page.goto('/registro');
-
     const nombre = 'Elena Fernández';
     const email = 'elena@example.com';
 
@@ -273,7 +247,7 @@ test.describe('Registro - Vista Móvil', () => {
   test.use({ viewport: { width: 375, height: 667 } }); // iPhone SE
 
   test('debe funcionar correctamente en dispositivos móviles', async ({ page }) => {
-    await page.goto('/registro');
+    await page.goto('/');
 
     // Verificar que el formulario es visible y usable en móvil
     await expect(page.locator('form')).toBeVisible();
@@ -290,7 +264,7 @@ test.describe('Registro - Vista Móvil', () => {
   });
 
   test('debe tener botones y campos de tamaño adecuado en móvil', async ({ page }) => {
-    await page.goto('/registro');
+    await page.goto('/');
 
     // Verificar que los campos de entrada tienen altura mínima para móvil
     const nombreInput = page.locator('input[name="nombre"]');
@@ -310,9 +284,11 @@ test.describe('Registro - Vista Móvil', () => {
  * Tests de accesibilidad
  */
 test.describe('Registro - Accesibilidad', () => {
-  test('debe tener labels correctos para todos los campos', async ({ page }) => {
-    await page.goto('/registro');
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+  });
 
+  test('debe tener labels correctos para todos los campos', async ({ page }) => {
     // Verificar que todos los inputs tienen labels o aria-labels
     const nombreInput = page.locator('input[name="nombre"]');
     const nombreLabel = await nombreInput.getAttribute('aria-label');
@@ -322,8 +298,6 @@ test.describe('Registro - Accesibilidad', () => {
   });
 
   test('debe anunciar errores a lectores de pantalla', async ({ page }) => {
-    await page.goto('/registro');
-
     await page.click('button[type="submit"]');
 
     // Verificar que los mensajes de error tienen role="alert" o aria-live
@@ -332,8 +306,6 @@ test.describe('Registro - Accesibilidad', () => {
   });
 
   test('debe tener contraste adecuado en textos', async ({ page }) => {
-    await page.goto('/registro');
-
     // Verificar que el texto tiene color suficientemente contrastante
     // (Esto es una verificación básica, herramientas como axe-core son más completas)
     const submitButton = page.locator('button[type="submit"]');
