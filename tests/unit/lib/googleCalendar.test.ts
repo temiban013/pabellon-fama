@@ -492,12 +492,13 @@ describe('Google Calendar Integration', () => {
 
     it('should generate default URL if env var is not set', () => {
       delete process.env.NEXT_PUBLIC_CALENDAR_PUBLIC_URL
-      process.env.GOOGLE_CALENDAR_ID = 'test@group.calendar.google.com'
 
+      // Note: CALENDAR_ID is set at module load time from env var
+      // In test environment it's 'test-calendar@group.calendar.google.com'
       const url = getPublicCalendarUrl()
 
       expect(url).toContain('https://calendar.google.com/calendar/embed')
-      expect(url).toContain(encodeURIComponent('test@group.calendar.google.com'))
+      expect(url).toContain('test-calendar')
     })
   })
 
