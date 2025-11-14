@@ -65,8 +65,9 @@ next-env.d.ts
 CLAUDE.md
 
 # Scripts
-/scripts/
+/src/scripts/
 
 
 # IDEs and editors
 .vscode/
+.project/
