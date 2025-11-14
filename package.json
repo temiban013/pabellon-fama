@@ -21,7 +21,6 @@
     "playwright:install": "playwright install --with-deps"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [],
     "allowedDeprecatedVersions": {
       "critters": "0.0.25"
     }
