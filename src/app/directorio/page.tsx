@@ -5,7 +5,7 @@ import { DirectorioClient } from "@/components/directorio/DirectorioClient";
 export const metadata: Metadata = {
   title: "Directorio de Exaltados | Pabellón de la Fama del Deporte Humacaeño",
   description:
-    "Directorio completo con 81 exaltados del Pabellón de la Fama del Deporte Humacaeño: 78 atletas individuales y 3 equipos históricos que han marcado la excelencia deportiva en Humacao, Puerto Rico desde 1996. Explora biografías, logros y contribuciones al deporte.",
+    "Directorio completo con 81 exaltados del Pabellón de la Fama del Deporte Humacaeño: 78 atletas individuales y 3 equipos históricos que han marcado la excelencia deportiva en Humacao, Puerto Rico desde 1996. Búsqueda avanzada con filtros por deporte, década, categoría y estado. Explora biografías, logros y contribuciones al deporte.",
   keywords: [
     "directorio exaltados humacao",
     "atletas humacaeños famosos",
@@ -161,7 +161,8 @@ export default function DirectorioPage() {
               Conoce a los atletas, propulsores y figuras deportivas que han
               sido exaltados por su destacada contribución al deporte en
               Humacao, Puerto Rico. Desde 1996, honramos la excelencia deportiva
-              de nuestra comunidad.
+              de nuestra comunidad. Utiliza los filtros avanzados para explorar
+              por deporte, década, categoría y más.
             </p>
           </div>
 
