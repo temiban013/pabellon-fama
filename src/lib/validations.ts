@@ -38,10 +38,14 @@ export const registroSchema = z.object({
 });
 
 // Schema para el API (más estricto)
-export const registroApiSchema = registroSchema.extend({
+export const registroApiSchema = z.object({
+  email: registroSchema.shape.email,
   nombre: z
-    .string({ required_error: "El nombre es requerido para el registro" })
-    .min(2, "El nombre es requerido para el registro"),
+    .string({ invalid_type_error: "El nombre es requerido para el registro" })
+    .min(2, "El nombre debe tener al menos 2 caracteres"),
+  telefono: registroSchema.shape.telefono,
+  interes: registroSchema.shape.interes,
+  mensaje: registroSchema.shape.mensaje,
 });
 
 // Tipo inferido del schema

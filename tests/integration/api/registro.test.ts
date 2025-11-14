@@ -18,11 +18,28 @@ vi.mock('resend', () => {
 });
 
 describe('/api/registro', () => {
-  beforeEach(() => {
+  let testIpCounter = 0;
+  let mockResendSend: any;
+
+  beforeEach(async () => {
     vi.clearAllMocks();
+    testIpCounter++;
+
     // Set up required environment variables
     vi.stubEnv('RESEND_API_KEY', 'test-api-key');
     vi.stubEnv('NODE_ENV', 'test');
+
+    // Get the mock instance that was created by vi.mock at module level
+    const { Resend } = await import('resend');
+    const resendInstance = new Resend('test');
+    mockResendSend = resendInstance.emails.send;
+
+    // Reset to default successful response
+    vi.mocked(mockResendSend).mockResolvedValue({
+      data: { id: 'mock-email-id' },
+      error: null,
+      headers: null,
+    });
   });
 
   afterEach(() => {
@@ -31,17 +48,19 @@ describe('/api/registro', () => {
   });
 
   // Helper function to create a NextRequest with proper headers
+  // Uses unique IP for each test to avoid rate limiting issues
   function createRequest(
     method: string,
     body?: any,
     headers: Record<string, string> = {}
   ): NextRequest {
     const url = 'http://localhost:3000/api/registro';
+    const defaultIp = `192.168.1.${testIpCounter}`;
     const init: RequestInit = {
       method,
       headers: {
         'content-type': 'application/json',
-        'x-forwarded-for': '127.0.0.1',
+        'x-forwarded-for': defaultIp,
         ...headers,
       },
     };
@@ -195,9 +214,7 @@ describe('/api/registro', () => {
 
     it('maneja error al enviar email correctamente', async () => {
       // Mock Resend to fail
-      const { Resend } = await import('resend');
-      const mockResend = new Resend('test');
-      vi.mocked(mockResend.emails.send).mockResolvedValue({
+      vi.mocked(mockResendSend).mockResolvedValueOnce({
         data: null,
         error: { message: 'Failed to send email', name: 'EmailError' } as any,
         headers: null,
@@ -395,9 +412,7 @@ describe('/api/registro', () => {
       vi.stubEnv('NODE_ENV', 'development');
 
       // Forzar un error al mockear la función de envío de email para lanzar
-      const { Resend } = await import('resend');
-      const mockResend = new Resend('test');
-      vi.mocked(mockResend.emails.send).mockRejectedValue(
+      vi.mocked(mockResendSend).mockRejectedValueOnce(
         new Error('Unexpected error')
       );
 
@@ -417,9 +432,7 @@ describe('/api/registro', () => {
     it('oculta detalles de errores en producción', async () => {
       vi.stubEnv('NODE_ENV', 'production');
 
-      const { Resend } = await import('resend');
-      const mockResend = new Resend('test');
-      vi.mocked(mockResend.emails.send).mockRejectedValue(
+      vi.mocked(mockResendSend).mockRejectedValueOnce(
         new Error('Internal database error')
       );
 
