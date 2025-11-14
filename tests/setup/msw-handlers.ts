@@ -28,10 +28,10 @@ export const handlers = [
 
   // Mock /api/registro endpoint
   http.post('/api/registro', async ({ request }) => {
-    const body = await request.json()
+    const body = await request.json() as any
 
     // Simulate validation error for specific test cases
-    if (body.email === 'error@test.com') {
+    if (body?.email === 'error@test.com') {
       return HttpResponse.json(
         {
           error: 'Error de validación',
@@ -42,7 +42,7 @@ export const handlers = [
     }
 
     // Simulate server error
-    if (body.email === 'server-error@test.com') {
+    if (body?.email === 'server-error@test.com') {
       return HttpResponse.json(
         { error: 'Error interno del servidor' },
         { status: 500 }

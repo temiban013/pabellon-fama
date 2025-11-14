@@ -5,13 +5,16 @@ import type { Exaltado } from '@/lib/types'
  * All data uses Spanish names and formatting
  */
 
-export const mockExaltados: Exaltado[] = [
+// Use Partial since we don't need all fields for tests
+export const mockExaltados: Partial<Exaltado>[] = [
   {
     id: '1',
-    nombre: 'Roberto Clemente',
-    slug: 'roberto-clemente',
-    deporte: 'Béisbol',
-    añoInduccion: 1973,
+    nombre: 'Roberto',
+    apellidos: 'Clemente',
+    nombreCompleto: 'Roberto Clemente',
+    deporte: ['Béisbol'],
+    categoria: 'jugador',
+    anoExaltacion: 1973,
     foto: '/images/exaltados/roberto-clemente.jpg',
     biografia: 'Legendario jugador de béisbol puertorriqueño, primer latino en el Salón de la Fama del Béisbol.',
     logros: [
@@ -23,14 +26,16 @@ export const mockExaltados: Exaltado[] = [
       'Premio Roberto Clemente de la MLB',
       'Número 21 retirado por los Piratas de Pittsburgh',
     ],
-    destacado: true,
+    estado: 'fallecido',
   },
   {
     id: '2',
-    nombre: 'Carlos Arroyo',
-    slug: 'carlos-arroyo',
-    deporte: 'Baloncesto',
-    añoInduccion: 2015,
+    nombre: 'Carlos',
+    apellidos: 'Arroyo',
+    nombreCompleto: 'Carlos Arroyo',
+    deporte: ['Baloncesto'],
+    categoria: 'jugador',
+    anoExaltacion: 2015,
     foto: '/images/exaltados/carlos-arroyo.jpg',
     biografia: 'Destacado base puertorriqueño que jugó en la NBA y llevó a Puerto Rico a victorias olímpicas.',
     logros: [
@@ -40,13 +45,16 @@ export const mockExaltados: Exaltado[] = [
     reconocimientos: [
       'Miembro del equipo olímpico de Puerto Rico',
     ],
+    estado: 'activo',
   },
   {
     id: '3',
-    nombre: 'Mónica Puig',
-    slug: 'monica-puig',
-    deporte: 'Tenis',
-    añoInduccion: 2020,
+    nombre: 'Mónica',
+    apellidos: 'Puig',
+    nombreCompleto: 'Mónica Puig',
+    deporte: ['Tenis'],
+    categoria: 'atleta',
+    anoExaltacion: 2020,
     foto: '/images/exaltados/monica-puig.jpg',
     biografia: 'Primera medallista de oro olímpica para Puerto Rico en Río 2016.',
     logros: [
@@ -56,27 +64,34 @@ export const mockExaltados: Exaltado[] = [
     reconocimientos: [
       'Orden al Mérito Deportivo de Puerto Rico',
     ],
-    destacado: true,
+    estado: 'activo',
   },
   {
     id: '4',
-    nombre: 'Juan "Pachín" Vicéns',
-    slug: 'juan-pachin-vicens',
-    deporte: 'Baloncesto',
-    añoInduccion: 1980,
+    nombre: 'Juan',
+    apellidos: 'Vicéns',
+    nombreCompleto: 'Juan "Pachín" Vicéns',
+    apodo: 'Pachín',
+    deporte: ['Baloncesto'],
+    categoria: 'jugador',
+    anoExaltacion: 1980,
     foto: '/images/exaltados/pachin-vicens.jpg',
     biografia: 'Pionero del baloncesto puertorriqueño y figura icónica del deporte en la isla.',
     logros: [
       'Campeón nacional BSN múltiples veces',
       'Anotador histórico del BSN',
     ],
+    estado: 'fallecido',
   },
   {
     id: '5',
-    nombre: 'Félix "Tito" Trinidad',
-    slug: 'felix-tito-trinidad',
-    deporte: 'Boxeo',
-    añoInduccion: 2014,
+    nombre: 'Félix',
+    apellidos: 'Trinidad',
+    nombreCompleto: 'Félix "Tito" Trinidad',
+    apodo: 'Tito',
+    deporte: ['Boxeo'],
+    categoria: 'boxeador',
+    anoExaltacion: 2014,
     foto: '/images/exaltados/tito-trinidad.jpg',
     biografia: 'Campeón mundial de boxeo en tres divisiones y orgullo puertorriqueño.',
     logros: [
@@ -87,7 +102,7 @@ export const mockExaltados: Exaltado[] = [
     reconocimientos: [
       'Salón de la Fama del Boxeo Internacional',
     ],
-    destacado: true,
+    estado: 'activo',
   },
 ]
 
@@ -99,7 +114,7 @@ export const mockEventos = [
     fecha: '2025-06-15T19:00:00-04:00',
     fechaFin: '2025-06-15T22:00:00-04:00',
     ubicacion: 'Centro de Bellas Artes de Humacao',
-    tipo: 'ceremonia',
+    tipo: 'ceremonia-exaltacion',
     imagen: '/images/eventos/ceremonia-2025.jpg',
   },
   {
@@ -109,7 +124,7 @@ export const mockEventos = [
     fecha: '2025-07-20T09:00:00-04:00',
     fechaFin: '2025-07-22T18:00:00-04:00',
     ubicacion: 'Estadio Yldefonso Sola Morales',
-    tipo: 'torneo',
+    tipo: 'competencia',
   },
   {
     id: 'evt-3',
@@ -118,7 +133,7 @@ export const mockEventos = [
     fecha: '2025-08-01T10:00:00-04:00',
     fechaFin: '2025-08-31T17:00:00-04:00',
     ubicacion: 'Museo del Pabellón de la Fama',
-    tipo: 'exposicion',
+    tipo: 'tour-museo',
   },
   {
     id: 'evt-4',
@@ -127,7 +142,7 @@ export const mockEventos = [
     fecha: '2025-09-10T14:00:00-04:00',
     fechaFin: '2025-09-10T17:00:00-04:00',
     ubicacion: 'Coliseo Heriberto "Guty" Marín',
-    tipo: 'clinica',
+    tipo: 'actividad-educativa',
   },
 ]
 
@@ -147,15 +162,18 @@ export const mockFilterAño = 2015
 /**
  * Factory function to create a mock Exaltado
  */
-export function createMockExaltado(overrides?: Partial<Exaltado>): Exaltado {
+export function createMockExaltado(overrides?: Partial<Exaltado>): Partial<Exaltado> {
   return {
     id: '999',
-    nombre: 'Test Atleta',
-    slug: 'test-atleta',
-    deporte: 'Atletismo',
-    añoInduccion: 2023,
+    nombre: 'Test',
+    apellidos: 'Atleta',
+    nombreCompleto: 'Test Atleta',
+    deporte: ['Atletismo'],
+    categoria: 'atleta',
+    anoExaltacion: 2023,
     foto: '/images/test.jpg',
     biografia: 'Biografía de prueba',
+    estado: 'activo',
     ...overrides,
   }
 }
@@ -170,7 +188,7 @@ export function createMockEvento(overrides?: any) {
     descripcion: 'Descripción del evento de prueba',
     fecha: '2025-12-31T19:00:00-04:00',
     ubicacion: 'Ubicación de Prueba',
-    tipo: 'general',
+    tipo: 'evento-especial',
     ...overrides,
   }
 }
