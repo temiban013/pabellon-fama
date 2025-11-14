@@ -2,16 +2,19 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { POST, GET, OPTIONS, PUT, DELETE } from '@/app/api/registro/route';
 import { NextRequest } from 'next/server';
 
-// Mock Resend
+// Create a shared mock send function that can be controlled in tests
+const mockEmailsSend = vi.fn().mockResolvedValue({
+  data: { id: 'mock-email-id' },
+  error: null,
+  headers: null,
+});
+
+// Mock Resend - all instances will use the same mockEmailsSend function
 vi.mock('resend', () => {
   return {
     Resend: vi.fn().mockImplementation(() => ({
       emails: {
-        send: vi.fn().mockResolvedValue({
-          data: { id: 'mock-email-id' },
-          error: null,
-          headers: null,
-        }),
+        send: mockEmailsSend,
       },
     })),
   };
@@ -19,9 +22,8 @@ vi.mock('resend', () => {
 
 describe('/api/registro', () => {
   let testIpCounter = 0;
-  let mockResendSend: any;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     vi.clearAllMocks();
     testIpCounter++;
 
@@ -29,13 +31,8 @@ describe('/api/registro', () => {
     vi.stubEnv('RESEND_API_KEY', 'test-api-key');
     vi.stubEnv('NODE_ENV', 'test');
 
-    // Get the mock instance that was created by vi.mock at module level
-    const { Resend } = await import('resend');
-    const resendInstance = new Resend('test');
-    mockResendSend = resendInstance.emails.send;
-
-    // Reset to default successful response
-    vi.mocked(mockResendSend).mockResolvedValue({
+    // Reset mock to default successful response
+    mockEmailsSend.mockResolvedValue({
       data: { id: 'mock-email-id' },
       error: null,
       headers: null,
@@ -214,7 +211,7 @@ describe('/api/registro', () => {
 
     it('maneja error al enviar email correctamente', async () => {
       // Mock Resend to fail
-      vi.mocked(mockResendSend).mockResolvedValueOnce({
+      vi.mocked(mockEmailsSend).mockResolvedValueOnce({
         data: null,
         error: { message: 'Failed to send email', name: 'EmailError' } as any,
         headers: null,
@@ -412,7 +409,7 @@ describe('/api/registro', () => {
       vi.stubEnv('NODE_ENV', 'development');
 
       // Forzar un error al mockear la función de envío de email para lanzar
-      vi.mocked(mockResendSend).mockRejectedValueOnce(
+      vi.mocked(mockEmailsSend).mockRejectedValueOnce(
         new Error('Unexpected error')
       );
 
@@ -432,7 +429,7 @@ describe('/api/registro', () => {
     it('oculta detalles de errores en producción', async () => {
       vi.stubEnv('NODE_ENV', 'production');
 
-      vi.mocked(mockResendSend).mockRejectedValueOnce(
+      vi.mocked(mockEmailsSend).mockRejectedValueOnce(
         new Error('Internal database error')
       );
 
