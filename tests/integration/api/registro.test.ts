@@ -10,6 +10,7 @@ vi.mock('resend', () => {
         send: vi.fn().mockResolvedValue({
           data: { id: 'mock-email-id' },
           error: null,
+          headers: null,
         }),
       },
     })),

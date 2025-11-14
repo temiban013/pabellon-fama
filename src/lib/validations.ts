@@ -39,7 +39,9 @@ export const registroSchema = z.object({
 
 // Schema para el API (más estricto)
 export const registroApiSchema = registroSchema.extend({
-  nombre: z.string().min(2, "El nombre es requerido para el registro"),
+  nombre: z
+    .string({ required_error: "El nombre es requerido para el registro" })
+    .min(2, "El nombre es requerido para el registro"),
 });
 
 // Tipo inferido del schema
