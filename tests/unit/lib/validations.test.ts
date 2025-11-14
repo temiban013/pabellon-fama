@@ -29,7 +29,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe('El email es requerido');
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe('El email es requerido');
         }
       });
 
@@ -41,7 +42,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe('Formato de email inválido');
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe('Formato de email inválido');
         }
       });
 
@@ -53,7 +55,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe('Email demasiado largo');
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe('Email demasiado largo');
         }
       });
 
@@ -112,7 +115,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe(
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe(
             'El nombre debe tener al menos 2 caracteres'
           );
         }
@@ -127,7 +131,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe('Nombre demasiado largo');
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe('Nombre demasiado largo');
         }
       });
 
@@ -160,7 +165,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe('Solo letras y espacios permitidos');
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe('Solo letras y espacios permitidos');
         }
       });
 
@@ -234,7 +240,8 @@ describe('validations.ts', () => {
           const result = registroSchema.safeParse(data);
           expect(result.success).toBe(false);
           if (!result.success) {
-            expect(result.error.errors[0].message).toContain('Formato de teléfono inválido');
+            expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toContain('Formato de teléfono inválido');
           }
         });
       });
@@ -267,7 +274,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe(
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe(
             'Selecciona un tipo de interés válido'
           );
         }
@@ -321,7 +329,8 @@ describe('validations.ts', () => {
         const result = registroSchema.safeParse(data);
         expect(result.success).toBe(false);
         if (!result.success) {
-          expect(result.error.errors[0].message).toBe(
+          expect(result.error.issues.length).toBeGreaterThan(0);
+          expect(result.error.issues[0].message).toBe(
             'El mensaje no puede exceder 500 caracteres'
           );
         }
