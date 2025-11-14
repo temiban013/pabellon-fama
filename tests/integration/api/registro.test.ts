@@ -20,12 +20,13 @@ describe('/api/registro', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     // Set up required environment variables
-    process.env.RESEND_API_KEY = 'test-api-key';
-    process.env.NODE_ENV = 'test';
+    vi.stubEnv('RESEND_API_KEY', 'test-api-key');
+    vi.stubEnv('NODE_ENV', 'test');
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.unstubAllEnvs();
   });
 
   // Helper function to create a NextRequest with proper headers
@@ -198,6 +199,7 @@ describe('/api/registro', () => {
       vi.mocked(mockResend.emails.send).mockResolvedValue({
         data: null,
         error: { message: 'Failed to send email', name: 'EmailError' } as any,
+        headers: null,
       });
 
       const request = createRequest('POST', validData);
@@ -389,7 +391,7 @@ describe('/api/registro', () => {
 
   describe('Manejo de errores', () => {
     it('maneja errores internos correctamente en desarrollo', async () => {
-      process.env.NODE_ENV = 'development';
+      vi.stubEnv('NODE_ENV', 'development');
 
       // Forzar un error al mockear la función de envío de email para lanzar
       const { Resend } = await import('resend');
@@ -412,7 +414,7 @@ describe('/api/registro', () => {
     });
 
     it('oculta detalles de errores en producción', async () => {
-      process.env.NODE_ENV = 'production';
+      vi.stubEnv('NODE_ENV', 'production');
 
       const { Resend } = await import('resend');
       const mockResend = new Resend('test');

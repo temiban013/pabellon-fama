@@ -20,7 +20,7 @@ vi.mock('googleapis', () => {
       auth: {
         JWT: vi.fn().mockImplementation(() => ({})),
       },
-      calendar: vi.fn(() => mockCalendarApi),
+      calendar: vi.fn((_config: any) => mockCalendarApi),
     },
   };
 });
@@ -41,7 +41,7 @@ describe('googleCalendar.ts', () => {
   describe('fetchCalendarEvents', () => {
     it('transforma eventos de Google Calendar correctamente', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -80,7 +80,7 @@ describe('googleCalendar.ts', () => {
 
     it('filtra eventos sin datos esenciales (sin start o summary)', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -116,7 +116,7 @@ describe('googleCalendar.ts', () => {
 
     it('maneja eventos de día completo correctamente', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -144,7 +144,7 @@ describe('googleCalendar.ts', () => {
 
     it('extrae metadata de la descripción correctamente', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -179,7 +179,7 @@ Descripción del evento`,
 
     it('maneja metadata con separadores por comas', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -205,7 +205,7 @@ Descripción del evento`,
 
     it('limpia HTML tags de la descripción', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -229,7 +229,7 @@ Descripción del evento`,
 
     it('mapea colores de Google Calendar a tipos de evento', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       const colorTests = [
         { colorId: '9', expectedTipo: 'ceremonia' },
@@ -263,7 +263,7 @@ Descripción del evento`,
 
     it('prioriza metadata sobre colorId para tipo de evento', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -287,7 +287,7 @@ Descripción del evento`,
 
     it('usa valores predeterminados para campos opcionales', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -314,7 +314,7 @@ Descripción del evento`,
 
     it('respeta opciones de filtrado (timeMin, timeMax, maxResults)', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       const timeMin = new Date('2025-12-01');
       const timeMax = new Date('2025-12-31');
@@ -346,7 +346,7 @@ Descripción del evento`,
 
     it('maneja errores de la API de Google correctamente', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockRejectedValue(
         new Error('API rate limit exceeded')
@@ -359,7 +359,7 @@ Descripción del evento`,
 
     it('maneja errores desconocidos', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockRejectedValue('Unknown error');
 
@@ -372,7 +372,7 @@ Descripción del evento`,
   describe('fetchUpcomingEvents', () => {
     it('obtiene eventos futuros con límite predeterminado', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: { items: [] },
@@ -387,7 +387,7 @@ Descripción del evento`,
 
     it('respeta el parámetro maxResults personalizado', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: { items: [] },
@@ -403,7 +403,7 @@ Descripción del evento`,
   describe('fetchEventsInRange', () => {
     it('obtiene eventos en el rango de fechas especificado', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: { items: [] },
@@ -424,7 +424,7 @@ Descripción del evento`,
   describe('fetchEventsThisMonth', () => {
     it('obtiene eventos del mes actual', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: { items: [] },
@@ -465,7 +465,7 @@ Descripción del evento`,
   describe('Metadata extraction edge cases', () => {
     it('maneja metadata con variaciones de nomenclatura', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -493,7 +493,7 @@ requiere_reservacion: true
 
     it('ignora valores de tipo inválidos en metadata', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -519,7 +519,7 @@ requiere_reservacion: true
 
     it('maneja capacidad con valores no numéricos', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {
@@ -546,7 +546,7 @@ requiere_reservacion: true
   describe('Formateo de hora', () => {
     it('formatea horas correctamente para zona horaria de Puerto Rico', async () => {
       const { google } = await import('googleapis');
-      const mockCalendar = google.calendar();
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
 
       vi.mocked(mockCalendar.events.list).mockResolvedValue({
         data: {

@@ -240,7 +240,7 @@ describe('ExaltadoCard', () => {
         apodo: 'El Rey',
       };
 
-      render(<ExaltadoNombreSimple exaltado={exaltadoNombreSimple} viewMode="grid" />);
+      render(<ExaltadoCard exaltado={exaltadoNombreSimple} viewMode="grid" />);
 
       // Fallback cuando el nombre no tiene espacios
       expect(screen.getByText(/Pelé "El Rey"/)).toBeInTheDocument();

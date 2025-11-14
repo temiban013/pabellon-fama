@@ -1,4 +1,4 @@
-import type { Exaltado } from '@/app/directorio/types';
+import type { Exaltado } from '@/lib/types';
 
 /**
  * Factory de datos de prueba con nombres y contexto dominicano

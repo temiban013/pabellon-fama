@@ -87,12 +87,12 @@ export const handlers = [
       );
     }
 
-    const body = await request.json();
+    const body: any = await request.json();
 
     return HttpResponse.json({
       id: 'mock-email-id-' + Date.now(),
-      from: body.from,
-      to: body.to,
+      from: body?.from || 'noreply@test.com',
+      to: body?.to || 'recipient@test.com',
       created_at: new Date().toISOString(),
     });
   }),
