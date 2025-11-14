@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { FotoHistorica } from "@/lib/types/revista";
 import { PhotoCard } from "./PhotoCard";
-import { Lightbox } from "./Lightbox";
 import { Camera } from "lucide-react";
+
+// Lazy load Lightbox component since it's only used when a photo is clicked
+const Lightbox = lazy(() =>
+  import("./Lightbox").then((mod) => ({ default: mod.Lightbox }))
+);
 
 interface PhotoGridProps {
   fotos: FotoHistorica[];
@@ -63,16 +67,18 @@ export function PhotoGrid({ fotos, compact = false }: PhotoGridProps) {
         ))}
       </div>
 
-      {/* Lightbox */}
+      {/* Lightbox - Lazy loaded for better performance */}
       {selectedIndex !== null && (
-        <Lightbox
-          foto={fotos[selectedIndex]}
-          onClose={handleClose}
-          onNext={handleNext}
-          onPrev={handlePrev}
-          hasNext={selectedIndex < fotos.length - 1}
-          hasPrev={selectedIndex > 0}
-        />
+        <Suspense fallback={null}>
+          <Lightbox
+            foto={fotos[selectedIndex]}
+            onClose={handleClose}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            hasNext={selectedIndex < fotos.length - 1}
+            hasPrev={selectedIndex > 0}
+          />
+        </Suspense>
       )}
     </>
   );

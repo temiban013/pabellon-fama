@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import GoogleMap from "@/components/ui/GoogleMap";
+import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
 
 export const metadata: Metadata = {
   title:
@@ -298,9 +298,7 @@ export default function MuseoPage() {
                   <h4 className="font-semibold text-pabellon-green-700 mb-4">
                     Mapa de Ubicación
                   </h4>
-                  <GoogleMap 
-                    address="Centro Cultural Dra. Antonia Sáez, Humacao, Puerto Rico 00791"
-                  />
+                  <GoogleMapClient />
                 </div>
 
                 <div className="pt-6">

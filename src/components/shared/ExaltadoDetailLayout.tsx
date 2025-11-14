@@ -5,8 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { type Exaltado } from "@/lib/types";
-import { getInitials, capitalize } from "@/lib/utils";
+import { getInitials } from "@/lib/utils";
 import { formatBiography } from "@/lib/utils/biography";
+import {
+  getCategoryColorWithBorder,
+  getSportEmoji,
+  getCategoryLabel,
+} from "@/lib/constants/exaltados";
 
 interface ExaltadoDetailLayoutProps {
   exaltado: Exaltado;
@@ -41,49 +46,6 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
       document.body.style.overflow = "unset";
     };
   }, [isPhotoModalOpen]);
-
-  const getSportEmoji = (deporte: string) => {
-    const emojis = {
-      Atletismo: "🏃",
-      Béisbol: "⚾",
-      Baloncesto: "🏀",
-      Boxeo: "🥊",
-      Fútbol: "⚽",
-      Voleibol: "🏐",
-      Natación: "🏊",
-      Ciclismo: "🚴",
-      Tenis: "🎾",
-      Golf: "⛳",
-      "Paso Fino": "🐎",
-      "Levantamiento de pesas": "🏋️",
-      "Lucha Olímpica": "🤼",
-      "Artes Marciales": "🥋",
-      Tiro: "🎯",
-      Gallos: "🐓",
-      "Deportes Varios": "🏆",
-      "Cronista Deportivo": "📝",
-    };
-    return emojis[deporte as keyof typeof emojis] || "🏆";
-  };
-
-  const getCategoryColor = (categoria: string) => {
-    const colors = {
-      atleta: "bg-blue-100 text-blue-800 border-blue-200",
-      jugador: "bg-green-100 text-green-800 border-green-200",
-      propulsor: "bg-purple-100 text-purple-800 border-purple-200",
-      entrenador: "bg-orange-100 text-orange-800 border-orange-200",
-      arbitro: "bg-yellow-100 text-yellow-800 border-yellow-200",
-      cronista: "bg-indigo-100 text-indigo-800 border-indigo-200",
-      equipo: "bg-red-100 text-red-800 border-red-200",
-      boxeador: "bg-red-100 text-red-800 border-red-200",
-      "atleta-propulsor": "bg-teal-100 text-teal-800 border-teal-200",
-      "jugador-propulsor": "bg-cyan-100 text-cyan-800 border-cyan-200",
-    };
-    return (
-      colors[categoria as keyof typeof colors] ||
-      "bg-gray-100 text-gray-800 border-gray-200"
-    );
-  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -186,10 +148,10 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
             <p className="text-xs sm:text-sm text-gray-600 mb-2">Categoría</p>
             <Link
               href={`/directorio?categoria=${encodeURIComponent(exaltado.categoria)}`}
-              className={`block rounded-lg p-3 border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${getCategoryColor(
+              className={`block rounded-lg p-3 border-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${getCategoryColorWithBorder(
                 exaltado.categoria
               )}`}
-              title={`Ver todos los ${capitalize(exaltado.categoria)}s`}
+              title={`Ver todos los ${getCategoryLabel(exaltado.categoria)}s`}
             >
               <div className="flex items-center gap-2">
                 <span className="text-lg">
@@ -199,7 +161,7 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
                    exaltado.categoria.toLowerCase().includes('póstumo') ? '🕊️' : '🏆'}
                 </span>
                 <span className="font-bold text-sm sm:text-base uppercase tracking-wide">
-                  {capitalize(exaltado.categoria)}
+                  {getCategoryLabel(exaltado.categoria)}
                 </span>
               </div>
             </Link>
