@@ -13,7 +13,11 @@ test.describe('Flujo de Registro', () => {
   test('debe completar el flujo de registro exitosamente', async ({ page }) => {
     // 1. Paso 1: Ingresar email y expandir el formulario
     await page.fill('input[name="email"]', 'juan.perez@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+
+    // Esperar a que el botón se habilite
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
 
     // 2. Esperar a que el formulario se expanda y muestre los campos adicionales
     await expect(page.locator('input[name="nombre"]')).toBeVisible({ timeout: 5000 });
@@ -41,19 +45,29 @@ test.describe('Flujo de Registro', () => {
   });
 
   test('debe mostrar errores de validación para datos inválidos', async ({ page }) => {
-    // Intentar expandir formulario sin email
-    await page.click('button:has-text("Regístrate aquí")');
+    // Expandir formulario con email válido
+    await page.fill('input[name="email"]', 'test@example.com');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
+    await expect(page.locator('input[name="nombre"]')).toBeVisible();
+
+    // Intentar enviar formulario sin llenar nombre (requerido)
+    await page.selectOption('select[name="interes"]', 'general');
+    await page.click('button:has-text("Completar Registro")');
 
     // Verificar que se muestran errores de validación
     await expect(
-      page.locator('text=/requerido|obligatorio|necesario|inválido/i')
+      page.locator('text=/requerido|obligatorio|necesario/i')
     ).toBeVisible({ timeout: 5000 });
   });
 
   test('debe validar formato de email', async ({ page }) => {
     // Llenar con email inválido
     await page.fill('input[name="email"]', 'email-invalido');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
 
     // Verificar error de email
     await expect(
@@ -64,7 +78,9 @@ test.describe('Flujo de Registro', () => {
   test('debe validar formato de teléfono', async ({ page }) => {
     // Expandir formulario
     await page.fill('input[name="email"]', 'maria@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     // Llenar con teléfono inválido
@@ -83,7 +99,9 @@ test.describe('Flujo de Registro', () => {
   test('debe permitir registro sin campos opcionales', async ({ page }) => {
     // Expandir formulario
     await page.fill('input[name="email"]', 'carlos@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     // Llenar solo campos requeridos
@@ -103,7 +121,9 @@ test.describe('Flujo de Registro', () => {
   test('debe mostrar indicador de carga durante el envío', async ({ page }) => {
     // Expandir formulario
     await page.fill('input[name="email"]', 'ana@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     await page.fill('input[name="nombre"]', 'Ana Martínez');
@@ -126,7 +146,9 @@ test.describe('Flujo de Registro', () => {
   test('debe prevenir envíos múltiples', async ({ page }) => {
     // Expandir formulario
     await page.fill('input[name="email"]', 'pedro@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     await page.fill('input[name="nombre"]', 'Pedro Sánchez');
@@ -157,7 +179,9 @@ test.describe('Flujo de Registro', () => {
 
     // Expandir formulario
     await page.fill('input[name="email"]', 'test@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    let expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     await page.fill('input[name="nombre"]', 'Test Usuario');
@@ -174,7 +198,9 @@ test.describe('Flujo de Registro', () => {
   test('debe validar longitud mínima del nombre', async ({ page }) => {
     // Expandir formulario
     await page.fill('input[name="email"]', 'test@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     await page.fill('input[name="nombre"]', 'J'); // Solo 1 carácter
@@ -190,7 +216,9 @@ test.describe('Flujo de Registro', () => {
   test('debe validar longitud máxima del mensaje', async ({ page }) => {
     // Expandir formulario
     await page.fill('input[name="email"]', 'juan@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     await page.fill('input[name="nombre"]', 'Juan Pérez');
@@ -211,6 +239,10 @@ test.describe('Flujo de Registro', () => {
     // Paso 1: Email field
     await page.keyboard.press('Tab');
     await page.keyboard.type('roberto@example.com');
+
+    // Esperar a que el botón se habilite después de llenar email
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
 
     // Expandir formulario con Enter
     await page.keyboard.press('Tab'); // Focus en botón "Regístrate aquí"
@@ -254,7 +286,9 @@ test.describe('Flujo de Registro', () => {
 
     // Expandir formulario
     await page.fill('input[name="email"]', email);
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     await page.fill('input[name="nombre"]', nombre);
@@ -284,7 +318,9 @@ test.describe('Registro - Vista Móvil', () => {
 
     // Expandir formulario
     await page.fill('input[name="email"]', 'movil@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     // Verificar que el formulario es visible y usable en móvil
@@ -303,7 +339,9 @@ test.describe('Registro - Vista Móvil', () => {
 
     // Expandir formulario
     await page.fill('input[name="email"]', 'test@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     // Verificar que los campos de entrada tienen altura mínima para móvil
@@ -331,7 +369,9 @@ test.describe('Registro - Accesibilidad', () => {
   test('debe tener labels correctos para todos los campos', async ({ page }) => {
     // Expandir formulario primero
     await page.fill('input[name="email"]', 'test@example.com');
-    await page.click('button:has-text("Regístrate aquí")');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
     await expect(page.locator('input[name="nombre"]')).toBeVisible();
 
     // Verificar que todos los inputs tienen labels o aria-labels
@@ -343,11 +383,19 @@ test.describe('Registro - Accesibilidad', () => {
   });
 
   test('debe anunciar errores a lectores de pantalla', async ({ page }) => {
-    // Intentar submit sin llenar email
-    await page.click('button:has-text("Regístrate aquí")');
+    // Expandir formulario con email válido
+    await page.fill('input[name="email"]', 'test@example.com');
+    const expandButton = page.locator('button:has-text("Regístrate aquí")');
+    await expect(expandButton).toBeEnabled({ timeout: 2000 });
+    await expandButton.click();
+    await expect(page.locator('input[name="nombre"]')).toBeVisible();
+
+    // Intentar submit sin llenar nombre (campo requerido)
+    await page.selectOption('select[name="interes"]', 'general');
+    await page.click('button:has-text("Completar Registro")');
 
     // Verificar que los mensajes de error tienen role="alert" o aria-live
-    const errorMessage = page.locator('[role="alert"], [aria-live="polite"], text=/requerido|obligatorio|inválido/i');
+    const errorMessage = page.locator('[role="alert"], [aria-live="polite"], text=/requerido|obligatorio|necesario/i');
     await expect(errorMessage).toBeVisible({ timeout: 5000 });
   });
 
