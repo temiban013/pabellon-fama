@@ -2,7 +2,31 @@
 
 ## Issues Fixed
 
-### 1. ✅ Node.js Cache Configuration Error
+### 1. ✅ pnpm Version Error (Latest)
+**Problem:** All CI jobs failing with JSON parse error
+```
+SyntaxError: Expected ',' or '}' after property value in JSON at position 380
+at readTarget (/home/runner/work/_actions/pnpm/action-setup/v4/dist/index.js:1:4792)
+```
+
+**Root Cause:** Workflow specified `version: 10` for pnpm, but pnpm 10 is not yet released as a stable version. The pnpm action-setup@v4 failed to parse version metadata for the non-existent version.
+
+**Fix:** Changed pnpm version from 10 to 9 (latest stable version)
+```yaml
+# Before (caused error):
+- uses: pnpm/action-setup@v4
+  with:
+    version: 10
+
+# After (fixed):
+- uses: pnpm/action-setup@v4
+  with:
+    version: 9
+```
+
+**Impact:** All 4 jobs (unit-integration, e2e, lint, type-check) now able to install dependencies
+
+### 2. ✅ Node.js Cache Configuration Error
 **Problem:** Workflow tried to cache `npm` but project uses `pnpm`
 ```
 Error: Dependencies lock file is not found... Supported file patterns: package-lock.json
@@ -12,7 +36,7 @@ Error: Dependencies lock file is not found... Supported file patterns: package-l
 - pnpm has its own caching strategy configured separately
 - GitHub Actions will use pnpm's cache configuration
 
-### 2. ✅ TypeScript Type Errors (24 errors)
+### 3. ✅ TypeScript Type Errors (24 errors)
 **Problem:** Mock data didn't match actual TypeScript interfaces
 
 **Root Cause:** The `Exaltado` and `Evento` types changed after tests were created
@@ -43,7 +67,7 @@ Error: Dependencies lock file is not found... Supported file patterns: package-l
 - Added type safety to request body parsing: `await request.json() as any`
 - Added null checks: `body?.email` instead of `body.email`
 
-### 3. ⚠️ E2E Test Failures (Expected, Non-blocking)
+### 4. ⚠️ E2E Test Failures (Expected, Non-blocking)
 **Issue:** E2E tests looking for links/pages that don't exist yet
 
 **Examples:**
@@ -91,6 +115,7 @@ You can verify the fixes by checking:
 
 | Fix | Status | Impact |
 |-----|--------|--------|
+| pnpm version 10 → 9 | ✅ Fixed | All jobs can now install dependencies |
 | Node cache config | ✅ Fixed | Workflow can now install dependencies |
 | TypeScript errors | ✅ Fixed | Type check will pass |
 | Mock data types | ✅ Fixed | Tests will run correctly |
@@ -116,7 +141,8 @@ tests/setup/msw-handlers.ts
 1. Initial test suite
 2. Optimize workflow for GitHub runners
 3. Add monitoring documentation
-4. **Fix TypeScript errors** ← Latest
+4. Fix TypeScript errors
+5. **Fix pnpm version (10 → 9)** ← Latest
 
 ## Success Criteria
 
