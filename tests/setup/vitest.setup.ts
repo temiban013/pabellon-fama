@@ -38,21 +38,7 @@ vi.mock('next/navigation', () => ({
 
 // Mock de Next.js Image
 vi.mock('next/image', () => ({
-  default: ({
-    src,
-    alt,
-    width,
-    height,
-    ...props
-  }: {
-    src: string;
-    alt: string;
-    width?: number;
-    height?: number;
-  }) => {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} width={width} height={height} {...props} />;
-  },
+  default: (props: any) => props,
 }));
 
 // Mock de variables de entorno
