@@ -96,10 +96,12 @@ test.describe('Registro Flow', () => {
   test('should validate required fields', async ({ page }) => {
     await page.goto('/')
 
-    const registroLink = page.getByRole('link', { name: /registro|contacto/i })
-    if (await registroLink.isVisible({ timeout: 2000 })) {
-      await registroLink.click()
-    } else {
+    // Try to find registro/contacto link, use .first() to handle multiple matches
+    const registroLink = page.getByRole('link', { name: /registro|contacto/i }).first()
+    try {
+      await registroLink.click({ timeout: 2000 })
+    } catch {
+      // If link not found or not clickable, navigate directly
       await page.goto('/contacto')
     }
 
@@ -117,10 +119,12 @@ test.describe('Registro Flow', () => {
   test('should validate email format', async ({ page }) => {
     await page.goto('/')
 
-    const registroLink = page.getByRole('link', { name: /registro|contacto/i })
-    if (await registroLink.isVisible({ timeout: 2000 })) {
-      await registroLink.click()
-    } else {
+    // Try to find registro/contacto link, use .first() to handle multiple matches
+    const registroLink = page.getByRole('link', { name: /registro|contacto/i }).first()
+    try {
+      await registroLink.click({ timeout: 2000 })
+    } catch {
+      // If link not found or not clickable, navigate directly
       await page.goto('/contacto')
     }
 
@@ -144,10 +148,12 @@ test.describe('Registro Flow', () => {
   test('should validate phone format', async ({ page }) => {
     await page.goto('/')
 
-    const registroLink = page.getByRole('link', { name: /registro|contacto/i })
-    if (await registroLink.isVisible({ timeout: 2000 })) {
-      await registroLink.click()
-    } else {
+    // Try to find registro/contacto link, use .first() to handle multiple matches
+    const registroLink = page.getByRole('link', { name: /registro|contacto/i }).first()
+    try {
+      await registroLink.click({ timeout: 2000 })
+    } catch {
+      // If link not found or not clickable, navigate directly
       await page.goto('/contacto')
     }
 
@@ -192,10 +198,12 @@ test.describe('Registro Flow', () => {
 
     await page.goto('/')
 
-    const registroLink = page.getByRole('link', { name: /registro|contacto/i })
-    if (await registroLink.isVisible({ timeout: 2000 })) {
-      await registroLink.click()
-    } else {
+    // Try to find registro/contacto link, use .first() to handle multiple matches
+    const registroLink = page.getByRole('link', { name: /registro|contacto/i }).first()
+    try {
+      await registroLink.click({ timeout: 2000 })
+    } catch {
+      // If link not found or not clickable, navigate directly
       await page.goto('/contacto')
     }
 
@@ -228,10 +236,12 @@ test.describe('Registro Flow', () => {
 
     await page.goto('/')
 
-    const registroLink = page.getByRole('link', { name: /registro|contacto/i })
-    if (await registroLink.isVisible({ timeout: 2000 })) {
-      await registroLink.click()
-    } else {
+    // Try to find registro/contacto link, use .first() to handle multiple matches
+    const registroLink = page.getByRole('link', { name: /registro|contacto/i }).first()
+    try {
+      await registroLink.click({ timeout: 2000 })
+    } catch {
+      // If link not found or not clickable, navigate directly
       await page.goto('/contacto')
     }
 
@@ -263,10 +273,12 @@ test.describe('Registro Flow', () => {
 
     await page.goto('/')
 
-    const registroLink = page.getByRole('link', { name: /registro|contacto/i })
-    if (await registroLink.isVisible({ timeout: 2000 })) {
-      await registroLink.click()
-    } else {
+    // Try to find registro/contacto link, use .first() to handle multiple matches
+    const registroLink = page.getByRole('link', { name: /registro|contacto/i }).first()
+    try {
+      await registroLink.click({ timeout: 2000 })
+    } catch {
+      // If link not found or not clickable, navigate directly
       await page.goto('/contacto')
     }
 
@@ -293,10 +305,12 @@ test.describe('Registro Flow', () => {
 
     await page.goto('/')
 
-    const registroLink = page.getByRole('link', { name: /registro|contacto/i })
-    if (await registroLink.isVisible({ timeout: 2000 })) {
-      await registroLink.click()
-    } else {
+    // Try to find registro/contacto link, use .first() to handle multiple matches
+    const registroLink = page.getByRole('link', { name: /registro|contacto/i }).first()
+    try {
+      await registroLink.click({ timeout: 2000 })
+    } catch {
+      // If link not found or not clickable, navigate directly
       await page.goto('/contacto')
     }
 
