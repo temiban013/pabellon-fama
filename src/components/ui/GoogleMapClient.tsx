@@ -14,5 +14,7 @@ const GoogleMap = dynamic(() => import("@/components/ui/GoogleMap"), {
 });
 
 export function GoogleMapClient() {
-  return <GoogleMap />;
+  return (
+    <GoogleMap address="Centro Cultural Dra. Antonia Sáez, Humacao, Puerto Rico 00791" />
+  );
 }

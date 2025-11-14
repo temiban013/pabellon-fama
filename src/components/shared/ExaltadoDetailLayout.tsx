@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { type Exaltado } from "@/lib/types";
-import { getInitials, capitalize } from "@/lib/utils";
+import { getInitials } from "@/lib/utils";
 import { formatBiography } from "@/lib/utils/biography";
 import {
   getCategoryColorWithBorder,

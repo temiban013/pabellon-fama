@@ -4,7 +4,7 @@ import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { type Exaltado } from "@/lib/types";
-import { getInitials, capitalize } from "@/lib/utils";
+import { getInitials } from "@/lib/utils";
 import {
   getCategoryColor,
   getSportEmoji,
