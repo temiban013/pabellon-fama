@@ -374,7 +374,8 @@ describe('validations.ts', () => {
       const result = registroApiSchema.safeParse(data);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.errors[0].message).toBe(
+        expect(result.error.issues.length).toBeGreaterThan(0);
+        expect(result.error.issues[0].message).toBe(
           'El nombre es requerido para el registro'
         );
       }
@@ -409,7 +410,8 @@ describe('validations.ts', () => {
       const result = registroApiSchema.safeParse(data);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.errors[0].message).toBe('Formato de email inválido');
+        expect(result.error.issues.length).toBeGreaterThan(0);
+        expect(result.error.issues[0].message).toBe('Formato de email inválido');
       }
     });
   });

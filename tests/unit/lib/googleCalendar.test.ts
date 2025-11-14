@@ -444,21 +444,23 @@ Descripción del evento`,
 
   describe('getPublicCalendarUrl', () => {
     it('usa la URL pública del entorno si está disponible', () => {
-      process.env.NEXT_PUBLIC_CALENDAR_PUBLIC_URL = 'https://custom-calendar-url.com';
+      vi.stubEnv('NEXT_PUBLIC_CALENDAR_PUBLIC_URL', 'https://custom-calendar-url.com');
 
       const url = getPublicCalendarUrl();
 
       expect(url).toBe('https://custom-calendar-url.com');
+      vi.unstubAllEnvs();
     });
 
     it('genera URL predeterminada de Google Calendar si no hay variable de entorno', () => {
-      delete process.env.NEXT_PUBLIC_CALENDAR_PUBLIC_URL;
-      process.env.GOOGLE_CALENDAR_ID = 'test-calendar@example.com';
+      vi.unstubAllEnvs();
 
       const url = getPublicCalendarUrl();
 
+      // The module loads CALENDAR_ID from process.env at load time,
+      // so this will use the value from beforeEach (test-calendar-id)
       expect(url).toContain('https://calendar.google.com/calendar/embed?src=');
-      expect(url).toContain(encodeURIComponent('test-calendar@example.com'));
+      expect(url).toContain(encodeURIComponent('test-calendar-id'));
     });
   });
 
