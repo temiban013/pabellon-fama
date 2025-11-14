@@ -166,7 +166,7 @@ describe('ExaltadoCard', () => {
 
       render(<ExaltadoCard exaltado={exaltadoConFoto} viewMode="list" />);
 
-      const img = screen.getByAltText('Foto de Juan');
+      const img = screen.getByAltText('Foto de Juan Pérez');
       expect(img).toBeInTheDocument();
     });
 
@@ -271,7 +271,7 @@ describe('ExaltadoCard', () => {
 
       render(<ExaltadoCard exaltado={exaltadoConFoto} viewMode="grid" />);
 
-      const img = screen.getByAltText('Foto de Juan');
+      const img = screen.getByAltText('Foto de Juan Pérez');
       expect(img).toBeInTheDocument();
     });
 

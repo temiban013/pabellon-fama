@@ -2,19 +2,19 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { POST, GET, OPTIONS, PUT, DELETE } from '@/app/api/registro/route';
 import { NextRequest } from 'next/server';
 
-// Create a shared mock send function that can be controlled in tests
-const mockEmailsSend = vi.fn().mockResolvedValue({
+// Use vi.hoisted to ensure mockEmailsSend is available before vi.mock runs
+const mockEmailsSend = vi.hoisted(() => vi.fn().mockResolvedValue({
   data: { id: 'mock-email-id' },
   error: null,
   headers: null,
-});
+}));
 
 // Mock Resend - all instances will use the same mockEmailsSend function
 vi.mock('resend', () => {
   return {
     Resend: vi.fn().mockImplementation(() => ({
       emails: {
-        send: mockEmailsSend,
+        send: mockEmailsSend(),
       },
     })),
   };
@@ -32,7 +32,7 @@ describe('/api/registro', () => {
     vi.stubEnv('NODE_ENV', 'test');
 
     // Reset mock to default successful response
-    mockEmailsSend.mockResolvedValue({
+    mockEmailsSend().mockResolvedValue({
       data: { id: 'mock-email-id' },
       error: null,
       headers: null,
@@ -211,7 +211,7 @@ describe('/api/registro', () => {
 
     it('maneja error al enviar email correctamente', async () => {
       // Mock Resend to fail
-      vi.mocked(mockEmailsSend).mockResolvedValueOnce({
+      vi.mocked(mockEmailsSend()).mockResolvedValueOnce({
         data: null,
         error: { message: 'Failed to send email', name: 'EmailError' } as any,
         headers: null,
@@ -409,7 +409,7 @@ describe('/api/registro', () => {
       vi.stubEnv('NODE_ENV', 'development');
 
       // Forzar un error al mockear la función de envío de email para lanzar
-      vi.mocked(mockEmailsSend).mockRejectedValueOnce(
+      vi.mocked(mockEmailsSend()).mockRejectedValueOnce(
         new Error('Unexpected error')
       );
 
@@ -429,7 +429,7 @@ describe('/api/registro', () => {
     it('oculta detalles de errores en producción', async () => {
       vi.stubEnv('NODE_ENV', 'production');
 
-      vi.mocked(mockEmailsSend).mockRejectedValueOnce(
+      vi.mocked(mockEmailsSend()).mockRejectedValueOnce(
         new Error('Internal database error')
       );
 
