@@ -14,8 +14,8 @@ import { todosLosExaltados } from "@/data/exaltados-all";
 import type { ExaltadoRevista } from "@/lib/types/revista";
 
 type ViewMode = "grid" | "list";
-type SortOption = "nombre" | "ano" | "deporte";
-type SortDirection = "asc" | "desc";
+// Note: SortOption and SortDirection types removed - not currently used
+// Can be re-added when sorting functionality is implemented
 
 // Mapeo de categorías de revista a las categorías del tipo
 const categoriaMap: Record<string, CategoriaExaltado> = {

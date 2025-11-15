@@ -10,6 +10,14 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Ignore patterns (utility scripts use CommonJS)
+  {
+    ignores: [
+      "src/scripts/**/*",
+      "**/*.config.js",
+      "**/*.config.ts",
+    ],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 

@@ -14,7 +14,6 @@
 
 "use client";
 
-import { Fragment } from "react";
 import {
   MagnifyingGlassIcon,
   XMarkIcon,

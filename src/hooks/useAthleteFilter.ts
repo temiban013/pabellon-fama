@@ -288,7 +288,7 @@ export function useAthleteFilter({
    */
   useEffect(() => {
     const urlFilters = parseQueryParams(searchParams);
-    setFilters(prev => ({
+    setFilters(() => ({
       ...EMPTY_FILTERS,
       ...urlFilters,
     }));
