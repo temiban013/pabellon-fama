@@ -356,8 +356,10 @@ export async function OPTIONS() {
 export async function POST(request: NextRequest) {
   try {
     // Check rate limit first (before any processing)
-    // Skip rate limiting in test environment
-    if (process.env.NODE_ENV !== 'test') {
+    // Skip rate limiting in E2E test environment (detected by test API key)
+    const isE2ETestMode = process.env.RESEND_API_KEY?.startsWith('re_test_');
+
+    if (!isE2ETestMode) {
       const clientIp = getClientIp(request);
       const rateLimit = checkRateLimit(clientIp);
 
@@ -391,7 +393,7 @@ export async function POST(request: NextRequest) {
         resetAt: new Date(rateLimit.resetAt).toISOString(),
       });
     } else {
-      console.log('✓ [TEST MODE] Rate limiting disabled');
+      console.log('✓ [E2E TEST MODE] Rate limiting disabled');
     }
 
     // Verificar Content-Type
@@ -421,8 +423,8 @@ export async function POST(request: NextRequest) {
     const validatedData = validation.data;
 
     // Enviar email de notificación via Resend
-    // Skip email sending in test environment to prevent 401 errors
-    if (process.env.NODE_ENV !== 'test') {
+    // Skip email sending in E2E test environment to prevent 401 errors
+    if (!isE2ETestMode) {
       try {
         await sendRegistrationEmail(validatedData);
       } catch (emailError) {
@@ -433,8 +435,8 @@ export async function POST(request: NextRequest) {
         );
       }
     } else {
-      // Test environment: Log instead of sending
-      console.log("✅ [TEST MODE] Email sending skipped:", {
+      // E2E test environment: Log instead of sending
+      console.log("✅ [E2E TEST MODE] Email sending skipped:", {
         to: "informa@pfdh.org",
         from: validatedData.email,
         nombre: validatedData.nombre,
