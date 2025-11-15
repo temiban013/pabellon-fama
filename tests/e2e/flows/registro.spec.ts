@@ -266,18 +266,17 @@ test.describe('Flujo de Registro', () => {
     await page.fill('input[name="nombre"]', 'Juan Pérez');
     await page.selectOption('select[name="interes"]', 'general');
 
-    // Llenar mensaje con más de 500 caracteres
-    // Use evaluate to bypass maxLength attribute
+    // Remove maxLength attribute and fill mensaje with more than 500 characters
     const longMessage = 'a'.repeat(501);
-    await page.evaluate((msg) => {
+    await page.evaluate(() => {
       const textarea = document.querySelector('textarea[name="mensaje"]') as HTMLTextAreaElement;
       if (textarea) {
-        textarea.value = msg;
-        // Trigger change event to update React state
-        textarea.dispatchEvent(new Event('input', { bubbles: true }));
-        textarea.dispatchEvent(new Event('change', { bubbles: true }));
+        textarea.removeAttribute('maxLength');
       }
-    }, longMessage);
+    });
+
+    // Now fill with the long message
+    await page.fill('textarea[name="mensaje"]', longMessage);
 
     // Intentar enviar
     const submitButton = page.locator('button:has-text("Completar Registro")');
