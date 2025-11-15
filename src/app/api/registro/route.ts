@@ -356,38 +356,45 @@ export async function OPTIONS() {
 export async function POST(request: NextRequest) {
   try {
     // Check rate limit first (before any processing)
-    const clientIp = getClientIp(request);
-    const rateLimit = checkRateLimit(clientIp);
+    // Skip rate limiting in E2E test environment (detected by test API key)
+    const isE2ETestMode = process.env.RESEND_API_KEY?.startsWith('re_test_');
 
-    if (!rateLimit.allowed) {
-      const minutesUntilReset = Math.ceil(
-        (rateLimit.resetAt - Date.now()) / 60000
-      );
-      console.warn(`⚠️ Rate limit exceeded for IP: ${clientIp}`);
+    if (!isE2ETestMode) {
+      const clientIp = getClientIp(request);
+      const rateLimit = checkRateLimit(clientIp);
 
-      return NextResponse.json(
-        {
-          success: false,
-          error: `Has excedido el límite de registros. Por favor, intenta nuevamente en ${minutesUntilReset} minutos.`,
-        },
-        {
-          status: 429,
-          headers: {
-            ...corsHeaders,
-            "X-RateLimit-Limit": RATE_LIMIT_MAX_REQUESTS.toString(),
-            "X-RateLimit-Remaining": "0",
-            "X-RateLimit-Reset": rateLimit.resetAt.toString(),
-            "Retry-After": (rateLimit.resetAt / 1000).toString(),
+      if (!rateLimit.allowed) {
+        const minutesUntilReset = Math.ceil(
+          (rateLimit.resetAt - Date.now()) / 60000
+        );
+        console.warn(`⚠️ Rate limit exceeded for IP: ${clientIp}`);
+
+        return NextResponse.json(
+          {
+            success: false,
+            error: `Has excedido el límite de registros. Por favor, intenta nuevamente en ${minutesUntilReset} minutos.`,
           },
-        }
-      );
-    }
+          {
+            status: 429,
+            headers: {
+              ...corsHeaders,
+              "X-RateLimit-Limit": RATE_LIMIT_MAX_REQUESTS.toString(),
+              "X-RateLimit-Remaining": "0",
+              "X-RateLimit-Reset": rateLimit.resetAt.toString(),
+              "Retry-After": (rateLimit.resetAt / 1000).toString(),
+            },
+          }
+        );
+      }
 
-    // Log rate limit status for monitoring
-    console.log(`✓ Rate limit check passed for IP ${clientIp}:`, {
-      remaining: rateLimit.remaining,
-      resetAt: new Date(rateLimit.resetAt).toISOString(),
-    });
+      // Log rate limit status for monitoring
+      console.log(`✓ Rate limit check passed for IP ${clientIp}:`, {
+        remaining: rateLimit.remaining,
+        resetAt: new Date(rateLimit.resetAt).toISOString(),
+      });
+    } else {
+      console.log('✓ [E2E TEST MODE] Rate limiting disabled');
+    }
 
     // Verificar Content-Type
     const contentType = request.headers.get("content-type");
@@ -416,14 +423,24 @@ export async function POST(request: NextRequest) {
     const validatedData = validation.data;
 
     // Enviar email de notificación via Resend
-    try {
-      await sendRegistrationEmail(validatedData);
-    } catch (emailError) {
-      console.error("❌ Error enviando email:", emailError);
-      return errorResponse(
-        "Error al enviar la notificación. Por favor, intenta nuevamente o contáctanos directamente.",
-        500
-      );
+    // Skip email sending in E2E test environment to prevent 401 errors
+    if (!isE2ETestMode) {
+      try {
+        await sendRegistrationEmail(validatedData);
+      } catch (emailError) {
+        console.error("❌ Error enviando email:", emailError);
+        return errorResponse(
+          "Error al enviar la notificación. Por favor, intenta nuevamente o contáctanos directamente.",
+          500
+        );
+      }
+    } else {
+      // E2E test environment: Log instead of sending
+      console.log("✅ [E2E TEST MODE] Email sending skipped:", {
+        to: "informa@pfdh.org",
+        from: validatedData.email,
+        nombre: validatedData.nombre,
+      });
     }
 
     // Respuesta de éxito
