@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
+import { generateJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title:
@@ -23,8 +24,18 @@ export const viewport: Viewport = {
 };
 
 export default function MuseoPage() {
+  const museumJsonLd = generateJsonLd("museum", {});
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <>
+      {/* Museum Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(museumJsonLd),
+        }}
+      />
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section del Museo */}
       <section className="relative py-16 lg:py-24 bg-gradient-to-br from-pabellon-brown-50 via-white to-pabellon-gold-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -311,6 +322,7 @@ export default function MuseoPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
