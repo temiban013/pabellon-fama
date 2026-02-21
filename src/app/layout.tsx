@@ -8,6 +8,7 @@ import {
 } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { NitainoCredit } from "@/components/shared/NitainoCredit";
 import { Providers } from "@/components/providers/Providers";
 import Analytics from "@/components/analytics/Analytics";
 import CookieConsent from "@/components/analytics/CookieConsent";
@@ -138,6 +139,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
               {/* Footer */}
               <Footer />
+              <NitainoCredit lang="es" variant="full" utmSource="pabellon-fama" />
             </div>
 
             {/* Toast Container */}
