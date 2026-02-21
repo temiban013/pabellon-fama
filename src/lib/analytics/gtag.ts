@@ -13,17 +13,11 @@ export const initGA = () => {
     return;
   }
 
-  // gtag function should already be available from the loaded script
-  // Just configure it
   window.dataLayer = window.dataLayer || [];
-  
-  // Only set up gtag if it doesn't exist (fallback)
-  if (typeof window.gtag !== 'function') {
-    window.gtag = function(...args: unknown[]) { 
-      window.dataLayer.push(args); 
-    };
-  }
-  
+  window.gtag = function(...args: unknown[]) {
+    window.dataLayer.push(args);
+  };
+
   window.gtag('js', new Date());
   window.gtag('config', ANALYTICS_CONFIG.GA_MEASUREMENT_ID, {
     page_path: window.location.pathname,

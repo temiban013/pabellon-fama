@@ -66,19 +66,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <IconLinks />
 
         {/* Preconnect para performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-
-        {/* DNS Prefetch */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
         {/* Structured Data - Organización */}
         <script
@@ -177,28 +166,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           }}
         />
 
-        {/* Service Worker Cleanup - Unregister old SW for all users */}
-        <Script
-          id="sw-cleanup"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.getRegistrations().then(registrations => {
-                  registrations.forEach(registration => {
-                    registration.unregister().then(() => {
-                      console.log('Old service worker unregistered');
-                      // Force reload to clear any cached chunks
-                      if (performance.navigation.type !== 1) {
-                        window.location.reload();
-                      }
-                    });
-                  });
-                });
-              }
-            `,
-          }}
-        />
 
         {/* Emergency Contact Schema */}
         <script

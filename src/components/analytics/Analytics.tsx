@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import Script from 'next/script';
 import { initGA, trackPageView } from '@/lib/analytics/gtag';
 import { trackWebVitals } from '@/lib/analytics/analytics';
 import { ANALYTICS_CONFIG } from '@/lib/analytics/constants';
@@ -10,6 +9,11 @@ import { ANALYTICS_CONFIG } from '@/lib/analytics/constants';
 export default function Analytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  // Initialize GA4 gtag shim (GTM loads the actual GA4 tag)
+  useEffect(() => {
+    initGA();
+  }, []);
 
   // Track page views - delay until gtag is ready
   useEffect(() => {
@@ -117,13 +121,6 @@ export default function Analytics() {
 
   return (
     <>
-      {/* Google Analytics */}
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_CONFIG.GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
-        onLoad={initGA}
-      />
-      
       {/* Debug mode indicator */}
       {ANALYTICS_CONFIG.DEBUG && (
         <div className="fixed bottom-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-md text-xs z-50">
