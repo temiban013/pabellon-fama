@@ -91,22 +91,16 @@ function getClientIp(request: NextRequest): string {
   return "unknown";
 }
 
-// Headers para CORS y seguridad
-const corsHeaders = {
-  "Access-Control-Allow-Origin":
-    process.env.NODE_ENV === "production" ? "https://pabellon.org" : "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+// Headers de seguridad para API
+const apiHeaders = {
   "Cache-Control": "no-store, max-age=0",
-  "X-Content-Type-Options": "nosniff",
-  "X-Frame-Options": "DENY",
 };
 
 // Función helper para respuestas de error
 function errorResponse(error: string, status: number = 400): NextResponse {
   return NextResponse.json(
     { success: false, error },
-    { status, headers: corsHeaders }
+    { status, headers: apiHeaders }
   );
 }
 
@@ -117,7 +111,7 @@ function successResponse(
 ): NextResponse {
   return NextResponse.json(
     { success: true, data, message },
-    { status: 201, headers: corsHeaders }
+    { status: 201, headers: apiHeaders }
   );
 }
 
@@ -347,11 +341,6 @@ async function sendRegistrationEmail(
   });
 }
 
-// Handler para OPTIONS (CORS preflight)
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 200, headers: corsHeaders });
-}
-
 // Handler principal para POST (Registro público)
 export async function POST(request: NextRequest) {
   try {
@@ -377,7 +366,7 @@ export async function POST(request: NextRequest) {
           {
             status: 429,
             headers: {
-              ...corsHeaders,
+              ...apiHeaders,
               "X-RateLimit-Limit": RATE_LIMIT_MAX_REQUESTS.toString(),
               "X-RateLimit-Remaining": "0",
               "X-RateLimit-Reset": rateLimit.resetAt.toString(),

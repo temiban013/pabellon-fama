@@ -6,15 +6,9 @@ import path from "path";
 import { validateRegistroApi } from "@/lib/validations";
 import { type RegistroResponse, type RegistroUsuario } from "@/lib/types";
 
-// Headers para CORS y seguridad
-const corsHeaders = {
-  "Access-Control-Allow-Origin":
-    process.env.NODE_ENV === "production" ? "https://pabellon.org" : "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+// Headers de seguridad para API
+const apiHeaders = {
   "Cache-Control": "no-store, max-age=0",
-  "X-Content-Type-Options": "nosniff",
-  "X-Frame-Options": "DENY",
 };
 
 // Configuración de archivos
@@ -28,7 +22,7 @@ function errorResponse(
 ): NextResponse<RegistroResponse> {
   return NextResponse.json(
     { success: false, error },
-    { status, headers: corsHeaders }
+    { status, headers: apiHeaders }
   );
 }
 
@@ -39,7 +33,7 @@ function successResponse(
 ): NextResponse<RegistroResponse> {
   return NextResponse.json(
     { success: true, data, message },
-    { status: 201, headers: corsHeaders }
+    { status: 201, headers: apiHeaders }
   );
 }
 
@@ -178,11 +172,6 @@ async function notifyAdministrators(userData: RegistroUsuario): Promise<void> {
     "📨 NOTIFICACIÓN A ADMINISTRADORES (Simulado):",
     adminNotification
   );
-}
-
-// Handler para OPTIONS (CORS preflight)
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 200, headers: corsHeaders });
 }
 
 // Handler principal para POST

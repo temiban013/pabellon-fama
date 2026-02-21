@@ -7,14 +7,9 @@ import {
 } from "@/lib/googleCalendar";
 import { type Evento } from "@/lib/types";
 
-// Headers para CORS y seguridad
-const corsHeaders = {
-  "Access-Control-Allow-Origin":
-    process.env.NODE_ENV === "production" ? "https://pabellon.org" : "*",
-  "Access-Control-Allow-Methods": "GET, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120", // Cache por 1 minuto
-  "X-Content-Type-Options": "nosniff",
+// Headers de seguridad para API
+const apiHeaders = {
+  "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
 };
 
 // Tipos para respuestas
@@ -36,7 +31,7 @@ function errorResponse(error: string, status: number = 400): NextResponse {
     success: false,
     error,
   };
-  return NextResponse.json(response, { status, headers: corsHeaders });
+  return NextResponse.json(response, { status, headers: apiHeaders });
 }
 
 // Helper para respuestas de éxito
@@ -54,12 +49,7 @@ function successResponse(
       timestamp: new Date().toISOString(),
     },
   };
-  return NextResponse.json(response, { status: 200, headers: corsHeaders });
-}
-
-// Handler para OPTIONS (CORS preflight)
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 200, headers: corsHeaders });
+  return NextResponse.json(response, { status: 200, headers: apiHeaders });
 }
 
 // Handler principal para GET

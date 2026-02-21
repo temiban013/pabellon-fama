@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { POST, GET, OPTIONS, PUT, DELETE } from '@/app/api/registro/route';
+import { POST, GET, PUT, DELETE } from '@/app/api/registro/route';
 import { NextRequest } from 'next/server';
 
 // Use vi.hoisted to ensure mockEmailsSend is available before vi.mock runs
@@ -230,15 +230,13 @@ describe('/api/registro', () => {
       expect(data.error).toContain('Error al enviar la notificación');
     });
 
-    it('incluye headers CORS correctos', async () => {
+    it('incluye headers de seguridad correctos', async () => {
       const request = createRequest('POST', validData);
       const response = await POST(request);
 
-      expect(response.headers.get('Access-Control-Allow-Origin')).toBeTruthy();
-      expect(response.headers.get('Access-Control-Allow-Methods')).toContain('POST');
       expect(response.headers.get('Cache-Control')).toContain('no-store');
-      expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
-      expect(response.headers.get('X-Frame-Options')).toBe('DENY');
+      // CORS headers removed — same-origin API, no Access-Control-Allow-Origin needed
+      // X-Content-Type-Options and X-Frame-Options set globally in next.config.ts
     });
 
     it('escapa HTML en los datos del email para prevenir XSS', async () => {
@@ -367,17 +365,6 @@ describe('/api/registro', () => {
           expect(responseData.success).toBe(true);
         });
       });
-    });
-  });
-
-  describe('OPTIONS /api/registro (CORS preflight)', () => {
-    it('devuelve 200 con headers CORS', async () => {
-      const response = await OPTIONS();
-
-      expect(response.status).toBe(200);
-      expect(response.headers.get('Access-Control-Allow-Origin')).toBeTruthy();
-      expect(response.headers.get('Access-Control-Allow-Methods')).toContain('POST');
-      expect(response.headers.get('Access-Control-Allow-Headers')).toContain('Content-Type');
     });
   });
 
