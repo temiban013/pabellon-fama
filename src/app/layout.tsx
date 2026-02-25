@@ -66,9 +66,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {/* Iconos y PWA */}
         <IconLinks />
 
-        {/* Preconnect para performance */}
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        {/* DNS prefetch for deferred analytics */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* Structured Data - Organización */}
         <script
@@ -153,17 +152,28 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </Suspense>
         <CookieConsent />
 
-        {/* Google Tag Manager - using lazyOnload to prevent hydration mismatch */}
+        {/* Google Tag Manager - interaction-first loading (scroll/mousemove/touch/keydown + 5s fallback) */}
         <Script
-          id="gtm-script"
-          strategy="lazyOnload"
+          id="gtm-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-5CNPGJ4D');
+              (function() {
+                var loaded = false;
+                function loadGTM() {
+                  if (loaded) return;
+                  loaded = true;
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-5CNPGJ4D');
+                }
+                ['mousemove','scroll','keydown','touchstart'].forEach(function(e) {
+                  document.addEventListener(e, loadGTM, {once: true, passive: true});
+                });
+                setTimeout(loadGTM, 5000);
+              })();
             `,
           }}
         />

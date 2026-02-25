@@ -1,4 +1,4 @@
-const CACHE_NAME = "pabellon-v1";
+const CACHE_NAME = "pabellon-v2";
 const STATIC_ASSETS = [
   "/",
   "/directorio",

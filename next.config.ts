@@ -14,6 +14,12 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
 
+  // Performance: Critical CSS inlining + tree-shaking
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['@heroicons/react', 'lucide-react'],
+  },
+
   // Headers de seguridad y SEO
   async headers() {
     return [
