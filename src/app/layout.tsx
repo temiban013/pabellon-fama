@@ -155,7 +155,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {/* Google Tag Manager - interaction-first loading (scroll/mousemove/touch/keydown + 5s fallback) */}
         <Script
           id="gtm-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

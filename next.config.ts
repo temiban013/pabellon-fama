@@ -14,9 +14,8 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
 
-  // Performance: Critical CSS inlining + tree-shaking
+  // Performance: tree-shaking for icon libraries
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['@heroicons/react', 'lucide-react'],
   },
 
