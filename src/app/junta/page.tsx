@@ -1,5 +1,6 @@
 // src/app/junta/page.tsx
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Mail, Phone, Users, Calendar, Award } from "lucide-react";
 
@@ -23,6 +24,8 @@ interface MiembroJunta {
   cargo: string;
   descripcion: string;
   anosServicio?: string;
+  foto?: string;
+  fotoPosition?: string;
   email?: string;
   contribuciones?: string[];
 }
@@ -34,7 +37,9 @@ const miembrosJunta: MiembroJunta[] = [
     cargo: "Presidente",
     descripcion:
       "Líder visionario con amplia experiencia en la gestión deportiva y comunitaria de Humacao.",
-    anosServicio: "2020 - Presente",
+    anosServicio: "2016 - Presente",
+    foto: "/images/junta/enrique-torres.jpg",
+    fotoPosition: "center 8%",
     contribuciones: [
       "Modernización de las operaciones del PFDH",
       "Expansión de programas educativos",
@@ -42,25 +47,26 @@ const miembrosJunta: MiembroJunta[] = [
     ],
   },
   {
-    id: "arnaldo-ortiz",
-    nombre: "Arnaldo (Larry) Ortiz",
-    cargo: "Secretario",
+    id: "miriam-lasanta",
+    nombre: "Miriam Lasanta",
+    cargo: "Secretaria",
     descripcion:
       "Responsable de mantener los registros oficiales y la documentación del pabellón.",
-    anosServicio: "2018 - Presente",
+    anosServicio: "2004 - Presente",
     contribuciones: [
-      "Digitalización de archivos históricos",
-      "Organización de ceremonias de exaltación",
-      "Gestión de comunicaciones oficiales",
+      "Coordinación de eventos especiales",
+      "Desarrollo de programas educativos",
+      "Enlace con organizaciones deportivas",
     ],
   },
   {
     id: "felix-baez",
     nombre: "Félix Báez Neris",
-    cargo: "Secretario Auxiliar",
+    cargo: "Vicepresidente",
     descripcion:
       "Historiador y cronista del deporte humacaeño, custodio de la memoria deportiva.",
     anosServicio: "1999 - Presente",
+    foto: "/images/junta/felix-baez.jpg",
     contribuciones: [
       "Fundador y miembro original de la primera junta",
       "Autor de múltiples investigaciones deportivas",
@@ -74,6 +80,8 @@ const miembrosJunta: MiembroJunta[] = [
     descripcion:
       "Administrador financiero responsable de la gestión económica del pabellón.",
     anosServicio: "1999 - Presente",
+    foto: "/images/junta/juan-velazquez.jpg",
+    fotoPosition: "center 8%",
     contribuciones: [
       "Miembro fundador de la primera junta directiva",
       "Gestión financiera transparente",
@@ -81,29 +89,16 @@ const miembrosJunta: MiembroJunta[] = [
     ],
   },
   {
-    id: "miriam-lasanta",
-    nombre: "Miriam Lasanta",
+    id: "arnaldo-ortiz",
+    nombre: "Arnaldo (Larry) Ortiz",
     cargo: "Vocal",
     descripcion:
       "Miembro activo con enfoque en programas comunitarios y desarrollo organizacional.",
-    anosServicio: "2004 - Presente",
+    anosServicio: "2018 - Presente",
     contribuciones: [
-      "Coordinación de eventos especiales",
-      "Desarrollo de programas educativos",
-      "Enlace con organizaciones deportivas",
-    ],
-  },
-  {
-    id: "benjamin-berrios",
-    nombre: "Benjamin Berrios",
-    cargo: "Vocal",
-    descripcion:
-      "Contribuidor activo en las iniciativas de promoción y desarrollo del pabellón.",
-    anosServicio: "2020 - Presente",
-    contribuciones: [
-      "Promoción de actividades deportivas",
-      "Apoyo en ceremonias y eventos",
-      "Desarrollo de nuevas iniciativas",
+      "Digitalización de archivos históricos",
+      "Organización de ceremonias de exaltación",
+      "Gestión de comunicaciones oficiales",
     ],
   },
   {
@@ -113,6 +108,7 @@ const miembrosJunta: MiembroJunta[] = [
     descripcion:
       "Miembro comprometido con la preservación y promoción del legado deportivo.",
     anosServicio: "2020 - Presente",
+    foto: "/images/junta/jorge-orona.jpg",
     contribuciones: [
       "Apoyo en investigaciones históricas",
       "Coordinación de actividades especiales",
@@ -136,6 +132,31 @@ const miembrosJunta: MiembroJunta[] = [
 
 const MiembroCard = ({ miembro }: { miembro: MiembroJunta }) => (
   <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    {/* Photo or placeholder */}
+    <div className="relative h-72 w-full bg-gradient-to-br from-blue-800 to-blue-600">
+      {miembro.foto ? (
+        <Image
+          src={miembro.foto}
+          alt={`Foto de ${miembro.nombre}`}
+          fill
+          className="object-cover"
+          style={{ objectPosition: miembro.fotoPosition ?? "center top" }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      ) : (
+        <div className="flex items-center justify-center h-full">
+          <span className="text-4xl font-bold text-white/60">
+            {miembro.nombre
+              .split(" ")
+              .filter((n) => !n.startsWith("("))
+              .map((n) => n[0])
+              .join("")
+              .slice(0, 2)}
+          </span>
+        </div>
+      )}
+    </div>
+
     <div className="p-6">
       {/* Header con nombre y cargo */}
       <div className="mb-4">
