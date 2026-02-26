@@ -284,7 +284,7 @@ export default function HorarioContactoPage() {
           <ContactoCard
             titulo="Ubicación del Museo"
             contenido={[
-              "Centro Cultural Dra. Antonia Sáez",
+              "Pabellón de la Fama del Deporte Humacaeño",
               "Humacao, Puerto Rico",
               "P.O. Box 9078, Humacao, PR 00792",
             ]}
@@ -322,9 +322,10 @@ export default function HorarioContactoPage() {
                       En automóvil
                     </h4>
                     <p className="text-gray-600 text-sm mt-1">
-                      El Centro Cultural Dra. Antonia Sáez se encuentra en el
-                      centro de Humacao. Disponible estacionamiento en las
-                      cercanías.
+                      El Pabellón de la Fama se encuentra ubicado en el Centro
+                      Cultural Dra. Antonia Sáez, en la esq. Calle Ulises
+                      Martínez con C. Noya y Hernández, en el centro de
+                      Humacao. Disponible estacionamiento en las cercanías.
                     </p>
                   </div>
                 </div>
@@ -366,24 +367,22 @@ export default function HorarioContactoPage() {
                 Mapa de ubicación
               </h3>
 
-              {/* Placeholder para mapa - en una implementación real se usaría Google Maps embed */}
-              <div className="bg-gray-100 rounded-lg h-64 flex items-center justify-center border-2 border-dashed border-gray-300">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-600 font-medium">
-                    Centro Cultural Dra. Antonia Sáez
-                  </p>
-                  <p className="text-gray-500 text-sm">Humacao, Puerto Rico</p>
-                  <p className="text-gray-500 text-sm">P.O. Box 9078, Humacao, PR 00792</p>
-                  <p className="text-gray-500 text-xs mt-2">
-                    (Mapa interactivo disponible próximamente)
-                  </p>
-                </div>
+              <div className="rounded-lg overflow-hidden h-80 border border-gray-200">
+                <iframe
+                  title="Ubicación del Pabellón de la Fama del Deporte Humacaeño"
+                  src="https://www.google.com/maps?q=Pabellón+de+la+Fama+del+Deporte+Humacaeño,+Humacao,+Puerto+Rico&z=18&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
 
               <div className="mt-4">
                 <a
-                  href="https://maps.google.com/?q=Centro+Cultural+Antonia+Saez+Humacao"
+                  href="https://www.google.com/maps/search/Pabellón+de+la+Fama+del+Deporte+Humacaeño"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
