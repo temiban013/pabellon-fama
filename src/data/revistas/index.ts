@@ -8,6 +8,8 @@ import { RevistaMetadata } from '@/lib/types/revista';
 export const revistasMetadata: RevistaMetadata[] = [
   // Sprint 1: Revista #01 (2000) - 23 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '1',
     numero: 1,
     year: 2000,
     titulo: 'Primera Exaltación del Pabellón',
@@ -30,6 +32,8 @@ export const revistasMetadata: RevistaMetadata[] = [
 
   // Sprint 2: Revista #02 (2002) - 9 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '2',
     numero: 2,
     year: 2002,
     titulo: 'Segunda Exaltación del Pabellón',
@@ -53,6 +57,8 @@ export const revistasMetadata: RevistaMetadata[] = [
 
   // Sprint 3: Revista #03 (2004) - 7 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '3',
     numero: 3,
     year: 2004,
     titulo: 'Tercera Exaltación del Pabellón',
@@ -75,6 +81,8 @@ export const revistasMetadata: RevistaMetadata[] = [
 
   // Sprint 4: Revista #04 (2006) - 10 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '4',
     numero: 4,
     year: 2006,
     titulo: 'Cuarta Exaltación del Pabellón',
@@ -98,6 +106,8 @@ export const revistasMetadata: RevistaMetadata[] = [
 
   // Sprint 5: Revista #05 (2008) - 9 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '5',
     numero: 5,
     year: 2008,
     titulo: 'Quinta Exaltación del Pabellón',
@@ -121,6 +131,8 @@ export const revistasMetadata: RevistaMetadata[] = [
 
   // Sprint 6: Revista #06 (2010) - 7 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '6',
     numero: 6,
     year: 2010,
     titulo: 'Sexta Exaltación del Pabellón',
@@ -143,6 +155,8 @@ export const revistasMetadata: RevistaMetadata[] = [
 
   // Sprint 7: Revista #07 (2012) - 10 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '7',
     numero: 7,
     year: 2012,
     titulo: 'Séptima Exaltación del Pabellón',
@@ -165,6 +179,8 @@ export const revistasMetadata: RevistaMetadata[] = [
 
   // Sprint 8: Revista #08 (2015) - 6 exaltados
   {
+    tipo: 'exaltacion',
+    slug: '8',
     numero: 8,
     year: 2015,
     titulo: 'Octava Exaltación del Pabellón',
@@ -183,8 +199,26 @@ export const revistasMetadata: RevistaMetadata[] = [
       biografias: [11, 16],
       fotosHistoricas: [20, 21]
     }
+  },
+
+  // Edición Especial: Inauguración del Museo (2025)
+  {
+    tipo: 'especial',
+    slug: 'inauguracion-museo',
+    year: 2025,
+    titulo: 'Inauguración del Museo',
+    fechaEvento: '2025-06-29',
+    descripcion: 'Revista del Museo del Pabellón de la Fama del Deporte Humacaeño. Ceremonia de inauguración en el Centro Cultural Dra. Antonia Sáez.',
+    pdfUrl: '/revistas/completas/revista-inauguracion.pdf',
+    portadaUrl: '/revistas/portadas/inauguracion.jpg',
+    totalPaginas: 30,
+    exaltadosCount: 0,
   }
 ];
+
+export function getRevistaBySlug(slug: string): RevistaMetadata | undefined {
+  return revistasMetadata.find(r => r.slug === slug);
+}
 
 export function getRevistaByNumero(numero: number): RevistaMetadata | undefined {
   return revistasMetadata.find(r => r.numero === numero);
@@ -194,6 +228,12 @@ export function getAllRevistas(): RevistaMetadata[] {
   return revistasMetadata;
 }
 
+export function getRevistasExaltacion(): RevistaMetadata[] {
+  return revistasMetadata.filter(r => r.tipo === 'exaltacion');
+}
+
 export function getTotalExaltados(): number {
-  return revistasMetadata.reduce((sum, r) => sum + r.exaltadosCount, 0);
+  return revistasMetadata
+    .filter(r => r.tipo === 'exaltacion')
+    .reduce((sum, r) => sum + r.exaltadosCount, 0);
 }

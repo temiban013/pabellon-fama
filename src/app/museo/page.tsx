@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Link from "next/link";
 import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
 import { generateJsonLd } from "@/lib/seo";
 
@@ -60,6 +61,157 @@ export default function MuseoPage() {
               honran a los atletas, entrenadores y figuras que han marcado la
               excelencia deportiva en Humacao.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Historia del Museo */}
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-pabellon-brown-50 via-white to-pabellon-green-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1 bg-pabellon-gold-100 text-pabellon-gold-800 rounded-full text-sm font-semibold mb-4">
+              De un sueño a la realidad
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-pabellon-green-800 mb-4">
+              Historia del Museo
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-pabellon-gold-400 to-pabellon-brown-600 rounded-full mx-auto"></div>
+          </div>
+
+          {/* Timeline milestones */}
+          <div className="relative">
+            {/* Vertical line - hidden on mobile */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pabellon-gold-300 via-pabellon-green-300 to-pabellon-gold-300" />
+
+            {/* Milestone 1: Vision */}
+            <div className="relative lg:grid lg:grid-cols-2 lg:gap-12 mb-12">
+              <div className="lg:text-right lg:pr-12">
+                <div className="card-pabellon p-8">
+                  <div className="flex items-center gap-3 mb-4 lg:justify-end">
+                    <span className="text-3xl">💡</span>
+                    <span className="inline-block px-3 py-1 bg-pabellon-gold-100 text-pabellon-gold-800 rounded-full text-sm font-bold">La Visión</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    La idea de un museo para el Pabellón de la Fama comenzó desde muy temprano
+                    en su historia. El Prof. Luis Reinaldo Álvarez conceptualizó y diseñó las
+                    instalaciones, sometiendo planos durante dos administraciones municipales
+                    anteriores — sin lograr el apoyo necesario.
+                  </p>
+                </div>
+              </div>
+              <div className="hidden lg:flex items-center">
+                <div className="w-4 h-4 rounded-full bg-pabellon-gold-400 border-4 border-white shadow-lg -ml-2 z-10" />
+              </div>
+            </div>
+
+            {/* Milestone 2: Support */}
+            <div className="relative lg:grid lg:grid-cols-2 lg:gap-12 mb-12">
+              <div className="hidden lg:flex items-center justify-end">
+                <div className="w-4 h-4 rounded-full bg-pabellon-green-500 border-4 border-white shadow-lg -mr-2 z-10" />
+              </div>
+              <div className="lg:pl-12">
+                <div className="card-pabellon p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🤝</span>
+                    <span className="inline-block px-3 py-1 bg-pabellon-green-100 text-pabellon-green-800 rounded-full text-sm font-bold">El Apoyo</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    Bajo la presidencia del Sr. Enrique (Quique) Torres y la Junta de Directores —
+                    Sr. Arnaldo (Larry) Ortiz, Prof. Félix Báez Neris y Sr. Juan Velázquez — se logró
+                    el apoyo del Municipio Autónomo de Humacao bajo el Alcalde Hon. Julio L. Geigel
+                    Pérez, con la asignación de un local en el primer nivel del remodelado Centro
+                    Cultural Dra. Antonia Sáez.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Milestone 3: Construction */}
+            <div className="relative lg:grid lg:grid-cols-2 lg:gap-12 mb-12">
+              <div className="lg:text-right lg:pr-12">
+                <div className="card-pabellon p-8">
+                  <div className="flex items-center gap-3 mb-4 lg:justify-end">
+                    <span className="text-3xl">🏗️</span>
+                    <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-bold">La Obra</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    Quique Torres, coordinador general del proyecto, solicitó la colaboración del
+                    Prof. Luis Reinaldo Álvarez para el diseño de las instalaciones, la coordinación
+                    de las obras y la curaduría de las exposiciones de información, fotografías y
+                    memorabilia deportiva.
+                  </p>
+                </div>
+              </div>
+              <div className="hidden lg:flex items-center">
+                <div className="w-4 h-4 rounded-full bg-amber-400 border-4 border-white shadow-lg -ml-2 z-10" />
+              </div>
+            </div>
+
+            {/* Milestone 4: Opening */}
+            <div className="relative lg:grid lg:grid-cols-2 lg:gap-12 mb-12">
+              <div className="hidden lg:flex items-center justify-end">
+                <div className="w-4 h-4 rounded-full bg-pabellon-gold-500 border-4 border-white shadow-lg -mr-2 z-10" />
+              </div>
+              <div className="lg:pl-12">
+                <div className="card-pabellon p-8 border-2 border-pabellon-gold-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🏛️</span>
+                    <span className="inline-block px-3 py-1 bg-pabellon-gold-400 text-pabellon-green-900 rounded-full text-sm font-bold">23 de octubre de 2024</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed font-medium">
+                    El Museo del Pabellón de la Fama del Deporte Humacaeño abrió sus puertas
+                    al público. Cuenta con un área administrativa, un archivo histórico y biblioteca,
+                    y una sala de exposiciones permanente. La ceremonia formal de inauguración
+                    se celebró el 29 de junio de 2025.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Torres Quote */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <div className="relative bg-gradient-to-br from-pabellon-green-800 to-pabellon-green-700 rounded-2xl p-8 lg:p-12 text-white shadow-xl overflow-hidden">
+              {/* Decorative quote mark */}
+              <div className="absolute top-4 left-6 text-8xl font-serif text-white/10 leading-none select-none">&ldquo;</div>
+
+              <blockquote className="relative z-10">
+                <p className="text-lg lg:text-xl leading-relaxed mb-2 italic">
+                  Este espacio es más que exhibiciones, es un tributo vivo al sacrificio,
+                  entrega y gestas deportivas de los 78 atletas y propulsores que han sido
+                  exaltados al PFDH. Cada trofeo, camiseta, fotografía y recorte de periódico
+                  representa el legado de todos estos deportistas que han llenado de orgullo
+                  nuestro pueblo.
+                </p>
+                <p className="text-lg lg:text-xl leading-relaxed italic">
+                  Este museo es la casa del deporte humacaeño, pero también es la casa de
+                  todos aquellos visitantes que encuentren en él, la motivación e inspiración
+                  para superarse en las diferentes disciplinas del deporte.
+                </p>
+              </blockquote>
+
+              <footer className="mt-8 flex items-center gap-4">
+                <div className="w-12 h-0.5 bg-pabellon-gold-400 rounded-full" />
+                <div>
+                  <cite className="not-italic font-bold text-pabellon-gold-300">
+                    Enrique &ldquo;Quique&rdquo; Torres
+                  </cite>
+                  <p className="text-sm text-pabellon-green-200">
+                    Presidente, Junta de Directores del PFDH
+                  </p>
+                </div>
+              </footer>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 text-center">
+            <Link
+              href="/revistas/inauguracion-museo"
+              className="inline-flex items-center gap-2 bg-pabellon-gold-400 text-pabellon-green-900 px-8 py-4 rounded-lg font-semibold hover:bg-pabellon-gold-300 transition-colors duration-200 shadow-lg hover:shadow-xl"
+            >
+              📖 Ver Revista de Inauguración
+            </Link>
           </div>
         </div>
       </section>

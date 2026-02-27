@@ -56,8 +56,8 @@ export default function RevistasPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {revistas.map((revista) => (
                 <Link
-                  key={revista.numero}
-                  href={`/revistas/${revista.numero}`}
+                  key={revista.slug}
+                  href={`/revistas/${revista.slug}`}
                   className="group"
                 >
                   <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
@@ -65,23 +65,31 @@ export default function RevistasPage() {
                     <div className="relative aspect-[3/4] bg-gray-100">
                       <Image
                         src={revista.portadaUrl}
-                        alt={`Portada Revista ${revista.numero} - ${revista.titulo}`}
+                        alt={revista.numero ? `Portada Revista ${revista.numero} - ${revista.titulo}` : `Portada - ${revista.titulo}`}
                         fill
                         className="object-contain"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className="text-sm font-medium">Ver biografías completas →</p>
+                        <p className="text-sm font-medium">
+                          {revista.tipo === 'especial' ? 'Ver edición especial →' : 'Ver biografías completas →'}
+                        </p>
                       </div>
                     </div>
 
                     {/* Info */}
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-pabellon-gold-100 text-pabellon-gold-800">
-                          Revista #{revista.numero}
-                        </span>
+                        {revista.tipo === 'especial' ? (
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-800">
+                            Edición Especial
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-pabellon-gold-100 text-pabellon-gold-800">
+                            Revista #{revista.numero}
+                          </span>
+                        )}
                         <span className="text-sm font-medium text-pabellon-green-700">
                           {revista.year}
                         </span>
@@ -97,10 +105,18 @@ export default function RevistasPage() {
 
                       <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                         <div className="text-sm text-gray-600">
-                          <span className="font-semibold text-pabellon-green-700">
-                            {revista.exaltadosCount}
-                          </span>{" "}
-                          exaltados
+                          {revista.tipo === 'especial' ? (
+                            <span className="font-semibold text-amber-700">
+                              Inauguración del Museo
+                            </span>
+                          ) : (
+                            <>
+                              <span className="font-semibold text-pabellon-green-700">
+                                {revista.exaltadosCount}
+                              </span>{" "}
+                              exaltados
+                            </>
+                          )}
                         </div>
                         <div className="text-sm text-gray-600">
                           <span className="font-semibold text-pabellon-green-700">
@@ -110,24 +126,26 @@ export default function RevistasPage() {
                         </div>
                       </div>
 
-                      {/* Categorías */}
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {revista.categorias.deportistas > 0 && (
-                          <span className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded">
-                            {revista.categorias.deportistas} Atletas
-                          </span>
-                        )}
-                        {revista.categorias.propulsores > 0 && (
-                          <span className="text-xs px-2 py-1 bg-green-50 text-green-700 rounded">
-                            {revista.categorias.propulsores} Propulsores
-                          </span>
-                        )}
-                        {revista.categorias.postumos > 0 && (
-                          <span className="text-xs px-2 py-1 bg-purple-50 text-purple-700 rounded">
-                            {revista.categorias.postumos} Póstumos
-                          </span>
-                        )}
-                      </div>
+                      {/* Categorías - only for exaltacion */}
+                      {revista.categorias && (
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {revista.categorias.deportistas > 0 && (
+                            <span className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded">
+                              {revista.categorias.deportistas} Atletas
+                            </span>
+                          )}
+                          {revista.categorias.propulsores > 0 && (
+                            <span className="text-xs px-2 py-1 bg-green-50 text-green-700 rounded">
+                              {revista.categorias.propulsores} Propulsores
+                            </span>
+                          )}
+                          {revista.categorias.postumos > 0 && (
+                            <span className="text-xs px-2 py-1 bg-purple-50 text-purple-700 rounded">
+                              {revista.categorias.postumos} Póstumos
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Link>

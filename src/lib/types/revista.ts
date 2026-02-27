@@ -4,23 +4,26 @@
  */
 
 export interface RevistaMetadata {
-  numero: number;
+  tipo: 'exaltacion' | 'especial';
+  slug: string;
+  numero?: number;
   year: number;
   titulo: string;
-  fechaCeremonia: string; // YYYY-MM-DD
+  fechaCeremonia?: string; // YYYY-MM-DD (exaltacion only)
+  fechaEvento?: string;    // YYYY-MM-DD (non-ceremony events)
   descripcion: string;
   pdfUrl: string;
   portadaUrl: string;
   totalPaginas: number;
   exaltadosCount: number;
-  categorias: {
+  categorias?: {
     deportistas: number;
     propulsores: number;
     postumos: number;
     comunicadores?: number;
     equipos?: number;
   };
-  rangoPaginas: {
+  rangoPaginas?: {
     biografias: [number, number];
     fotosHistoricas: [number, number];
     mensajes?: [number, number];

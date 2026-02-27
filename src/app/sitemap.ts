@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { todosLosExaltados } from "@/data/exaltados-all";
+import { getAllRevistas } from "@/data/revistas";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 
@@ -64,9 +65,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Páginas de revistas (8 revistas)
-  const revistaPages: MetadataRoute.Sitemap = Array.from({ length: 8 }, (_, i) => ({
-    url: `${baseUrl}/revistas/${i + 1}`,
+  // Páginas de revistas (data-driven)
+  const revistaPages: MetadataRoute.Sitemap = getAllRevistas().map((revista) => ({
+    url: `${baseUrl}/revistas/${revista.slug}`,
     lastModified: currentDate,
     changeFrequency: "yearly" as const,
     priority: 0.8,

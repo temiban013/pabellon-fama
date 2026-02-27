@@ -208,13 +208,28 @@ const eventosHistoricos: EventoHistorico[] = [
     año: 2024,
     titulo: "Museo Manuel Rivera Guevara",
     descripcion:
-      "Inauguración del museo físico en el Centro Cultural Dra. Antonia Sáez, culminando décadas de trabajo.",
+      "El museo abrió sus puertas al público el 23 de octubre de 2024 en el Centro Cultural Dra. Antonia Sáez.",
     detalles: [
-      "Ubicado en Centro Cultural Dra. Antonia Sáez",
-      "Exhibición permanente de memorabilia deportiva",
-      "Curador: Luis Reinaldo Álvarez",
+      "Ubicado en el primer nivel del Centro Cultural Dra. Antonia Sáez",
+      "Diseño e implantación por el Prof. Luis Reinaldo Álvarez",
+      "Área administrativa, archivo histórico y biblioteca",
+      "Sala de exposiciones permanente con fotografías y memorabilia",
+      "Apoyo del Alcalde Hon. Julio L. Geigel Pérez",
     ],
     icono: "museo",
+    destacado: true,
+  },
+  {
+    año: 2025,
+    titulo: "Ceremonia de Inauguración del Museo",
+    descripcion:
+      "Ceremonia formal de inauguración del Museo del Pabellón de la Fama el 29 de junio de 2025.",
+    detalles: [
+      "Celebrada en el Centro Cultural Dra. Antonia Sáez",
+      "Revista especial conmemorativa publicada",
+      "Coordinación general: Enrique (Quique) Torres",
+    ],
+    icono: "ceremonia",
     destacado: true,
   },
 ];
