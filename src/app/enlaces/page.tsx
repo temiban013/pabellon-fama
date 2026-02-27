@@ -12,20 +12,12 @@ import {
   Clock,
   Youtube,
 } from "lucide-react";
+import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Enlaces y Recursos | PFDH",
-  description:
-    "Accede a la biblioteca, blog oficial y galería histórica del Pabellón de la Fama del Deporte Humacaeño",
-  keywords:
-    "enlaces, recursos, biblioteca, blog, galeria historica, revistas, PFDH, humacao, deportes",
-  openGraph: {
-    title: "Enlaces y Recursos - Pabellón de la Fama del Deporte Humacaeño",
-    description: "Encuentra todos los recursos digitales y contenido del PFDH",
-    url: "/enlaces",
-    siteName: "Pabellón de la Fama del Deporte Humacaeño",
-  },
-};
+export const metadata: Metadata = generateMetadata({
+  ...seoConfigs.enlaces,
+  url: "https://pabellondelafama.com/enlaces",
+});
 
 interface RecursoEnlace {
   id: string;
@@ -224,10 +216,20 @@ const RecursoCard = ({ recurso }: { recurso: RecursoEnlace }) => {
   );
 };
 
+const enlacesBreadcrumbs = generateBreadcrumbs([
+  { name: "Inicio", url: "https://pabellondelafama.com" },
+  { name: "Enlaces y Recursos", url: "https://pabellondelafama.com/enlaces" },
+]);
+
 export default function EnlacesPage() {
   const recursosActivos = recursosEnlaces.filter((r) => r.activo);
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(enlacesBreadcrumbs) }}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-12">
@@ -316,5 +318,6 @@ export default function EnlacesPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

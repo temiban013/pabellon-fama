@@ -13,6 +13,10 @@ const eslintConfig = [
   // Ignore patterns (utility scripts use CommonJS)
   {
     ignores: [
+      "node_modules/**",
+      ".next/**",
+      "tests/**",
+      "next-env.d.ts",
       "src/scripts/**/*",
       "**/*.config.js",
       "**/*.config.ts",

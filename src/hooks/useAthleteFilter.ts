@@ -310,14 +310,6 @@ export function useAthleteFilter({
       applyFilters(athlete, filters)
     );
 
-    const endTime = performance.now();
-    const duration = endTime - startTime;
-
-    // Log de performance (solo en desarrollo)
-    if (process.env.NODE_ENV === 'development') {
-      console.log(`[useAthleteFilter] Filtrado completado en ${duration.toFixed(2)}ms`);
-    }
-
     return result;
   }, [initialData, filters]);
 

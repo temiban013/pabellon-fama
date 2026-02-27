@@ -61,7 +61,7 @@ export default function Analytics() {
         trackPageView(url);
         
         if (ANALYTICS_CONFIG.DEBUG) {
-          console.log('🍪 Analytics enabled after consent');
+          // Analytics enabled after consent
         }
       }
     };

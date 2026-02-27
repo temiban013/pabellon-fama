@@ -77,12 +77,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           }}
         />
 
-        {/* Verification Tags */}
-        <meta
-          name="google-site-verification"
-          content="your-google-verification-code"
-        />
-        <meta name="msvalidate.01" content="your-bing-verification-code" />
+        {/* Verification Tags - Add real codes when available */}
 
         {/* Additional SEO Meta Tags */}
         <meta name="format-detection" content="telephone=no" />

@@ -99,12 +99,6 @@ export async function GET(request: NextRequest) {
     // Ordenar por fecha (más próximos primero)
     eventos.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
 
-    // Log para debugging
-    console.log(`📅 API /api/eventos: ${eventos.length} eventos obtenidos`, {
-      mode,
-      tipo: tipo || "todos",
-      count: eventos.length,
-    });
 
     return successResponse(eventos);
   } catch (error) {

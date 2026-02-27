@@ -119,14 +119,14 @@ export const seoConfigs = {
   junta: {
     title: "Junta de Directores",
     description:
-      "Conoce a la Junta de Directores del Pabellón de la Fama del Deporte Humacaeño, líderes comprometidos con preservar la historia deportiva de Humacao.",
+      "Conoce la Junta de Directores del Pabellón de la Fama del Deporte Humacaeño, fundada en 1983. Líderes que preservan el legado deportivo de Humacao, Puerto Rico.",
     keywords: ["junta directores", "liderazgo", "organización"],
   },
 
   historia: {
     title: "Historia del Pabellón",
     description:
-      "Descubre la rica historia del Pabellón de la Fama del Deporte Humacaeño desde su fundación en 1996. Un recorrido por más de 25 años honrando el deporte.",
+      "Explora la historia del Pabellón de la Fama del Deporte Humacaeño desde 1983 hasta hoy. Más de 40 años celebrando la excelencia deportiva de Humacao, PR.",
     keywords: ["historia", "fundación", "cronología", "desarrollo"],
   },
 
@@ -145,7 +145,7 @@ export const seoConfigs = {
   enlaces: {
     title: "Enlaces y Recursos",
     description:
-      "Accede a la biblioteca digital, blog oficial y canal de YouTube del Pabellón de la Fama del Deporte Humacaeño.",
+      "Accede a enlaces y recursos del Pabellón de la Fama del Deporte Humacaeño. Blog deportivo, biblioteca digital, canal de YouTube y más recursos educativos.",
     keywords: ["biblioteca", "blog", "youtube", "recursos"],
   },
 
@@ -159,10 +159,24 @@ export const seoConfigs = {
   calendario: {
     title: "Calendario de Actividades",
     description:
-      "Mantente al día con todos los eventos, ceremonias de exaltación y actividades especiales del Pabellón de la Fama.",
+      "Consulta el calendario del Pabellón de la Fama del Deporte Humacaeño. Ceremonias de exaltación, exhibiciones, charlas deportivas y eventos comunitarios.",
     keywords: ["calendario", "eventos", "actividades", "ceremonias"],
   },
 };
+
+// BreadcrumbList JSON-LD para SEO
+export function generateBreadcrumbs(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
 
 // Structured Data (JSON-LD) para SEO
 export function generateJsonLd(
@@ -199,6 +213,24 @@ export function generateJsonLd(
         "@type": "Museum",
         name: "Museo Manuel Rivera Guevara",
         parentOrganization: baseOrganization,
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Thursday", "Friday", "Saturday"],
+            opens: "09:00",
+            closes: "15:00",
+          },
+        ],
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Calle Antonio López #53",
+          addressLocality: "Humacao",
+          addressRegion: "PR",
+          postalCode: "00791",
+          addressCountry: "US",
+        },
+        telephone: "+1-787-410-1237",
+        isAccessibleForFree: true,
       };
 
     case "person":

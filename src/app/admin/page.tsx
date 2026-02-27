@@ -134,7 +134,7 @@ export default function AdminPage() {
                 required
                 value={adminKey}
                 onChange={(e) => setAdminKey(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && authenticate()}
+                onKeyDown={(e) => e.key === "Enter" && authenticate()}
                 className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-pabellon-gold-500 focus:border-pabellon-gold-500 focus:z-10 sm:text-sm"
                 placeholder="Clave de administrador"
               />

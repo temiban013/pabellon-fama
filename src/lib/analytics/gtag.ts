@@ -29,7 +29,7 @@ export const initGA = () => {
   });
 
   if (ANALYTICS_CONFIG.DEBUG) {
-    console.log('🔍 GA4 Initialized:', ANALYTICS_CONFIG.GA_MEASUREMENT_ID);
+    // GA4 Initialized
   }
 };
 
@@ -54,7 +54,7 @@ export const trackPageView = (url: string, title?: string | null) => {
   });
 
   if (ANALYTICS_CONFIG.DEBUG) {
-    console.log('📄 Page view tracked:', url);
+    // Page view tracked
   }
 };
 
@@ -79,10 +79,6 @@ export const trackEvent = (eventName: string, parameters: Record<string, unknown
   };
 
   window.gtag('event', eventName, eventData);
-
-  if (ANALYTICS_CONFIG.DEBUG) {
-    console.log('🎯 Event tracked:', eventName, eventData);
-  }
 };
 
 // Enhanced ecommerce tracking for donations or merchandise (future use)

@@ -3,20 +3,12 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Mail, Phone, Users, Calendar, Award } from "lucide-react";
+import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Junta de Directores | PFDH",
-  description:
-    "Conozca a la Junta de Directores del Pabellón de la Fama del Deporte Humacaeño",
-  keywords:
-    "junta directores, PFDH, pabellón fama, humacao, puerto rico, liderazgo",
-  openGraph: {
-    title: "Junta de Directores - Pabellón de la Fama del Deporte Humacaeño",
-    description: "La dedicada Junta de Directores que lidera el PFDH",
-    url: "/junta",
-    siteName: "Pabellón de la Fama del Deporte Humacaeño",
-  },
-};
+export const metadata: Metadata = generateMetadata({
+  ...seoConfigs.junta,
+  url: "https://pabellondelafama.com/junta",
+});
 
 interface MiembroJunta {
   id: string;
@@ -201,8 +193,18 @@ const MiembroCard = ({ miembro }: { miembro: MiembroJunta }) => (
   </div>
 );
 
+const juntaBreadcrumbs = generateBreadcrumbs([
+  { name: "Inicio", url: "https://pabellondelafama.com" },
+  { name: "Junta de Directores", url: "https://pabellondelafama.com/junta" },
+]);
+
 export default function JuntaDirectoresPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(juntaBreadcrumbs) }}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-12">
@@ -330,5 +332,6 @@ export default function JuntaDirectoresPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

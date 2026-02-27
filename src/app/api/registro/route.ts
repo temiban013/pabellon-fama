@@ -332,13 +332,6 @@ async function sendRegistrationEmail(
     throw new Error(`Error enviando email: ${error.message}`);
   }
 
-  console.log("✅ Email enviado exitosamente via Resend:", {
-    emailId: data?.id,
-    to: "informa@pfdh.org",
-    from: userData.email,
-    nombre: userData.nombre,
-    timestamp,
-  });
 }
 
 // Handler principal para POST (Registro público)
@@ -376,13 +369,8 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Log rate limit status for monitoring
-      console.log(`✓ Rate limit check passed for IP ${clientIp}:`, {
-        remaining: rateLimit.remaining,
-        resetAt: new Date(rateLimit.resetAt).toISOString(),
-      });
     } else {
-      console.log('✓ [E2E TEST MODE] Rate limiting disabled');
+      // E2E TEST MODE - rate limiting disabled
     }
 
     // Verificar Content-Type
@@ -424,12 +412,7 @@ export async function POST(request: NextRequest) {
         );
       }
     } else {
-      // E2E test environment: Log instead of sending
-      console.log("✅ [E2E TEST MODE] Email sending skipped:", {
-        to: "informa@pfdh.org",
-        from: validatedData.email,
-        nombre: validatedData.nombre,
-      });
+      // E2E test environment: Email sending skipped
     }
 
     // Respuesta de éxito

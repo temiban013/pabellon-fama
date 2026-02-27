@@ -261,10 +261,6 @@ export async function fetchCalendarEvents(options: {
       .map((event) => transformGoogleEventToEvento(event as GoogleCalendarEvent))
       .filter((event): event is Evento => event !== null);
 
-    console.log(
-      `✅ Fetched ${transformedEvents.length} eventos from Google Calendar`
-    );
-
     return transformedEvents;
   } catch (error) {
     console.error("❌ Error fetching calendar events:", error);

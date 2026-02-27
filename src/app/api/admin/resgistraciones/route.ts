@@ -94,15 +94,6 @@ async function saveToJsonFile(
       "utf-8"
     );
 
-    // Log para verificación
-    console.log("🎯 NUEVA REGISTRACIÓN GUARDADA:", {
-      timestamp: newRegistration.fechaRegistro?.toISOString(),
-      email: newRegistration.email,
-      nombre: newRegistration.nombre,
-      interes: newRegistration.interes,
-      id: newRegistration.id,
-      archivo: REGISTRATIONS_FILE,
-    });
 
     return newRegistration;
   } catch (error) {
@@ -135,7 +126,6 @@ async function sendConfirmationEmail(userData: RegistroUsuario): Promise<void> {
     `,
   };
 
-  console.log("📧 EMAIL DE CONFIRMACIÓN (Simulado):", emailContent);
 
   // En producción, aquí irían servicios como:
   // - SendGrid: await sgMail.send(emailContent)
@@ -168,10 +158,6 @@ async function notifyAdministrators(userData: RegistroUsuario): Promise<void> {
     `,
   };
 
-  console.log(
-    "📨 NOTIFICACIÓN A ADMINISTRADORES (Simulado):",
-    adminNotification
-  );
 }
 
 // Handler principal para POST

@@ -14,20 +14,12 @@ import {
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
+import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Horario y Contacto | PFDH",
-  description:
-    "Horarios, ubicación y información de contacto del Museo y Pabellón de la Fama del Deporte Humacaeño",
-  keywords:
-    "horario, contacto, ubicación, museo, PFDH, humacao, visitas, centro cultural",
-  openGraph: {
-    title: "Horario y Contacto - Pabellón de la Fama del Deporte Humacaeño",
-    description: "Planifica tu visita al Museo Manuel Rivera Guevara",
-    url: "/horario",
-    siteName: "Pabellón de la Fama del Deporte Humacaeño",
-  },
-};
+export const metadata: Metadata = generateMetadata({
+  ...seoConfigs.horario,
+  url: "https://pabellondelafama.com/horario",
+});
 
 const diasSemana = [
   { dia: "Lunes", horario: "8:00 AM - 4:00 PM", activo: true },
@@ -132,8 +124,18 @@ const ContactoCard = ({
   );
 };
 
+const horarioBreadcrumbs = generateBreadcrumbs([
+  { name: "Inicio", url: "https://pabellondelafama.com" },
+  { name: "Horario y Contacto", url: "https://pabellondelafama.com/horario" },
+]);
+
 export default function HorarioContactoPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(horarioBreadcrumbs) }}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-12">
@@ -426,5 +428,6 @@ export default function HorarioContactoPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

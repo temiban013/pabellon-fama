@@ -9,21 +9,12 @@ import {
   BookOpen,
   Calendar,
 } from "lucide-react";
+import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Historia del Pabellón | PFDH",
-  description:
-    "Descubre la rica historia del Pabellón de la Fama del Deporte Humacaeño desde 1983",
-  keywords:
-    "historia, PFDH, pabellón fama, humacao, deporte, fundación, cronología",
-  openGraph: {
-    title: "Historia - Pabellón de la Fama del Deporte Humacaeño",
-    description:
-      "Un recorrido por la historia del PFDH desde sus orígenes hasta hoy",
-    url: "/historia",
-    siteName: "Pabellón de la Fama del Deporte Humacaeño",
-  },
-};
+export const metadata: Metadata = generateMetadata({
+  ...seoConfigs.historia,
+  url: "https://pabellondelafama.com/historia",
+});
 
 interface EventoHistorico {
   año: number;
@@ -365,8 +356,18 @@ const EventoCard = ({
   </div>
 );
 
+const historiaBreadcrumbs = generateBreadcrumbs([
+  { name: "Inicio", url: "https://pabellondelafama.com" },
+  { name: "Historia del Pabellón", url: "https://pabellondelafama.com/historia" },
+]);
+
 export default function HistoriaPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(historiaBreadcrumbs) }}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-12">
@@ -496,5 +497,6 @@ export default function HistoriaPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

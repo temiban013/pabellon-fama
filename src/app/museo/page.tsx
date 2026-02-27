@@ -1,28 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
-import { generateJsonLd } from "@/lib/seo";
+import { generateMetadata, seoConfigs, generateJsonLd, generateBreadcrumbs } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title:
-    "Museo Manuel Rivera Guevara | Pabellón de la Fama del Deporte Humacaeño",
-  description:
-    "Visita el Museo Manuel Rivera Guevara, sede física del Pabellón de la Fama del Deporte Humacaeño. Tour virtual, exhibiciones y horarios de visita.",
-  keywords: [
-    "Museo Manuel Rivera Guevara",
-    "Pabellón de la Fama",
-    "Humacao",
-    "Puerto Rico",
-    "tour virtual",
-    "museo deportivo",
-    "exhibiciones",
-  ],
-};
+export const metadata: Metadata = generateMetadata({
+  ...seoConfigs.museo,
+  url: "https://pabellondelafama.com/museo",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
+
+const museoBreadcrumbs = generateBreadcrumbs([
+  { name: "Inicio", url: "https://pabellondelafama.com" },
+  { name: "Museo Manuel Rivera Guevara", url: "https://pabellondelafama.com/museo" },
+]);
 
 export default function MuseoPage() {
   const museumJsonLd = generateJsonLd("museum", {});
@@ -34,6 +28,13 @@ export default function MuseoPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(museumJsonLd),
+        }}
+      />
+      {/* Breadcrumb Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(museoBreadcrumbs),
         }}
       />
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">

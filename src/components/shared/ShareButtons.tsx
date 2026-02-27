@@ -33,7 +33,6 @@ export function ShareButtons({ title, url, description }: ShareButtonsProps) {
         await navigator.share(shareData);
       } catch (error) {
         // User cancelled or error occurred
-        console.log("Error sharing:", error);
       }
     }
   };
