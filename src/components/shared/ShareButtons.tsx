@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ShareIcon,
   LinkIcon,
@@ -19,6 +19,12 @@ interface ShareButtonsProps {
  */
 export function ShareButtons({ title, url, description }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
+  const [supportsNativeShare, setSupportsNativeShare] = useState(false);
+
+  // Detect native share support after hydration to avoid SSR mismatch
+  useEffect(() => {
+    setSupportsNativeShare(typeof navigator !== "undefined" && !!navigator.share);
+  }, []);
 
   const shareData = {
     title,
@@ -27,11 +33,10 @@ export function ShareButtons({ title, url, description }: ShareButtonsProps) {
   };
 
   const handleShare = async () => {
-    // Check if native share is supported
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-      } catch (error) {
+      } catch {
         // User cancelled or error occurred
       }
     }
@@ -42,8 +47,8 @@ export function ShareButtons({ title, url, description }: ShareButtonsProps) {
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      console.error("Failed to copy link:", error);
+    } catch {
+      // Clipboard API not available or permission denied
     }
   };
 
@@ -73,7 +78,7 @@ export function ShareButtons({ title, url, description }: ShareButtonsProps) {
       <span className="text-sm text-gray-600 font-medium">Compartir:</span>
 
       {/* Native share button (mobile) */}
-      {typeof navigator !== "undefined" && typeof navigator.share !== "undefined" && (
+      {supportsNativeShare && (
         <button
           onClick={handleShare}
           className="inline-flex items-center gap-1 px-3 py-1.5 bg-pabellon-green-600 text-white rounded-lg hover:bg-pabellon-green-700 transition-colors text-sm font-medium"

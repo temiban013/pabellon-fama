@@ -27,6 +27,7 @@ interface Evento {
   tipo: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
   requiresRegistro?: boolean;
   capacidadMaxima?: number;
+  imagen?: string;
 }
 
 // API Response type from /api/eventos
@@ -41,6 +42,7 @@ interface EventoAPI {
   tipo: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
   requiresRegistro?: boolean;
   capacidadMaxima?: number;
+  imagen?: string;
 }
 
 const tiposEvento = [
@@ -89,6 +91,7 @@ const parseDateLocal = (dateString: string): Date => {
 const EventoCard = ({ evento }: { evento: Evento }) => {
   const IconoEvento = getIconoEvento(evento.tipo);
   const fechaEvento = parseDateLocal(evento.fecha);
+  const [imagenError, setImagenError] = useState(false);
 
   return (
     <div
@@ -141,6 +144,36 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
           {evento.tipo}
         </span>
       </div>
+
+      {evento.imagen && !imagenError && (
+        <div className="mb-4">
+          <a href={evento.imagen} target="_blank" rel="noopener noreferrer">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={evento.imagen.includes('googleusercontent.com')
+                ? `/api/image-proxy?url=${encodeURIComponent(evento.imagen)}`
+                : evento.imagen
+              }
+              alt={`Flyer: ${evento.titulo}`}
+              loading="lazy"
+              className="w-full max-h-96 object-contain rounded-lg"
+              onError={() => setImagenError(true)}
+            />
+          </a>
+        </div>
+      )}
+
+      {evento.imagen && imagenError && (
+        <div className="mb-4">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center text-sm text-yellow-800">
+            <p className="font-medium">No se pudo cargar el flyer</p>
+            <p className="mt-1">
+              Verifique que el archivo en Google Drive este compartido como
+              &ldquo;Cualquier persona con el enlace&rdquo;
+            </p>
+          </div>
+        </div>
+      )}
 
       <p className="text-gray-700 mb-4 leading-relaxed">{evento.descripcion}</p>
 
@@ -206,6 +239,7 @@ export default function CalendarioPage() {
             tipo: evento.tipo,
             requiresRegistro: evento.requiresRegistro,
             capacidadMaxima: evento.capacidadMaxima,
+            imagen: evento.imagen,
           }));
 
           setEventos(eventosTransformados);
@@ -213,7 +247,6 @@ export default function CalendarioPage() {
           setEventos([]);
         }
       } catch (err) {
-        console.error('Error fetching eventos:', err);
         setError(err instanceof Error ? err.message : 'Error desconocido');
         setEventos([]);
       } finally {
@@ -229,7 +262,7 @@ export default function CalendarioPage() {
       ? eventos
       : eventos.filter((evento) => evento.tipo === filtroTipo);
 
-  const eventosOrdenados = eventosFiltrados.sort(
+  const eventosOrdenados = [...eventosFiltrados].sort(
     (a, b) => parseDateLocal(a.fecha).getTime() - parseDateLocal(b.fecha).getTime()
   );
 

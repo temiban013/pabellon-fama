@@ -151,7 +151,7 @@ async function sendRegistrationEmail(
   const safeTelefono = userData.telefono ? escapeHtml(userData.telefono) : "No proporcionado";
   const safeMensaje = userData.mensaje ? escapeHtml(userData.mensaje) : "";
 
-  const { data, error } = await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: "Pabellón PFDH <noreply@pfdh.org>",
     to: "informa@pfdh.org",
     replyTo: userData.email,

@@ -304,13 +304,9 @@ export function useAthleteFilter({
    * Memoizado para performance
    */
   const filteredAthletes = useMemo(() => {
-    const startTime = performance.now();
-
-    const result = initialData.filter(athlete =>
+    return initialData.filter(athlete =>
       applyFilters(athlete, filters)
     );
-
-    return result;
   }, [initialData, filters]);
 
   // ============================================

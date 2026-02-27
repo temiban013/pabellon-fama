@@ -104,8 +104,8 @@ async function saveToJsonFile(
 
 // Función para enviar email de confirmación (mejorada)
 async function sendConfirmationEmail(userData: RegistroUsuario): Promise<void> {
-  // TODO: Implementar servicio de email real (SendGrid, Resend, etc.)
-
+  // TODO: Implementar envío real via Resend (see src/app/api/registro/route.ts for pattern)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const emailContent = {
     to: userData.email,
     subject: "Bienvenido al Pabellón de la Fama del Deporte Humacaeño",
@@ -126,18 +126,14 @@ async function sendConfirmationEmail(userData: RegistroUsuario): Promise<void> {
     `,
   };
 
-
-  // En producción, aquí irían servicios como:
-  // - SendGrid: await sgMail.send(emailContent)
-  // - Resend: await resend.emails.send(emailContent)
-  // - Nodemailer: await transporter.sendMail(emailContent)
-
   // Simular delay de envío
   await new Promise((resolve) => setTimeout(resolve, 200));
 }
 
 // Función para notificar a administradores
 async function notifyAdministrators(userData: RegistroUsuario): Promise<void> {
+  // TODO: Implementar notificación a administradores via Resend
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const adminNotification = {
     to: ["admin@pabellon.org", "felix@pabellon.org"], // Emails de Kike y Felix
     subject: `Nueva Registración - ${userData.nombre}`,
@@ -157,7 +153,6 @@ async function notifyAdministrators(userData: RegistroUsuario): Promise<void> {
       }</strong></p>
     `,
   };
-
 }
 
 // Handler principal para POST
