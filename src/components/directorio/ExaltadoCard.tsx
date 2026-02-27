@@ -29,17 +29,14 @@ export const ExaltadoCard = memo(function ExaltadoCard({
 
   // Función para obtener el nombre completo con apodo
   const getFullName = () => {
-    // Use nombreCompleto field which already has the correct full name
-    // to avoid duplication issues when nombre contains the full name
     if (exaltado.apodo) {
-      // Insert apodo into nombreCompleto
-      // nombreCompleto has the format "FirstName LastName"
-      const parts = exaltado.nombreCompleto.split(' ');
-      if (parts.length >= 2) {
-        // Insert apodo after first name
-        return `${parts[0]} "${exaltado.apodo}" ${parts.slice(1).join(' ')}`;
+      // Insert apodo before apellidos for correct placement with compound first names
+      // e.g., "José Manuel" + "Chemane" + "Carradero Muriel"
+      const apellidosIndex = exaltado.nombreCompleto.indexOf(exaltado.apellidos);
+      if (apellidosIndex > 0) {
+        const firstName = exaltado.nombreCompleto.substring(0, apellidosIndex).trim();
+        return `${firstName} "${exaltado.apodo}" ${exaltado.apellidos}`;
       }
-      // Fallback if name format is unexpected
       return `${exaltado.nombreCompleto} "${exaltado.apodo}"`;
     }
     return exaltado.nombreCompleto;

@@ -15,6 +15,6 @@ const GoogleMap = dynamic(() => import("@/components/ui/GoogleMap"), {
 
 export function GoogleMapClient() {
   return (
-    <GoogleMap address="Centro Cultural Dra. Antonia Sáez, Humacao, Puerto Rico 00791" />
+    <GoogleMap address="Pabellón de la Fama del Deporte Humacaeño, Centro Cultural Dra. Antonia Sáez, Humacao, Puerto Rico" />
   );
 }

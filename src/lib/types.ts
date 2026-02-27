@@ -72,7 +72,8 @@ export type CategoriaExaltado =
   | "benefactor"
   | "equipo"
   | "atleta-propulsor"
-  | "jugador-propulsor";
+  | "jugador-propulsor"
+  | "jugador-dirigente";
 
 export interface Logro {
   id: string;

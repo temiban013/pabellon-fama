@@ -20,6 +20,7 @@ export const CATEGORIAS_LABELS: Record<string, string> = {
   benefactor: "Benefactor",
   "atleta-propulsor": "Atleta-Propulsor",
   "jugador-propulsor": "Jugador-Propulsor",
+  "jugador-dirigente": "Jugador-Dirigente",
 };
 
 // Colores por categoría - para badges y cards
@@ -34,6 +35,7 @@ export const CATEGORY_COLORS: Record<string, string> = {
   boxeador: "bg-red-100 text-red-800",
   "atleta-propulsor": "bg-teal-100 text-teal-800",
   "jugador-propulsor": "bg-cyan-100 text-cyan-800",
+  "jugador-dirigente": "bg-emerald-100 text-emerald-800",
 };
 
 // Colores con borde para detail view
@@ -48,6 +50,7 @@ export const CATEGORY_COLORS_WITH_BORDER: Record<string, string> = {
   boxeador: "bg-red-100 text-red-800 border-red-200",
   "atleta-propulsor": "bg-teal-100 text-teal-800 border-teal-200",
   "jugador-propulsor": "bg-cyan-100 text-cyan-800 border-cyan-200",
+  "jugador-dirigente": "bg-emerald-100 text-emerald-800 border-emerald-200",
 };
 
 // Emojis por deporte

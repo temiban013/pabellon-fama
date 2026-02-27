@@ -31,7 +31,9 @@ export default function GoogleMap({
           </h3>
           <p className="text-sm text-pabellon-green-600 mb-4">
             <strong>Ubicación:</strong><br />
-            {address}
+            Pabellón de la Fama del Deporte Humacaeño<br />
+            Centro Cultural Dra. Antonia Sáez<br />
+            Humacao, Puerto Rico
           </p>
         </div>
         
@@ -51,7 +53,7 @@ export default function GoogleMap({
           </button>
           
           <div className="text-xs text-pabellon-green-500">
-            Centro Cultural Dra. Antonia Sáez<br />
+            Pabellón de la Fama del Deporte Humacaeño<br />
             Humacao, Puerto Rico
           </div>
         </div>

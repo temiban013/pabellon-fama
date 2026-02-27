@@ -84,6 +84,7 @@ const CATEGORIA_LABELS: Record<CategoriaExaltado, string> = {
   "equipo": "Equipo",
   "atleta-propulsor": "Atleta-Propulsor",
   "jugador-propulsor": "Jugador-Propulsor",
+  "jugador-dirigente": "Jugador-Dirigente",
 };
 
 // ============================================

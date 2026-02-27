@@ -33,7 +33,7 @@ export interface ExaltadoRevista {
   nombre: string;
   apodo?: string;
   apellidos: string;
-  categoria: 'ATLETA' | 'PROPULSOR' | 'DIRIGENTE' | 'COMUNICADOR' | 'PÓSTUMO' | 'EQUIPO';
+  categoria: 'ATLETA' | 'PROPULSOR' | 'DIRIGENTE' | 'COMUNICADOR' | 'PÓSTUMO' | 'EQUIPO' | 'JUGADOR-DIRIGENTE';
   deportes: string[];
   anoExaltacion: number;
   revistaNumero: number;

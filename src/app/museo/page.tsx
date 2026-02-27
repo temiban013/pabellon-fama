@@ -106,8 +106,7 @@ export default function MuseoPage() {
                 Ven y conoce el museo en persona. Entrada gratuita para todos los visitantes.
               </p>
               <p className="text-sm text-pabellon-green-700 font-medium">
-                Lunes a Viernes: 8:00 AM - 4:00 PM<br/>
-                Sábados: 10:00 AM - 2:00 PM
+                Lunes a Viernes: 8:00 AM - 4:00 PM
               </p>
             </div>
 
@@ -125,9 +124,9 @@ export default function MuseoPage() {
               <p className="text-sm text-pabellon-green-700 font-medium mb-4">
                 ✉️ informa@pfdh.org
               </p>
-              <button className="btn-pabellon w-full">
+              <a href="tel:787-410-1237" className="btn-pabellon w-full inline-block text-center">
                 Llamar (787) 410-1237
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -313,9 +312,9 @@ export default function MuseoPage() {
                 </div>
 
                 <div className="pt-6">
-                  <button className="btn-pabellon w-full">
+                  <a href="tel:787-410-1237" className="btn-pabellon w-full inline-block text-center">
                     📞 Reservar Visita Grupal
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

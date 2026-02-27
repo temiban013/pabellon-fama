@@ -118,55 +118,91 @@ const eventosHistoricos: EventoHistorico[] = [
   },
   {
     año: 2002,
-    titulo: "Segunda Ceremonia",
+    titulo: "Segunda Ceremonia de Exaltación",
     descripcion:
-      "El 3 de noviembre se exaltan 8 atletas, incluyendo el primer equipo: Campeón Béisbol Doble A 1951.",
+      "El 3 de noviembre se exaltan 9 deportistas, incluyendo el primer equipo en la historia del PFDH.",
     detalles: [
       "8 atletas individuales exaltados",
       "Primer equipo exaltado: Grises Orientales 1951",
-      "Establecimiento de tradición ceremonial",
+      "Campeones nacionales y mundiales de béisbol amateur",
     ],
     icono: "ceremonia",
   },
   {
     año: 2004,
-    titulo: "Expansión de la Junta",
+    titulo: "Tercera Ceremonia de Exaltación",
     descripcion:
-      "Se suman nuevos miembros: Miriam Lasanta y David Curbelo, fortaleciendo el liderazgo.",
-    icono: "actividad",
+      "Se exaltan 7 deportistas destacados en diversas disciplinas, incluyendo levantamiento de pesas y deportes olímpicos.",
+    detalles: [
+      "7 atletas y propulsores exaltados",
+      "Expansión de la Junta: se suman Miriam Lasanta y David Curbelo",
+    ],
+    icono: "ceremonia",
   },
   {
     año: 2006,
-    titulo: "Cuarta Ceremonia",
+    titulo: "Cuarta Ceremonia de Exaltación",
     descripcion:
-      "Exaltación que incluye el equipo Sub-Campeón Béisbol Doble A 1960.",
+      "Se exaltan 10 deportistas, incluyendo el segundo equipo en la historia del PFDH.",
+    detalles: [
+      "9 atletas individuales exaltados",
+      "Equipo exaltado: Sub-Campeones Béisbol Doble A 1960",
+      "Representación en béisbol, boxeo, fútbol, pesas y atletismo",
+    ],
     icono: "ceremonia",
   },
   {
     año: 2008,
-    titulo: "Quinta Ceremonia",
+    titulo: "Quinta Ceremonia de Exaltación",
     descripcion:
-      "Se exalta el Equipo Juvenil de Fútbol Humacaeño 1967, diversificando los deportes honrados.",
+      "Se exaltan 9 deportistas, incluyendo el tercer y último equipo honrado por el PFDH.",
+    detalles: [
+      "6 atletas y 2 propulsores exaltados",
+      "Equipo exaltado: Juvenil de Fútbol Humacaeño 1967",
+      "Diversificación de los deportes honrados",
+    ],
     icono: "ceremonia",
   },
   {
     año: 2010,
+    titulo: "Sexta Ceremonia de Exaltación",
+    descripcion:
+      "Se exaltan 7 deportistas destacados en múltiples disciplinas.",
+    detalles: [
+      "7 atletas y propulsores exaltados",
+      "Reconocimiento a figuras del baloncesto, voleibol y tiro",
+    ],
+    icono: "ceremonia",
+  },
+  {
+    año: 2012,
+    titulo: "Séptima Ceremonia de Exaltación",
+    descripcion:
+      "Se exaltan 10 deportistas, la clase más numerosa desde la ceremonia inaugural.",
+    detalles: [
+      "10 atletas y propulsores exaltados",
+      "Incluye a Ángel Luis 'Tito Cucú' Alcaráz (Grandes Ligas)",
+    ],
+    icono: "ceremonia",
+  },
+  {
+    año: 2015,
+    titulo: "Octava Ceremonia de Exaltación",
+    descripcion:
+      "Última ceremonia realizada, completando un total de 78 deportistas exaltados.",
+    detalles: [
+      "6 atletas y propulsores exaltados",
+      "78 deportistas exaltados en total",
+      "3 equipos completos honrados a lo largo de 8 ceremonias",
+    ],
+    icono: "ceremonia",
+  },
+  {
+    año: 2016,
     titulo: "Presidencia de Quique Torres",
     descripcion:
       "Inicia el liderazgo de Enrique Torres, incorporando nuevos miembros como Héctor Ruiz y Benjamín Berrios.",
     icono: "actividad",
-  },
-  {
-    año: 2015,
-    titulo: "Octava Ceremonia",
-    descripcion:
-      "Última ceremonia realizada, completando un total de 78 deportistas exaltados.",
-    detalles: [
-      "78 deportistas exaltados en total",
-      "3 equipos completos honrados",
-      "Culminación de 8 ceremonias exitosas",
-    ],
-    icono: "ceremonia",
   },
   {
     año: 2024,

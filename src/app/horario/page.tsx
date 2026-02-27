@@ -56,7 +56,7 @@ const informacionVisita = [
     icono: Users,
     detalles: [
       "Requiere reservación previa",
-      "Descuentos especiales",
+      "Entrada gratuita para todos los visitantes",
       "Tour guiado disponible",
     ],
   },

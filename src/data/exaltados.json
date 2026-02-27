@@ -845,13 +845,13 @@
       },
       {
         "id": "jose-manuel-chemane-carradero",
-        "nombre": "José Manuel (Chemane) Carradero Muriel",
+        "nombre": "José Manuel Carradero Muriel",
         "apellidos": "Carradero Muriel",
-        "nombreCompleto": "José Manuel (Chemane) Carradero Muriel",
+        "nombreCompleto": "José Manuel Carradero Muriel",
         "deporte": [
           "Béisbol"
         ],
-        "categoria": "propulsor",
+        "categoria": "jugador-dirigente",
         "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
         "biografia": "Dirigente más exitoso en la historia del Doble A puertorriqueño con 7 campeonatos nacionales.",
