@@ -192,7 +192,7 @@ const eventosHistoricos: EventoHistorico[] = [
     año: 2016,
     titulo: "Presidencia de Quique Torres",
     descripcion:
-      "Inicia el liderazgo de Enrique Torres, incorporando nuevos miembros como Héctor Ruiz y Benjamín Berrios.",
+      "Inicia el liderazgo de Enrique Torres, dando continuidad a la misión del Pabellón y sentando las bases para la apertura del Museo Manuel Rivera Guevara.",
     icono: "actividad",
   },
   {
