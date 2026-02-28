@@ -17,7 +17,7 @@ pabellon-fama/
 │   │   ├── api/                      # API routes
 │   │   │   ├── registro/            # POST registration endpoint
 │   │   │   ├── eventos/             # GET events from Google Calendar
-│   │   │   └── admin/resgistraciones/  # Admin registrations endpoint
+│   │   │   └── admin/registraciones/   # Admin registrations endpoint
 │   │   ├── directorio/              # Athlete directory pages
 │   │   ├── calendario/              # Calendar page
 │   │   ├── revistas/                # Magazine pages
@@ -267,7 +267,7 @@ The codebase uses **ExaltadoCard** (not AthleteCard) and does not have a dedicat
 
 ### 3. Admin Routes
 
-**Location:** `/home/user/pabellon-fama/src/app/api/admin/resgistraciones/route.ts` (Note: typo in "resgistraciones")
+**Location:** `/home/user/pabellon-fama/src/app/api/admin/registraciones/route.ts`
 
 **Purpose:** Admin endpoint for viewing registrations (partial implementation)
 

@@ -152,14 +152,14 @@ export interface Evento {
 }
 
 export type TipoEvento =
-  | "ceremonia-exaltacion"
-  | "actividad-educativa"
-  | "tour-museo"
-  | "conferencia"
-  | "reunion-junta"
-  | "evento-especial"
-  | "competencia"
-  | "homenaje";
+  | "ceremonia"
+  | "museo"
+  | "educativo"
+  | "especial"
+  | "reunion";
+
+// Evento con fecha serializada como string ISO (para transferencia API → cliente)
+export type EventoSerializado = Omit<Evento, "fecha"> & { fecha: string };
 
 export type EstadoEvento =
   | "programado"

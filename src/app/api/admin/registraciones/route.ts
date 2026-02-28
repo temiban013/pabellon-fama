@@ -1,4 +1,4 @@
-// app/api/admin/resgistraciones/route.ts - Admin API with secure auth and real email delivery
+// app/api/admin/registraciones/route.ts - Admin API with secure auth and real email delivery
 import { NextRequest, NextResponse } from "next/server";
 import { writeFile, readFile, mkdir } from "fs/promises";
 import { existsSync } from "fs";

@@ -233,12 +233,13 @@ describe('ExaltadoCard', () => {
       const exaltadoConApodo = {
         ...baseExaltado,
         nombreCompleto: 'Pedro Jaime Martínez',
+        apellidos: 'Martínez',
         apodo: 'El Grande',
       };
 
       render(<ExaltadoCard exaltado={exaltadoConApodo} viewMode="grid" />);
 
-      expect(screen.getByText(/Pedro "El Grande" Jaime Martínez/)).toBeInTheDocument();
+      expect(screen.getByText(/Pedro Jaime "El Grande" Martínez/)).toBeInTheDocument();
     });
 
     it('maneja apodo cuando el nombre tiene solo una parte', () => {

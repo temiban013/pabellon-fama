@@ -15,7 +15,6 @@ export function RevistaCard({ revista, className = '' }: RevistaCardProps) {
     <div className={`bg-white rounded-lg shadow-md border border-pr-blue/20 overflow-hidden hover:shadow-lg transition-shadow duration-200 ${className}`}>
       {/* Portada */}
       <div className="relative h-64 bg-gray-200">
-        {/* TODO Sprint 1+: Agregar Image component */}
         <div className="absolute inset-0 flex items-center justify-center text-gray-500">
           Portada Revista #{revista.numero}
         </div>

@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   // Imágenes optimizadas
   images: {
     formats: ["image/webp", "image/avif"],
@@ -96,7 +97,7 @@ const nextConfig = {
   },
 
   // Build optimizations (webpack/turbopack compatible)
-  webpack: (config: any, { isServer }: { isServer: boolean }) => {
+  webpack: (config, { isServer }: { isServer: boolean }) => {
     if (!isServer) {
       config.resolve.fallback = {
         fs: false,

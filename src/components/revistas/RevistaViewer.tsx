@@ -1,7 +1,6 @@
 /**
  * Componente para visualizar PDF de revista
  * Sprint 0 - Estructura base
- * TODO Sprint 1+: Implementar con react-pdf
  */
 
 'use client';
@@ -40,7 +39,6 @@ export function RevistaViewer({ pdfUrl, revistaNumero, totalPaginas }: RevistaVi
       <div className="border border-gray-300 rounded-lg p-8 bg-gray-50 min-h-[600px] flex items-center justify-center">
         <div className="text-center text-gray-500">
           <p className="text-lg mb-2">PDF Viewer</p>
-          <p className="text-sm">TODO: Implementar en Sprint 1+</p>
           <p className="text-sm mt-4">
             <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="text-pr-blue underline">
               Abrir PDF en nueva pestaña

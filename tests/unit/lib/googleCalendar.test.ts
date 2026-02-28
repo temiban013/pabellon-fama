@@ -333,6 +333,7 @@ Descripción del evento`,
         maxResults,
         singleEvents: true,
         orderBy: 'startTime',
+        timeZone: 'America/Puerto_Rico',
       });
     });
 

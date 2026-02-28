@@ -1,6 +1,6 @@
 // src/lib/googleCalendar.ts
 import { google } from "googleapis";
-import { type Evento } from "./types";
+import { type Evento, type TipoEvento } from "./types";
 
 // Configuración del cliente de Google Calendar
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
@@ -30,7 +30,7 @@ interface GoogleCalendarEvent {
 
 // Interfaz para metadatos estructurados en la descripción
 interface EventoMetadata {
-  tipo?: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
+  tipo?: TipoEvento;
   capacidad?: number;
   requiereReservacion?: boolean;
   destacado?: boolean;

@@ -25,7 +25,6 @@ export const rev01Exaltados: ExaltadoRevista[] = [
     contenido: {
       biografia: `DEPORTISTAS EXALTADOS 5 ca Comenzó en el deporte para 1957 con Competencias Estatales en Ponce, con un salto la organización JUMACAO FUTBOL CLUB de 6 pies 2 pulgadas. Fue integrante del equipo dirigido en aquel momento por el destacado Saso Campeón de las Escuelas Superiores Tuller. representando a su escuela Ana Roqué en las ' competencias estatales de pista y campo. El Fue integrante de todos los equipos y 3 sa /. Maestro y entrenador Manuel Rivera era el representativos de Humacao, perteneciendo así E ' encargado del equipo. al equipo sub-campeón de Puerto Rico en la Mod; ñ _ Representó a la Isla en los Juegos categoría Juvenil en el año 1958. En el año 1959 y. Centroamericanos del Caribe celebrados en fue integrante del equipo Jumacao Futbol Club a: AA Jamaica en el 1961. en el ámbito superior (Primera División). En el | A acrante del eauivo Campeón de Al ser reclutado a las Fuerzas Armadas l E. ¿ral: A Pp de los Estados Unidos (ARMY) se tronchó la Puerto Rico en la primera división.: ao oportunidad de participar en futuras En 1962 fue integrante del equipo competencias con el equipo de Puerto Rico. Campeón de Puerto Rico en la Categoría Juvenil. En el año 1958, como parte del equipo del En el 1970 fue dirigente del equipo Campeón "ARMY", compitió en Alemania en el evento Sección Central Este en la Categoría «Baby de salto a lo alto donde logró obtener un salto de Futbol». Además, se destacó en los años 1960, 6 pies 5 pulgadas siendo ésta su mayor altura 1961 y 1962 en el evento de salto a lo alto. brincada. Es su última competencia en atletismo Logró triunfos en competencias aescala debido a sus compromisos con el "ARMY" y la | estatal en el 1960, celebradas en el parque Sixto participación en la Guerra de Vietnam donde el | Escobar, donde logró un salto de 6 pies y 1 24 de mayo de 1969 pierde trágicamente su pie pulgada. En el año 1961 obtuvo el primer lugar izquierdo. Se mantiene estrechamente ligado al | en el evento de salto a lo alto entre las Escuelas deporte organizando competencias para personas Superiores de Puerto Rico con un salto de 6 pies. con impedimentos y como apoderado de equipo. A En el año 1962 obtuvo el primer lugar Su insigne carrera como deportista lo han hecho e en el evento de salto a lo alto en las merecedor de variados reconocimientos.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -45,7 +44,6 @@ export const rev01Exaltados: ExaltadoRevista[] = [
     contenido: {
       biografia: `Carmen Paciencia e? Nació el 22 de mayo de 1930 en Almendares en una serie de exhibición celebrada Humacao. Practicó béisbol, «softball» y en Puerto Rico en el 1948. atletismo. Sus padres fueron, Don Federico Era parte del equipo capitalino que Marrero y Doña Elisa Berríos. los 16 años celebraba juegos de exhibición en la Isla, como representó a Puerto Rico en los Juegos encampos navales, en la inauguración del parque Centroamericanos y del Caribe en el deporte de Paquito Montaner de Ponce, en Saint. Thomas y «softball» en Barranquilla, Colombia en 1946. otros lugares. Fue la más joven de la selección y la cuarto bate En Nueva York perteneció al equipo de del equipo. Se desempeñó en el campo corto y «Amerks»y «Casual Del Bronxs», Estrellas tuvo un promedio de.470. Obtuvieron medalla Dominicanas de «Manhattan», y participó en tres de oro en esta competencia. juegos de estrellas. Mantuvo durante su carrera Las integrantes del poderoso equipo de una impecable defensiva. «Softball» femenino del 1946 fueron; Olga En atletismo representó a Puerto Rico en Sánchez. Rebekah Colberg, Delia Santiago, el salto a lo alto y lanzamiento de pesa. Le ganó a Yolanda Aguayo, Alicia Reyes, Carmen Rebekah Colberg en la jabalina al romper la marca | Rodríguez, Rosario Alvira, Mabel Aguayo, de Puerto Rico. Poseyó la marca de la jabalina | Esmeralda Suárez, Carmen Martinó, Lydia con una distancia de 124 pies. Brincó a lo alto Martínez. Edith Cold y por supuesto nuestras sobre 5 pies, lo que le valió para integrar la | representantes Gladys Díaz y Carmen Paciencia selección y representar a Puerto Rico en las | Marrero. competencias de Barranquilla Colombia en el | El dirigente fue Ciquí Faberllé, En 1947 1946. | formó parte del equipo Joyería M. Nun de San Tuvo una destacada carrera en el deporte Juan. Fue seleccionada para reforzar al equipo de «softball» participando en el mismo desde 1946 de la Habana que se enfrentó al equipo de hasta el 1978, o`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -75,7 +73,6 @@ Cuando en el 1989, el Departamento de Recreación y Deportes, crea el Programa d
 
 Fue exaltado al Salón de la Fama del Deporte Puertorriqueño en el 1991.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -101,7 +98,6 @@ Además, Toñín participó en los Juegos Panamericanos celebrado en Chicago en 
 
 En 1960, el humacaeño nos representó en los Juegos Olímpicos celebrados en Roma. En esa ocasión Toñín tuvo el honor de ser el abanderado de la delegación de Puerto Rico en esa Olimpiadas.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -131,7 +127,6 @@ En 1954, Yuyo se reintegró al equipo de Humacao. En 1956, ingresa en la Univers
 
 Culminó su carrera al ser exaltado al Recinto de los Inmortales del Béisbol Aficionado de Puerto Rico en la segunda exaltación en Aibonito, Puerto Rico el 15 de diciembre de 1985. Posteriormente fue premiado con un "guante de oro" en forma honoraria como primera base defensiva del ayer en la premiación "Terceras Defensas de Oro Rawlings" en el año 1992, celebrada por la firma "Rothco Sports" y la línea de productos "Rawlings".`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -161,7 +156,6 @@ Formó parte de la selección nacional que jugó una serie invitacional en Cuba 
 
 Fue exaltado al Recinto de los Inmortales del Béisbol Aficionado de Puerto Rico en 1988.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -187,7 +181,6 @@ En el año 1951 formó parte del equipo Campeón de Puerto Rico categoría Doble
 
 Una vez retirado como jugador, se dedicó a organizar equipos de pequeñas ligas, clase A y softball. Además fue apoderado del equipo Doble A de Humacao por 12 años. Fue un excelente receptor y bateador en todos los equipos que jugó incluyendo la selección nacional. Por estas ejecutorias fue exaltado al Salón de los Inmortales del Béisbol Aficionado en el 1984.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -219,7 +212,6 @@ Participó en el Kugier Anderson Memorial Tour of Somerville. Este evento equiva
 
 Esta perseverancia en la competencia deportiva le valió a Edwin ser nombrado como Hombre Joven Destacado del 1968, por la Cámara de Comercio Junior, junto a otros siete jóvenes puertorriqueños.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -265,7 +257,6 @@ Su larga y fructífera carrera lo han hecho merecedor de valiosos reconocimiento
 
 Actualmente continúa prestando sus servicios como entrenador y Presidente de la Liga de Humacao, en el Club de Pesas ubicado en el antiguo Parque Jacinto Hernández.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -298,7 +289,6 @@ Del año 1985 al 1996 se desempeño como entrenador de levantamientos de pesas d
 
 Desde 1996 preside la Federación de Levantamiento de Pesas de Puerto Rico.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -330,7 +320,6 @@ Ha sido presidente del Comité Olímpico de Puerto Rico en el 1990-91, jefe de l
 
 Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del béisbol. Su hoja deportiva es muy extensa por lo cual no podemos recogerla en su totalidad en este espacio. Osvaldo continúa activo cumpliendo con sus responsabilidades deportivas para gloria del deporte puertorriqueño y de nuestra ciudad.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -350,7 +339,6 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
     contenido: {
       biografia: `Miguel Angel LuzunarisSoto " la ayuda de la ciudadanía, del comercio y en ". ón o. ocasiones del gobierno municipal, logró construir a o Ós ON tres parques para el desarrollo de las Pequeñas Ligas | oa cio" en Humacao los cuales llevan el nombre de complejo Po deportivo Miguel Luzunaris. a AE a 3 Se afilió a la organización del «Boys Baseball Club» | de los Estados Unidos cuyos participantes di fluctuaban entre las edades de ocho a catorce años. En el 1981 comienza Miguel Luzunaris con la idea de celebrar una Serie Mundial de Pequeñas Nació en Humacao el 12 de enero de 1940. Ligas. Le lleva este mensaje a sus seguidores y tras Es hijo de doña Vidalina Soto y Don Nieves una ardua labor de la ciudadanía, el comercio y la Luzunaris. Estudió en la Escuela Antonia Saéz banca de Humacao en julio de 1982 se realiza su de Humacao. más grande sueño, la primera Serie Mundial de Participó en las Ligas Inter Caseríos Pequeñas Ligas de Humacao y en todo Puerto Rico. promovidas por el entonces Departamento de Contó con la participación de niños de Renovación Urbana y Vivienda. En el 1961, Latinoamérica y los Estados Unidos coronándose junto al deportista Carlitos Vázquez organizó Campeón el equipo de Humacao en la categoría el equipo Malta Corona de la Clase A en Mustang. El equipo campeón quedó invicto en todos Humacao. Desde entonces se dedicó a los partidos. promover equipo de «softball», Clase A, Cabe señalar que de esta hermosa gesta salieron Coliceba, Legión Americana y Doble A. peloteros profesionales como el receptor Adalberto En 1971, viendo la necesidad que tenían "El Gago" Ortiz, los lanzadores Edwin Núñez, José los niños de desarrollarse como peloteros, le "Bolita" Orellana y la segunda base Mario surge la idea de organizar equipos de "Puruquito" Ortiz. En la pelota doble A se han Pequeñas Ligas comenzando así con cinco destacado el primera base Miguel "Pochi" Figueroa equipos los cuales visitaban los diferentes y Luis A. Ortiz, Carlos Ariel Báez, Alex Ortiz y | barrios de Humacao. Estos equipos se Rafael Tolentino entre otros. | constituyeron como la Liga Néstor Morales Ciudadano humilde pero de gran corazón, en honor al destacado pelotero humacaeño propulsor de la filosofía de John F. Kennedy "No para aquel entonces. Los equipos iban en piense en lo que tu pueblo puede hacer por tí, sino aumento, el auge fue tan grande que ya no en lo que tu puedes hacer por tu pueblo", Miguel había espacio donde jugar. ama a su patria, ama a su ciudad de Humacao, pero " Con muchos esfuerzos se consiguieron los sobre todo ama a la niñez del mundo. Su obra como E terrenos aledaños a la Extensión Roig. Con líder deportista será muy difícil de igualar. di`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -399,7 +387,6 @@ A continuación señalamos su participación deportiva:
 - Delegado del equipo de boxeo olímpico que representó a Puerto Rico en los XXV Juegos Olímpicos Mundiales celebrados en Barcelona, España en 1992, en donde su equipo ganó una medalla de bronce, la única que obtuvo Puerto Rico en estos Juegos
 - Director Técnico del Deporte de Boxeo en los II Juegos Deportivos Centroamericanos y del Caribe, Ponce 93`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -437,7 +424,6 @@ En 1961 comienza su carrera como Maestro de Educación Física en la Escuela Sup
 
 En 1981 fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño. Falleció el 14 de julio de 1994 en Gurabo.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -467,7 +453,6 @@ Se desempeñó como alcaide de la cárcel de Humacao. El parque atlético de la 
 
 Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el 1967.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -497,7 +482,6 @@ En el béisbol se destacó como oficial estadístico e implementó por primera v
 
 Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el año 1977.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -531,7 +515,6 @@ Hay muchas emociones y gratos recuerdos en el corazón y en la memoria de Nésto
 
 Fue exaltado al Pabellón de la Fama del Deporte Puertorriqueño en el 1995.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -563,7 +546,6 @@ Por su esbelta figura y gran destreza en el manejo de las bridas y en dar colori
 
 Don Manolo transmitió a sus hijos sus grandes conocimientos y habilidades en el deporte de equitación.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -597,7 +579,6 @@ Tuvo muchos espacios de radio y televisión entre los que se destacan «Boxing f
 
 Fue instalado al Pabellón de la Fama del Deporte Puertorriqueño como propulsor de los deportes y como cronista deportivo en 1968.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -627,7 +608,6 @@ Pedro Cruz fue propulsor del deporte de béisbol desde 1947 al 1959. Fue el apod
 
 Murió luego de una fructífera vida en el 1988.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -647,7 +627,6 @@ Murió luego de una fructífera vida en el 1988.`,
     contenido: {
       biografia: `Nació en el mes de junio de 1897 enla Ciudad de Humacao. Debe ser considerado como el pionero del béisbol aficionado organizado en nuestra Ciudad. Fue el primer apoderado de un equipo Clase A en el 1941 el cual se llamaba El Imparcial. Militaron en ese equipo entre otros: Teggy Espinosa y Pichinga García (ambos jugaron bésisbol profesional), Luis Cora, Roberto Castro (ex-cartero), Carlos Reynosa, Luis Arturo Arzón y Armando Rodríguez. Este equipo fue campeón de distrito ese año. Sentía Don Antonio una eran devoción por el deporte de béisbol la cual demostró con enardecida pasión En vida: Era propietario de un pequeño hotel en el cual brindaba albergue a los peloteros que residían en otros pueblos. Prestaba desinteresada atención y cuidado a sus peloteros a los cuales incluso les proveía no solamente alojamiento, sino que les suplía alimentación y le confeccionaba sus uniformes con sacos de harina. Su esposa Antipa era la costurera y cocinera del equipo. Hombre muy hábil, trabajaba en aquellos años en el correo de Humacao bajo la dirección de Don Rafael Castañeda. Para poder mantener sus equipos recogía dinero por los diferentes negocios y de personas particulares. Continuó su participación en el béisbol Clase A hasta el 1946. Estos torneos eran organizados por la antigua Comisión de Parques y Recreo, bajo la dirección de Francisco Soto Respeto. En este último año fueron campeones seccionales y en dicho equipo estaban: Mejquíades Silva, Luis Birino Mercado, Luis Parrilla, Yyyo y Luis Cora (dirigente), Bi Hernández, Marcelino Rosario, Roberto Vargas, Felipe y Pedro Peña, Roberto Ruiz (el chivo), Roberto Castro y Carlos «Memelo» López. Este equipo se llamaba el Humacao Drug. En el 1947 Melquíades, Yuyo, Memelo y Roberto Vargas fueron a participar con el Juncos Doble A que el año anterior había obtenido la franquicia y fueron subcampeones de Puerto Rico. Pero en el transcurso de dichas prácticas Don Antonio consiguió una franquicia para nuestro pueblo y excepto Roberto Vargas, los otros tres regresaron y fueron integrantes del primer equipo Doble A que tuvo Humacao. Era propietario de un pequeño hotel en el cual brindaba albergue a los peloteros Los Otros Jugadores fueron: Fachy Rosado, Guillo que residían en otros pueblos. Prestaba Quifiones, Pedro Peña, Mapepe Kuidlan, Luis Parrilla, desinteresada atención y cuidado a sus José Escalera, David González, Cruzón Reyes, Juan peloteros a los cuales incluso les proveía Manuel «Memelo» López (dirigente). no solamente alojamiento, sino que les Aunque sólo estuvo un año como apoderado en el suplía alimentación y le confeccionaba sus béisbol AA indudablemente que sembró una gran uniformes con sacos de harina. Su esposa semilla que la siguió cosechando Don Pedro Cruz Antipa era la costurera y cocinera del Matojo y otros, al extremo que en el 1948, ese equipo equipo. Hombre muy hábil, trabajaba en fue subcampeón de Puerto Rico y campeones nacionales aquellos años en el correo de Humacao enel 1951. | | 3`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -679,7 +658,6 @@ Se destacó como líder cívico, social y deportivo. Organizó el Festival de Bo
 
 Murió el 11 de marzo de 1997 dejando un vacío muy profundo en los amantes del deporte y en su pueblo que lo reconoce como uno de sus más preclaros hijos.`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },
@@ -699,7 +677,6 @@ Murió el 11 de marzo de 1997 dejando un vacío muy profundo en los amantes del 
     contenido: {
       biografia: `Nació en Humacao el 23 de junio de 1888. Ingeniería por correspondencia, y continuó con Sus padres son don Antonio Roig Torrellas y doña el estudio de cuanta obra se escribe sobre Eulogia Guzmán. Para el 1906 trabajó de listero en agricultura, ingeniería e industria del azúcar la Central "El Ejemplo" y en las plantaciones de Sin descuidar las lecturas de libros de cultura caña de su padre. general y novelas recreativas. Tenía montado Ascendió a pagador de la fábrica, y más tarde Un poderoso aparato de radio-telefonía y a administrador de campo. En ese cargo desarrolló escuchaba conciertos en ciudades tan lejanas sus grandes cualidades de agricultor, industrial y como San Francisco. jefe, que le han llevado más que el influjo familiar Fue propulsor de varios deportes a a los puestos que ocupó de vicepresidente y Saber los gallos, caballo de paso fino y boxeo. administrador general de "El Ejemplo" y del En el 1921 promovió unas de las primeras ferrocarril de Humacao. Ha sido administrador de peleas de boxeo oficial en Puerto Rico. La lo extensos negocios agrícolas de Don Antonio Misma fue un combate donde se impuso por Roig. Asumió la presidencia de los negocios de su Superioridad manifiesta Enrique "Kike" Torres padre a raíz de la muerte de su progenitor. Además sobre el humacaeño "El Mudito Font", cartel fue vicepresidente del "Roig Commercial Bank". que se celebró en el Teatro Victoria de Fue un humacaeño preocupado por el Humacao. progreso de su pueblo y realizó varias gestiones de Murió el 10 de junio de 1956. proyectos novedosos como asambleísta municipal. Fue exaltado al Salón de la Fama del | Fue un autodidacta. Tomó cursos de Deporte Puertorriqueño en el 1966. | 32`,
       logros: [
-        // TODO: Extraer logros principales de la biografía
       ],
     }
   },

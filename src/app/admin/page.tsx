@@ -33,7 +33,7 @@ export default function AdminPage() {
     setError(null);
 
     try {
-      const response = await fetch("/api/admin/resgistraciones", {
+      const response = await fetch("/api/admin/registraciones", {
         headers: { Authorization: `Bearer ${adminKey}` },
       });
       const result = await response.json();
@@ -56,7 +56,7 @@ export default function AdminPage() {
 
     setLoading(true);
     try {
-      const response = await fetch("/api/admin/resgistraciones", {
+      const response = await fetch("/api/admin/registraciones", {
         headers: { Authorization: `Bearer ${adminKey}` },
       });
       const result = await response.json();

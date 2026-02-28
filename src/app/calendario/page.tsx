@@ -15,35 +15,7 @@ import {
   BookOpen,
   Loader2,
 } from "lucide-react";
-
-interface Evento {
-  id: string;
-  titulo: string;
-  descripcion: string;
-  fecha: string; // ISO date string to prevent hydration issues
-  horaInicio: string;
-  horaFin?: string;
-  ubicacion: string;
-  tipo: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
-  requiresRegistro?: boolean;
-  capacidadMaxima?: number;
-  imagen?: string;
-}
-
-// API Response type from /api/eventos
-interface EventoAPI {
-  id: string;
-  titulo: string;
-  descripcion: string;
-  fecha: Date;
-  horaInicio: string;
-  horaFin?: string;
-  ubicacion: string;
-  tipo: "ceremonia" | "museo" | "educativo" | "especial" | "reunion";
-  requiresRegistro?: boolean;
-  capacidadMaxima?: number;
-  imagen?: string;
-}
+import { type EventoSerializado } from "@/lib/types";
 
 const tiposEvento = [
   { valor: "todos", label: "Todos los eventos", color: "gray" },
@@ -88,7 +60,7 @@ const parseDateLocal = (dateString: string): Date => {
   return new Date(year, month - 1, day); // month is 0-indexed
 };
 
-const EventoCard = ({ evento }: { evento: Evento }) => {
+const EventoCard = ({ evento }: { evento: EventoSerializado }) => {
   const IconoEvento = getIconoEvento(evento.tipo);
   const fechaEvento = parseDateLocal(evento.fecha);
   const [imagenError, setImagenError] = useState(false);
@@ -207,7 +179,7 @@ const EventoCard = ({ evento }: { evento: Evento }) => {
 
 export default function CalendarioPage() {
   const [filtroTipo, setFiltroTipo] = useState("todos");
-  const [eventos, setEventos] = useState<Evento[]>([]);
+  const [eventos, setEventos] = useState<EventoSerializado[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -227,22 +199,8 @@ export default function CalendarioPage() {
         const data = await response.json();
 
         if (data.success && data.data) {
-          // Transform API response to component format
-          const eventosTransformados: Evento[] = (data.data as EventoAPI[]).map((evento) => ({
-            id: evento.id,
-            titulo: evento.titulo,
-            descripcion: evento.descripcion,
-            fecha: new Date(evento.fecha).toISOString().split('T')[0], // Convert to YYYY-MM-DD
-            horaInicio: evento.horaInicio,
-            horaFin: evento.horaFin,
-            ubicacion: evento.ubicacion,
-            tipo: evento.tipo,
-            requiresRegistro: evento.requiresRegistro,
-            capacidadMaxima: evento.capacidadMaxima,
-            imagen: evento.imagen,
-          }));
-
-          setEventos(eventosTransformados);
+          // API returns JSON — fecha is already a string after JSON serialization
+          setEventos(data.data as EventoSerializado[]);
         } else {
           setEventos([]);
         }

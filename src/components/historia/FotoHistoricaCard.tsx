@@ -15,7 +15,6 @@ export function FotoHistoricaCard({ foto, className = '' }: FotoHistoricaCardPro
     <div className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition ${className}`}>
       {/* Imagen */}
       <div className="relative h-64 bg-gray-200">
-        {/* TODO Sprint 1+: Agregar Image component */}
         <div className="absolute inset-0 flex items-center justify-center text-gray-500">
           📷 Foto Histórica
         </div>
