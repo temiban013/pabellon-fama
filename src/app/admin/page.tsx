@@ -33,9 +33,9 @@ export default function AdminPage() {
     setError(null);
 
     try {
-      const response = await fetch(
-        `/api/registro?key=${encodeURIComponent(adminKey)}`
-      );
+      const response = await fetch("/api/admin/resgistraciones", {
+        headers: { Authorization: `Bearer ${adminKey}` },
+      });
       const result = await response.json();
 
       if (response.ok && result.success) {
@@ -56,9 +56,9 @@ export default function AdminPage() {
 
     setLoading(true);
     try {
-      const response = await fetch(
-        `/api/registro?key=${encodeURIComponent(adminKey)}`
-      );
+      const response = await fetch("/api/admin/resgistraciones", {
+        headers: { Authorization: `Bearer ${adminKey}` },
+      });
       const result = await response.json();
 
       if (response.ok && result.success) {

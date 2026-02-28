@@ -295,6 +295,7 @@ export async function fetchCalendarEvents(options: {
       maxResults,
       singleEvents: true,
       orderBy: "startTime",
+      timeZone: "America/Puerto_Rico",
     });
 
     const events = response.data.items || [];

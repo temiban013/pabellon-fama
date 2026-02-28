@@ -349,7 +349,6 @@ export async function POST(request: NextRequest) {
         const minutesUntilReset = Math.ceil(
           (rateLimit.resetAt - Date.now()) / 60000
         );
-        console.warn(`⚠️ Rate limit exceeded for IP: ${clientIp}`);
 
         return NextResponse.json(
           {

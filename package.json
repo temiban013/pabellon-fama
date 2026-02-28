@@ -23,7 +23,15 @@
   "pnpm": {
     "allowedDeprecatedVersions": {
       "critters": "0.0.25"
-    }
+    },
+    "overrides": {
+      "esbuild": ">=0.25.0"
+    },
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp",
+      "esbuild"
+    ]
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

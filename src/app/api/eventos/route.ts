@@ -57,12 +57,30 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
 
-    // Parámetros de consulta
-    const mode = searchParams.get("mode") || "upcoming"; // upcoming, range, month
+    // Parámetros de consulta con validación
+    const mode = searchParams.get("mode") || "upcoming";
+    const validModes = ["upcoming", "range", "month"];
+    if (!validModes.includes(mode)) {
+      return errorResponse(
+        `Modo inválido: "${mode}". Modos válidos: ${validModes.join(", ")}`,
+        400
+      );
+    }
+
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
-    const maxResults = parseInt(searchParams.get("maxResults") || "50", 10);
-    const tipo = searchParams.get("tipo"); // Filtro por tipo de evento
+    const rawMaxResults = parseInt(searchParams.get("maxResults") || "50", 10);
+    const maxResults = Number.isNaN(rawMaxResults) ? 50 : Math.min(Math.max(rawMaxResults, 1), 100);
+    const tipo = searchParams.get("tipo");
+
+    // Validar tipo si se proporciona
+    const validTipos = ["ceremonia", "museo", "educativo", "especial", "reunion"];
+    if (tipo && !validTipos.includes(tipo)) {
+      return errorResponse(
+        `Tipo inválido: "${tipo}". Tipos válidos: ${validTipos.join(", ")}`,
+        400
+      );
+    }
 
     let eventos: Evento[];
 
@@ -72,6 +90,13 @@ export async function GET(request: NextRequest) {
         if (!startDate || !endDate) {
           return errorResponse(
             "Se requieren parámetros startDate y endDate para mode=range",
+            400
+          );
+        }
+        // Validar formato de fechas
+        if (Number.isNaN(new Date(startDate).getTime()) || Number.isNaN(new Date(endDate).getTime())) {
+          return errorResponse(
+            "Formato de fecha inválido. Use formato ISO 8601 (YYYY-MM-DD)",
             400
           );
         }
@@ -98,7 +123,6 @@ export async function GET(request: NextRequest) {
 
     // Ordenar por fecha (más próximos primero)
     eventos.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
-
 
     return successResponse(eventos);
   } catch (error) {
