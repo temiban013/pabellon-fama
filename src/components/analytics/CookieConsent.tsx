@@ -31,8 +31,7 @@ export default function CookieConsent() {
       if (savedPreferences) {
         try {
           setPreferences(JSON.parse(savedPreferences));
-        } catch (e) {
-          console.error('Failed to parse cookie preferences:', e);
+        } catch {
         }
       }
     }

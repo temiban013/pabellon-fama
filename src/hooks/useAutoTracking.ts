@@ -18,8 +18,7 @@ export function useAutoTracking() {
             const fileType = fileName.split('.').pop() || 'unknown';
             trackFileDownload(fileName, url.href, fileType);
           }
-        } catch (error) {
-          console.error('Error tracking download:', error);
+        } catch {
         }
       }
     };
@@ -31,15 +30,14 @@ export function useAutoTracking() {
         try {
           const url = new URL(link.href, window.location.origin);
           const currentDomain = window.location.hostname;
-          
+
           // Track external links (not same domain, not localhost, not relative)
-          if (url.hostname !== currentDomain && 
-              !url.hostname.includes('localhost') && 
+          if (url.hostname !== currentDomain &&
+              !url.hostname.includes('localhost') &&
               !url.hostname.includes('pfdh.org')) {
             trackExternalLink(url.href, link.textContent || link.innerHTML);
           }
-        } catch (error) {
-          console.error('Error tracking external link:', error);
+        } catch {
         }
       }
     };

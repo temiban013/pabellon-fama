@@ -47,7 +47,7 @@ export default function Analytics() {
         onLCP(trackWebVitals);
         onTTFB(trackWebVitals);
         onINP(trackWebVitals);
-      }).catch(console.error);
+      }).catch(() => {});
     }
   }, []);
 

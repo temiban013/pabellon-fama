@@ -145,8 +145,6 @@ export function useRegistro(): UseRegistroReturn {
         isSuccess: false,
         error: errorMessage,
       });
-
-      console.error("Error en registro:", error);
     }
   }, [formData, validateForm]);
 
