@@ -29,8 +29,10 @@ const categoriaMap: Record<string, CategoriaExaltado> = {
 
 // Función para transformar ExaltadoRevista a Exaltado
 function transformExaltadoRevista(exaltadoRevista: ExaltadoRevista): Exaltado {
-  // Construct nombreCompleto from nombre + apellidos
-  const nombreCompleto = `${exaltadoRevista.nombre} ${exaltadoRevista.apellidos}`.trim();
+  // Construct nombreCompleto: nombre + "apodo" + apellidos
+  const nombreCompleto = exaltadoRevista.apodo
+    ? `${exaltadoRevista.nombre} "${exaltadoRevista.apodo}" ${exaltadoRevista.apellidos}`
+    : `${exaltadoRevista.nombre} ${exaltadoRevista.apellidos}`;
 
   return {
     id: exaltadoRevista.id,

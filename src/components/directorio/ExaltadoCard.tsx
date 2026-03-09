@@ -27,20 +27,8 @@ export const ExaltadoCard = memo(function ExaltadoCard({
   const isTeam = exaltado.categoria === "equipo";
   const initials = isTeam ? "⚾" : getInitials(exaltado.nombre);
 
-  // Función para obtener el nombre completo con apodo
-  const getFullName = () => {
-    if (exaltado.apodo) {
-      // Insert apodo before apellidos for correct placement with compound first names
-      // e.g., "José Manuel" + "Chemane" + "Carradero Muriel"
-      const apellidosIndex = exaltado.nombreCompleto.indexOf(exaltado.apellidos);
-      if (apellidosIndex > 0) {
-        const firstName = exaltado.nombreCompleto.substring(0, apellidosIndex).trim();
-        return `${firstName} "${exaltado.apodo}" ${exaltado.apellidos}`;
-      }
-      return `${exaltado.nombreCompleto} "${exaltado.apodo}"`;
-    }
-    return exaltado.nombreCompleto;
-  };
+  // nombreCompleto already includes apodo in correct position
+  const getFullName = () => exaltado.nombreCompleto;
 
   if (viewMode === "list") {
     return (

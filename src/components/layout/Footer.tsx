@@ -7,7 +7,7 @@ interface FooterProps {
 
 export function Footer({ className = "" }: FooterProps) {
   // Use static year to prevent hydration mismatch
-  const currentYear = 2025;
+  const currentYear = 2026;
 
   const footerSections = [
     {
@@ -27,6 +27,7 @@ export function Footer({ className = "" }: FooterProps) {
         { name: "Galería Histórica", href: "/enlaces/galeria-historica" },
         { name: "Blog Oficial", href: "https://pabellonfdh.blogspot.com" },
         { name: "Horarios de Visita", href: "/horario" },
+        { name: "Contribuir Información", href: "/contribuir" },
       ],
     },
     {

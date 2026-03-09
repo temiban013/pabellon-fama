@@ -12,6 +12,11 @@ import {
   getSportEmoji,
   getCategoryLabel,
 } from "@/lib/constants/exaltados";
+import { EnrichedStatsSection } from "@/components/directorio/EnrichedStatsSection";
+import { DatosExtendidosSection } from "@/components/directorio/DatosExtendidosSection";
+import { TrayectoriaTimeline } from "@/components/directorio/TrayectoriaTimeline";
+import { ConexionesSection } from "@/components/directorio/ConexionesSection";
+import { ContribucionCTA } from "@/components/contribucion/ContribucionCTA";
 
 interface ExaltadoDetailLayoutProps {
   exaltado: Exaltado;
@@ -635,6 +640,18 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
               </div>
             </div>
           )}
+
+          {/* Enriched data sections — render only if data exists */}
+          <EnrichedStatsSection />
+          <DatosExtendidosSection />
+          <TrayectoriaTimeline />
+          <ConexionesSection />
+
+          {/* Contribution CTA */}
+          <ContribucionCTA
+            exaltadoId={exaltado.id}
+            nombreExaltado={exaltado.nombreCompleto || exaltado.nombre}
+          />
         </div>
       </div>
 

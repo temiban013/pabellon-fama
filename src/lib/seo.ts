@@ -162,6 +162,13 @@ export const seoConfigs = {
       "Consulta el calendario del Pabellón de la Fama del Deporte Humacaeño. Ceremonias de exaltación, exhibiciones, charlas deportivas y eventos comunitarios.",
     keywords: ["calendario", "eventos", "actividades", "ceremonias"],
   },
+
+  contribuir: {
+    title: "Contribuir Información",
+    description:
+      "Comparte estadísticas, datos biográficos y anécdotas sobre los exaltados al Pabellón de la Fama del Deporte Humacaeño. Tu información será revisada por la Junta de Directores.",
+    keywords: ["contribuir", "información", "estadísticas", "datos", "comunidad"],
+  },
 };
 
 // BreadcrumbList JSON-LD para SEO

@@ -3,6 +3,14 @@
  * Sprint 0 - Foundation
  */
 
+import type {
+  EstadisticasDeportivasEnriquecidas,
+  DatosExtendidosExaltado,
+  TrayectoriaExaltado,
+  ConexionDeportiva,
+  FuenteDatos,
+} from './contribucion';
+
 export interface RevistaMetadata {
   tipo: 'exaltacion' | 'especial';
   slug: string;
@@ -49,6 +57,12 @@ export interface ExaltadoRevista {
     reconocimientos?: string[];
     fotos?: string[];
     citas?: string[];
+    // Enrichment fields (community data enrichment feature)
+    estadisticasDeportivas?: EstadisticasDeportivasEnriquecidas;
+    datosExtendidos?: DatosExtendidosExaltado;
+    trayectoria?: TrayectoriaExaltado;
+    conexiones?: ConexionDeportiva[];
+    fuentesDatos?: FuenteDatos[];
   };
 }
 

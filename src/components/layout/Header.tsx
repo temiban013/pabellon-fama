@@ -8,18 +8,20 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 interface NavigationItem {
   name: string;
   href: string;
+  shortName?: string;
   description?: string;
 }
 
 const navigation: NavigationItem[] = [
   { name: "Inicio", href: "/" },
-  { name: "Junta de Directores", href: "/junta" },
-  { name: "Directorio de Exaltados", href: "/directorio" },
+  { name: "Junta de Directores", href: "/junta", shortName: "Junta" },
+  { name: "Directorio de Exaltados", href: "/directorio", shortName: "Exaltados" },
   { name: "Museo", href: "/museo" },
   { name: "Historia", href: "/historia" },
   { name: "Enlaces", href: "/enlaces" },
   { name: "Horario", href: "/horario" },
   { name: "Calendario", href: "/calendario" },
+  { name: "Contribuir", href: "/contribuir" },
 ];
 
 export function Header() {
@@ -33,7 +35,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo y título */}
-          <Link href="/" className="flex items-center space-x-4 group">
+          <Link href="/" className="flex items-center space-x-4 group flex-shrink-0">
             <div className="relative w-16 h-16">
               {/* Logo oficial del pabellón */}
               <div className="w-full h-full group-hover:scale-105 transition-transform duration-200">
@@ -48,7 +50,7 @@ export function Header() {
               </div>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl lg:text-2xl font-bold text-pabellon-green-800 group-hover:text-pabellon-green-700 transition-colors">
+              <h1 className="text-xl lg:text-2xl font-bold text-pabellon-green-800 group-hover:text-pabellon-green-700 transition-colors whitespace-nowrap">
                 Pabellón de la Fama
               </h1>
               <p className="text-sm lg:text-base text-pabellon-gold-600 font-medium">
@@ -58,14 +60,14 @@ export function Header() {
           </Link>
 
           {/* Navegación Desktop */}
-          <nav className="hidden lg:flex space-x-1">
+          <nav className="hidden lg:flex items-center justify-center space-x-0.5">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="nav-link px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:bg-pabellon-gold-50"
+                className="nav-link px-2 py-2 rounded-md text-[13px] font-medium transition-all duration-200 hover:bg-pabellon-gold-50"
               >
-                {item.name}
+                {item.shortName || item.name}
               </Link>
             ))}
           </nav>
