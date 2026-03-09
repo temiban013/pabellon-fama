@@ -1,7 +1,7 @@
 // components/contribucion/ContribucionForm.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useContribucionForm } from "@/hooks/useContribucionForm";
 import { useToastHelpers } from "@/components/ui/Toast";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
@@ -13,6 +13,7 @@ import type {
 import ExaltadoSelector from "./ExaltadoSelector";
 import EstadisticasFields from "./EstadisticasFields";
 import DatosPersonalesFields from "./DatosPersonalesFields";
+import ArchivoUploadField from "./ArchivoUploadField";
 import ContribucionExito from "./ContribucionExito";
 
 interface ContribucionFormProps {
@@ -103,14 +104,36 @@ export default function ContribucionForm({
     removeEstadistica,
     updateEstadistica,
     updateDatosPersonales,
+    archivos,
+    addArchivos,
+    removeArchivo,
+    isCompressing,
   } = useContribucionForm({ exaltadoId, exaltadoNombre });
 
-  const { error: showError } = useToastHelpers();
+  const { success: showSuccess, error: showError } = useToastHelpers();
   const [isMounted, setIsMounted] = useState(false);
+  const prevArchivosCountRef = useRef(0);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  // Toast when files are successfully added
+  useEffect(() => {
+    if (!isMounted) return;
+    const prev = prevArchivosCountRef.current;
+    const curr = archivos.length;
+    prevArchivosCountRef.current = curr;
+
+    if (curr > prev) {
+      const added = curr - prev;
+      showSuccess(
+        added === 1 ? "Archivo agregado" : `${added} archivos agregados`,
+        "Los archivos se enviarán junto con tu contribución.",
+        { duration: 3000 }
+      );
+    }
+  }, [archivos.length, isMounted, showSuccess]);
 
   // Success toast removed — ContribucionExito component handles the success state
 
@@ -122,6 +145,14 @@ export default function ContribucionForm({
       });
     }
   }, [formState.error, showError, isMounted]);
+
+  // Scroll success message into view after the DOM swaps from form to success component
+  const successRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (formState.isSuccess && successRef.current) {
+      successRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [formState.isSuccess]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -152,7 +183,7 @@ export default function ContribucionForm({
 
   if (formState.isSuccess) {
     return (
-      <div className="bg-white rounded-2xl shadow-2xl p-8 border-4 border-pabellon-green-300">
+      <div ref={successRef} className="bg-white rounded-2xl shadow-2xl p-8 border-4 border-pabellon-green-300">
         <ContribucionExito onReset={resetForm} />
       </div>
     );
@@ -399,22 +430,14 @@ export default function ContribucionForm({
             onChange={updateField}
           />
 
-          <div className="space-y-1">
-            <label className="block text-sm font-medium text-gray-700">
-              Documentos de Soporte (Opcional)
-            </label>
-            <textarea
-              value={formData.documentosSoporte ?? ""}
-              onChange={(e) =>
-                updateField("documentosSoporte", e.target.value)
-              }
-              placeholder="Describa fotos, recortes de periódico u otros documentos que pueda proveer..."
-              rows={2}
-              maxLength={500}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all resize-none hover:border-gray-400"
-              disabled={formState.isLoading}
-            />
-          </div>
+          <ArchivoUploadField
+            archivos={archivos}
+            onAdd={addArchivos}
+            onRemove={removeArchivo}
+            disabled={formState.isLoading}
+            error={validationErrors.archivos}
+            isCompressing={isCompressing}
+          />
         </fieldset>
 
         {/* Honeypot - hidden from humans */}
@@ -436,7 +459,7 @@ export default function ContribucionForm({
         <div className="pt-4">
           <button
             type="submit"
-            disabled={formState.isLoading}
+            disabled={formState.isLoading || isCompressing}
             className="w-full bg-gradient-to-r from-pabellon-green-700 to-pabellon-green-800 hover:from-pabellon-green-800 hover:to-pabellon-green-900 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg disabled:cursor-not-allowed disabled:transform-none text-lg"
           >
             {formState.isLoading ? (

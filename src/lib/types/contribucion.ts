@@ -51,7 +51,7 @@ export interface ContribucionFormData {
 
   // Source and verification
   fuenteInformacion: string;      // "Recuerdos personales", "Archivo del periódico..."
-  documentosSoporte?: string;     // Description of supporting docs they could provide
+  cantidadArchivos?: number;      // Count of attached files (for email display)
 
   // Anti-spam
   honeypot?: string;              // Hidden field — must be empty

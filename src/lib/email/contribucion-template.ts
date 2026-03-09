@@ -28,7 +28,7 @@ interface AdminEmailData {
     inicioDeporte?: string;
   };
   fuenteInformacion: string;
-  documentosSoporte?: string;
+  cantidadArchivos?: number;
   refId: string;
   timestamp: string;
 }
@@ -197,10 +197,10 @@ export function buildAdminNotificationEmail(data: AdminEmailData): string {
             <span style="color: #374151;">${data.fuenteInformacion}</span>
           </div>
           ${
-            data.documentosSoporte
+            data.cantidadArchivos && data.cantidadArchivos > 0
               ? `<div style="margin: 8px 0; padding: 6px 0;">
-                  <span style="font-weight: 600; color: #1e3a8a; display: inline-block; min-width: 180px;">Documentos de Soporte:</span>
-                  <span style="color: #374151;">${data.documentosSoporte}</span>
+                  <span style="font-weight: 600; color: #1e3a8a; display: inline-block; min-width: 180px;">📎 Archivos Adjuntos:</span>
+                  <span style="color: #374151;">${data.cantidadArchivos} archivo${data.cantidadArchivos > 1 ? "s" : ""} adjunto${data.cantidadArchivos > 1 ? "s" : ""} a este email</span>
                 </div>`
               : ""
           }

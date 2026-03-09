@@ -10,6 +10,14 @@ import type {
   RelacionContribuidor,
 } from "@/lib/types/contribucion";
 import { validateContribucion } from "@/lib/validations/contribucion";
+import {
+  compressImage,
+  validateFileType,
+  isImageFile,
+  MAX_FILE_SIZE,
+  MAX_TOTAL_SIZE,
+  MAX_FILES,
+} from "@/lib/utils/image-compression";
 
 type ValidationErrors = Record<string, string | undefined>;
 
@@ -39,7 +47,6 @@ const createInitialFormData = (
   estadisticasEspecificas: [],
   datosPersonales: undefined,
   fuenteInformacion: "",
-  documentosSoporte: "",
   honeypot: "",
 });
 
@@ -57,6 +64,8 @@ export function useContribucionForm(props?: UseContribucionFormProps) {
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>(
     {}
   );
+  const [archivos, setArchivos] = useState<File[]>([]);
+  const [isCompressing, setIsCompressing] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const updateField = useCallback(
@@ -133,6 +142,95 @@ export function useContribucionForm(props?: UseContribucionFormProps) {
     []
   );
 
+  const addArchivos = useCallback(
+    async (newFiles: File[]) => {
+      // Clear previous file errors
+      setValidationErrors((prev) => ({ ...prev, archivos: undefined }));
+
+      // Check total count
+      if (archivos.length + newFiles.length > MAX_FILES) {
+        setValidationErrors((prev) => ({
+          ...prev,
+          archivos: `Máximo ${MAX_FILES} archivos permitidos`,
+        }));
+        return;
+      }
+
+      // Validate types
+      for (const file of newFiles) {
+        if (!validateFileType(file)) {
+          setValidationErrors((prev) => ({
+            ...prev,
+            archivos: `Tipo de archivo no permitido: ${file.name}. Solo JPEG, PNG, WebP y PDF.`,
+          }));
+          return;
+        }
+      }
+
+      // Compress images
+      setIsCompressing(true);
+      try {
+        const processed: File[] = [];
+        for (const file of newFiles) {
+          if (isImageFile(file)) {
+            const compressed = await compressImage(file);
+            if (compressed.size > MAX_FILE_SIZE) {
+              setValidationErrors((prev) => ({
+                ...prev,
+                archivos: `La imagen ${file.name} excede 2 MB incluso después de la compresión`,
+              }));
+              setIsCompressing(false);
+              return;
+            }
+            processed.push(compressed);
+          } else {
+            // PDF — check raw size
+            if (file.size > MAX_FILE_SIZE) {
+              setValidationErrors((prev) => ({
+                ...prev,
+                archivos: `El archivo PDF ${file.name} excede 2 MB`,
+              }));
+              setIsCompressing(false);
+              return;
+            }
+            processed.push(file);
+          }
+        }
+
+        // Check total size
+        const currentTotal = archivos.reduce((sum, f) => sum + f.size, 0);
+        const newTotal =
+          currentTotal + processed.reduce((sum, f) => sum + f.size, 0);
+        if (newTotal > MAX_TOTAL_SIZE) {
+          setValidationErrors((prev) => ({
+            ...prev,
+            archivos: "Los archivos exceden el límite total de 4 MB",
+          }));
+          setIsCompressing(false);
+          return;
+        }
+
+        setArchivos((prev) => [...prev, ...processed]);
+      } catch (err) {
+        setValidationErrors((prev) => ({
+          ...prev,
+          archivos:
+            err instanceof Error
+              ? err.message
+              : "Error al procesar los archivos",
+        }));
+      } finally {
+        setIsCompressing(false);
+      }
+    },
+    [archivos]
+  );
+
+  const removeArchivo = useCallback((index: number) => {
+    setArchivos((prev) => prev.filter((_, i) => i !== index));
+    setValidationErrors((prev) => ({ ...prev, archivos: undefined }));
+  }, []);
+
   const validateForm = useCallback((): boolean => {
     const result = validateContribucion(formData);
 
@@ -173,12 +271,16 @@ export function useContribucionForm(props?: UseContribucionFormProps) {
     });
 
     try {
+      // Build FormData with JSON form data + file attachments
+      const body = new FormData();
+      body.append("datos", JSON.stringify(formData));
+      archivos.forEach((archivo) => {
+        body.append("archivos", archivo, archivo.name);
+      });
+
       const response = await fetch("/api/contribucion", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body,
         signal: abortControllerRef.current.signal,
       });
 
@@ -215,12 +317,14 @@ export function useContribucionForm(props?: UseContribucionFormProps) {
         error: errorMessage,
       });
     }
-  }, [formData, validateForm]);
+  }, [formData, archivos, validateForm]);
 
   const resetForm = useCallback(() => {
     setFormData(createInitialFormData(props));
     setFormState(initialFormState);
     setValidationErrors({});
+    setArchivos([]);
+    setIsCompressing(false);
 
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
@@ -240,5 +344,9 @@ export function useContribucionForm(props?: UseContribucionFormProps) {
     removeEstadistica,
     updateEstadistica,
     updateDatosPersonales,
+    archivos,
+    addArchivos,
+    removeArchivo,
+    isCompressing,
   };
 }

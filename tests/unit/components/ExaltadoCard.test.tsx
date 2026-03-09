@@ -111,6 +111,7 @@ describe('ExaltadoCard', () => {
     it('muestra apodo cuando está disponible', () => {
       const exaltadoConApodo = {
         ...baseExaltado,
+        nombreCompleto: 'Juan "El Crack" Pérez',
         apodo: 'El Crack',
       };
 
@@ -229,10 +230,10 @@ describe('ExaltadoCard', () => {
   });
 
   describe('Manejo de apodo', () => {
-    it('inserta apodo correctamente en nombre con múltiples partes', () => {
+    it('muestra nombreCompleto que ya incluye apodo desde DirectorioClient', () => {
       const exaltadoConApodo = {
         ...baseExaltado,
-        nombreCompleto: 'Pedro Jaime Martínez',
+        nombreCompleto: 'Pedro Jaime "El Grande" Martínez',
         apellidos: 'Martínez',
         apodo: 'El Grande',
       };
@@ -245,13 +246,12 @@ describe('ExaltadoCard', () => {
     it('maneja apodo cuando el nombre tiene solo una parte', () => {
       const exaltadoNombreSimple = {
         ...baseExaltado,
-        nombreCompleto: 'Pelé',
+        nombreCompleto: 'Pelé "El Rey"',
         apodo: 'El Rey',
       };
 
       render(<ExaltadoCard exaltado={exaltadoNombreSimple} viewMode="grid" />);
 
-      // Fallback cuando el nombre no tiene espacios
       expect(screen.getByText(/Pelé "El Rey"/)).toBeInTheDocument();
     });
 

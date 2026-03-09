@@ -187,7 +187,7 @@ describe('/api/contribucion', () => {
 
       expect(response.status).toBe(415);
       expect(data.success).toBe(false);
-      expect(data.error).toContain('Content-Type debe ser application/json');
+      expect(data.error).toContain('Content-Type debe ser multipart/form-data o application/json');
     });
 
     it('rechaza JSON inválido con 400', async () => {
@@ -206,7 +206,7 @@ describe('/api/contribucion', () => {
 
       expect(response.status).toBe(400);
       expect(data.success).toBe(false);
-      expect(data.error).toContain('JSON inválido');
+      expect(data.error).toContain('Datos inválidos en el cuerpo de la petición');
     });
 
     it('devuelve 500 cuando el envío de email falla', async () => {

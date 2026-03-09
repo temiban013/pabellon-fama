@@ -164,19 +164,68 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Verificar Content-Type
+    // Verificar Content-Type (accept both multipart/form-data and application/json for backwards compat)
     const contentType = request.headers.get("content-type");
-    if (!contentType?.includes("application/json")) {
-      return errorResponse("Content-Type debe ser application/json", 415);
+    const isMultipart = contentType?.includes("multipart/form-data");
+    const isJson = contentType?.includes("application/json");
+
+    if (!isMultipart && !isJson) {
+      return errorResponse("Content-Type debe ser multipart/form-data o application/json", 415);
     }
 
-    // Parsear body
+    // Parsear body — extract form data and optional files
     let body;
+    let archivos: File[] = [];
+
     try {
-      body = await request.json();
+      if (isMultipart) {
+        const formDataRaw = await request.formData();
+        const datosRaw = formDataRaw.get("datos");
+        if (!datosRaw || typeof datosRaw !== "string") {
+          return errorResponse("Campo 'datos' requerido en FormData", 400);
+        }
+        body = JSON.parse(datosRaw);
+        archivos = formDataRaw
+          .getAll("archivos")
+          .filter((item): item is File => item instanceof File && item.size > 0);
+      } else {
+        body = await request.json();
+      }
     } catch {
-      return errorResponse("JSON inválido en el cuerpo de la petición", 400);
+      return errorResponse("Datos inválidos en el cuerpo de la petición", 400);
     }
+
+    // Validate attached files
+    const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+    const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB per file
+    const MAX_TOTAL_SIZE = 4 * 1024 * 1024; // 4 MB total
+
+    if (archivos.length > 5) {
+      return errorResponse("Máximo 5 archivos permitidos", 422);
+    }
+
+    for (const archivo of archivos) {
+      if (!ALLOWED_FILE_TYPES.includes(archivo.type)) {
+        return errorResponse(
+          `Tipo de archivo no permitido: ${archivo.name}. Solo JPEG, PNG, WebP y PDF.`,
+          422
+        );
+      }
+      if (archivo.size > MAX_FILE_SIZE) {
+        return errorResponse(
+          `El archivo ${archivo.name} excede el límite de 2 MB`,
+          422
+        );
+      }
+    }
+
+    const totalFileSize = archivos.reduce((sum, f) => sum + f.size, 0);
+    if (totalFileSize > MAX_TOTAL_SIZE) {
+      return errorResponse("Los archivos exceden el límite total de 4 MB", 422);
+    }
+
+    // Inject file count for Zod validation and email template
+    body.cantidadArchivos = archivos.length;
 
     // Honeypot check BEFORE Zod validation
     if (body.honeypot) {
@@ -210,9 +259,6 @@ export async function POST(request: NextRequest) {
     const safeExaltadoNombre = escapeHtml(validatedData.exaltadoNombre);
     const safeInformacion = escapeHtml(validatedData.informacion);
     const safeFuente = escapeHtml(validatedData.fuenteInformacion);
-    const safeDocumentos = validatedData.documentosSoporte
-      ? escapeHtml(validatedData.documentosSoporte)
-      : undefined;
     const safeRelacionDetalle = validatedData.relacionDetalle
       ? escapeHtml(validatedData.relacionDetalle)
       : undefined;
@@ -282,7 +328,7 @@ export async function POST(request: NextRequest) {
       estadisticasEspecificas: safeEstadisticas,
       datosPersonales: safeDatosPersonales,
       fuenteInformacion: safeFuente,
-      documentosSoporte: safeDocumentos,
+      cantidadArchivos: archivos.length,
       refId,
       timestamp,
     });
@@ -294,16 +340,25 @@ export async function POST(request: NextRequest) {
       refId,
     });
 
+    // Convert files to Resend-compatible attachments
+    const attachments = await Promise.all(
+      archivos.map(async (archivo) => ({
+        content: Buffer.from(await archivo.arrayBuffer()),
+        filename: archivo.name.replace(/[^a-zA-Z0-9._-]/g, "_"),
+      }))
+    );
+
     // Send emails (skip in E2E test mode)
     if (!isE2ETestMode) {
       try {
-        // Send admin notification
+        // Send admin notification (with file attachments)
         const { error: adminError } = await resend.emails.send({
           from: "Pabellón PFDH <noreply@pfdh.org>",
           to: ["informa@pfdh.org", "pabellonfdh@gmail.com"],
           replyTo: validatedData.contribuidorEmail,
           subject: `📝 Nueva contribución: ${validatedData.exaltadoNombre} — ${tipoLabel}`,
           html: adminHtml,
+          attachments: attachments.length > 0 ? attachments : undefined,
         });
 
         if (adminError) {

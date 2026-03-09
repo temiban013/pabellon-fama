@@ -77,7 +77,7 @@ export const contribucionFormSchema = z.object({
     .string()
     .min(5, "Indique la fuente de la información")
     .max(500),
-  documentosSoporte: z.string().max(500).optional(),
+  cantidadArchivos: z.number().min(0).max(5).optional(),
 
   // Anti-spam honeypot — must be empty
   honeypot: z.literal("").optional(),

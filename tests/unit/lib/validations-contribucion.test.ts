@@ -18,7 +18,7 @@ describe('validations/contribucion.ts', () => {
     tipoContribucion: "estadisticas" as const,
     informacion: "Tengo estadísticas de su carrera en béisbol profesional",
     fuenteInformacion: "Archivos familiares y recortes de periódico",
-    documentosSoporte: "Tengo fotos y recortes del periódico El Mundo",
+    cantidadArchivos: 0,
   };
 
   describe('contribucionFormSchema', () => {
