@@ -153,7 +153,7 @@ async function sendRegistrationEmail(
 
   const { error } = await resend.emails.send({
     from: "Pabellón PFDH <noreply@pfdh.org>",
-    to: "informa@pfdh.org",
+    to: ["informa@pfdh.org", "pabellonfdh@gmail.com"],
     replyTo: userData.email,
     subject: `Nueva Registración - ${userData.nombre}`,
     html: `
