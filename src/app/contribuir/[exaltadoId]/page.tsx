@@ -63,7 +63,7 @@ export default async function ContribuirExaltadoPage({ params }: PageProps) {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Comparte datos, estadísticas o anécdotas sobre
           </p>
-          <p className="text-lg font-semibold text-pabellon-green-700 whitespace-nowrap">
+          <p className="text-lg font-semibold text-pabellon-green-700">
             {nombreCompleto}
           </p>
         </div>

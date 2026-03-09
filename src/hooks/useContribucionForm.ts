@@ -1,7 +1,7 @@
 // hooks/useContribucionForm.ts
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import type {
   ContribucionFormData,
   TipoContribucion,
@@ -67,6 +67,12 @@ export function useContribucionForm(props?: UseContribucionFormProps) {
   const [archivos, setArchivos] = useState<File[]>([]);
   const [isCompressing, setIsCompressing] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    return () => {
+      abortControllerRef.current?.abort();
+    };
+  }, []);
 
   const updateField = useCallback(
     (field: keyof ContribucionFormData, value: unknown) => {

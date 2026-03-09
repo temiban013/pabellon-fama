@@ -96,9 +96,6 @@ export async function compressImage(file: File): Promise<File> {
     return new File([blob], `${baseName}.jpg`, { type: "image/jpeg" });
   } catch {
     // Fallback: if createImageBitmap also fails, return original
-    console.warn(
-      `Compresión omitida para ${file.name} — usando archivo original`
-    );
     return file;
   }
 }
