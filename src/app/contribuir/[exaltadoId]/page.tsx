@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeft, Heart } from "lucide-react";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { getExaltadoById } from "@/data/exaltados-all";
-import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import ContribucionForm from "@/components/contribucion/ContribucionForm";
 
 interface PageProps {
@@ -45,29 +46,28 @@ export default async function ContribuirExaltadoPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <Breadcrumbs
-          variant="dark"
-          items={[
-            { label: "Directorio", href: "/directorio" },
-            { label: nombreCompleto, href: `/directorio/${exaltadoId}` },
-            { label: "Contribuir" },
-          ]}
-        />
-
-        {/* Page header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-pabellon-green-800 mb-3">
-            Contribuir Información
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+      {/* Green gradient header — matches /directorio/[exaltadoId] */}
+      <div className="bg-gradient-to-r from-pabellon-green-800 to-pabellon-green-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href={`/directorio/${exaltadoId}`} className="inline-flex items-center text-green-200 hover:text-white mb-4 transition-colors">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Volver al Exaltado
+          </Link>
+          <div className="flex items-center mb-4">
+            <Heart className="h-8 w-8 mr-3" />
+            <h1 className="text-4xl font-bold">Contribuir Información</h1>
+          </div>
+          <p className="text-xl text-green-100 max-w-3xl">
             Comparte datos, estadísticas o anécdotas sobre
           </p>
-          <p className="text-lg font-semibold text-pabellon-green-700">
+          <p className="text-xl font-semibold text-white">
             {nombreCompleto}
           </p>
         </div>
+      </div>
 
+      {/* Form section */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <ContribucionForm exaltadoId={exaltadoId} exaltadoNombre={nombreCompleto} />
       </div>
     </main>
