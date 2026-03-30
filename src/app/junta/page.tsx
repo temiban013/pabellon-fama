@@ -45,6 +45,8 @@ const miembrosJunta: MiembroJunta[] = [
     descripcion:
       "Responsable de mantener los registros oficiales y la documentación del pabellón.",
     anosServicio: "2004 - Presente",
+    foto: "/images/junta/miriam-lasanta.jpg",
+    fotoPosition: "center 55%",
     contribuciones: [
       "Coordinación de eventos especiales",
       "Desarrollo de programas educativos",
@@ -87,6 +89,8 @@ const miembrosJunta: MiembroJunta[] = [
     descripcion:
       "Miembro activo con enfoque en programas comunitarios y desarrollo organizacional.",
     anosServicio: "2018 - Presente",
+    foto: "/images/junta/arnaldo-ortiz.jpg",
+    fotoPosition: "center 50%",
     contribuciones: [
       "Digitalización de archivos históricos",
       "Organización de ceremonias de exaltación",
@@ -105,6 +109,21 @@ const miembrosJunta: MiembroJunta[] = [
       "Apoyo en investigaciones históricas",
       "Coordinación de actividades especiales",
       "Promoción del pabellón en medios",
+    ],
+  },
+  {
+    id: "orlando-lopez",
+    nombre: "Orlando J. López Rivera",
+    cargo: "Vocal",
+    descripcion:
+      "Miembro joven con enfoque analítico en la investigación y documentación estadística del deporte humacaeño.",
+    anosServicio: "2026 - Presente",
+    foto: "/images/junta/orlando-lopez.jpg",
+    fotoPosition: "center 50%",
+    contribuciones: [
+      "Análisis estadístico del rendimiento deportivo",
+      "Investigación y documentación de récords históricos",
+      "Apoyo en la modernización de procesos organizacionales",
     ],
   },
   {
