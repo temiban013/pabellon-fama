@@ -444,9 +444,10 @@ def entrega_block():
     inner = [
         [Paragraph("ENTREGA", style_entrega_title)],
         [Paragraph(
-            "Envíe digitalmente a informa@pfdh.org o entregue en persona en el Museo "
-            "Manuel Rivera Guevara, Centro Cultural Dra. Antonia Sáez, Humacao, PR. "
-            "Lunes a viernes, 8:00 AM – 4:00 PM. Tel: 787-410-1237.",
+            "La boleta con la documentación requerida debe ser entregada al personal "
+            "del PFDH. Estamos ubicados en el edificio del Centro Cultural Dra. Antonia "
+            "Sáez. Debe comunicarse primero a los siguientes números de teléfono: "
+            "787-410-1237, 787-209-8250, 787-559-4013 y 787-438-0585.",
             style_entrega_body,
         )],
     ]
@@ -502,15 +503,15 @@ def build_story():
     # 4. Spacer
     story.append(Spacer(1, 0.02 * inch))
 
-    # 5. Subtitle
+    # 5. Subtitle — enlarged per Junta feedback (R1): larger, bolder, darker ink
     story.append(Paragraph(
         "Pabellón de la Fama del Deporte Humacaeño",
         ParagraphStyle(
             "subtitle",
-            fontName="Times-Italic",
-            fontSize=10,
-            leading=12,
-            textColor=COLOR_INK_SOFT,
+            fontName="Times-BoldItalic",
+            fontSize=13,
+            leading=16,
+            textColor=COLOR_INK,
             alignment=TA_CENTER,
         ),
     ))
@@ -728,7 +729,10 @@ def build_story():
     # SECTION V — COMPETENCIAS NACIONALES, REGIONALES O LOCALES
     # -------------------------------------------------------------------
     sec5_header = section_header("V. Competencias Nacionales, Regionales o Locales")
-    sec5_hint   = Paragraph("Mencione:", style_hint)
+    sec5_hint   = Paragraph(
+        "Mencione (por ejemplo: Liga Atlética Interuniversitaria &#8212; LAI):",
+        style_hint,
+    )
     sec5_rows   = numbered_rows(3)
 
     story.append(KeepTogether([
@@ -814,8 +818,8 @@ def build_story():
     # Closing reminder
     # -------------------------------------------------------------------
     story.append(Paragraph(
-        "Múltiples nominaciones para un mismo candidato fortalecen la candidatura. "
-        "El período de nominación será anunciado por la Junta de Directores del Pabellón.",
+        "Ser exaltado al Pabellón es la más alta distinción y uno de los actos de "
+        "justicia deportiva más noble que puede recibir un deportista humacaeño.",
         style_closing,
     ))
 
