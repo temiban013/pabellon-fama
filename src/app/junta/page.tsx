@@ -133,6 +133,8 @@ const miembrosJunta: MiembroJunta[] = [
     descripcion:
       "Historiador y educador, curador del Museo Manuel Rivera Guevara.",
     anosServicio: "1999 - Presente",
+    foto: "/images/junta/luis-alvarez.jpg",
+    fotoPosition: "center 40%",
     contribuciones: [
       "Miembro fundador y educador distinguido",
       "Curación del museo y exhibiciones",
