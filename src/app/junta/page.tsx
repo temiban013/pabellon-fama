@@ -31,7 +31,7 @@ const miembrosJunta: MiembroJunta[] = [
       "Líder visionario con amplia experiencia en la gestión deportiva y comunitaria de Humacao.",
     anosServicio: "2016 - Presente",
     foto: "/images/junta/enrique-torres.jpg",
-    fotoPosition: "center 8%",
+    fotoPosition: "center 12%",
     contribuciones: [
       "Modernización de las operaciones del PFDH",
       "Expansión de programas educativos",
@@ -46,7 +46,7 @@ const miembrosJunta: MiembroJunta[] = [
       "Responsable de mantener los registros oficiales y la documentación del pabellón.",
     anosServicio: "2004 - Presente",
     foto: "/images/junta/miriam-lasanta.jpg",
-    fotoPosition: "center 55%",
+    fotoPosition: "center 58%",
     contribuciones: [
       "Coordinación de eventos especiales",
       "Desarrollo de programas educativos",
@@ -61,6 +61,7 @@ const miembrosJunta: MiembroJunta[] = [
       "Historiador y cronista del deporte humacaeño, custodio de la memoria deportiva.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/felix-baez.jpg",
+    fotoPosition: "center 5%",
     contribuciones: [
       "Fundador y miembro original de la primera junta",
       "Autor de múltiples investigaciones deportivas",
@@ -75,7 +76,7 @@ const miembrosJunta: MiembroJunta[] = [
       "Administrador financiero responsable de la gestión económica del pabellón.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/juan-velazquez.jpg",
-    fotoPosition: "center 8%",
+    fotoPosition: "center 10%",
     contribuciones: [
       "Miembro fundador de la primera junta directiva",
       "Gestión financiera transparente",
@@ -119,7 +120,7 @@ const miembrosJunta: MiembroJunta[] = [
       "Miembro joven con enfoque analítico en la investigación y documentación estadística del deporte humacaeño.",
     anosServicio: "2026 - Presente",
     foto: "/images/junta/orlando-lopez.jpg",
-    fotoPosition: "center 50%",
+    fotoPosition: "center 52%",
     contribuciones: [
       "Análisis estadístico del rendimiento deportivo",
       "Investigación y documentación de récords históricos",
@@ -134,7 +135,7 @@ const miembrosJunta: MiembroJunta[] = [
       "Historiador y educador, curador del Museo Manuel Rivera Guevara.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/luis-alvarez.jpg",
-    fotoPosition: "center 40%",
+    fotoPosition: "center 45%",
     contribuciones: [
       "Miembro fundador y educador distinguido",
       "Curación del museo y exhibiciones",
