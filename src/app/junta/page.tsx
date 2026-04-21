@@ -18,6 +18,7 @@ interface MiembroJunta {
   anosServicio?: string;
   foto?: string;
   fotoPosition?: string;
+  fotoZoom?: number;
   email?: string;
   contribuciones?: string[];
 }
@@ -46,7 +47,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Responsable de mantener los registros oficiales y la documentación del pabellón.",
     anosServicio: "2004 - Presente",
     foto: "/images/junta/miriam-lasanta.jpg",
-    fotoPosition: "center 58%",
+    fotoPosition: "center 50%",
+    fotoZoom: 1.25,
     contribuciones: [
       "Coordinación de eventos especiales",
       "Desarrollo de programas educativos",
@@ -62,6 +64,7 @@ const miembrosJunta: MiembroJunta[] = [
     anosServicio: "1999 - Presente",
     foto: "/images/junta/felix-baez.jpg",
     fotoPosition: "center 5%",
+    fotoZoom: 1.1,
     contribuciones: [
       "Fundador y miembro original de la primera junta",
       "Autor de múltiples investigaciones deportivas",
@@ -77,6 +80,7 @@ const miembrosJunta: MiembroJunta[] = [
     anosServicio: "1999 - Presente",
     foto: "/images/junta/juan-velazquez.jpg",
     fotoPosition: "center 10%",
+    fotoZoom: 1.1,
     contribuciones: [
       "Miembro fundador de la primera junta directiva",
       "Gestión financiera transparente",
@@ -91,7 +95,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Miembro activo con enfoque en programas comunitarios y desarrollo organizacional.",
     anosServicio: "2018 - Presente",
     foto: "/images/junta/arnaldo-ortiz.jpg",
-    fotoPosition: "center 50%",
+    fotoPosition: "center 45%",
+    fotoZoom: 1.25,
     contribuciones: [
       "Digitalización de archivos históricos",
       "Organización de ceremonias de exaltación",
@@ -120,7 +125,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Miembro joven con enfoque analítico en la investigación y documentación estadística del deporte humacaeño.",
     anosServicio: "2026 - Presente",
     foto: "/images/junta/orlando-lopez.jpg",
-    fotoPosition: "center 52%",
+    fotoPosition: "center 45%",
+    fotoZoom: 1.35,
     contribuciones: [
       "Análisis estadístico del rendimiento deportivo",
       "Investigación y documentación de récords históricos",
@@ -136,6 +142,7 @@ const miembrosJunta: MiembroJunta[] = [
     anosServicio: "1999 - Presente",
     foto: "/images/junta/luis-alvarez.jpg",
     fotoPosition: "center 45%",
+    fotoZoom: 1,
     contribuciones: [
       "Miembro fundador y educador distinguido",
       "Curación del museo y exhibiciones",
@@ -147,14 +154,18 @@ const miembrosJunta: MiembroJunta[] = [
 const MiembroCard = ({ miembro }: { miembro: MiembroJunta }) => (
   <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
     {/* Photo or placeholder */}
-    <div className="relative h-72 w-full bg-gradient-to-br from-blue-800 to-blue-600">
+    <div className="relative h-72 w-full bg-gradient-to-br from-blue-800 to-blue-600 overflow-hidden">
       {miembro.foto ? (
         <Image
           src={miembro.foto}
           alt={`Foto de ${miembro.nombre}`}
           fill
           className="object-cover"
-          style={{ objectPosition: miembro.fotoPosition ?? "center top" }}
+          style={{
+            objectPosition: miembro.fotoPosition ?? "center top",
+            transform: `scale(${miembro.fotoZoom ?? 1})`,
+            transformOrigin: miembro.fotoPosition ?? "center top",
+          }}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       ) : (
