@@ -21,9 +21,12 @@ export default function CookieConsent() {
   });
 
   useEffect(() => {
-    // Only run on client-side after hydration
+    // Only run on client-side after hydration.
+    // setShowConsent(...) is intentional: we read cookies (browser-only state)
+    // post-hydration to avoid SSR/CSR mismatch on initial render.
     const consent = Cookies.get(COOKIE_SETTINGS.CONSENT_COOKIE);
     if (!consent) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowConsent(true);
     } else {
       setShowConsent(false);

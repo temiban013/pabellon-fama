@@ -37,20 +37,24 @@ const getColorEvento = (tipo: string) => {
   return colores[tipo as keyof typeof colores] || colores.reunion;
 };
 
-const getIconoEvento = (tipo: string) => {
+// Renders the matching icon for an event type as JSX.
+// Returning JSX here (instead of a component reference) avoids the
+// react-hooks/static-components lint rule that flags dynamic component
+// references created during render.
+const renderIconoEvento = (tipo: string, className: string) => {
   switch (tipo) {
     case "ceremonia":
-      return Trophy;
+      return <Trophy className={className} />;
     case "museo":
-      return CalendarIcon;
+      return <CalendarIcon className={className} />;
     case "educativo":
-      return BookOpen;
+      return <BookOpen className={className} />;
     case "especial":
-      return Star;
+      return <Star className={className} />;
     case "reunion":
-      return Users;
+      return <Users className={className} />;
     default:
-      return CalendarIcon;
+      return <CalendarIcon className={className} />;
   }
 };
 
@@ -61,7 +65,6 @@ const parseDateLocal = (dateString: string): Date => {
 };
 
 const EventoCard = ({ evento }: { evento: EventoSerializado }) => {
-  const IconoEvento = getIconoEvento(evento.tipo);
   const fechaEvento = parseDateLocal(evento.fecha);
   const [imagenError, setImagenError] = useState(false);
 
@@ -74,7 +77,7 @@ const EventoCard = ({ evento }: { evento: EventoSerializado }) => {
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start">
           <div className="p-2 rounded-lg bg-white shadow-sm mr-3">
-            <IconoEvento className="h-5 w-5 text-gray-600" />
+            {renderIconoEvento(evento.tipo, "h-5 w-5 text-gray-600")}
           </div>
           <div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">

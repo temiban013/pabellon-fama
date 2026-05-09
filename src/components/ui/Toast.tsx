@@ -5,6 +5,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
   ReactNode,
 } from "react";
@@ -47,9 +48,14 @@ export function useToast() {
 // Provider component
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
+  // Monotonic counter avoids impure-function lint errors (react-hooks/purity)
+  // from Date.now()/Math.random(). addToast is only called from event handlers,
+  // never during render — incrementing this ref outside render is safe.
+  const idCounterRef = useRef(0);
 
   const addToast = (toastData: Omit<Toast, "id">) => {
-    const id = `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    idCounterRef.current += 1;
+    const id = `toast-${idCounterRef.current}`;
     const newToast: Toast = {
       id,
       duration: 5000,

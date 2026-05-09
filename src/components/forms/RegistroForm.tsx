@@ -227,7 +227,9 @@ export default function RegistroForm({
     { value: "voluntario", label: "Voluntario" },
   ];
 
-  // Efecto para manejar éxito y errores con toast
+  // Efecto para manejar éxito y errores con toast.
+  // setShowFullForm(false) reacts to async form submission state — must run
+  // post-render once formState.isSuccess flips, not during render.
   useEffect(() => {
     if (formState.isSuccess) {
       success(
@@ -236,6 +238,7 @@ export default function RegistroForm({
         { duration: 6000 }
       );
       resetForm();
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowFullForm(false);
       if (onSuccess) onSuccess();
     }

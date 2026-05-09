@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 interface NavigationItem {
@@ -21,14 +22,19 @@ const navigation: NavigationItem[] = [
   { name: "Enlaces", href: "/enlaces" },
   { name: "Horario", href: "/horario" },
   { name: "Calendario", href: "/calendario" },
+  { name: "Nominaciones", href: "/nominacion" },
   { name: "Contribuir", href: "/contribuir" },
 ];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header className="bg-white shadow-lg border-b-4 border-pabellon-gold-400 sticky top-0 z-50">
@@ -65,7 +71,10 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="nav-link px-2 py-2 rounded-md text-[13px] font-medium transition-all duration-200 hover:bg-pabellon-gold-50"
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={`nav-link px-2 py-2 rounded-md text-[13px] font-medium transition-all duration-200 hover:bg-pabellon-gold-50 ${
+                  isActive(item.href) ? "text-pabellon-gold-600 [&::after]:scale-x-100" : ""
+                }`}
               >
                 {item.shortName || item.name}
               </Link>
@@ -95,7 +104,12 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium text-pabellon-green-700 hover:text-pabellon-gold-600 hover:bg-pabellon-gold-50 rounded-md transition-colors"
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                  isActive(item.href)
+                    ? "bg-pabellon-gold-100 text-pabellon-green-800 font-semibold"
+                    : "text-pabellon-green-700 hover:text-pabellon-gold-600 hover:bg-pabellon-gold-50"
+                }`}
                 onClick={closeMenu}
               >
                 {item.name}

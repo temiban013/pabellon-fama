@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   ShareIcon,
   LinkIcon,
@@ -13,18 +13,24 @@ interface ShareButtonsProps {
   description?: string;
 }
 
+// Hydration-safe browser feature detection via useSyncExternalStore
+// (React 19 prefers this over setState-in-effect for SSR/CSR mismatch).
+const subscribeNoop = () => () => {};
+const getSnapshotNativeShare = () =>
+  typeof navigator !== "undefined" && !!navigator.share;
+const getServerSnapshotFalse = () => false;
+
 /**
  * Social sharing buttons component
  * Sprint 10 - SEO & Navigation Unification
  */
 export function ShareButtons({ title, url, description }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
-  const [supportsNativeShare, setSupportsNativeShare] = useState(false);
-
-  // Detect native share support after hydration to avoid SSR mismatch
-  useEffect(() => {
-    setSupportsNativeShare(typeof navigator !== "undefined" && !!navigator.share);
-  }, []);
+  const supportsNativeShare = useSyncExternalStore(
+    subscribeNoop,
+    getSnapshotNativeShare,
+    getServerSnapshotFalse
+  );
 
   const shareData = {
     title,

@@ -1,7 +1,7 @@
 // components/forms/RegistroFormClient.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId } from "react";
 import { useRegistro } from "@/hooks/useRegistro";
 import { useToastHelpers } from "@/components/ui/Toast";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
@@ -10,6 +10,72 @@ interface RegistroFormClientProps {
   isExpanded?: boolean;
   onSuccess?: () => void;
   className?: string;
+}
+
+// Extracted to module scope (React 19 forbids defining components inside render).
+interface InputFieldProps {
+  type?: string;
+  field: string;
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  disabled?: boolean;
+}
+
+function InputField({
+  type = "text",
+  field,
+  label,
+  placeholder,
+  required = false,
+  value,
+  onChange,
+  error,
+  disabled,
+}: InputFieldProps) {
+  // useId() guarantees a unique id even when multiple RegistroFormClient
+  // instances render on the same page; appending `field` keeps it readable in
+  // dev tools.
+  const reactId = useId();
+  const inputId = `${reactId}-${field}`;
+  const errorId = `${inputId}-error`;
+  return (
+    <div className="space-y-1">
+      <label
+        htmlFor={inputId}
+        className="block text-sm font-medium text-gray-700"
+      >
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <input
+        id={inputId}
+        type={type}
+        value={value || ""}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? errorId : undefined}
+        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all ${
+          error
+            ? "border-red-500 bg-red-50"
+            : "border-gray-300 hover:border-gray-400"
+        }`}
+        disabled={disabled}
+      />
+      {error && (
+        <p
+          id={errorId}
+          className="text-sm text-red-600 flex items-center gap-1"
+        >
+          <ExclamationCircleIcon className="w-4 h-4" />
+          {error}
+        </p>
+      )}
+    </div>
+  );
 }
 
 export default function RegistroFormClient({
@@ -32,6 +98,8 @@ export default function RegistroFormClient({
 
   // Asegurar que el componente solo renderice del lado del cliente
   useEffect(() => {
+    // Mark client-mounted so subsequent toast effects only fire post-hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
@@ -44,6 +112,7 @@ export default function RegistroFormClient({
         { duration: 6000 }
       );
       resetForm();
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowFullForm(false);
       if (onSuccess) onSuccess();
     }
@@ -65,45 +134,6 @@ export default function RegistroFormClient({
     }
     await submitForm();
   };
-
-  // Componente de campo de entrada reutilizable
-  const InputField = ({
-    type = "text",
-    field,
-    label,
-    placeholder,
-    required = false,
-  }: {
-    type?: string;
-    field: keyof typeof formData;
-    label: string;
-    placeholder: string;
-    required?: boolean;
-  }) => (
-    <div className="space-y-1">
-      <label className="block text-sm font-medium text-gray-700">
-        {label} {required && <span className="text-red-500">*</span>}
-      </label>
-      <input
-        type={type}
-        value={formData[field] || ""}
-        onChange={(e) => updateField(field, e.target.value)}
-        placeholder={placeholder}
-        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-pabellon-gold-500 focus:border-transparent outline-none transition-all ${
-          validationErrors[field]
-            ? "border-red-500 bg-red-50"
-            : "border-gray-300 hover:border-gray-400"
-        }`}
-        disabled={formState.isLoading}
-      />
-      {validationErrors[field] && (
-        <p className="text-sm text-red-600 flex items-center gap-1">
-          <ExclamationCircleIcon className="w-4 h-4" />
-          {validationErrors[field]}
-        </p>
-      )}
-    </div>
-  );
 
   // No renderizar nada hasta que esté montado del lado del cliente
   if (!isMounted) {
@@ -156,6 +186,10 @@ export default function RegistroFormClient({
             label="Correo Electrónico"
             placeholder="tu@email.com"
             required
+            value={formData.email || ""}
+            onChange={(v) => updateField("email", v)}
+            error={validationErrors.email}
+            disabled={formState.isLoading}
           />
 
           <button
@@ -177,6 +211,10 @@ export default function RegistroFormClient({
             label="Correo Electrónico"
             placeholder="tu@email.com"
             required
+            value={formData.email || ""}
+            onChange={(v) => updateField("email", v)}
+            error={validationErrors.email}
+            disabled={formState.isLoading}
           />
 
           <InputField
@@ -184,6 +222,10 @@ export default function RegistroFormClient({
             label="Nombre Completo"
             placeholder="Tu nombre completo"
             required
+            value={formData.nombre || ""}
+            onChange={(v) => updateField("nombre", v)}
+            error={validationErrors.nombre}
+            disabled={formState.isLoading}
           />
 
           <InputField
@@ -191,6 +233,10 @@ export default function RegistroFormClient({
             field="telefono"
             label="Teléfono"
             placeholder="787-123-4567"
+            value={formData.telefono || ""}
+            onChange={(v) => updateField("telefono", v)}
+            error={validationErrors.telefono}
+            disabled={formState.isLoading}
           />
 
           <div className="space-y-1">

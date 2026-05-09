@@ -169,6 +169,14 @@ export const seoConfigs = {
       "Comparte estadísticas, datos biográficos y anécdotas sobre los exaltados al Pabellón de la Fama del Deporte Humacaeño. Tu información será revisada por la Junta de Directores.",
     keywords: ["contribuir", "información", "estadísticas", "datos", "comunidad"],
   },
+
+  nominacion: {
+    title: "Nominaciones — 9na Exaltación 2026",
+    description:
+      "Descarga la boleta oficial para nominar a una figura del deporte humacaeño al Pabellón de la Fama. Periodo: 15 de mayo al 31 de agosto de 2026. Entrega presencial en el museo.",
+    keywords: ["nominación", "boleta", "exaltación", "9na exaltación", "2026"],
+    url: "/nominacion",
+  },
 };
 
 // BreadcrumbList JSON-LD para SEO

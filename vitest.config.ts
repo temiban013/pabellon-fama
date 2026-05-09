@@ -38,7 +38,7 @@ export default defineConfig({
         statements: 80,
       },
     },
-    include: ['tests/unit/**/*.test.{ts,tsx}', 'tests/integration/**/*.test.{ts,tsx}'],
+    include: ['tests/unit/**/*.test.{ts,tsx}', 'tests/integration/**/*.test.{ts,tsx}', 'src/**/__tests__/**/*.test.{ts,tsx}'],
     exclude: ['node_modules', '.next', 'out'],
     testTimeout: 10000,
     hookTimeout: 10000,

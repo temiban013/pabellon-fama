@@ -40,9 +40,13 @@ export default function ArchivoUploadField({
   const sizeRatio = totalSize / MAX_TOTAL_SIZE;
   const canAddMore = archivos.length < MAX_FILES;
 
-  // Flash green border when files are successfully added
+  // Flash green border when files are successfully added.
+  // setState-in-effect is intentional: this reacts to external prop changes
+  // (archivos array) and triggers a UI animation flash. Equivalent
+  // useSyncExternalStore would not improve clarity here.
   useEffect(() => {
     if (archivos.length > prevCountRef.current) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setJustAdded(true);
       const timer = setTimeout(() => setJustAdded(false), 2000);
       return () => clearTimeout(timer);
@@ -245,6 +249,10 @@ function FilePreview({ file }: { file: File }) {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
+    // Reset preview state when a new File arrives, then load it via FileReader.
+    // setState-in-effect here is appropriate: the file prop is an external input
+    // and we must clear stale state synchronously before async read begins.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFailed(false);
     const reader = new FileReader();
     reader.onload = () => {

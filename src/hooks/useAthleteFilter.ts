@@ -284,10 +284,14 @@ export function useAthleteFilter({
   }, [router, pathname]);
 
   /**
-   * Lee filtros de la URL cuando cambian los search params
+   * Lee filtros de la URL cuando cambian los search params.
+   * setState-in-effect is intentional here: we synchronize internal filter
+   * state from the URL (an external system) when searchParams change.
+   * This is the canonical "external system synchronization" use case.
    */
   useEffect(() => {
     const urlFilters = parseQueryParams(searchParams);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFilters(() => ({
       ...EMPTY_FILTERS,
       ...urlFilters,

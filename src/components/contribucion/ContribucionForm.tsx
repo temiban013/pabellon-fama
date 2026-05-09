@@ -115,6 +115,8 @@ export default function ContribucionForm({
   const prevArchivosCountRef = useRef(0);
 
   useEffect(() => {
+    // Mark client-mounted so toast effects below only fire post-hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
