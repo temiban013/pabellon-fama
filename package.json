@@ -39,7 +39,7 @@
     "googleapis": "^164.1.0",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.539.0",
-    "next": "^16.2.1",
+    "next": "^16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "resend": "^6.9.2",
