@@ -236,7 +236,7 @@ def build_story():
         "La Junta de Directores del Pabell&oacute;n de la Fama del Deporte "
         "Humacae&ntilde;o anuncia la apertura del per&iacute;odo de nominaciones "
         "para la Novena (9na) Exaltaci&oacute;n a llevarse a cabo el domingo "
-        "8 de noviembre de 2026. Comenzando el 15 de mayo de 2026 hasta el "
+        "8 de noviembre de 2026. Comenzando el 22 de mayo de 2026 hasta el "
         "31 de agosto de 2026, los ciudadanos podr&aacute;n nominar deportistas "
         "en las siguientes categor&iacute;as: atletas, propulsores y cronistas "
         "deportivos. Las boletas de nominaci&oacute;n estar&aacute;n disponibles "

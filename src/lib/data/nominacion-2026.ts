@@ -74,7 +74,7 @@ export const NOMINACION_2026: NominacionData = {
     lugar: null,
   },
   periodo: {
-    apertura: new Date("2026-05-15T08:00:00-04:00"),
+    apertura: new Date("2026-05-22T08:00:00-04:00"),
     cierre: new Date("2026-08-31T16:00:00-04:00"),
   },
   categorias: ["Atleta", "Propulsor", "Cronista deportivo"],

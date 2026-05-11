@@ -173,7 +173,7 @@ export const seoConfigs = {
   nominacion: {
     title: "Nominaciones — 9na Exaltación 2026",
     description:
-      "Descarga la boleta oficial para nominar a una figura del deporte humacaeño al Pabellón de la Fama. Periodo: 15 de mayo al 31 de agosto de 2026. Entrega presencial en el museo.",
+      "Descarga la boleta oficial para nominar a una figura del deporte humacaeño al Pabellón de la Fama. Periodo: 22 de mayo al 31 de agosto de 2026. Entrega presencial en el museo.",
     keywords: ["nominación", "boleta", "exaltación", "9na exaltación", "2026"],
     url: "/nominacion",
   },

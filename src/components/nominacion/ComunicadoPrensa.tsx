@@ -14,7 +14,7 @@ export function ComunicadoPrensa({ comunicadoPdf }: ComunicadoPrensaProps) {
       </p>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        La Junta de Directores del Pabellón de la Fama del Deporte Humacaeño anuncia la apertura del período de nominaciones para la Novena (9na) Exaltación a llevarse a cabo el domingo 8 de noviembre de 2026. Comenzando el 15 de mayo de 2026 hasta el 31 de agosto de 2026, los ciudadanos podrán nominar deportistas en las siguientes categorías: atletas, propulsores y cronistas deportivos. Las boletas de nominación estarán disponibles en las oficinas de Walo Radio, Periódico El Oriental, Radio Victoria y en el Centro Cultural Antonia Sáez.
+        La Junta de Directores del Pabellón de la Fama del Deporte Humacaeño anuncia la apertura del período de nominaciones para la Novena (9na) Exaltación a llevarse a cabo el domingo 8 de noviembre de 2026. Comenzando el 22 de mayo de 2026 hasta el 31 de agosto de 2026, los ciudadanos podrán nominar deportistas en las siguientes categorías: atletas, propulsores y cronistas deportivos. Las boletas de nominación estarán disponibles en las oficinas de Walo Radio, Periódico El Oriental, Radio Victoria y en el Centro Cultural Antonia Sáez.
       </p>
 
       <blockquote className="border-l-4 border-orange-500 pl-6 py-2 my-6 font-serif text-xl text-blue-900 italic">

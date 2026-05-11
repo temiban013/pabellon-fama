@@ -65,7 +65,7 @@ export default function NominacionPage() {
                 Periodo
               </dt>
               <dd className="text-white text-sm font-medium">
-                15 mayo – 31 agosto 2026
+                22 mayo – 31 agosto 2026
               </dd>
             </div>
 
