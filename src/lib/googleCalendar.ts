@@ -1,6 +1,6 @@
 // src/lib/googleCalendar.ts
 import { google } from "googleapis";
-import { type Evento, type TipoEvento } from "./types";
+import { type Adjunto, type Evento, type TipoEvento } from "./types";
 
 // Configuración del cliente de Google Calendar
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
@@ -26,6 +26,13 @@ interface GoogleCalendarEvent {
   extendedProperties?: {
     shared?: Record<string, string>;
   };
+  attachments?: Array<{
+    fileUrl?: string;
+    title?: string;
+    mimeType?: string;
+    iconLink?: string;
+    fileId?: string;
+  }>;
 }
 
 // Interfaz para metadatos estructurados en la descripción
@@ -186,6 +193,31 @@ function cleanDescription(description: string = ""): string {
 }
 
 /**
+ * Transforma los attachments de Google Calendar al formato Adjunto.
+ * Para archivos de Google Drive, conserva la URL de "view" (provee preview
+ * + botón de descarga) en vez de forzar descarga directa que falla en archivos > 25MB.
+ */
+function transformAttachments(
+  attachments?: GoogleCalendarEvent["attachments"]
+): Adjunto[] | undefined {
+  if (!attachments || attachments.length === 0) return undefined;
+
+  const adjuntos: Adjunto[] = [];
+  for (const a of attachments) {
+    if (!a.fileUrl) continue;
+    adjuntos.push({
+      title: a.title || a.fileUrl,
+      fileUrl: a.fileUrl,
+      mimeType: a.mimeType,
+      iconLink: a.iconLink,
+      fileId: a.fileId,
+    });
+  }
+
+  return adjuntos.length > 0 ? adjuntos : undefined;
+}
+
+/**
  * Mapea el tipo de evento basado en colorId de Google Calendar
  * Color IDs de Google Calendar:
  * 1: Lavender, 2: Sage, 3: Grape, 4: Flamingo, 5: Banana,
@@ -263,6 +295,7 @@ function transformGoogleEventToEvento(
     requiresRegistro: metadata.requiereReservacion || false,
     capacidadMaxima: metadata.capacidad,
     imagen: imageUrl || undefined,
+    adjuntos: transformAttachments(googleEvent.attachments),
   };
 
   return evento;

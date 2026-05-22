@@ -14,6 +14,8 @@ import {
   Trophy,
   BookOpen,
   Loader2,
+  FileText,
+  Paperclip,
 } from "lucide-react";
 import { type EventoSerializado } from "@/lib/types";
 
@@ -161,6 +163,30 @@ const EventoCard = ({ evento }: { evento: EventoSerializado }) => {
       )}
 
       <p className="text-gray-700 mb-4 leading-relaxed">{evento.descripcion}</p>
+
+      {evento.adjuntos && evento.adjuntos.length > 0 && (
+        <div className="mb-4">
+          <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center">
+            <Paperclip className="h-4 w-4 mr-1" />
+            Archivos adjuntos
+          </h4>
+          <ul className="space-y-2">
+            {evento.adjuntos.map((adjunto, idx) => (
+              <li key={`${adjunto.fileId || adjunto.fileUrl}-${idx}`}>
+                <a
+                  href={adjunto.fileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg text-sm text-gray-800 transition-colors w-full"
+                >
+                  <FileText className="h-4 w-4 mr-2 text-blue-600 flex-shrink-0" />
+                  <span className="truncate">{adjunto.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
         <div className="flex items-center space-x-4 text-sm text-gray-600">

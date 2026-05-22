@@ -133,6 +133,14 @@ export type CargoJunta =
 // EVENTOS Y CALENDARIO
 // ==================================================
 
+export interface Adjunto {
+  title: string;
+  fileUrl: string;
+  mimeType?: string;
+  iconLink?: string;
+  fileId?: string;
+}
+
 export interface Evento {
   id: string;
   titulo: string;
@@ -149,6 +157,7 @@ export interface Evento {
   requiresRegistro: boolean;
   costo?: number;
   imagen?: string;
+  adjuntos?: Adjunto[];
 }
 
 export type TipoEvento =
