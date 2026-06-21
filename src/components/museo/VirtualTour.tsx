@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { galeria, hotspots, panorama, type TourHotspot, type TourPhoto } from "@/lib/museo-tour";
@@ -44,6 +45,18 @@ export function VirtualTour() {
     setWebglOk(isWebglAvailable());
     setStarted(true);
   };
+
+  // El visor 360° (PSV) entra en pantalla completa sobre su propio contenedor. El lightbox se
+  // renderiza fuera de ese contenedor, así que en pantalla completa quedaría bajo la "capa
+  // superior" del navegador (invisible). Seguimos el elemento en pantalla completa para, cuando
+  // exista, montar el lightbox dentro de él con un portal: así aparece encima del panorama sin
+  // salir de pantalla completa.
+  const [fullscreenEl, setFullscreenEl] = useState<Element | null>(null);
+  useEffect(() => {
+    const sync = () => setFullscreenEl(document.fullscreenElement);
+    document.addEventListener("fullscreenchange", sync);
+    return () => document.removeEventListener("fullscreenchange", sync);
+  }, []);
 
   const openHotspot = (h: TourHotspot) => setLightbox({ photos: h.photos, title: h.label });
   const openGallery = () => setLightbox({ photos: galeria, title: "Galería completa del museo" });
@@ -127,13 +140,19 @@ export function VirtualTour() {
         <TourFallback hotspots={hotspots} onSelectHotspot={openHotspot} showPoster={false} />
       </div>
 
-      {lightbox && (
-        <TourLightbox
-          photos={lightbox.photos}
-          title={lightbox.title}
-          onClose={() => setLightbox(null)}
-        />
-      )}
+      {lightbox &&
+        (() => {
+          const node = (
+            <TourLightbox
+              photos={lightbox.photos}
+              title={lightbox.title}
+              onClose={() => setLightbox(null)}
+            />
+          );
+          // En pantalla completa portamos el lightbox dentro del elemento en pantalla completa
+          // para que se renderice en la capa superior, encima del panorama.
+          return fullscreenEl ? createPortal(node, fullscreenEl) : node;
+        })()}
     </div>
   );
 }
