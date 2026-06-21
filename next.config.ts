@@ -54,8 +54,11 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com`,
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https:",
+              // blob: requerido por el visor 360° (Photo Sphere Viewer carga la imagen
+              // del panorama como blob antes de pintarla en el lienzo WebGL).
+              "img-src 'self' data: blob: https:",
               "font-src 'self'",
+              "worker-src 'self' blob:",
               "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
               "frame-src 'self' https://www.googletagmanager.com https://calendar.google.com https://www.google.com",
               "object-src 'none'",

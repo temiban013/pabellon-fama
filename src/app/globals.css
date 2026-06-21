@@ -161,3 +161,59 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #f59e0b;
 }
+
+/* ── Museo Virtual: marcadores (hotspots) del recorrido 360° ── */
+.museo-hotspot {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+.museo-hotspot__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: #fbbf24; /* pabellon-gold-400 */
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(180, 83, 9, 0.5);
+}
+/* Anillo pulsante (se desactiva con prefers-reduced-motion, ver bloque global). */
+.museo-hotspot__dot::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  border: 2px solid #fbbf24;
+  animation: museo-hotspot-pulse 2s ease-out infinite;
+}
+.museo-hotspot-marker:hover .museo-hotspot__dot,
+.museo-hotspot-marker:focus .museo-hotspot__dot {
+  background: #f59e0b; /* pabellon-gold-500 */
+  transform: translate(-50%, -50%) scale(1.15);
+}
+@keyframes museo-hotspot-pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── Editor de hotspots (solo desarrollo) ── */
+.museo-edit-marker {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: rgba(251, 191, 36, 0.85); /* gold */
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(180, 83, 9, 0.6);
+  cursor: pointer;
+}
+.museo-edit-marker.is-selected {
+  background: #ef4444; /* red-500 */
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5);
+  transform: scale(1.2);
+}

@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@photo-sphere-viewer/core": "^5.14.1",
+    "@photo-sphere-viewer/markers-plugin": "^5.14.1",
     "clsx": "^2.1.1",
     "googleapis": "^164.1.0",
     "js-cookie": "^3.0.5",
@@ -44,6 +46,7 @@
     "react-dom": "19.2.4",
     "resend": "^6.9.2",
     "tailwind-merge": "^3.5.0",
+    "three": "^0.179.1",
     "web-vitals": "^5.1.0",
     "zod": "^4.3.6"
   },

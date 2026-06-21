@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
+import { VirtualTour } from "@/components/museo/VirtualTour";
 import { generateMetadata, seoConfigs, generateJsonLd, generateBreadcrumbs } from "@/lib/seo";
 
 export const metadata: Metadata = generateMetadata({
@@ -225,27 +226,13 @@ export default function MuseoPage() {
               Tour Virtual del Museo
             </h2>
             <p className="text-xl text-pabellon-green-700 max-w-2xl mx-auto">
-              Próximamente: Tour virtual interactivo del museo
+              Recorre el interior del museo en 360° y descubre nuestras exhibiciones
             </p>
           </div>
 
-          {/* Imagen del museo con tour virtual */}
-          <div className="relative max-w-5xl mx-auto mb-12">
-            <div className="relative group">
-              <div className="bg-white p-4 rounded-2xl shadow-2xl border border-pabellon-gold-200">
-                <div className="aspect-video bg-gradient-to-b from-pabellon-green-100 to-pabellon-green-200 rounded-lg overflow-hidden relative flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🏛️</div>
-                    <h3 className="text-2xl font-bold text-pabellon-green-800 mb-2">
-                      Tour Virtual Próximamente
-                    </h3>
-                    <p className="text-pabellon-green-700">
-                      Estamos trabajando en crear una experiencia virtual inmersiva del museo
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Recorrido virtual 360° interactivo */}
+          <div className="mb-12">
+            <VirtualTour />
           </div>
 
           {/* Opciones de visita */}
