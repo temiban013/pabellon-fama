@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const isDev = process.env.NODE_ENV === "development";
 
 const nextConfig: NextConfig = {
+  // Permitir acceso al dev server desde dispositivos en la red local (ej. pruebas en Android)
+  allowedDevOrigins: ["192.168.12.*"],
+
   // Imágenes optimizadas
   images: {
     formats: ["image/webp", "image/avif"],

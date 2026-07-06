@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
 import { VirtualTour } from "@/components/museo/VirtualTour";
+import { VisitasDistinguidas } from "@/components/museo/VisitasDistinguidas";
 import { generateMetadata, seoConfigs, generateJsonLd, generateBreadcrumbs } from "@/lib/seo";
 
 export const metadata: Metadata = generateMetadata({
@@ -231,46 +232,12 @@ export default function MuseoPage() {
           </div>
 
           {/* Recorrido virtual 360° interactivo */}
-          <div className="mb-12">
-            <VirtualTour />
-          </div>
-
-          {/* Opciones de visita */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="card-pabellon p-6 text-center">
-              <div className="text-4xl mb-4">🏛️</div>
-              <h3 className="text-lg font-semibold text-pabellon-green-800 mb-2">
-                Visita Presencial
-              </h3>
-              <p className="text-sm text-pabellon-green-600 mb-4">
-                Ven y conoce el museo en persona. Entrada gratuita para todos los visitantes.
-              </p>
-              <p className="text-sm text-pabellon-green-700 font-medium">
-                Lunes a Viernes: 8:00 AM - 4:00 PM
-              </p>
-            </div>
-
-            <div className="card-pabellon p-6 text-center">
-              <div className="text-4xl mb-4">📞</div>
-              <h3 className="text-lg font-semibold text-pabellon-green-800 mb-2">
-                Reserva tu Visita
-              </h3>
-              <p className="text-sm text-pabellon-green-600 mb-4">
-                Para visitas grupales o programadas, contáctanos con anticipación.
-              </p>
-              <p className="text-sm text-pabellon-green-700 font-medium mb-2">
-                📞 (787) 410-1237
-              </p>
-              <p className="text-sm text-pabellon-green-700 font-medium mb-4">
-                ✉️ informa@pfdh.org
-              </p>
-              <a href="tel:787-410-1237" className="btn-pabellon w-full inline-block text-center">
-                Llamar (787) 410-1237
-              </a>
-            </div>
-          </div>
+          <VirtualTour />
         </div>
       </section>
+
+      {/* Visitas Distinguidas Section */}
+      <VisitasDistinguidas />
 
       {/* Exhibiciones Section */}
       <section id="exhibiciones" className="py-16 bg-pabellon-green-50">
