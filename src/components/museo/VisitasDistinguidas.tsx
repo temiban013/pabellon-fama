@@ -5,9 +5,9 @@ export function VisitasDistinguidas() {
   if (visitas.length === 0) return null;
 
   return (
-    <section id="visitas" className="py-16 bg-gradient-to-br from-pabellon-gold-50 via-white to-pabellon-brown-50">
+    <section id="visitas" className="scroll-mt-6 py-16 bg-gradient-to-br from-pabellon-gold-50 via-white to-pabellon-brown-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-pabellon-green-800 mb-4">
             Visitas Distinguidas
           </h2>
@@ -26,7 +26,12 @@ export function VisitasDistinguidas() {
               className="card-pabellon overflow-hidden lg:flex lg:items-center"
             >
               <div className="p-4 pb-0 lg:shrink-0 lg:p-6 lg:pr-0 lg:pb-6">
-                <div className="relative mx-auto w-[300px] max-w-full aspect-[835/1600] overflow-hidden rounded-lg lg:w-80">
+                <div
+                  className="relative mx-auto w-[300px] max-w-full overflow-hidden rounded-lg lg:w-80"
+                  style={{
+                    aspectRatio: `${visita.imageWidth} / ${visita.imageHeight}`,
+                  }}
+                >
                   <Image
                     src={visita.src}
                     alt={visita.alt}
@@ -43,6 +48,19 @@ export function VisitasDistinguidas() {
                 <p className="text-lg text-gray-700 leading-relaxed">
                   {visita.caption}
                 </p>
+                {visita.youtubeId && (
+                  <div className="mx-auto mt-6 aspect-video w-full max-w-sm overflow-hidden rounded-lg">
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${visita.youtubeId}`}
+                      title={`Entrevista — visita del ${visita.fecha}`}
+                      className="h-full w-full"
+                      loading="lazy"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+                  </div>
+                )}
               </div>
             </article>
           ))}

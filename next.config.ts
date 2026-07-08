@@ -63,7 +63,7 @@ const nextConfig: NextConfig = {
               "font-src 'self'",
               "worker-src 'self' blob:",
               "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
-              "frame-src 'self' https://www.googletagmanager.com https://calendar.google.com https://www.google.com",
+              "frame-src 'self' https://www.googletagmanager.com https://calendar.google.com https://www.google.com https://www.youtube-nocookie.com",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
