@@ -66,7 +66,7 @@ export const noticias: readonly Noticia[] = [
       'El Pabellón lamenta el fallecimiento de Miguel "Papuso" García Cruz, atleta de pista y campo exaltado en 2015, ocurrido el 9 de mayo de 2026.',
     contenido: [
       'La Junta de Directores del Pabellón de la Fama del Deporte Humacaeño lamenta profundamente el fallecimiento de Miguel "Papuso" García Cruz, ocurrido el 9 de mayo de 2026.',
-      "Criado en la Extensión Roig de Humacao, Papuso se distinguió como atleta de pista y campo y también vistió el uniforme de los Grises de Humacao en el béisbol Doble A. Su trayectoria le mereció la exaltación al Pabellón de la Fama del Deporte Humacaeño en la Octava Exaltación, celebrada en el año 2015.",
+      "Criado en la Extensión Roig de Humacao, Papuso se distinguió como atleta de pista y campo. Su trayectoria le mereció la exaltación al Pabellón de la Fama del Deporte Humacaeño en la Octava Exaltación, celebrada en el año 2015.",
       "La Junta de Directores extiende sus más sentidas condolencias a sus familiares y amistades. Su legado permanece vivo en nuestro Museo, donde su historia seguirá inspirando a las nuevas generaciones del deporte humacaeño.",
     ],
     exaltadoSlug: "miguel-papuso-garcia-cruz",
