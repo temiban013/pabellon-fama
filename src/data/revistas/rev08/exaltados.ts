@@ -57,7 +57,6 @@ Representó a la UPR de Humacao en Béisbol, más destacado en Voleibol y Pista 
         'Venció a Papo Franceschi en 200 metros con 21.9 segundos en Juegos Centroamericanos y del Caribe',
         'Ganó Salto Alto, relevo de 4 X 100 metros y tercero en 200 metros en LAICRE',
         'Mejor Atleta de las Justas LAICRE',
-        'Prospecto para el Béisbol AA',
         'Carrera profesional productiva en la UPR por 30 años como Director de la Oficina de Presupuesto y Decano Asociado de Administración del Recinto de Río Piedras'
       ]
     }
