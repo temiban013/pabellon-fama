@@ -5,6 +5,7 @@ import {
   generateJsonLd,
 } from "@/lib/seo";
 import { exaltados } from "@/data/exaltados";
+import { parseDateLocal } from "@/lib/date-utils";
 import { todosLosExaltados } from "@/data/exaltados-all";
 import { ExaltadoDetail } from "@/components/directorio/ExaltadoDetail";
 
@@ -109,7 +110,13 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
       reconocimientos: exaltadoRevista.contenido.reconocimientos || [],
       foto: exaltadoRevista.foto,
       photo: exaltadoRevista.foto,
-      estado: 'activo' as const,
+      estado: exaltadoRevista.estado ?? ('activo' as const),
+      fechaFallecimiento: exaltadoRevista.fechaFallecimiento
+        ? parseDateLocal(exaltadoRevista.fechaFallecimiento).toLocaleDateString(
+            "es-PR",
+            { day: "numeric", month: "long", year: "numeric" }
+          )
+        : undefined,
       slug: exaltadoRevista.id,
     };
 

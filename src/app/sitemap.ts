@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { todosLosExaltados } from "@/data/exaltados-all";
 import { getAllRevistas } from "@/data/revistas";
+import { getNoticias } from "@/data/noticias";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 
@@ -69,7 +70,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/noticias`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
   ];
+
+  // Páginas de noticias (data-driven, PF-051)
+  const noticiaPages: MetadataRoute.Sitemap = getNoticias().map((noticia) => ({
+    url: `${baseUrl}/noticias/${noticia.slug}`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   // Páginas de revistas (data-driven)
   const revistaPages: MetadataRoute.Sitemap = getAllRevistas().map((revista) => ({
@@ -100,5 +115,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...mainPages, ...revistaPages, ...exaltadosPages, ...deportePages];
+  return [
+    ...mainPages,
+    ...noticiaPages,
+    ...revistaPages,
+    ...exaltadosPages,
+    ...deportePages,
+  ];
 }

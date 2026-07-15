@@ -22,6 +22,7 @@ const navigation: NavigationItem[] = [
   { name: "Enlaces", href: "/enlaces" },
   { name: "Horario", href: "/horario" },
   { name: "Calendario", href: "/calendario" },
+  { name: "Noticias", href: "/noticias" },
   { name: "Nominaciones", href: "/nominacion" },
   { name: "Contribuir", href: "/contribuir" },
 ];

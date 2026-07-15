@@ -42,6 +42,8 @@ En el tenis fue miembro fundador y primer Presidente del Jumacao Tenis Club del 
     revistaNumero: 8,
     paginaInicio: 12,
     paginaFin: 12,
+    fechaFallecimiento: '2026-05-09',
+    estado: 'fallecido',
     contenido: {
       biografia: `Papuso nació en Humacao el 24 de Agosto de 1948 en el matrimonio de Miguel García (Q.E.P.D.) y Andrea Cruz Morán (Q.E.P.D.). Una familia de altos valores y producto de las escuelas públicas. Se inició en el béisbol, baloncesto, voleibol y pista y campo. Por una positiva travesura escolar, con Miguel Laboy, dañaron un automóvil y fue sentenciado a participar en el Día de Juegos ganando 100 y 200 metros, salto alto y convirtiéndose en el más destacado del evento.
 

@@ -50,6 +50,8 @@ export interface ExaltadoRevista {
   revistaNumero: number;
   paginaInicio: number;
   paginaFin: number;
+  fechaFallecimiento?: string; // ISO YYYY-MM-DD
+  estado?: 'activo' | 'fallecido';
   contenido: {
     biografia: string;
     logros: string[];
