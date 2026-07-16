@@ -21,6 +21,16 @@ export interface Visita {
 // Orden del arreglo = orden en pantalla (más reciente primero)
 export const visitas: Visita[] = [
   {
+    id: "rafael-ocasio-2026",
+    src: "/images/museo/visitas/2026-07-rafael-ocasio.jpg",
+    alt: "Verónica Rivera, Rafael «Rafa» Ocasio, Quique Torres y Francisco Cintrón durante la visita al museo, frente a la pared de placas de exaltados",
+    caption:
+      "Recibimos la visita de Rafael «Rafa» Ocasio, exaltado del Pabellón de la Fama del Deporte Humacaeño en 2012, en la 7ma Ceremonia de Exaltación, junto a su hermano Esteban. Rafa defendió a Humacao en el béisbol Doble A entre 1957 y 1960 — etapa que nuestro museo conserva en un recorte de El Imparcial titulado «Rafael Ocasio se retira». Le acompañaron Verónica Rivera, Quique Torres y Francisco Cintrón.",
+    fecha: "14 de julio de 2026",
+    imageWidth: 1600,
+    imageHeight: 1200,
+  },
+  {
     id: "keishla-garcia-2026",
     src: "/images/museo/visitas/2026-07-keishla-garcia.jpg",
     alt: "Keishla Marie García Cruz durante su visita al museo, frente a las placas de Pista y Campo",
