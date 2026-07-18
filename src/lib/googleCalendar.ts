@@ -9,6 +9,8 @@ const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID || "pabellonfdh@gmail.com";
 // Tipo para eventos de Google Calendar
 interface GoogleCalendarEvent {
   id?: string;
+  /** Presente solo en instancias expandidas de un evento recurrente (singleEvents: true). */
+  recurringEventId?: string;
   summary?: string;
   description?: string;
   location?: string;
@@ -310,6 +312,11 @@ export async function fetchCalendarEvents(options: {
   timeMin?: Date;
   timeMax?: Date;
   maxResults?: number;
+  /**
+   * Meses hacia el futuro que se listan las instancias de eventos RECURRENTES.
+   * Los eventos únicos no se limitan: una actividad especial lejana sigue visible.
+   */
+  capRecurringMonths?: number;
 } = {}): Promise<Evento[]> {
   try {
     const calendar = getGoogleCalendarClient();
@@ -318,6 +325,7 @@ export async function fetchCalendarEvents(options: {
       timeMin = new Date(),
       timeMax,
       maxResults = 50,
+      capRecurringMonths,
     } = options;
 
     // Llamar a la API de Google Calendar
@@ -331,7 +339,19 @@ export async function fetchCalendarEvents(options: {
       timeZone: "America/Puerto_Rico",
     });
 
-    const events = response.data.items || [];
+    let events = response.data.items || [];
+
+    // Con singleEvents: true, cada instancia de un evento recurrente trae
+    // recurringEventId. Se recortan las instancias más allá del límite.
+    if (capRecurringMonths) {
+      const cap = new Date(timeMin);
+      cap.setMonth(cap.getMonth() + capRecurringMonths);
+      events = events.filter((event) => {
+        if (!event.recurringEventId) return true;
+        const start = new Date(event.start?.dateTime || event.start?.date || 0);
+        return start <= cap;
+      });
+    }
 
     // Transformar eventos a nuestro formato
     const transformedEvents = events
@@ -363,6 +383,9 @@ export async function fetchUpcomingEvents(
   return fetchCalendarEvents({
     timeMin: now,
     maxResults,
+    // Los recurrentes solo se listan 3 meses hacia adelante (decisión de Mario,
+    // 2026-07-18); los eventos únicos lejanos siguen apareciendo.
+    capRecurringMonths: 3,
   });
 }
 
