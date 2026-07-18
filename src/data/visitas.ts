@@ -25,10 +25,11 @@ export const visitas: Visita[] = [
     src: "/images/museo/visitas/2026-07-rafael-ocasio.jpg",
     alt: "Verónica Rivera, Rafael «Rafa» Ocasio, Quique Torres y Francisco Cintrón durante la visita al museo, frente a la pared de placas de exaltados",
     caption:
-      "Recibimos la visita de Rafael «Rafa» Ocasio, exaltado del Pabellón de la Fama del Deporte Humacaeño en 2012, en la 7ma Ceremonia de Exaltación, junto a su hermano Esteban. Rafa defendió a Humacao en el béisbol Doble A entre 1957 y 1960 — etapa que nuestro museo conserva en un recorte de El Imparcial titulado «Rafael Ocasio se retira». Le acompañaron Verónica Rivera, Quique Torres y Francisco Cintrón.",
+      "Recibimos la visita de Rafael «Rafa» Ocasio, exaltado del Pabellón de la Fama del Deporte Humacaeño en 2012, en la 7ma Ceremonia de Exaltación, junto a su hermano Esteban. Rafa defendió a Humacao en el béisbol Doble A entre 1957 y 1960 — etapa que nuestro museo conserva en un recorte de El Imparcial titulado «Rafael Ocasio se retira». Le acompañaron Verónica Rivera, Quique Torres y Francisco Cintrón. De aquella visita nació la entrevista que hoy compartimos: una conversación con Quique Torres sobre sus ocho exaltaciones, el softball de 1948 y los Grises de Humacao.",
     fecha: "14 de julio de 2026",
-    imageWidth: 1600,
+    imageWidth: 1210,
     imageHeight: 1200,
+    youtubeId: "7mxpxoJmi-g",
   },
   {
     id: "keishla-garcia-2026",
