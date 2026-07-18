@@ -137,7 +137,7 @@ export function VirtualTour() {
             🖼️ Ver galería completa (62 fotos)
           </button>
         </div>
-        <TourFallback hotspots={hotspots} onSelectHotspot={openHotspot} showPoster={false} />
+        <TourFallback hotspots={hotspots} onSelectHotspot={openHotspot} showPoster={false} collapsible />
       </div>
 
       {lightbox &&

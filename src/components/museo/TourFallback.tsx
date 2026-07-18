@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { panorama, type TourHotspot } from "@/lib/museo-tour";
 
@@ -10,13 +11,26 @@ interface TourFallbackProps {
   notice?: string;
   /** Mostrar el póster panorámico (true en modo alterno; false como índice de áreas). */
   showPoster?: boolean;
+  /** Colapsar la cuadrícula a dos filas (4 áreas en móvil, 6 en escritorio) con «Ver más…». */
+  collapsible?: boolean;
 }
 
 /**
  * Alternativa sin 360°: muestra un póster panorámico y tarjetas por área de exhibición.
  * Se usa cuando el navegador no soporta WebGL y como cuadrícula de áreas del recorrido.
  */
-export function TourFallback({ hotspots, onSelectHotspot, notice, showPoster = true }: TourFallbackProps) {
+export function TourFallback({
+  hotspots,
+  onSelectHotspot,
+  notice,
+  showPoster = true,
+  collapsible = false,
+}: TourFallbackProps) {
+  const [expanded, setExpanded] = useState(false);
+  const collapsed = collapsible && !expanded;
+  // Dos filas exactas por breakpoint: la cuadrícula es de 2 columnas en móvil y 3 desde sm.
+  const rowLimitClass = (i: number) =>
+    !collapsed || i < 4 ? "" : i < 6 ? " hidden sm:block" : " hidden";
   return (
     <div>
       {/* Póster panorámico */}
@@ -43,12 +57,12 @@ export function TourFallback({ hotspots, onSelectHotspot, notice, showPoster = t
 
       {/* Tarjetas por área */}
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">
-        {hotspots.map((h) => (
+        {hotspots.map((h, i) => (
           <button
             key={h.id}
             type="button"
             onClick={() => onSelectHotspot(h)}
-            className="group overflow-hidden rounded-lg border border-pabellon-gold-200 bg-white text-left shadow-sm transition-all hover:border-pabellon-gold-400 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-pabellon-gold-400"
+            className={`group overflow-hidden rounded-lg border border-pabellon-gold-200 bg-white text-left shadow-sm transition-all hover:border-pabellon-gold-400 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-pabellon-gold-400${rowLimitClass(i)}`}
             aria-label={`Ver fotos: ${h.label} (${h.photos.length})`}
           >
             <span className="relative block aspect-[4/3] w-full overflow-hidden">
@@ -69,6 +83,19 @@ export function TourFallback({ hotspots, onSelectHotspot, notice, showPoster = t
           </button>
         ))}
       </div>
+
+      {collapsible && hotspots.length > 4 && (
+        <div className="mt-6 text-center">
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            aria-expanded={expanded}
+            className="rounded text-sm font-medium text-pabellon-green-700 underline underline-offset-4 transition-colors hover:text-pabellon-green-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-pabellon-gold-400"
+          >
+            {expanded ? "Ver menos" : "Ver más…"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
