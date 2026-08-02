@@ -225,7 +225,7 @@ function transformAttachments(
  * 1: Lavender, 2: Sage, 3: Grape, 4: Flamingo, 5: Banana,
  * 6: Tangerine, 7: Peacock, 8: Graphite, 9: Blueberry, 10: Basil, 11: Tomato
  */
-function mapColorToTipo(colorId?: string): EventoMetadata["tipo"] {
+function mapColorToTipo(colorId?: string): EventoMetadata["tipo"] | undefined {
   const colorMap: Record<string, EventoMetadata["tipo"]> = {
     "9": "ceremonia", // Blueberry - Ceremonias
     "10": "museo", // Basil - Museo
@@ -234,7 +234,26 @@ function mapColorToTipo(colorId?: string): EventoMetadata["tipo"] {
     "8": "reunion", // Graphite - Reuniones
   };
 
-  return colorMap[colorId || ""] || "especial";
+  // Sin color (o color no mapeado) NO se clasifica aquí: se deja pasar al
+  // siguiente nivel de la cadena (título) en vez de forzar "especial".
+  return colorMap[colorId || ""];
+}
+
+/**
+ * Último recurso de clasificación: el título del evento. La Junta no colorea
+ * ni etiqueta sus eventos en Google Calendar, pero sí los titula de forma
+ * consistente («Reunión Ordinaria de la Junta…», «…Exaltación…»).
+ */
+function inferTipoFromTitle(summary?: string): EventoMetadata["tipo"] | undefined {
+  const t = (summary || "").toLowerCase();
+  if (/reuni[oó]n|asamblea/.test(t)) return "reunion";
+  // Fechas administrativas (cierres, límites, nominaciones) no son ceremonias
+  // aunque mencionen la exaltación — se dejan caer al default "especial".
+  if (/cierre|l[ií]mite|nominaci[oó]n/.test(t)) return undefined;
+  if (/exaltaci[oó]n|ceremonia|premiaci[oó]n/.test(t)) return "ceremonia";
+  if (/museo|exhibici[oó]n|recorrido/.test(t)) return "museo";
+  if (/taller|charla|cl[ií]nica|educativ/.test(t)) return "educativo";
+  return undefined;
 }
 
 /**
@@ -252,9 +271,12 @@ function transformGoogleEventToEvento(
   const metadata = extractMetadata(googleEvent.description);
   const cleanedDescription = cleanDescription(googleEvent.description);
 
-  // Determinar el tipo (prioridad: metadata > colorId > default)
+  // Determinar el tipo (prioridad: metadata > colorId > título > default)
   const tipo =
-    metadata.tipo || mapColorToTipo(googleEvent.colorId) || "especial";
+    metadata.tipo ||
+    mapColorToTipo(googleEvent.colorId) ||
+    inferTipoFromTitle(googleEvent.summary) ||
+    "especial";
 
   // Parsear fecha y hora
   const startDateTime = googleEvent.start.dateTime || googleEvent.start.date;
