@@ -118,6 +118,7 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
           )
         : undefined,
       slug: exaltadoRevista.id,
+      entrevistaYoutubeId: exaltadoRevista.entrevistaYoutubeId,
     };
 
     const personJsonLd = generateJsonLd("person", {

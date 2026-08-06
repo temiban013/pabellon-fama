@@ -40,6 +40,8 @@ export interface Noticia {
   readonly contenido: readonly string[];
   /** Live directorio id (e.g. "julio-yuyo-maldonado") for en-memoria items */
   readonly exaltadoSlug?: string;
+  /** ID de video de YouTube; si está presente se muestra embebido al final */
+  readonly youtubeId?: string;
   readonly imagen?: {
     readonly src: string; // under public/images/noticias/
     readonly alt: string;
@@ -57,6 +59,28 @@ export interface Noticia {
 // edades, causa de muerte, sobrevivientes ni relaciones familiares sin
 // confirmación de la Junta.
 export const noticias: readonly Noticia[] = [
+  {
+    slug: "entrevista-josie-marrero",
+    titulo: 'Entrevista a José Luis "Josie" Marrero Rodríguez',
+    fecha: "2026-08-06",
+    categoria: "anuncio",
+    resumen:
+      'El Pabellón publica su entrevista a José Luis "Josie" Marrero Rodríguez, exaltado en Levantamiento de Pesas en el año 2000, grabada en nuestro museo.',
+    contenido: [
+      'El Pabellón de la Fama del Deporte Humacaeño comparte la entrevista a José Luis "Josie" Marrero Rodríguez, exaltado en la disciplina de Levantamiento de Pesas en la Primera Exaltación, celebrada en el año 2000.',
+      "La conversación estuvo a cargo del Prof. Félix Báez Neris, Secretario e historiador del Pabellón, y se grabó en el Museo Manuel Rivera Guevara, con la dirección técnica de Héctor Ruiz.",
+      "Josie, reconocido como entrenador nacional, presidió por más de 25 años el Club de Levantamiento de Pesas de Humacao y participó en el desarrollo y la preparación de más de mil pesistas, entre ellos atletas que llegaron a Juegos Olímpicos.",
+      "La entrevista ya está disponible en nuestro canal de YouTube y puede verse a continuación.",
+    ],
+    exaltadoSlug: "jose-jossie-marrero-rodriguez",
+    youtubeId: "20nHZbx_F74",
+    imagen: {
+      src: "/images/noticias/entrevista-josie-marrero.jpg",
+      alt: 'Miniatura de la entrevista a José Luis "Josie" Marrero Rodríguez en el canal de YouTube del Pabellón',
+      width: 1280,
+      height: 720,
+    },
+  },
   {
     slug: "en-memoria-miguel-papuso-garcia-cruz",
     titulo: 'En memoria de Miguel "Papuso" García Cruz',

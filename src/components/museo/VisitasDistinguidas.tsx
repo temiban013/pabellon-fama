@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { visitas } from "@/data/visitas";
+import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
 
 export function VisitasDistinguidas() {
   if (visitas.length === 0) return null;
@@ -49,17 +50,11 @@ export function VisitasDistinguidas() {
                   {visita.caption}
                 </p>
                 {visita.youtubeId && (
-                  <div className="mx-auto mt-6 aspect-video w-full max-w-sm overflow-hidden rounded-lg">
-                    <iframe
-                      src={`https://www.youtube-nocookie.com/embed/${visita.youtubeId}`}
-                      title={`Entrevista — visita del ${visita.fecha}`}
-                      className="h-full w-full"
-                      loading="lazy"
-                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      referrerPolicy="strict-origin-when-cross-origin"
-                    />
-                  </div>
+                  <YouTubeEmbed
+                    youtubeId={visita.youtubeId}
+                    title={`Entrevista — visita del ${visita.fecha}`}
+                    className="mx-auto mt-6 max-w-sm"
+                  />
                 )}
               </div>
             </article>

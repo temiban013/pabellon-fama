@@ -10,6 +10,7 @@ import {
 } from "@/components/noticias/NoticiaCard";
 import { generateNewsArticleSchema } from "@/lib/schemas/news-article-schema";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
 
 interface NoticiaPageProps {
   params: Promise<{ slug: string }>;
@@ -120,6 +121,14 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
               </p>
             ))}
           </div>
+
+          {noticia.youtubeId && (
+            <YouTubeEmbed
+              youtubeId={noticia.youtubeId}
+              title={noticia.titulo}
+              className="mt-8"
+            />
+          )}
 
           {noticia.actualizaciones && noticia.actualizaciones.length > 0 && (
             <section className="mt-8 border-t border-gray-200 pt-6">

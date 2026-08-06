@@ -52,6 +52,8 @@ export interface ExaltadoRevista {
   paginaFin: number;
   fechaFallecimiento?: string; // ISO YYYY-MM-DD
   estado?: 'activo' | 'fallecido';
+  /** ID de video de YouTube de la entrevista PFDH; si está presente se muestra embebida en el perfil */
+  entrevistaYoutubeId?: string;
   contenido: {
     biografia: string;
     logros: string[];

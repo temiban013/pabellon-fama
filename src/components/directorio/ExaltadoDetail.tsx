@@ -5,6 +5,7 @@ import { type Exaltado } from "@/lib/types";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { ShareButtons } from "@/components/shared/ShareButtons";
 import { ExaltadoDetailLayout } from "@/components/shared/ExaltadoDetailLayout";
+import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
 
 interface ExaltadoDetailProps {
   exaltado: {
@@ -32,6 +33,7 @@ interface ExaltadoDetailProps {
     reconocimientos?: string[];
     estado: "activo" | "fallecido";
     slug: string;
+    entrevistaYoutubeId?: string;
   };
 }
 
@@ -145,6 +147,21 @@ export function ExaltadoDetail({ exaltado }: ExaltadoDetailProps) {
             <ExaltadoDetailLayout exaltado={exaltadoData} />
           </div>
         </div>
+
+        {/* Entrevista PFDH embebida */}
+        {exaltado.entrevistaYoutubeId && (
+          <div className="mt-6 sm:mt-8 bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="p-4 sm:p-6 lg:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-pabellon-green-800 mb-4">
+                Entrevista
+              </h2>
+              <YouTubeEmbed
+                youtubeId={exaltado.entrevistaYoutubeId}
+                title={`Entrevista a ${displayName}`}
+              />
+            </div>
+          </div>
+        )}
 
         {/* Back to directory link */}
         <div className="mt-6 sm:mt-8 text-center">

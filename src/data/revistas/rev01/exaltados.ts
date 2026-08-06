@@ -230,6 +230,7 @@ Esta perseverancia en la competencia deportiva le valió a Edwin ser nombrado co
     revistaNumero: 1,
     paginaInicio: 22,
     paginaFin: 22,
+    entrevistaYoutubeId: '20nHZbx_F74',
     contenido: {
       biografia: `Nació en el vecino pueblo de Yabucoa el primero de septiembre del 1944. La ciudad de Humacao le reconoce como hijo adoptivo. A partir del 1962 ganó su primer título de Campeón Nacional Novicio en alzadas olímpicas en el peso ligero. Por espacio de 16 años este versátil pesista y fisiculturista logró una extensa cadena de victorias en las tres facetas del entrenamiento con pesas: levantamiento olímpico, alzadas libres y fisicultura.
 
