@@ -25,11 +25,11 @@ export const visitas: Visita[] = [
     src: "/images/museo/visitas/2026-07-josie-marrero.jpg",
     alt: "José Luis «Josie» Marrero Rodríguez sonriendo junto al Prof. Félix Báez Neris durante la entrevista en el Museo Manuel Rivera Guevara, frente a la pared de placas de exaltados",
     caption:
-      "Recibimos la visita de José Luis «Josie» Marrero Rodríguez, exaltado del Pabellón de la Fama del Deporte Humacaeño en la Primera Exaltación, celebrada en el año 2000, en la disciplina de Levantamiento de Pesas. Entrenador nacional, presidió el Club de Levantamiento de Pesas de Humacao por más de 25 años y participó en la preparación de más de mil pesistas. De aquella visita nació la entrevista que hoy compartimos: una conversación con el Prof. Félix Báez Neris, Secretario e historiador del Pabellón, grabada en nuestro Museo Manuel Rivera Guevara.",
+      "Recibimos la visita de José Luis «Josie» Marrero Rodríguez, exaltado del Pabellón de la Fama del Deporte Humacaeño en la Primera Exaltación, celebrada en el año 2000, en la disciplina de Levantamiento de Pesas. Entrenador nacional, presidió el Club de Levantamiento de Pesas de Humacao por más de 25 años y participó en la preparación de más de mil pesistas. De aquella visita nació la entrevista que hoy compartimos: una conversación con el Prof. Félix Báez Neris, Vicepresidente e historiador del Pabellón, grabada en nuestro Museo Manuel Rivera Guevara.",
     fecha: "30 de julio de 2026",
     imageWidth: 1600,
     imageHeight: 900,
-    youtubeId: "20nHZbx_F74",
+    youtubeId: "UmyJa-N4XEc",
   },
   {
     id: "rafael-ocasio-2026",
