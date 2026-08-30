@@ -128,7 +128,7 @@ Su irrefutable liderato y reconocida sapiencia del juego-que más tarde lo convi
 
 Pipá jugó en la ligas juveniles en Humacao con equipos organizados por Monge y Melquíades Silva Anderson. En la Liga Babe Ruth, categoría juvenil, fue parte del equipo de Puerto Nuevo, Campeón de P. R. y dirigido por el gran deportista Jerry Rodríguez. Vio acción con el equipo Malta Corona de Humacao en la categoría Clase A.
 
-Todo joven pelotero humacaeño sueña ponerse el uniforme de los Grises Orientales y Pipá comenzó a jugar Doble A con Humacao en 1968 a los 18 años. El novato bateó para.288, con 26 indiscutibles en 90 turnos con 14 carreras anotadas, 3 empujadas y 4 bases robadas. Ese año en la Serie Semi Final bateó para.285. Al siguiente año, Pipá comenzó a demostrar su calidad ofensiva al promediar para.345, con 29 sencillos, 6 dobles y 3 triples, 27 carreras anotadas y 11 impulsadas. Esta actuación lo llevó por primera vez al Juego de Estrellas de la Doble A. Continuó validando su clase poleteril y volvió al Todos Estrellas en 1956, 1971 y 1977.
+Todo joven pelotero humacaeño sueña ponerse el uniforme de los Grises Orientales y Pipá comenzó a jugar Doble A con Humacao en 1968 a los 18 años. El novato bateó para.288, con 26 indiscutibles en 90 turnos con 14 carreras anotadas, 3 empujadas y 4 bases robadas. Ese año en la Serie Semi Final bateó para.285. Al siguiente año, Pipá comenzó a demostrar su calidad ofensiva al promediar para.345, con 29 sencillos, 6 dobles y 3 triples, 27 carreras anotadas y 11 impulsadas. Esta actuación lo llevó por primera vez al Juego de Estrellas de la Doble A. Continuó validando su clase poleteril y volvió al Todos Estrellas en 1970, 1971 y 1977.
 
 Pipá logró sus mejores campañas ofensivas en 1981 con un promedio de.417 y en 1983 repitió su excelencia en el manejo del bate al conectar para.420. Participó en 8 Series Semi Finales y su labor ofensiva por año es la siguiente: 1968-.285; 1969-.286; 1970-.271; 1973-.348; 1974-.471; 1975-.286; 1976-.423 y 1978-.555. Vio acción en las Series Finales de 1974 conectando para.375 y de 1978 con un robusto promedio de 428. Pipá se crecía en la post temporada y su ofensiva era superior a su gran bateo. Su última temporada con los Grises fue en 1986 y conecto38 indiscutibles en 57 oportunidades para un promedio de.316. Pipá evidenció consistencia incuestionable como pelotero y lealtad incondicional a los Grises y a Humacao, su Patria Chica. En sus 15 temporadas con la Federación de Béisbol Aficionado, Pipá sólo vistió la franela de la Ciudad Gris.
 
@@ -141,7 +141,7 @@ En el 1995 fue exaltado al Recinto de los Inmortales del Béisbol Aficionado de 
         'Promedio carrera: .324 en 15 temporadas',
         '1166 turnos, 378 hits, 204 carreras, 194 impulsadas',
         'Mejores promedios: .420 (1983), .417 (1981)',
-        'Juego de Estrellas: 1956, 1971, 1977',
+        'Juego de Estrellas: 1970, 1971, 1977',
         'Torneo Mundial Little League (EE.UU.)',
         'Exaltado al Recinto de Inmortales del Béisbol Aficionado (1995)'
       ],
