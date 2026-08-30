@@ -21,6 +21,17 @@ export interface Visita {
 // Orden del arreglo = orden en pantalla (más reciente primero)
 export const visitas: Visita[] = [
   {
+    id: "pipa-sierra-2026",
+    src: "/images/museo/visitas/2026-08-pipa-sierra.jpg",
+    alt: "Ángel Luis «Pipá» Sierra Ruffat sonriendo junto a Enrique «Quique» Torres durante la entrevista en el Museo Manuel Rivera Guevara, frente a la pared de placas de exaltados",
+    caption:
+      "Recibimos la visita de Ángel Luis «Pipá» Sierra Ruffat, exaltado del Pabellón de la Fama del Deporte Humacaeño en la Cuarta Exaltación, celebrada en el año 2006, en la disciplina de Béisbol. Bateador de por vida para .324, jugó sus quince temporadas con los Grises Orientales de Humacao y en 1995 fue exaltado al Recinto de los Inmortales del Béisbol Aficionado. De aquella visita nació la entrevista que hoy compartimos: una conversación con Enrique «Quique» Torres, Presidente del Pabellón, grabada en nuestro Museo Manuel Rivera Guevara.",
+    fecha: "25 de agosto de 2026",
+    imageWidth: 1600,
+    imageHeight: 900,
+    youtubeId: "nbBzxkL1aTU",
+  },
+  {
     id: "josie-marrero-2026",
     src: "/images/museo/visitas/2026-07-josie-marrero.jpg",
     alt: "José Luis «Josie» Marrero Rodríguez sonriendo junto al Prof. Félix Báez Neris durante la entrevista en el Museo Manuel Rivera Guevara, frente a la pared de placas de exaltados",

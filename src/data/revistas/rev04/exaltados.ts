@@ -122,6 +122,7 @@ Su irrefutable liderato y reconocida sapiencia del juego-que más tarde lo convi
     revistaNumero: 4,
     paginaInicio: 17,
     paginaFin: 17,
+    entrevistaYoutubeId: 'nbBzxkL1aTU',
     contenido: {
       biografia: `Nació en Humacao el 23 de septiembre de 1950 producto de la unión entre Ignacio Sierra y Felicita Ruffat. Cariñosamente apodado "Pipá", participó en las Ligas Pequeñas de Humacao y representó a Puerto Rico en el Torneo Mundial de Little League celebrado en los E. U. Fue en calidad de refuerzo del equipo Campeón de P. R. y resultó ser uno de los jugadores mas destacados en ese torneo.
 

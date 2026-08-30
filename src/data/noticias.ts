@@ -60,6 +60,28 @@ export interface Noticia {
 // confirmación de la Junta.
 export const noticias: readonly Noticia[] = [
   {
+    slug: "entrevista-pipa-sierra",
+    titulo: 'Entrevista a Ángel Luis "Pipá" Sierra Ruffat',
+    fecha: "2026-08-30",
+    categoria: "anuncio",
+    resumen:
+      'El Pabellón publica su entrevista a Ángel Luis "Pipá" Sierra Ruffat, exaltado en Béisbol en el año 2006, grabada en nuestro museo.',
+    contenido: [
+      'El Pabellón de la Fama del Deporte Humacaeño comparte la entrevista a Ángel Luis "Pipá" Sierra Ruffat, exaltado en la disciplina de Béisbol en la Cuarta Exaltación, celebrada en el año 2006.',
+      'La conversación estuvo a cargo de Enrique "Quique" Torres, Presidente del Pabellón, y se grabó en el Museo Manuel Rivera Guevara, con la dirección y cámara de Héctor Ruiz.',
+      "Pipá jugó sus quince temporadas con los Grises Orientales de Humacao, donde debutó en Doble A en 1968, a los 18 años. Bateó para .324 de por vida, con 378 indiscutibles en 1,166 turnos al bate, 204 carreras anotadas y 194 impulsadas. En 1995 fue exaltado al Recinto de los Inmortales del Béisbol Aficionado de Puerto Rico.",
+      "La entrevista ya está disponible en nuestro canal de YouTube y puede verse a continuación.",
+    ],
+    exaltadoSlug: "angel-pipa-sierra-ruffat",
+    youtubeId: "nbBzxkL1aTU",
+    imagen: {
+      src: "/images/noticias/entrevista-pipa-sierra.jpg",
+      alt: 'Miniatura de la entrevista a Ángel Luis "Pipá" Sierra Ruffat en el canal de YouTube del Pabellón',
+      width: 1280,
+      height: 720,
+    },
+  },
+  {
     slug: "entrevista-josie-marrero",
     titulo: 'Entrevista a José Luis "Josie" Marrero Rodríguez',
     fecha: "2026-08-06",
