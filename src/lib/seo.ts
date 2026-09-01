@@ -156,6 +156,18 @@ export const seoConfigs = {
     keywords: ["horario", "contacto", "visitas", "ubicación"],
   },
 
+  comoSeHace: {
+    title: "Cómo se hacen nuestras entrevistas",
+    description:
+      "Divulgación del uso de inteligencia artificial en las producciones del Pabellón de la Fama del Deporte Humacaeño: qué se genera con IA y qué es material auténtico de archivo.",
+    keywords: [
+      "inteligencia artificial",
+      "transparencia",
+      "producción",
+      "entrevistas",
+    ],
+  },
+
   calendario: {
     title: "Calendario de Actividades",
     description:

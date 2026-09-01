@@ -28,6 +28,7 @@ export function Footer({ className = "" }: FooterProps) {
         { name: "Blog Oficial", href: "https://pabellonfdh.blogspot.com" },
         { name: "Horarios de Visita", href: "/horario" },
         { name: "Contribuir Información", href: "/contribuir" },
+        { name: "Cómo se hace", href: "/como-se-hace" },
       ],
     },
     {
