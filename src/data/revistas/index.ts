@@ -4,6 +4,7 @@
  */
 
 import { RevistaMetadata } from '@/lib/types/revista';
+import { blobUrl } from '@/lib/revistas/blob-url';
 
 export const revistasMetadata: RevistaMetadata[] = [
   // Sprint 1: Revista #01 (2000) - 23 exaltados
@@ -15,7 +16,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Primera Exaltación del Pabellón',
     fechaCeremonia: '2000-08-20',
     descripcion: 'Ceremonia inaugural del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2000.',
-    pdfUrl: '/revistas/completas/revista-01.pdf',
+    pdfUrl: blobUrl('revista-01.pdf'),
     portadaUrl: '/revistas/portadas/rev01.jpg',
     totalPaginas: 52,
     exaltadosCount: 23,
@@ -39,7 +40,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Segunda Exaltación del Pabellón',
     fechaCeremonia: '2002-08-17',
     descripcion: 'Segunda ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Programa 2002.',
-    pdfUrl: '/revistas/completas/revista-02.pdf',
+    pdfUrl: blobUrl('revista-02.pdf'),
     portadaUrl: '/revistas/portadas/rev02.jpg',
     totalPaginas: 43,
     exaltadosCount: 9,
@@ -64,7 +65,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Tercera Exaltación del Pabellón',
     fechaCeremonia: '2004-08-22',
     descripcion: 'Tercera ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadros de Honor 2000, 2002 y 2004.',
-    pdfUrl: '/revistas/completas/revista-03.pdf',
+    pdfUrl: blobUrl('revista-03.pdf'),
     portadaUrl: '/revistas/portadas/rev03.jpg',
     totalPaginas: 40,
     exaltadosCount: 7,
@@ -88,7 +89,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Cuarta Exaltación del Pabellón',
     fechaCeremonia: '2006-11-05',
     descripcion: 'Cuarta ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2006 y exaltación especial al equipo Doble A de 1960.',
-    pdfUrl: '/revistas/completas/revista-04.pdf',
+    pdfUrl: blobUrl('revista-04.pdf'),
     portadaUrl: '/revistas/portadas/rev04.jpg',
     totalPaginas: 36,
     exaltadosCount: 10,
@@ -113,7 +114,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Quinta Exaltación del Pabellón',
     fechaCeremonia: '2008-08-15',
     descripcion: 'Quinta ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2008 y cuadros históricos de honor 2000, 2002, 2004 y 2006.',
-    pdfUrl: '/revistas/completas/revista-05.pdf',
+    pdfUrl: blobUrl('revista-05.pdf'),
     portadaUrl: '/revistas/portadas/rev05.jpg',
     totalPaginas: 36,
     exaltadosCount: 9,
@@ -138,7 +139,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Sexta Exaltación del Pabellón',
     fechaCeremonia: '2010-11-14',
     descripcion: 'Sexta ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2010 y cuadros históricos de honor.',
-    pdfUrl: '/revistas/completas/revista-06.pdf',
+    pdfUrl: blobUrl('revista-06.pdf'),
     portadaUrl: '/revistas/portadas/rev06.jpg',
     totalPaginas: 36,
     exaltadosCount: 7,
@@ -162,7 +163,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Séptima Exaltación del Pabellón',
     fechaCeremonia: '2012-11-18',
     descripcion: 'Séptima ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2012 con homenaje al centenario de Emilio Huyke.',
-    pdfUrl: '/revistas/completas/revista-07.pdf',
+    pdfUrl: blobUrl('revista-07.pdf'),
     portadaUrl: '/revistas/portadas/rev07.jpg',
     totalPaginas: 36,
     exaltadosCount: 10,
@@ -186,7 +187,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Octava Exaltación del Pabellón',
     fechaCeremonia: '2015-03-29',
     descripcion: 'Octava ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2015 en el Centro de Arte Ángel (Lito) Peña.',
-    pdfUrl: '/revistas/completas/revista-08.pdf',
+    pdfUrl: blobUrl('revista-08.pdf'),
     portadaUrl: '/revistas/portadas/rev08.jpg',
     totalPaginas: 28,
     exaltadosCount: 6,
@@ -209,7 +210,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     titulo: 'Inauguración del Museo',
     fechaEvento: '2025-06-29',
     descripcion: 'Revista del Museo del Pabellón de la Fama del Deporte Humacaeño. Ceremonia de inauguración en el Centro Cultural Dra. Antonia Sáez.',
-    pdfUrl: '/revistas/completas/revista-inauguracion.pdf',
+    pdfUrl: blobUrl('revista-inauguracion.pdf'),
     portadaUrl: '/revistas/portadas/inauguracion.jpg',
     totalPaginas: 30,
     exaltadosCount: 0,

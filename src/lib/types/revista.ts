@@ -20,6 +20,10 @@ export interface RevistaMetadata {
   fechaCeremonia?: string; // YYYY-MM-DD (exaltacion only)
   fechaEvento?: string;    // YYYY-MM-DD (non-ceremony events)
   descripcion: string;
+  /**
+   * URL absoluta del PDF en Vercel Blob (ver `src/data/revistas/blob-manifest.json`).
+   * Antes de PF-062 era una ruta relativa bajo `/revistas/completas/`.
+   */
   pdfUrl: string;
   portadaUrl: string;
   totalPaginas: number;

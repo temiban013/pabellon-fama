@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import manifestRevistas from "./src/data/revistas/blob-manifest.json";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -85,6 +86,19 @@ const nextConfig: NextConfig = {
 
   // Redirects para SEO
   async redirects() {
+    // Redirects 308 de las rutas antiguas de PDFs (public/revistas/completas/*)
+    // hacia sus URLs en Vercel Blob (PF-062). Se omiten las entradas cuyo
+    // destino aún esté vacío para que `next dev`/`next build` no fallen
+    // mientras el manifiesto está incompleto (la cobertura la garantiza el
+    // test tests/unit/data/revistas-blob.test.ts).
+    const redireccionesRevistas = Object.entries(manifestRevistas)
+      .filter(([, destino]) => destino !== "")
+      .map(([nombre, destino]) => ({
+        source: `/revistas/completas/${nombre}`,
+        destination: destino,
+        permanent: true,
+      }));
+
     return [
       {
         source: "/home",
@@ -101,6 +115,7 @@ const nextConfig: NextConfig = {
         destination: "/directorio",
         permanent: true,
       },
+      ...redireccionesRevistas,
     ];
   },
 
