@@ -65,7 +65,11 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
     noticia.imagen.height > noticia.imagen.width;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div
+      className="min-h-screen bg-gray-50"
+      // globals.css oculta el aviso global en la propia noticia de la Exaltación (PF-065).
+      data-pagina={esNoticiaExaltacion ? "noticia-exaltacion" : undefined}
+    >
       {/* Structured Data (NewsArticle) */}
       <script
         type="application/ld+json"

@@ -22,7 +22,8 @@ function anioActualPR(ahora: Date): number {
 export default function HomePage() {
   const ahora = new Date();
   return (
-    <>
+    // data-pagina: globals.css oculta el aviso global de la Exaltación en Inicio (PF-065).
+    <div data-pagina="inicio">
       <Hero />
       {/* JSON-LD fuera de VisibleHasta: siempre presente en el HTML estático. */}
       <ExaltacionJsonLd />
@@ -36,6 +37,6 @@ export default function HomePage() {
         anioActual={anioActualPR(ahora)}
       />
       <RegistrationSection />
-    </>
+    </div>
   );
 }
