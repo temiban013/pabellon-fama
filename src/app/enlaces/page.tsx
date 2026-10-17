@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 import { siteUrl } from "@/lib/constants/site";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.enlaces,
@@ -46,7 +47,7 @@ const recursosEnlaces: RecursoEnlace[] = [
     titulo: "Blog Oficial del PFDH",
     descripcion:
       "El blog histórico administrado por Félix Báez Neris con biografías detalladas de los 78 exaltados, historia deportiva y documentación completa.",
-    url: "https://pabellonfdh.blogspot.com",
+    url: PABELLON_CONSTANTS.SOCIAL_LINKS.blog,
     tipo: "blog",
     icono: FileText,
     activo: true,
@@ -84,7 +85,7 @@ const recursosEnlaces: RecursoEnlace[] = [
     titulo: "Canal de YouTube Oficial",
     descripcion:
       "Contenido audiovisual del Pabellón de la Fama del Deporte Humacaeño con entrevistas, eventos y documentación histórica.",
-    url: "https://www.youtube.com/@PabellonFDH",
+    url: PABELLON_CONSTANTS.SOCIAL_LINKS.youtube,
     tipo: "video",
     icono: Youtube,
     activo: true,

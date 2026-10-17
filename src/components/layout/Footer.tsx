@@ -26,7 +26,7 @@ export function Footer({ className = "" }: FooterProps) {
       links: [
         { name: "Revistas Oficiales", href: "/revistas" },
         { name: "Galería Histórica", href: "/enlaces/galeria-historica" },
-        { name: "Blog Oficial", href: "https://pabellonfdh.blogspot.com" },
+        { name: "Blog Oficial", href: PABELLON_CONSTANTS.SOCIAL_LINKS.blog },
         { name: "Horarios de Visita", href: "/horario" },
         { name: "Contribuir Información", href: "/contribuir" },
         { name: "Cómo se hace", href: "/como-se-hace" },
@@ -114,7 +114,7 @@ export function Footer({ className = "" }: FooterProps) {
               </h4>
               <div className="flex flex-col space-y-2">
                 <a
-                  href="https://pabellonfdh.blogspot.com"
+                  href={PABELLON_CONSTANTS.SOCIAL_LINKS.blog}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-pabellon-green-200 hover:text-pabellon-gold-300 transition-colors"
@@ -123,7 +123,7 @@ export function Footer({ className = "" }: FooterProps) {
                   📝 Blog Oficial
                 </a>
                 <a
-                  href="https://www.youtube.com/@PabellonFDH"
+                  href={PABELLON_CONSTANTS.SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-pabellon-green-200 hover:text-pabellon-gold-300 transition-colors"

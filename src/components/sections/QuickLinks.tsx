@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
 import {
   CalendarIcon,
   ClockIcon,
@@ -37,7 +38,7 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "Blog",
-    href: "https://pabellonfdh.blogspot.com/",
+    href: PABELLON_CONSTANTS.SOCIAL_LINKS.blog,
     description: "Noticias y artículos deportivos",
     icon: NewspaperIcon,
     external: true,
@@ -63,7 +64,7 @@ const quickLinks: QuickLinkItem[] = [
   },
   {
     name: "YouTube",
-    href: "https://www.youtube.com/@PabellonFDH",
+    href: PABELLON_CONSTANTS.SOCIAL_LINKS.youtube,
     description: "Videos, entrevistas y contenido histórico",
     icon: PlayCircleIcon,
     external: true,

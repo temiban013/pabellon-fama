@@ -222,7 +222,6 @@ export const PABELLON_CONSTANTS = {
   FECHA_INCORPORACION: "1998-12-22",
   LOCATION: "Humacao, Puerto Rico",
   MUSEUM_NAME: "Manuel Rivera Guevara",
-  EMAIL_DOMAIN: "pabellon.org",
   PHONE_AREA_CODES: ["787", "939"],
   SPORTS_CATEGORIES: [
     "Atletismo",
@@ -239,9 +238,8 @@ export const PABELLON_CONSTANTS = {
     "Otros",
   ],
   SOCIAL_LINKS: {
-    youtube: "https://youtube.com/@pabellondelafamahumacao",
-    blog: "https://pabellondelafamahumacao.blogspot.com/",
-    biblioteca: "https://biblioteca.pabellon.org",
+    youtube: "https://www.youtube.com/@PabellonFDH",
+    blog: "https://pabellonfdh.blogspot.com",
   },
 } as const;
 

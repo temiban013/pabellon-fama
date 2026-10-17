@@ -20,6 +20,19 @@ const DOMINIOS_PROHIBIDOS = [
   'https://pabellon.org',
 ];
 
+/**
+ * PF-066 (R4) — Marcadores de redes sociales falsas o equivocadas. Las URLs de
+ * YouTube y del blog salen solo de PABELLON_CONSTANTS.SOCIAL_LINKS. El
+ * marcador de posición UC + xxxx se arma por partes para que este archivo no
+ * se auto-detecte (la prueba solo recorre src/, pero así también es seguro
+ * si alguien amplía el recorrido).
+ */
+const MARCADORES_PROHIBIDOS = [
+  'UC' + 'xxxx',
+  'pabellon' + 'blog',
+  'pabellondelafama' + 'humacao',
+];
+
 function archivosTs(dir: string): string[] {
   return readdirSync(dir).flatMap((nombre) => {
     const ruta = join(dir, nombre);
@@ -47,6 +60,27 @@ describe('URL canónica — ningún dominio de redirección en src/', () => {
       hallazgos,
       `Dominios que redirigen a www.pfdh.org y no deben escribirse a mano:\n${hallazgos.join('\n')}\n` +
         'Usa SITE_URL o siteUrl() de @/lib/constants/site.',
+    ).toEqual([]);
+  });
+
+  it('ningún .ts/.tsx contiene marcadores de redes falsas (UCxxxx, pabellonblog, pabellondelafamahumacao)', () => {
+    const hallazgos: string[] = [];
+
+    for (const archivo of archivosTs(SRC)) {
+      const lineas = readFileSync(archivo, 'utf8').split('\n');
+      lineas.forEach((linea, i) => {
+        for (const marcador of MARCADORES_PROHIBIDOS) {
+          if (linea.includes(marcador)) {
+            hallazgos.push(`${relative(RAIZ, archivo)}:${i + 1} contiene «${marcador}»`);
+          }
+        }
+      });
+    }
+
+    expect(
+      hallazgos,
+      `Marcadores de redes falsas o equivocadas:\n${hallazgos.join('\n')}\n` +
+        'Usa PABELLON_CONSTANTS.SOCIAL_LINKS de @/lib/utils.',
     ).toEqual([]);
   });
 });

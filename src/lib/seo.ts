@@ -226,8 +226,8 @@ export function generateJsonLd(
       addressCountry: "PR",
     },
     sameAs: [
-      "https://www.youtube.com/channel/UCxxxxxx",
-      "https://pabellonblog.blogspot.com",
+      PABELLON_CONSTANTS.SOCIAL_LINKS.youtube,
+      PABELLON_CONSTANTS.SOCIAL_LINKS.blog,
     ],
   };
 
