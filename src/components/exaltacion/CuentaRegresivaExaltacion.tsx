@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useCuentaRegresiva } from '@/hooks/useCuentaRegresiva';
-import { getFaseEvento } from '@/lib/exaltacion';
+import { formatearHoraAST, getFaseEvento } from '@/lib/exaltacion';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
 import { cn } from '@/lib/utils';
 
@@ -57,7 +57,7 @@ export function CuentaRegresivaExaltacion({
           ¡Hoy es la {EXALTACION_2026.titulo}!
         </p>
         <p className={cn('mt-1 text-sm', estilos.detalle)}>
-          1:00 p.m. · {EXALTACION_2026.sede.nombre}
+          {formatearHoraAST(EXALTACION_2026.inicio)} · {EXALTACION_2026.sede.nombre}
         </p>
       </div>
     );

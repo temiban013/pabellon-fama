@@ -120,7 +120,7 @@ export const seoConfigs = {
   junta: {
     title: "Junta de Directores",
     description:
-      `Conoce la Junta de Directores del Pabellón de la Fama del Deporte Humacaeño, fundada en ${PABELLON_CONSTANTS.FOUNDED_YEAR}. Líderes que preservan el legado deportivo de Humacao, Puerto Rico.`,
+      `Conoce la Junta de Directores del Pabellón de la Fama del Deporte Humacaeño, constituida en ${PABELLON_CONSTANTS.PRIMERA_JUNTA_ANIO}. Líderes que preservan el legado deportivo de Humacao, Puerto Rico.`,
     keywords: ["junta directores", "liderazgo", "organización"],
   },
 

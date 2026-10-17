@@ -13,7 +13,7 @@ export async function GET() {
 - [Inicio](${siteUrl("/")}): Página principal del Pabellón de la Fama
 - [Directorio de Exaltados](${siteUrl("/directorio")}): Todos los atletas, propulsores y personalidades exaltados
 - [Museo Manuel Rivera Guevara](${siteUrl("/museo")}): Exhibiciones, tour virtual y memorabilia deportiva
-- [Junta de Directores](${siteUrl("/junta")}): Líderes que preservan el legado deportivo de Humacao desde ${PABELLON_CONSTANTS.FOUNDED_YEAR}
+- [Junta de Directores](${siteUrl("/junta")}): Líderes que preservan el legado deportivo de Humacao desde ${PABELLON_CONSTANTS.PRIMERA_JUNTA_ANIO}
 - [Historia del Pabellón](${siteUrl("/historia")}): Más de 25 años celebrando la excelencia deportiva
 - [Calendario de Actividades](${siteUrl("/calendario")}): Ceremonias de exaltación, exhibiciones y eventos comunitarios
 - [Horario y Contacto](${siteUrl("/horario")}): Información de visita y ubicación del museo

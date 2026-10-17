@@ -3,31 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
+import { capitalizar, formatearFechaLargaAST, formatearHoraAST } from '@/lib/exaltacion';
 import { CuentaRegresivaExaltacion } from '@/components/exaltacion/CuentaRegresivaExaltacion';
-
-const ZONA_HORARIA = 'America/Puerto_Rico';
-
-function formatearFecha(fecha: Date): string {
-  const texto = new Intl.DateTimeFormat('es-PR', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: ZONA_HORARIA,
-  }).format(fecha);
-  return texto.charAt(0).toUpperCase() + texto.slice(1);
-}
-
-/** "1:00 p.m." — normaliza el sufijo (ICU devuelve "p. m." con espacios no separables). */
-function formatearHora(fecha: Date): string {
-  const texto = new Intl.DateTimeFormat('es-PR', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-    timeZone: ZONA_HORARIA,
-  }).format(fecha);
-  return texto.replace(/\s*([ap])\.?\s*m\.?/i, (_coincidencia, letra: string) => ` ${letra.toLowerCase()}.m.`);
-}
 
 /**
  * Tarjeta «Próximo gran evento» de la Novena Exaltación. Se alimenta solo de
@@ -70,11 +47,11 @@ export function TarjetaProximoEvento(): React.JSX.Element {
           <ul className="mt-5 space-y-3 text-base text-white">
             <li className="flex items-start">
               <Calendar className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-pabellon-gold-400" aria-hidden="true" />
-              <span>{formatearFecha(inicio)}</span>
+              <span>{capitalizar(formatearFechaLargaAST(inicio))}</span>
             </li>
             <li className="flex items-start">
               <Clock className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-pabellon-gold-400" aria-hidden="true" />
-              <span>{formatearHora(inicio)}</span>
+              <span>{formatearHoraAST(inicio)}</span>
             </li>
             <li className="flex items-start">
               <MapPin className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-pabellon-gold-400" aria-hidden="true" />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { generateCeremonySchema } from '@/lib/schemas/event-schema';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
+import { capitalizar, formatearFechaLargaAST, formatearHoraAST } from '@/lib/exaltacion';
 
 /** JSON-LD `Event` de la Novena Exaltación. Server Component. */
 export function ExaltacionJsonLd(): React.JSX.Element {
@@ -8,7 +9,7 @@ export function ExaltacionJsonLd(): React.JSX.Element {
 
   const schema = generateCeremonySchema({
     name: titulo,
-    description: `${titulo} del Pabellón de la Fama del Deporte Humacaeño: «${lema}». Domingo, 8 de noviembre de 2026, 1:00 p.m., en el ${sede.nombre} de ${sede.municipio}.`,
+    description: `${titulo} del Pabellón de la Fama del Deporte Humacaeño: «${lema}». ${capitalizar(formatearFechaLargaAST(inicio))}, ${formatearHoraAST(inicio)}, en el ${sede.nombre} de ${sede.municipio}.`,
     // Instante en UTC-4 fijo (AST), con el mismo formato que el origen del dato.
     startDate: toAstIso(inicio),
     location: {

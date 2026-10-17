@@ -4,6 +4,9 @@ import {
   excluirDuplicadoDestacado,
   getFaseNominacion,
   aniosDesdeIncorporacion,
+  formatearHoraAST,
+  formatearFechaLargaAST,
+  formatearFechaCortaAST,
 } from '@/lib/exaltacion';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
 import { NOMINACION_2026 } from '@/lib/data/nominacion-2026';
@@ -101,5 +104,49 @@ describe('aniosDesdeIncorporacion', () => {
   });
   it('AST y no UTC: 2026-12-22T02:00Z (21 dic 22:00 AST) → 27', () => {
     expect(aniosDesdeIncorporacion(new Date('2026-12-22T02:00:00Z'))).toBe(27);
+  });
+});
+
+describe('formatearHoraAST', () => {
+  it('1:00 p.m. para el inicio de la Exaltación', () => {
+    expect(formatearHoraAST(EXALTACION_2026.inicio)).toBe('1:00 p.m.');
+    expect(formatearHoraAST(new Date('2026-11-08T13:00:00-04:00'))).toBe('1:00 p.m.');
+  });
+  it('hora a.m. sin cero a la izquierda', () => {
+    expect(formatearHoraAST(new Date('2026-03-05T09:07:00-04:00'))).toBe('9:07 a.m.');
+  });
+  it('mediodía es 12:00 p.m. y 12:30 p.m.', () => {
+    expect(formatearHoraAST(new Date('2026-11-08T12:00:00-04:00'))).toBe('12:00 p.m.');
+    expect(formatearHoraAST(new Date('2026-11-08T12:30:00-04:00'))).toBe('12:30 p.m.');
+  });
+  it('medianoche es 12:00 a.m. y 12:05 a.m.', () => {
+    expect(formatearHoraAST(new Date('2026-11-08T00:00:00-04:00'))).toBe('12:00 a.m.');
+    expect(formatearHoraAST(new Date('2026-11-08T00:05:00-04:00'))).toBe('12:05 a.m.');
+  });
+  it('usa AST, no UTC', () => {
+    expect(formatearHoraAST(new Date('2026-11-09T01:00:00Z'))).toBe('9:00 p.m.');
+  });
+});
+
+describe('formatearFechaLargaAST', () => {
+  it('domingo, 8 de noviembre de 2026', () => {
+    expect(formatearFechaLargaAST(EXALTACION_2026.inicio)).toBe('domingo, 8 de noviembre de 2026');
+  });
+  it('otro mes y día de la semana', () => {
+    expect(formatearFechaLargaAST(new Date('2027-03-01T10:00:00-04:00'))).toBe('lunes, 1 de marzo de 2027');
+    expect(formatearFechaLargaAST(new Date('2026-12-26T10:00:00-04:00'))).toBe('sábado, 26 de diciembre de 2026');
+  });
+  it('usa el día AST: 2026-11-09T01:00Z sigue siendo domingo 8', () => {
+    expect(formatearFechaLargaAST(new Date('2026-11-09T01:00:00Z'))).toBe('domingo, 8 de noviembre de 2026');
+  });
+});
+
+describe('formatearFechaCortaAST', () => {
+  it('8 nov', () => {
+    expect(formatearFechaCortaAST(EXALTACION_2026.inicio)).toBe('8 nov');
+  });
+  it('otros meses', () => {
+    expect(formatearFechaCortaAST(new Date('2026-01-15T10:00:00-04:00'))).toBe('15 ene');
+    expect(formatearFechaCortaAST(new Date('2026-09-02T10:00:00-04:00'))).toBe('2 sep');
   });
 });

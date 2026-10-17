@@ -4,11 +4,24 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
+import {
+  capitalizar,
+  formatearFechaCortaAST,
+  formatearHoraAST,
+  partesFechaAST,
+} from '@/lib/exaltacion';
 import { VisibleHasta } from '@/components/exaltacion/VisibleHasta';
 
 const RUTA_NOTICIA = `/noticias/${EXALTACION_2026.noticiaSlug}`;
 /** En estas rutas el evento ya es el protagonista: el aviso sobra. */
 const RUTAS_OCULTAS: readonly string[] = ['/', RUTA_NOTICIA];
+
+const { inicio, sede } = EXALTACION_2026;
+const HORA = formatearHoraAST(inicio);
+const { diaSemana, dia, mes } = partesFechaAST(inicio);
+/** Día de la semana, día y mes, sin coma ni año; derivado de `inicio`. */
+const FECHA_ESCRITORIO = `${capitalizar(diaSemana)} ${dia} de ${mes}`;
+const FECHA_MOVIL = formatearFechaCortaAST(inicio);
 
 /**
  * Franja global (NO sticky) bajo el Header que anuncia la Novena Exaltación
@@ -29,12 +42,12 @@ export function AvisoExaltacion(): React.JSX.Element | null {
       >
         <span className="hidden sm:inline">
           <strong className="font-semibold text-pabellon-gold-400">Novena Exaltación</strong>
-          {' · Domingo 8 de noviembre, 1:00 p.m. · Centro de Bellas Artes Águedo Mojica Marrero — '}
+          {` · ${FECHA_ESCRITORIO}, ${HORA} · ${sede.nombre} — `}
           <span className="font-semibold text-pabellon-gold-400 underline">Ver detalles →</span>
         </span>
         <span className="sm:hidden">
           <strong className="font-semibold text-pabellon-gold-400">Novena Exaltación</strong>
-          {' · 8 nov · 1:00 p.m. →'}
+          {` · ${FECHA_MOVIL} · ${HORA} →`}
         </span>
       </Link>
     </VisibleHasta>

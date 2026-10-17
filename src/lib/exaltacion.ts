@@ -29,6 +29,73 @@ function diaASTDeFechaSerializada(fecha: string): string {
   return diaAST(new Date(fecha));
 }
 
+const DIAS_SEMANA = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"] as const;
+const MESES = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+] as const;
+const MESES_CORTOS = [
+  "ene", "feb", "mar", "abr", "may", "jun",
+  "jul", "ago", "sep", "oct", "nov", "dic",
+] as const;
+
+/** Componentes calendario/hora de un instante en AST, en español y minúsculas. */
+export interface PartesFechaAST {
+  diaSemana: string;
+  dia: number;
+  mes: string;
+  mesCorto: string;
+  anio: number;
+  /** Hora 12 h sin cero a la izquierda (1–12). */
+  hora12: number;
+  /** Minutos con dos dígitos. */
+  minutos: string;
+  periodo: "a.m." | "p.m.";
+}
+
+/**
+ * Descompone un instante en AST con desplazamiento fijo (UTC−4) y nombres
+ * propios en español: la salida no depende de la versión de ICU ni de la zona
+ * horaria del proceso.
+ */
+export function partesFechaAST(fecha: Date): PartesFechaAST {
+  const local = new Date(fecha.getTime() + AST_OFFSET_MS);
+  const hora24 = local.getUTCHours();
+  return {
+    diaSemana: DIAS_SEMANA[local.getUTCDay()],
+    dia: local.getUTCDate(),
+    mes: MESES[local.getUTCMonth()],
+    mesCorto: MESES_CORTOS[local.getUTCMonth()],
+    anio: local.getUTCFullYear(),
+    hora12: hora24 % 12 === 0 ? 12 : hora24 % 12,
+    minutos: String(local.getUTCMinutes()).padStart(2, "0"),
+    periodo: hora24 < 12 ? "a.m." : "p.m.",
+  };
+}
+
+/** Primera letra en mayúscula. */
+export function capitalizar(texto: string): string {
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+/** «1:00 p.m.» */
+export function formatearHoraAST(fecha: Date): string {
+  const { hora12, minutos, periodo } = partesFechaAST(fecha);
+  return `${hora12}:${minutos} ${periodo}`;
+}
+
+/** «domingo, 8 de noviembre de 2026» (minúsculas; capitalizar si va al inicio). */
+export function formatearFechaLargaAST(fecha: Date): string {
+  const { diaSemana, dia, mes, anio } = partesFechaAST(fecha);
+  return `${diaSemana}, ${dia} de ${mes} de ${anio}`;
+}
+
+/** «8 nov» */
+export function formatearFechaCortaAST(fecha: Date): string {
+  const { dia, mesCorto } = partesFechaAST(fecha);
+  return `${dia} ${mesCorto}`;
+}
+
 export function getFaseEvento(
   evento: Pick<ExaltacionEvento, "inicio">,
   ahora: Date,

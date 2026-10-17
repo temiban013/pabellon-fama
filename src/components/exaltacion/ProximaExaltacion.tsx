@@ -3,45 +3,28 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
+import {
+  capitalizar,
+  formatearFechaLargaAST,
+  formatearHoraAST,
+  getFaseEvento,
+} from '@/lib/exaltacion';
 import { CuentaRegresivaExaltacion } from '@/components/exaltacion/CuentaRegresivaExaltacion';
-
-const ZONA = 'America/Puerto_Rico';
-
-/** «domingo, 8 de noviembre de 2026» → «Domingo, 8 de noviembre de 2026». */
-function formatearFecha(fecha: Date): string {
-  const texto = new Intl.DateTimeFormat('es-PR', {
-    timeZone: ZONA,
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(fecha);
-  return texto.charAt(0).toUpperCase() + texto.slice(1);
-}
-
-/** «1:00 p.m.» (formato fijo, independiente de la versión de ICU del entorno). */
-function formatearHora(fecha: Date): string {
-  const partes = new Intl.DateTimeFormat('en-US', {
-    timeZone: ZONA,
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-  }).formatToParts(fecha);
-  const valor = (tipo: string): string => partes.find((p) => p.type === tipo)?.value ?? '';
-  const periodo = valor('dayPeriod').toUpperCase() === 'AM' ? 'a.m.' : 'p.m.';
-  return `${valor('hour')}:${valor('minute')} ${periodo}`;
-}
 
 /**
  * Sección de Inicio con la Novena Exaltación (PF-065 §3.1). Server Component.
  * El flyer nunca se recorta: se muestra con su proporción 2:3 completa.
+ * Devuelve null cuando el evento ya fue realizado (R2); `VisibleHasta` cubre
+ * el hueco entre revalidaciones de la página.
  */
-export function ProximaExaltacion(): React.JSX.Element {
+export function ProximaExaltacion(): React.JSX.Element | null {
+  if (getFaseEvento(EXALTACION_2026, new Date()) === 'realizada') return null;
+
   const { titulo, lema, inicio, sede, flyer, noticiaSlug } = EXALTACION_2026;
 
   const filas = [
-    { Icono: Calendar, texto: formatearFecha(inicio) },
-    { Icono: Clock, texto: formatearHora(inicio) },
+    { Icono: Calendar, texto: capitalizar(formatearFechaLargaAST(inicio)) },
+    { Icono: Clock, texto: formatearHoraAST(inicio) },
     { Icono: MapPin, texto: sede.nombre },
   ] as const;
 

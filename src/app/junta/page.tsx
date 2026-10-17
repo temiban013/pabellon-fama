@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Mail, Phone, Users, Calendar, Award } from "lucide-react";
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 import { siteUrl } from "@/lib/constants/site";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.junta,
@@ -281,7 +282,7 @@ export default function JuntaDirectoresPage() {
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              Desde su fundación en 1999, esta dedicada junta ha trabajado
+              Desde su fundación en {PABELLON_CONSTANTS.PRIMERA_JUNTA_ANIO}, esta dedicada junta ha trabajado
               incansablemente para honrar a nuestros atletas destacados,
               mantener la historia viva y desarrollar programas que inspiren a
               las futuras generaciones deportivas.

@@ -55,4 +55,16 @@ describe('ProximaExaltacion', () => {
     render(<ProximaExaltacion />);
     expect(screen.getByRole('timer')).toBeInTheDocument();
   });
+
+  it('no renderiza nada una vez realizada la ceremonia (2026-11-09)', () => {
+    vi.setSystemTime(new Date('2026-11-09T12:00:00-04:00'));
+    const { container } = render(<ProximaExaltacion />);
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('sigue renderizando el mismo día de la ceremonia', () => {
+    vi.setSystemTime(new Date('2026-11-08T20:00:00-04:00'));
+    render(<ProximaExaltacion />);
+    expect(screen.getByRole('heading', { name: 'Novena Exaltación' })).toBeInTheDocument();
+  });
 });

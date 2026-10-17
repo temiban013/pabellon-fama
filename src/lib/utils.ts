@@ -214,6 +214,8 @@ export function throttle<T extends (...args: unknown[]) => unknown>(
  * Constantes específicas del Pabellón
  */
 export const PABELLON_CONSTANTS = {
+  /** Año en que se constituyó la primera Junta de Directores. Fuente: historia.docx de Félix Báez Neris, «En marzo de 1999, se constituyó la primera Junta de Directores». */
+  PRIMERA_JUNTA_ANIO: 1999,
   /** Año de incorporación en el Departamento de Estado (22 de diciembre de 1998). */
   FOUNDED_YEAR: 1998,
   /** Fecha de incorporación, ISO (YYYY-MM-DD), interpretada en America/Puerto_Rico. */
