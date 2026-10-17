@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_URL } from "@/lib/constants/site";
 import Link from "next/link";
 import { type Exaltado } from "@/lib/types";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
@@ -74,8 +75,7 @@ export function ExaltadoDetail({ exaltado }: ExaltadoDetailProps) {
   ];
 
   // Share data
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
-  const currentUrl = `${baseUrl}/directorio/${exaltado.slug}`;
+  const currentUrl = `${SITE_URL}/directorio/${exaltado.slug}`;
 
   const getSportEmoji = (deporte: string) => {
     const emojis = {

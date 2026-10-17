@@ -10,6 +10,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
+import { siteUrl } from "@/lib/constants/site";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
 import { aniosDesdeIncorporacion } from "@/lib/exaltacion";
 
@@ -17,7 +18,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.historia,
-  url: "https://pabellondelafama.com/historia",
+  url: "/historia",
 });
 
 interface EventoHistorico {
@@ -394,8 +395,8 @@ const EventoCard = ({
 );
 
 const historiaBreadcrumbs = generateBreadcrumbs([
-  { name: "Inicio", url: "https://pabellondelafama.com" },
-  { name: "Historia del Pabellón", url: "https://pabellondelafama.com/historia" },
+  { name: "Inicio", url: siteUrl() },
+  { name: "Historia del Pabellón", url: siteUrl("/historia") },
 ]);
 
 export default function HistoriaPage() {

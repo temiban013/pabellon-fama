@@ -15,10 +15,11 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
+import { siteUrl } from "@/lib/constants/site";
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.horario,
-  url: "https://pabellondelafama.com/horario",
+  url: "/horario",
 });
 
 const diasSemana = [
@@ -125,8 +126,8 @@ const ContactoCard = ({
 };
 
 const horarioBreadcrumbs = generateBreadcrumbs([
-  { name: "Inicio", url: "https://pabellondelafama.com" },
-  { name: "Horario y Contacto", url: "https://pabellondelafama.com/horario" },
+  { name: "Inicio", url: siteUrl() },
+  { name: "Horario y Contacto", url: siteUrl("/horario") },
 ]);
 
 export default function HorarioContactoPage() {

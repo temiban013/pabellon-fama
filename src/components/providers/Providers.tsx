@@ -1,5 +1,6 @@
 'use client';
 
+import { SITE_URL } from "@/lib/constants/site";
 import { ReactNode, createContext, useContext } from 'react';
 import { ToastProvider } from '@/components/ui/Toast';
 
@@ -12,7 +13,7 @@ const AppContext = createContext<{
   baseUrl: string;
   siteName: string;
 }>({
-  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org",
+  baseUrl: SITE_URL,
   siteName: "Pabellón de la Fama del Deporte Humacaeño",
 });
 
@@ -20,7 +21,7 @@ export function Providers({ children }: ProvidersProps) {
   return (
     <AppContext.Provider
       value={{
-        baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org",
+        baseUrl: SITE_URL,
         siteName: "Pabellón de la Fama del Deporte Humacaeño",
       }}
     >

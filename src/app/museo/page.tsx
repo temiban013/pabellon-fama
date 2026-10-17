@@ -4,10 +4,11 @@ import { GoogleMapClient } from "@/components/ui/GoogleMapClient";
 import { VirtualTour } from "@/components/museo/VirtualTour";
 import { VisitasDistinguidas } from "@/components/museo/VisitasDistinguidas";
 import { generateMetadata, seoConfigs, generateJsonLd, generateBreadcrumbs } from "@/lib/seo";
+import { siteUrl } from "@/lib/constants/site";
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.museo,
-  url: "https://pabellondelafama.com/museo",
+  url: "/museo",
 });
 
 export const viewport: Viewport = {
@@ -16,8 +17,8 @@ export const viewport: Viewport = {
 };
 
 const museoBreadcrumbs = generateBreadcrumbs([
-  { name: "Inicio", url: "https://pabellondelafama.com" },
-  { name: "Museo Manuel Rivera Guevara", url: "https://pabellondelafama.com/museo" },
+  { name: "Inicio", url: siteUrl() },
+  { name: "Museo Manuel Rivera Guevara", url: siteUrl("/museo") },
 ]);
 
 export default function MuseoPage() {

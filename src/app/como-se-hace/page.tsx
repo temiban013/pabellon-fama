@@ -6,7 +6,7 @@ import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.comoSeHace,
-  url: "https://pabellondelafama.com/como-se-hace",
+  url: "/como-se-hace",
 });
 
 /** Lo que sí se genera o asiste con IA. */

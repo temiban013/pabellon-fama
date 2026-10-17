@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Mail, Phone, Users, Calendar, Award } from "lucide-react";
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
+import { siteUrl } from "@/lib/constants/site";
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.junta,
-  url: "https://pabellondelafama.com/junta",
+  url: "/junta",
 });
 
 interface MiembroJunta {
@@ -227,8 +228,8 @@ const MiembroCard = ({ miembro }: { miembro: MiembroJunta }) => (
 );
 
 const juntaBreadcrumbs = generateBreadcrumbs([
-  { name: "Inicio", url: "https://pabellondelafama.com" },
-  { name: "Junta de Directores", url: "https://pabellondelafama.com/junta" },
+  { name: "Inicio", url: siteUrl() },
+  { name: "Junta de Directores", url: siteUrl("/junta") },
 ]);
 
 export default function JuntaDirectoresPage() {

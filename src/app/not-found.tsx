@@ -1,8 +1,9 @@
+import { SITE_URL } from "@/lib/constants/site";
 import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org"),
+  metadataBase: new URL(SITE_URL),
   title: "Página no encontrada - Pabellón de la Fama",
   description:
     "La página que buscas no fue encontrada. Regresa al inicio o busca en nuestro directorio de exaltados.",

@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_URL } from "@/lib/constants/site";
 import { usePathname } from "next/navigation";
 
 interface BreadcrumbItem {
@@ -9,11 +10,10 @@ interface BreadcrumbItem {
 
 export function BreadcrumbJsonLd() {
   const pathname = usePathname();
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 
   const generateBreadcrumbs = (): BreadcrumbItem[] => {
     const paths = pathname.split("/").filter(Boolean);
-    const breadcrumbs: BreadcrumbItem[] = [{ name: "Inicio", url: baseUrl }];
+    const breadcrumbs: BreadcrumbItem[] = [{ name: "Inicio", url: SITE_URL }];
 
     let currentPath = "";
     paths.forEach((path) => {
@@ -37,7 +37,7 @@ export function BreadcrumbJsonLd() {
         path.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
       breadcrumbs.push({
         name,
-        url: `${baseUrl}${currentPath}`,
+        url: `${SITE_URL}${currentPath}`,
       });
     });
 

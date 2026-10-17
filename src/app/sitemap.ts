@@ -1,9 +1,9 @@
+import { SITE_URL } from "@/lib/constants/site";
 import { MetadataRoute } from "next";
 import { todosLosExaltados } from "@/data/exaltados-all";
 import { getAllRevistas } from "@/data/revistas";
 import { getNoticias } from "@/data/noticias";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();
@@ -11,73 +11,73 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Páginas principales
   const mainPages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: SITE_URL,
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/directorio`,
+      url: `${SITE_URL}/directorio`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/revistas`,
+      url: `${SITE_URL}/revistas`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/junta`,
+      url: `${SITE_URL}/junta`,
       lastModified: currentDate,
       changeFrequency: "yearly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/historia`,
+      url: `${SITE_URL}/historia`,
       lastModified: currentDate,
       changeFrequency: "yearly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/museo`,
+      url: `${SITE_URL}/museo`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/enlaces`,
+      url: `${SITE_URL}/enlaces`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/horario`,
+      url: `${SITE_URL}/horario`,
       lastModified: currentDate,
       changeFrequency: "yearly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/calendario`,
+      url: `${SITE_URL}/calendario`,
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/como-se-hace`,
+      url: `${SITE_URL}/como-se-hace`,
       lastModified: currentDate,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/contribuir`,
+      url: `${SITE_URL}/contribuir`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/noticias`,
+      url: `${SITE_URL}/noticias`,
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.8,
@@ -86,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Páginas de noticias (data-driven, PF-051)
   const noticiaPages: MetadataRoute.Sitemap = getNoticias().map((noticia) => ({
-    url: `${baseUrl}/noticias/${noticia.slug}`,
+    url: `${SITE_URL}/noticias/${noticia.slug}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
     priority: 0.7,
@@ -94,7 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Páginas de revistas (data-driven)
   const revistaPages: MetadataRoute.Sitemap = getAllRevistas().map((revista) => ({
-    url: `${baseUrl}/revistas/${revista.slug}`,
+    url: `${SITE_URL}/revistas/${revista.slug}`,
     lastModified: currentDate,
     changeFrequency: "yearly" as const,
     priority: 0.8,
@@ -102,7 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Páginas individuales de exaltados (81 total - todos con slugs semánticos)
   const exaltadosPages: MetadataRoute.Sitemap = todosLosExaltados.map((exaltado) => ({
-    url: `${baseUrl}/directorio/${exaltado.id}`,
+    url: `${SITE_URL}/directorio/${exaltado.id}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
     priority: 0.8, // Increased priority for individual profiles
@@ -111,7 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Páginas de categorías de deporte
   const deportes = Array.from(new Set(todosLosExaltados.flatMap((e) => e.deportes)));
   const deportePages: MetadataRoute.Sitemap = deportes.map((deporte) => ({
-    url: `${baseUrl}/directorio/deporte/${deporte
+    url: `${SITE_URL}/directorio/deporte/${deporte
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')

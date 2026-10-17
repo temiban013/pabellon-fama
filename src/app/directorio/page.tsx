@@ -1,3 +1,4 @@
+import { SITE_URL, siteUrl } from "@/lib/constants/site";
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { DirectorioClient } from "@/components/directorio/DirectorioClient";
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://pabellon.org"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/directorio",
   },
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
     title: "Directorio de Exaltados - Pabellón de la Fama del Deporte Humacaeño",
     description:
       `Descubre a los 81 exaltados del deporte humacaeño: atletas legendarios, propulsores visionarios y equipos históricos que han llevado en alto el nombre de Humacao, Puerto Rico. Desde ${PABELLON_CONSTANTS.FOUNDED_YEAR} honrando la excelencia deportiva.`,
-    url: "https://pabellon.org/directorio",
+    url: "/directorio",
     siteName: "Pabellón de la Fama del Deporte Humacaeño",
     type: "website",
     locale: "es_PR",
@@ -115,10 +116,10 @@ export const metadata: Metadata = {
     "DC.date": `${PABELLON_CONSTANTS.FOUNDED_YEAR}-${anioActual}`,
     "DC.type": "Interactive Directory",
     "DC.format": "text/html",
-    "DC.identifier": "https://pabellon.org/directorio",
-    "DC.source": "https://pabellon.org",
+    "DC.identifier": siteUrl("/directorio"),
+    "DC.source": SITE_URL,
     "DC.language": "es-PR",
-    "DC.relation": "https://pabellon.org/museo",
+    "DC.relation": siteUrl("/museo"),
     "DC.coverage": "Humacao, Puerto Rico",
     "DC.rights": "© 2025 Pabellón de la Fama del Deporte Humacaeño",
     "article:section": "Sports Directory",

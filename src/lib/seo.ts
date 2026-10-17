@@ -1,4 +1,5 @@
 // src/lib/seo.ts
+import { SITE_URL } from "@/lib/constants/site";
 import { Metadata } from "next";
 import { PABELLON_CONSTANTS } from "@/lib/utils";
 
@@ -13,24 +14,23 @@ export interface SEOConfig {
   canonical?: string;
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 const siteName = "Pabellón de la Fama del Deporte Humacaeño";
 const defaultDescription =
   `Museo del Pabellón de la Fama del Deporte Humacaeño Manuel Rivera Guevara. Honrando la excelencia deportiva de Humacao, Puerto Rico desde ${PABELLON_CONSTANTS.FOUNDED_YEAR}.`;
-const defaultImage = `${baseUrl}/images/og-default.jpg`;
+const defaultImage = `${SITE_URL}/images/og-default.jpg`;
 
 export function generateMetadata({
   title,
   description,
   keywords = [],
   image = defaultImage,
-  url = baseUrl,
+  url = SITE_URL,
   type = "website",
   noIndex = false,
   canonical,
 }: SEOConfig): Metadata {
   const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
-  const fullUrl = url.startsWith("http") ? url : `${baseUrl}${url}`;
+  const fullUrl = url.startsWith("http") ? url : `${SITE_URL}${url}`;
 
   const defaultKeywords = [
     "Pabellón de la Fama",
@@ -44,7 +44,7 @@ export function generateMetadata({
   ];
 
   return {
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(SITE_URL),
     title: fullTitle,
     description,
     keywords: [...defaultKeywords, ...keywords].join(", "),
@@ -216,8 +216,8 @@ export function generateJsonLd(
     "@type": "Organization",
     name: siteName,
     alternateName: "PFDH",
-    url: baseUrl,
-    logo: `${baseUrl}/images/pabellon-logo.png`,
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/pabellon-logo.png`,
     description: defaultDescription,
     address: {
       "@type": "PostalAddress",

@@ -1,15 +1,15 @@
+import { SITE_URL } from "@/lib/constants/site";
 import type { NewsArticle, Organization, WithContext } from "schema-dts";
 import type { Noticia } from "@/data/noticias";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 
 const organizacion: Organization = {
   "@type": "Organization",
   name: "Pabellón de la Fama del Deporte Humacaeño",
-  url: baseUrl,
+  url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${baseUrl}/images/pabellon-logo.png`,
+    url: `${SITE_URL}/images/pabellon-logo.png`,
   },
 };
 
@@ -21,7 +21,7 @@ const organizacion: Organization = {
 export function generateNewsArticleSchema(
   noticia: Noticia
 ): WithContext<NewsArticle> {
-  const urlNoticia = `${baseUrl}/noticias/${noticia.slug}`;
+  const urlNoticia = `${SITE_URL}/noticias/${noticia.slug}`;
 
   // dateModified = fecha de la última actualización publicada, si existe.
   const dateModified =
@@ -42,7 +42,7 @@ export function generateNewsArticleSchema(
       "@id": urlNoticia,
     },
     articleBody: noticia.contenido.join("\n\n"),
-    image: noticia.imagen ? [`${baseUrl}${noticia.imagen.src}`] : undefined,
+    image: noticia.imagen ? [`${SITE_URL}${noticia.imagen.src}`] : undefined,
     author: organizacion,
     publisher: organizacion,
   };

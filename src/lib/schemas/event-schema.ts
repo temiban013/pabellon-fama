@@ -1,3 +1,4 @@
+import { SITE_URL } from '@/lib/constants/site';
 import type { Event, WithContext } from 'schema-dts';
 
 interface CeremonyEventInput {
@@ -30,7 +31,7 @@ export function generateCeremonySchema(event: CeremonyEventInput): WithContext<E
     organizer: {
       '@type': 'Organization',
       name: 'Pabellón de la Fama del Deporte Humacaeño',
-      url: 'https://pabellon.org'
+      url: SITE_URL
     },
     performer: event.inductees?.map(name => ({
       '@type': 'Person',

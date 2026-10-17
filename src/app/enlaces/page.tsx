@@ -13,10 +13,11 @@ import {
   Youtube,
 } from "lucide-react";
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
+import { siteUrl } from "@/lib/constants/site";
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.enlaces,
-  url: "https://pabellondelafama.com/enlaces",
+  url: "/enlaces",
 });
 
 interface RecursoEnlace {
@@ -217,8 +218,8 @@ const RecursoCard = ({ recurso }: { recurso: RecursoEnlace }) => {
 };
 
 const enlacesBreadcrumbs = generateBreadcrumbs([
-  { name: "Inicio", url: "https://pabellondelafama.com" },
-  { name: "Enlaces y Recursos", url: "https://pabellondelafama.com/enlaces" },
+  { name: "Inicio", url: siteUrl() },
+  { name: "Enlaces y Recursos", url: siteUrl("/enlaces") },
 ]);
 
 export default function EnlacesPage() {

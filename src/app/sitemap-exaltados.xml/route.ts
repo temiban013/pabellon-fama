@@ -1,12 +1,12 @@
+import { SITE_URL } from "@/lib/constants/site";
 import { NextResponse } from "next/server";
 import { exaltados } from "@/data/exaltados";
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 
   const exaltadosUrls = exaltados.map((exaltado) => `
     <url>
-      <loc>${baseUrl}/directorio/${exaltado.slug}</loc>
+      <loc>${SITE_URL}/directorio/${exaltado.slug}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
