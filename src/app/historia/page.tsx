@@ -318,7 +318,7 @@ const EventoCard = ({
     } items-center mb-12`}
   >
     {/* Línea de tiempo */}
-    <div className="flex flex-col items-center mx-8">
+    <div className="flex flex-col items-center mx-3 sm:mx-8">
       <div
         className={`w-4 h-4 rounded-full ${
           evento.destacado ? "bg-orange-500" : "bg-blue-500"
@@ -329,12 +329,12 @@ const EventoCard = ({
 
     {/* Contenido */}
     <div
-      className={`flex-1 max-w-md ${
+      className={`flex-1 min-w-0 max-w-md ${
         index % 2 === 0 ? "text-left" : "text-right"
       }`}
     >
       <div
-        className={`bg-white rounded-lg shadow-lg p-6 ${
+        className={`bg-white rounded-lg shadow-lg p-4 sm:p-6 ${
           evento.destacado
             ? "border-l-4 border-orange-500"
             : "border-l-4 border-blue-500"
@@ -348,7 +348,7 @@ const EventoCard = ({
           <span className="text-2xl mr-3">
             {getIconoComponente(evento.icono)}
           </span>
-          <div className={`${index % 2 === 0 ? "text-left" : "text-right"}`}>
+          <div className={`min-w-0 break-words ${index % 2 === 0 ? "text-left" : "text-right"}`}>
             <h3 className="text-xl font-bold text-gray-900">{evento.titulo}</h3>
             <span
               className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${

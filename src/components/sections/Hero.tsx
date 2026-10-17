@@ -21,19 +21,19 @@ export function Hero({ className = "" }: HeroProps) {
           {/* Título principal con marco decorativo exacto del PDF */}
           <div className="relative inline-block mb-8">
             {/* Esquinas decorativas del marco */}
-            <div className="absolute -top-6 -left-6 w-12 h-12">
+            <div className="absolute -top-3 -left-3 sm:-top-6 sm:-left-6 w-12 h-12">
               <div className="w-full h-full border-t-4 border-l-4 border-pabellon-gold-400 rounded-tl-2xl"></div>
               <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-pabellon-gold-300 rounded-tl-lg"></div>
             </div>
-            <div className="absolute -top-6 -right-6 w-12 h-12">
+            <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-12 h-12">
               <div className="w-full h-full border-t-4 border-r-4 border-pabellon-gold-400 rounded-tr-2xl"></div>
               <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-pabellon-gold-300 rounded-tr-lg"></div>
             </div>
-            <div className="absolute -bottom-6 -left-6 w-12 h-12">
+            <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-12 h-12">
               <div className="w-full h-full border-b-4 border-l-4 border-pabellon-gold-400 rounded-bl-2xl"></div>
               <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-pabellon-gold-300 rounded-bl-lg"></div>
             </div>
-            <div className="absolute -bottom-6 -right-6 w-12 h-12">
+            <div className="absolute -bottom-3 -right-3 sm:-bottom-6 sm:-right-6 w-12 h-12">
               <div className="w-full h-full border-b-4 border-r-4 border-pabellon-gold-400 rounded-br-2xl"></div>
               <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-pabellon-gold-300 rounded-br-lg"></div>
             </div>

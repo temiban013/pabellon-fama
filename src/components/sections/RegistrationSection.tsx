@@ -51,7 +51,7 @@ export function RegistrationSection({
 
   return (
     <section
-      className={`py-16 bg-gradient-to-br from-pabellon-gold-100 to-pabellon-gold-200 ${className}`}
+      className={`py-16 overflow-x-clip bg-gradient-to-br from-pabellon-gold-100 to-pabellon-gold-200 ${className}`}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Elementos decorativos */}

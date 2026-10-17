@@ -195,11 +195,8 @@ export default function CookieConsent() {
         {/* Privacy Policy Link */}
         <div className="mt-4 pt-4 border-t border-gray-200">
           <p className="text-xs text-gray-500 text-center">
-            Al continuar navegando, aceptas nuestras{' '}
-            <a href="/privacidad" className="text-pabellon-blue hover:underline">
-              Políticas de Privacidad
-            </a>
-            . Para más información: {ANALYTICS_CONFIG.CLIENT_EMAIL || 'informa@pfdh.org'}
+            Al continuar navegando, aceptas nuestras Políticas de Privacidad.
+            Para más información: {ANALYTICS_CONFIG.CLIENT_EMAIL || 'informa@pfdh.org'}
           </p>
         </div>
       </div>
