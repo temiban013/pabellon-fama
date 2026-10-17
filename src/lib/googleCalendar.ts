@@ -257,6 +257,32 @@ function inferTipoFromTitle(summary?: string): EventoMetadata["tipo"] | undefine
 }
 
 /**
+ * Clave de identidad de una instancia: título + inicio + fin. Dos instancias con
+ * la misma clave son el mismo evento aunque vengan de series distintas.
+ */
+function eventIdentityKey(event: GoogleCalendarEvent): string | null {
+  const start = event.start?.dateTime || event.start?.date;
+  if (!event.summary || !start) return null;
+  const end = event.end?.dateTime || event.end?.date || "";
+  return `${event.summary.trim().toLowerCase()}|${start}|${end}`;
+}
+
+/**
+ * Quita instancias repetidas (misma clave) conservando la primera. Pensado para
+ * series recurrentes duplicadas por error en Google Calendar.
+ */
+export function deduplicateEvents<T extends GoogleCalendarEvent>(events: T[]): T[] {
+  const seen = new Set<string>();
+  return events.filter((event) => {
+    const key = eventIdentityKey(event);
+    if (key === null) return true;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+/**
  * Transforma un evento de Google Calendar a nuestro formato interno
  */
 function transformGoogleEventToEvento(
@@ -374,6 +400,13 @@ export async function fetchCalendarEvents(options: {
         return start <= cap;
       });
     }
+
+    // Dos series recurrentes idénticas (mismo título, inicio y fin) producen la
+    // misma reunión dos veces. Ocurrió el 2026-06-29: la Junta creó dos veces
+    // «Reunión Ordinaria de la Junta de Directores» (RRULE 4.º miércoles).
+    // Se conserva la primera instancia de cada clave; la corrección de fondo es
+    // borrar la serie sobrante en Google Calendar.
+    events = deduplicateEvents(events as GoogleCalendarEvent[]);
 
     // Transformar eventos a nuestro formato
     const transformedEvents = events

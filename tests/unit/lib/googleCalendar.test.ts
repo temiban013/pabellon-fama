@@ -575,4 +575,74 @@ requiere_reservacion: true
       expect(eventos[0].horaFin).toMatch(/\d{1,2}:\d{2}/);
     });
   });
+  describe('series recurrentes duplicadas', () => {
+    // Caso real (2026-06-29): la Junta creó dos series idénticas
+    // «Reunión Ordinaria de la Junta de Directores» (RRULE 4.º miércoles).
+    // Con singleEvents: true, cada mes llega una instancia por serie.
+    const instancia = (serie: string, dia: string, resumen = 'Reunión Ordinaria de la Junta de Directores') => ({
+      id: `${serie}_${dia}T210000Z`,
+      recurringEventId: serie,
+      summary: resumen,
+      location: 'Pabellón de la Fama del Deporte Humacaeño',
+      start: { dateTime: `${dia.slice(0, 4)}-${dia.slice(4, 6)}-${dia.slice(6, 8)}T17:00:00-04:00`, timeZone: 'America/Puerto_Rico' },
+      end: { dateTime: `${dia.slice(0, 4)}-${dia.slice(4, 6)}-${dia.slice(6, 8)}T18:00:00-04:00`, timeZone: 'America/Puerto_Rico' },
+    });
+
+    it('conserva una sola instancia por fecha cuando dos series son idénticas', async () => {
+      const { google } = await import('googleapis');
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
+
+      vi.mocked(mockCalendar.events.list).mockResolvedValue({
+        data: {
+          items: [
+            instancia('0katkco70hht3n6q30f99jf3n1', '20261028'),
+            instancia('31i8aa0bkhn6ntn6c0eskd8puh', '20261028'),
+            instancia('0katkco70hht3n6q30f99jf3n1', '20261125'),
+            instancia('31i8aa0bkhn6ntn6c0eskd8puh', '20261125'),
+          ],
+        },
+      } as any);
+
+      const eventos = await fetchCalendarEvents();
+
+      expect(eventos).toHaveLength(2);
+      expect(eventos.map((e) => e.id)).toEqual([
+        '0katkco70hht3n6q30f99jf3n1_20261028T210000Z',
+        '0katkco70hht3n6q30f99jf3n1_20261125T210000Z',
+      ]);
+    });
+
+    it('no confunde eventos distintos con el mismo título en horas distintas', async () => {
+      const { google } = await import('googleapis');
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
+
+      const extraordinaria = instancia('serie-x', '20261028');
+      extraordinaria.start.dateTime = '2026-10-28T10:00:00-04:00';
+      extraordinaria.end.dateTime = '2026-10-28T11:00:00-04:00';
+
+      vi.mocked(mockCalendar.events.list).mockResolvedValue({
+        data: { items: [instancia('serie-a', '20261028'), extraordinaria] },
+      } as any);
+
+      const eventos = await fetchCalendarEvents();
+      expect(eventos).toHaveLength(2);
+    });
+
+    it('ignora mayúsculas y espacios al comparar títulos', async () => {
+      const { google } = await import('googleapis');
+      const mockCalendar = google.calendar({ version: 'v3', auth: {} as any });
+
+      vi.mocked(mockCalendar.events.list).mockResolvedValue({
+        data: {
+          items: [
+            instancia('serie-a', '20261028'),
+            instancia('serie-b', '20261028', '  reunión ordinaria de la junta de directores '),
+          ],
+        },
+      } as any);
+
+      const eventos = await fetchCalendarEvents();
+      expect(eventos).toHaveLength(1);
+    });
+  });
 });
