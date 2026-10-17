@@ -20,6 +20,7 @@
  */
 
 import { parseDateLocal } from "@/lib/date-utils";
+import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
 
 export type CategoriaNoticia =
   | "en-memoria"
@@ -59,6 +60,21 @@ export interface Noticia {
 // edades, causa de muerte, sobrevivientes ni relaciones familiares sin
 // confirmación de la Junta.
 export const noticias: readonly Noticia[] = [
+  {
+    slug: EXALTACION_2026.noticiaSlug,
+    titulo: "Novena Exaltación del Pabellón de la Fama",
+    fecha: "2026-10-01",
+    categoria: "exaltacion",
+    resumen:
+      "El Pabellón celebrará su Novena Exaltación el domingo 8 de noviembre de 2026, a la 1:00 p.m., en el Centro de Bellas Artes Águedo Mojica Marrero de Humacao.",
+    contenido: [
+      "El Pabellón de la Fama del Deporte Humacaeño celebrará su Novena Exaltación el domingo 8 de noviembre de 2026, a la 1:00 p.m., en el Centro de Bellas Artes Águedo Mojica Marrero de Humacao.",
+      "La ceremonia lleva por lema «Honrando nuestros atletas y propulsores».",
+      "Para más información, comuníquese al 787-410-1237 o escriba a informa@pfdh.org.",
+    ],
+    // Flyer vertical 2:3 (1024×1536): fuente única en EXALTACION_2026.
+    imagen: EXALTACION_2026.flyer,
+  },
   {
     slug: "entrevista-pipa-sierra",
     titulo: 'Entrevista a Ángel Luis "Pipá" Sierra Ruffat',

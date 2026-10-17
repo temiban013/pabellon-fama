@@ -30,10 +30,10 @@ describe('CountdownTimer', () => {
     expect(screen.getByText(/Cierre/)).toBeInTheDocument();
   });
 
-  it('post-cierre: muestra "Ceremonia" cuando cierre <= now < ceremonia', () => {
+  it('post-cierre: muestra "Novena Exaltación en" cuando cierre <= now < ceremonia', () => {
     vi.setSystemTime(new Date('2026-09-15T00:00:00.000Z'));
     render(<CountdownTimer apertura={apertura} cierre={cierre} ceremonia={ceremonia} />);
-    expect(screen.getByText(/Ceremonia/)).toBeInTheDocument();
+    expect(screen.getByText(/Novena Exaltación en/)).toBeInTheDocument();
   });
 
   it('post-ceremonia: muestra el mensaje estático "ya se llevó a cabo"', () => {

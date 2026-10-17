@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { generateMetadata as genMeta, seoConfigs } from "@/lib/seo";
 import { NOMINACION_2026 } from "@/lib/data/nominacion-2026";
+import { getFaseNominacion } from "@/lib/exaltacion";
 import { CountdownTimer } from "@/components/nominacion/CountdownTimer";
 import { ComunicadoPrensa } from "@/components/nominacion/ComunicadoPrensa";
 import { CategoriasGrid } from "@/components/nominacion/CategoriasGrid";
@@ -30,6 +31,7 @@ const fmtFechaLarga = (d: Date) =>
 
 export default function NominacionPage() {
   const { ceremonia, periodo, categorias, documentos } = NOMINACION_2026;
+  const fase = getFaseNominacion(NOMINACION_2026.periodo, new Date());
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -100,13 +102,27 @@ export default function NominacionPage() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="#descargar"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors"
-            >
-              <Download className="h-5 w-5 mr-2" aria-hidden="true" />
-              Descargar boleta oficial
-            </a>
+            {fase === "cerrado" ? (
+              <>
+                <p className="flex items-center justify-center px-6 py-3 text-white font-semibold">
+                  El periodo de nominaciones cerró el 31 de agosto de 2026.
+                </p>
+                <Link
+                  href="/noticias/novena-exaltacion-2026"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors"
+                >
+                  Ver detalles de la Novena Exaltación
+                </Link>
+              </>
+            ) : (
+              <a
+                href="#descargar"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors"
+              >
+                <Download className="h-5 w-5 mr-2" aria-hidden="true" />
+                Descargar boleta oficial
+              </a>
+            )}
             <a
               href="#instrucciones"
               className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold transition-colors"
@@ -164,21 +180,37 @@ export default function NominacionPage() {
       {/* 7. Closing emphasis (mismo patrón de /contribuir, /historia) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold text-blue-900 mb-3">
-            ¿Listo para nominar?
-          </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto mb-6">
-            Descarga la boleta, completa la información del candidato junto con
-            los documentos requeridos, y entrégala en cualquiera de los puntos
-            oficiales antes del 31 de agosto de 2026.
-          </p>
-          <a
-            href="#descargar"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors"
-          >
-            <Download className="h-5 w-5 mr-2" aria-hidden="true" />
-            Descargar boleta oficial
-          </a>
+          {fase === "cerrado" ? (
+            <>
+              <p className="text-gray-700 max-w-2xl mx-auto mb-6">
+                El periodo de nominaciones cerró el 31 de agosto de 2026.
+              </p>
+              <Link
+                href="/noticias/novena-exaltacion-2026"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors"
+              >
+                Ver detalles de la Novena Exaltación
+              </Link>
+            </>
+          ) : (
+            <>
+              <h2 className="text-2xl font-bold text-blue-900 mb-3">
+                ¿Listo para nominar?
+              </h2>
+              <p className="text-gray-700 max-w-2xl mx-auto mb-6">
+                Descarga la boleta, completa la información del candidato junto
+                con los documentos requeridos, y entrégala en cualquiera de los
+                puntos oficiales antes del 31 de agosto de 2026.
+              </p>
+              <a
+                href="#descargar"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors"
+              >
+                <Download className="h-5 w-5 mr-2" aria-hidden="true" />
+                Descargar boleta oficial
+              </a>
+            </>
+          )}
         </div>
       </section>
     </main>

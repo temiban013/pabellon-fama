@@ -1,11 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
 
 interface MuseumShowcaseProps {
   className?: string;
+  /** Años cumplidos desde la incorporación (aniosDesdeIncorporacion). Lo calcula la página (servidor). */
+  aniosHistoria: number;
+  /** Año calendario actual en America/Puerto_Rico. */
+  anioActual: number;
 }
 
-export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
+export function MuseumShowcase({
+  className = "",
+  aniosHistoria,
+  anioActual,
+}: MuseumShowcaseProps) {
   return (
     <section
       className={`py-16 lg:py-20 bg-gradient-to-b from-pabellon-green-50 to-pabellon-green-100 ${className}`}
@@ -66,18 +75,18 @@ export function MuseumShowcase({ className = "" }: MuseumShowcaseProps) {
               <p className="text-pabellon-green-700 font-medium">
                 Atletas Exaltados
               </p>
-              <p className="text-sm text-pabellon-green-600 mt-1">Desde 1996</p>
+              <p className="text-sm text-pabellon-green-600 mt-1">Desde {PABELLON_CONSTANTS.FOUNDED_YEAR}</p>
             </div>
 
             <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-pabellon-gold-200 hover:shadow-xl transition-shadow duration-300">
               <div className="text-3xl font-bold text-pabellon-gold-600 mb-2">
-                29
+                {aniosHistoria}
               </div>
               <p className="text-pabellon-green-700 font-medium">
                 Años de Historia
               </p>
               <p className="text-sm text-pabellon-green-600 mt-1">
-                1996 - 2025
+                {PABELLON_CONSTANTS.FOUNDED_YEAR} - {anioActual}
               </p>
             </div>
 

@@ -1,18 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useCuentaRegresiva, computeTimeLeft } from '@/hooks/useCuentaRegresiva';
 
 export interface CountdownTimerProps {
   apertura: Date;
   cierre: Date;
   ceremonia: Date;
-}
-
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
 }
 
 type CountdownState = 'pre-apertura' | 'activo' | 'post-cierre' | 'post-ceremonia';
@@ -41,19 +35,9 @@ function getHeading(state: CountdownState): string {
   switch (state) {
     case 'pre-apertura': return 'El periodo de nominaciones abre en';
     case 'activo': return 'Cierre del periodo de nominaciones en';
-    case 'post-cierre': return 'Ceremonia de exaltación en';
+    case 'post-cierre': return 'Novena Exaltación en';
     case 'post-ceremonia': return '';
   }
-}
-
-function computeTimeLeft(target: Date, now: Date): TimeLeft {
-  const diffMs = Math.max(0, target.getTime() - now.getTime());
-  const totalSeconds = Math.floor(diffMs / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  return { days, hours, minutes, seconds };
 }
 
 interface CellProps {
@@ -85,22 +69,10 @@ function PlaceholderCell({ label }: PlaceholderCellProps): React.JSX.Element {
 }
 
 export function CountdownTimer({ apertura, cierre, ceremonia }: CountdownTimerProps): React.JSX.Element {
-  // `now` starts as null so server-side render and client first-render produce
-  // identical markup (the skeleton). Without this, `new Date()` runs at different
-  // wall-clock moments on server vs client, causing a React hydration mismatch.
-  // After mount, the effect populates `now` with the real time and starts ticking.
-  const [now, setNow] = useState<Date | null>(null);
-
-  useEffect(() => {
-    // Hydration-safe initialization: see comments above. setState in this effect
-    // is required to avoid SSR/CSR mismatch on initial render.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setNow(new Date());
-    const id = setInterval(() => {
-      setNow(new Date());
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
+  // Hydration-safe: `ahora` is null on SSR and first client render (skeleton),
+  // then ticks every second. The target depends on the current state, so the
+  // hook's `restante` (computed vs. ceremonia) is not used; we compute it here.
+  const { ahora: now } = useCuentaRegresiva(ceremonia);
 
   if (now === null) {
     return (

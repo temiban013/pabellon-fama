@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
 
 interface HeroProps {
   className?: string;
@@ -48,7 +49,7 @@ export function Hero({ className = "" }: HeroProps) {
               </h2>
 
               <div className="mt-6 text-base lg:text-lg text-pabellon-gold-600 font-medium">
-                Honrando la excelencia deportiva desde 1996
+                Honrando la excelencia deportiva desde {PABELLON_CONSTANTS.FOUNDED_YEAR}
               </div>
 
               {/* Decoración adicional */}

@@ -1,11 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { DirectorioClient } from "@/components/directorio/DirectorioClient";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
+
+/** Año actual en Puerto Rico (AST), para el rango "DC.date". */
+const anioActual = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  timeZone: "America/Puerto_Rico",
+}).format(new Date());
 
 export const metadata: Metadata = {
   title: "Directorio de Exaltados | Pabellón de la Fama del Deporte Humacaeño",
   description:
-    "Directorio completo con 81 exaltados del Pabellón de la Fama del Deporte Humacaeño: 78 atletas individuales y 3 equipos históricos que han marcado la excelencia deportiva en Humacao, Puerto Rico desde 1996. Búsqueda avanzada con filtros por deporte, década, categoría y estado. Explora biografías, logros y contribuciones al deporte.",
+    `Directorio completo con 81 exaltados del Pabellón de la Fama del Deporte Humacaeño: 78 atletas individuales y 3 equipos históricos que han marcado la excelencia deportiva en Humacao, Puerto Rico desde ${PABELLON_CONSTANTS.FOUNDED_YEAR}. Búsqueda avanzada con filtros por deporte, década, categoría y estado. Explora biografías, logros y contribuciones al deporte.`,
   keywords: [
     "directorio exaltados humacao",
     "atletas humacaeños famosos",
@@ -58,7 +65,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Directorio de Exaltados - Pabellón de la Fama del Deporte Humacaeño",
     description:
-      "Descubre a los 81 exaltados del deporte humacaeño: atletas legendarios, propulsores visionarios y equipos históricos que han llevado en alto el nombre de Humacao, Puerto Rico. Desde 1996 honrando la excelencia deportiva.",
+      `Descubre a los 81 exaltados del deporte humacaeño: atletas legendarios, propulsores visionarios y equipos históricos que han llevado en alto el nombre de Humacao, Puerto Rico. Desde ${PABELLON_CONSTANTS.FOUNDED_YEAR} honrando la excelencia deportiva.`,
     url: "https://pabellon.org/directorio",
     siteName: "Pabellón de la Fama del Deporte Humacaeño",
     type: "website",
@@ -84,7 +91,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Directorio de Exaltados - Pabellón Fama Deportiva Humacao",
     description:
-      "81 exaltados del deporte humacaeño: atletas, propulsores y equipos que han marcado la historia deportiva de Puerto Rico desde 1996.",
+      `81 exaltados del deporte humacaeño: atletas, propulsores y equipos que han marcado la historia deportiva de Puerto Rico desde ${PABELLON_CONSTANTS.FOUNDED_YEAR}.`,
     images: ["/images/museo/fachada-museo.jpg"],
     creator: "@PabellonHumacao",
     site: "@PabellonHumacao",
@@ -105,7 +112,7 @@ export const metadata: Metadata = {
     "DC.description": "Complete directory of 81 inductees into the Humacao Sports Hall of Fame",
     "DC.publisher": "Pabellón de la Fama del Deporte Humacaeño",
     "DC.contributor": "Manuel Rivera Guevara Museum",
-    "DC.date": "1996-2025",
+    "DC.date": `${PABELLON_CONSTANTS.FOUNDED_YEAR}-${anioActual}`,
     "DC.type": "Interactive Directory",
     "DC.format": "text/html",
     "DC.identifier": "https://pabellon.org/directorio",
@@ -160,7 +167,7 @@ export default function DirectorioPage() {
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Conoce a los atletas, propulsores y figuras deportivas que han
               sido exaltados por su destacada contribución al deporte en
-              Humacao, Puerto Rico. Desde 1996, honramos la excelencia deportiva
+              Humacao, Puerto Rico. Desde {PABELLON_CONSTANTS.FOUNDED_YEAR}, honramos la excelencia deportiva
               de nuestra comunidad. Utiliza los filtros avanzados para explorar
               por deporte, década, categoría y más.
             </p>

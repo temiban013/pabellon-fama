@@ -214,7 +214,10 @@ export function throttle<T extends (...args: unknown[]) => unknown>(
  * Constantes específicas del Pabellón
  */
 export const PABELLON_CONSTANTS = {
-  FOUNDED_YEAR: 1996,
+  /** Año de incorporación en el Departamento de Estado (22 de diciembre de 1998). */
+  FOUNDED_YEAR: 1998,
+  /** Fecha de incorporación, ISO (YYYY-MM-DD), interpretada en America/Puerto_Rico. */
+  FECHA_INCORPORACION: "1998-12-22",
   LOCATION: "Humacao, Puerto Rico",
   MUSEUM_NAME: "Manuel Rivera Guevara",
   EMAIL_DOMAIN: "pabellon.org",

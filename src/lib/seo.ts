@@ -1,5 +1,6 @@
 // src/lib/seo.ts
 import { Metadata } from "next";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
 
 export interface SEOConfig {
   title: string;
@@ -15,7 +16,7 @@ export interface SEOConfig {
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pabellon.org";
 const siteName = "Pabellón de la Fama del Deporte Humacaeño";
 const defaultDescription =
-  "Museo del Pabellón de la Fama del Deporte Humacaeño Manuel Rivera Guevara. Honrando la excelencia deportiva de Humacao, Puerto Rico desde 1996.";
+  `Museo del Pabellón de la Fama del Deporte Humacaeño Manuel Rivera Guevara. Honrando la excelencia deportiva de Humacao, Puerto Rico desde ${PABELLON_CONSTANTS.FOUNDED_YEAR}.`;
 const defaultImage = `${baseUrl}/images/og-default.jpg`;
 
 export function generateMetadata({
@@ -119,14 +120,14 @@ export const seoConfigs = {
   junta: {
     title: "Junta de Directores",
     description:
-      "Conoce la Junta de Directores del Pabellón de la Fama del Deporte Humacaeño, fundada en 1983. Líderes que preservan el legado deportivo de Humacao, Puerto Rico.",
+      `Conoce la Junta de Directores del Pabellón de la Fama del Deporte Humacaeño, fundada en ${PABELLON_CONSTANTS.FOUNDED_YEAR}. Líderes que preservan el legado deportivo de Humacao, Puerto Rico.`,
     keywords: ["junta directores", "liderazgo", "organización"],
   },
 
   historia: {
     title: "Historia del Pabellón",
     description:
-      "Explora la historia del Pabellón de la Fama del Deporte Humacaeño desde 1983 hasta hoy. Más de 40 años celebrando la excelencia deportiva de Humacao, PR.",
+      `Explora la historia del Pabellón de la Fama del Deporte Humacaeño desde ${PABELLON_CONSTANTS.FOUNDED_YEAR} hasta hoy. Más de 25 años celebrando la excelencia deportiva de Humacao, PR.`,
     keywords: ["historia", "fundación", "cronología", "desarrollo"],
   },
 

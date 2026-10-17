@@ -10,6 +10,10 @@ import {
   Calendar,
 } from "lucide-react";
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
+import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
+import { aniosDesdeIncorporacion } from "@/lib/exaltacion";
+
+export const revalidate = 86400;
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.historia,
@@ -30,6 +34,29 @@ interface EventoHistorico {
     | "reconocimiento";
   destacado?: boolean;
 }
+
+/** Texto de la ceremonia a partir de la fecha/hora de EXALTACION_2026 (AST). */
+const descripcionEvento = (inicio: Date, sede: string): string => {
+  const fecha = new Intl.DateTimeFormat("es-PR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Puerto_Rico",
+  })
+    .format(inicio)
+    .replace(",", "");
+  const hora = new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "America/Puerto_Rico",
+  })
+    .format(inicio)
+    .replace(/\s?AM$/, " a.m.")
+    .replace(/\s?PM$/, " p.m.");
+  return `Programada para el ${fecha}, a la ${hora}, en el ${sede}.`;
+};
 
 const eventosHistoricos: EventoHistorico[] = [
   {
@@ -223,17 +250,27 @@ const eventosHistoricos: EventoHistorico[] = [
     icono: "ceremonia",
     destacado: true,
   },
+  {
+    año: 2026,
+    titulo: "Novena Ceremonia de Exaltación",
+    descripcion: descripcionEvento(
+      EXALTACION_2026.inicio,
+      EXALTACION_2026.sede.nombre,
+    ),
+    icono: "ceremonia",
+    destacado: true,
+  },
 ];
 
-const logrosDestacados = [
+const getLogrosDestacados = (ahora: Date) => [
   {
     titulo: "78 Deportistas Exaltados",
     descripcion: "Atletas y propulsores honrados en 8 ceremonias",
     icono: Trophy,
   },
   {
-    titulo: "26 Años de Historia",
-    descripcion: "Desde la incorporación hasta hoy",
+    titulo: `${aniosDesdeIncorporacion(ahora)} Años de Historia`,
+    descripcion: "Desde su incorporación el 22 de diciembre de 1998",
     icono: Calendar,
   },
   {
@@ -362,6 +399,7 @@ const historiaBreadcrumbs = generateBreadcrumbs([
 ]);
 
 export default function HistoriaPage() {
+  const logrosDestacados = getLogrosDestacados(new Date());
   return (
     <>
       <script

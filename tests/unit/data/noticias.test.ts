@@ -7,6 +7,8 @@ import {
   type Noticia,
 } from '@/data/noticias';
 import { todosLosExaltados } from '@/data/exaltados-all';
+import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
+import { generateNewsArticleSchema } from '@/lib/schemas/news-article-schema';
 
 // Fixtures para probar el comportamiento de los helpers con datos
 // controlados (el arreglo real está vacío hasta la Fase 5 de PF-051).
@@ -135,6 +137,43 @@ describe('data/noticias.ts', () => {
           expect(parrafo.trim().length).toBeGreaterThan(0);
         }
       }
+    });
+  });
+
+  describe('noticia de la Novena Exaltación (PF-065)', () => {
+    const noticia = getNoticiaBySlug('novena-exaltacion-2026');
+
+    it('existe por slug y coincide con EXALTACION_2026.noticiaSlug', () => {
+      expect(noticia).toBeDefined();
+      expect(noticia?.slug).toBe(EXALTACION_2026.noticiaSlug);
+    });
+
+    it('tiene categoría exaltacion y fecha 2026-10-01', () => {
+      expect(noticia?.categoria).toBe('exaltacion');
+      expect(noticia?.fecha).toBe('2026-10-01');
+    });
+
+    it('el resumen tiene 160 caracteres o menos', () => {
+      expect(noticia?.resumen.length).toBeLessThanOrEqual(160);
+    });
+
+    it('la imagen es el flyer vertical 1024x1536', () => {
+      expect(noticia?.imagen?.width).toBe(1024);
+      expect(noticia?.imagen?.height).toBe(1536);
+      expect(noticia?.imagen?.src).toBe('/images/noticias/novena-exaltacion-2026.jpg');
+    });
+
+    it('getUltimasNoticias la ordena según su fecha (primera: es la más reciente)', () => {
+      const ultimas = getUltimasNoticias(noticias.length);
+      expect(ultimas[0]?.slug).toBe('novena-exaltacion-2026');
+      const fechas = ultimas.map((n) => n.fecha);
+      expect([...fechas].sort().reverse()).toEqual(fechas);
+    });
+
+    it('el JSON-LD NewsArticle usa la fecha de la noticia como datePublished', () => {
+      expect(noticia).toBeDefined();
+      if (!noticia) return;
+      expect(generateNewsArticleSchema(noticia).datePublished).toBe('2026-10-01');
     });
   });
 });

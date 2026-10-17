@@ -19,6 +19,10 @@ import {
 } from "lucide-react";
 import { type EventoSerializado } from "@/lib/types";
 import { parseDateLocal } from "@/lib/date-utils";
+import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
+import { excluirDuplicadoDestacado } from "@/lib/exaltacion";
+import { VisibleHasta } from "@/components/exaltacion/VisibleHasta";
+import { TarjetaProximoEvento } from "@/components/exaltacion/TarjetaProximoEvento";
 
 const tiposEvento = [
   { valor: "todos", label: "Todos los eventos", color: "gray" },
@@ -239,10 +243,13 @@ export default function CalendarioPage() {
     fetchEventos();
   }, []);
 
+  // La Novena Exaltación ya aparece en la tarjeta destacada: se quita su duplicado de Google Calendar.
+  const eventosSinDuplicado = excluirDuplicadoDestacado(eventos, EXALTACION_2026);
+
   const eventosFiltrados =
     filtroTipo === "todos"
-      ? eventos
-      : eventos.filter((evento) => evento.tipo === filtroTipo);
+      ? eventosSinDuplicado
+      : eventosSinDuplicado.filter((evento) => evento.tipo === filtroTipo);
 
   const eventosOrdenados = [...eventosFiltrados].sort(
     (a, b) => parseDateLocal(a.fecha).getTime() - parseDateLocal(b.fecha).getTime()
@@ -273,8 +280,13 @@ export default function CalendarioPage() {
         </div>
       </div>
 
-      {/* Controles */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Próximo gran evento (independiente de /api/eventos) */}
+        <VisibleHasta hasta={EXALTACION_2026.inicio.toISOString()}>
+          <TarjetaProximoEvento />
+        </VisibleHasta>
+
+        {/* Controles */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center space-x-4">

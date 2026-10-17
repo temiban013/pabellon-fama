@@ -7,6 +7,7 @@ import {
   seoConfigs,
 } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
+import { AvisoExaltacion } from "@/components/exaltacion/AvisoExaltacion";
 import { Footer } from "@/components/layout/Footer";
 import { NitainoCredit } from "@/components/shared/NitainoCredit";
 import { Providers } from "@/components/providers/Providers";
@@ -125,6 +126,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="flex flex-col min-h-screen">
               {/* Header */}
               <Header />
+
+              {/* Aviso temporal de la Novena Exaltación (PF-065) */}
+              <AvisoExaltacion />
 
               {/* Main Content */}
               <main id="main-content" className="flex-grow" role="main">

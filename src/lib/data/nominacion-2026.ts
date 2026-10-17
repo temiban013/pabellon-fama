@@ -3,12 +3,18 @@
  * Fuente: Comunicado de prensa oficial de la Junta de Directores PFDH
  * (public/documentos/comunicado-prensa-9na-exaltacion.pdf).
  *
+ * La fecha, hora y sede de la ceremonia (`ceremonia`) se DERIVAN de
+ * `EXALTACION_2026` (src/lib/data/exaltacion-2026.ts). La sede quedó confirmada
+ * por el flyer oficial (2026-10-12); no duplicar esos datos aquí.
+ *
  * EDITAR ESTE ARCHIVO únicamente cuando:
- *  - La Junta confirme la sede de la ceremonia (campo `ceremonia.lugar`)
- *  - Cambien fechas oficiales del periodo o ceremonia
+ *  - Cambien fechas oficiales del periodo de nominación
+ *    (la fecha/sede de la ceremonia se editan en exaltacion-2026.ts)
  *  - Se actualicen teléfonos de contacto o puntos de distribución
  *  - Se proceda a la 10ma exaltación (renombrar a nominacion-2027.ts)
  */
+
+import { EXALTACION_2026 } from "./exaltacion-2026";
 
 export interface PuntoDistribucion {
   readonly nombre: string;
@@ -18,9 +24,8 @@ export interface PuntoDistribucion {
 export interface CeremoniaInfo {
   readonly fecha: Date;
   /**
-   * Sede de la ceremonia. `null` mientras la Junta no la confirme oficialmente.
-   * Cuando se confirme, sustituir `null` por el string con el nombre de la sede.
-   * Los componentes que la consumen DEBEN manejar el caso null sin renderizar
+   * Sede de la ceremonia. Tipo `string | null` por compatibilidad: los
+   * componentes que la consumen DEBEN manejar el caso null sin renderizar
    * placeholders (ej: NO renderizar la sección si lugar === null).
    */
   readonly lugar: string | null;
@@ -68,10 +73,10 @@ export const NOMINACION_2026: NominacionData = {
   exaltacionNumero: 9,
   exaltacionOrdinal: "Novena",
   ceremonia: {
-    fecha: new Date("2026-11-08T15:00:00-04:00"),
-    // ⚠️ EDITAR AQUÍ cuando la Junta confirme la sede de la ceremonia.
-    // Mantener `null` significa que el componente NO mostrará la sede.
-    lugar: null,
+    // Derivado de EXALTACION_2026. Para cambiar fecha, hora o sede,
+    // editar src/lib/data/exaltacion-2026.ts (sede confirmada: flyer oficial 2026-10-12).
+    fecha: EXALTACION_2026.inicio,
+    lugar: EXALTACION_2026.sede.nombre,
   },
   periodo: {
     apertura: new Date("2026-05-22T08:00:00-04:00"),

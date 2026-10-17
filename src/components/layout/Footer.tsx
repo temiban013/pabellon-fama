@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { PABELLON_CONSTANTS } from "@/lib/utils";
 
 interface FooterProps {
   className?: string;
@@ -66,8 +67,8 @@ export function Footer({ className = "" }: FooterProps) {
               </div>
             </div>
             <p className="text-pabellon-green-200 text-sm leading-relaxed">
-              Honrando la excelencia deportiva de Humacao, Puerto Rico desde
-              1996.
+              Honrando la excelencia deportiva de Humacao, Puerto Rico desde{" "}
+              {PABELLON_CONSTANTS.FOUNDED_YEAR}.
             </p>
           </div>
 

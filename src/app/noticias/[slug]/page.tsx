@@ -11,6 +11,8 @@ import {
 import { generateNewsArticleSchema } from "@/lib/schemas/news-article-schema";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
+import { ExaltacionJsonLd } from "@/components/exaltacion/ExaltacionJsonLd";
+import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
 
 interface NoticiaPageProps {
   params: Promise<{ slug: string }>;
@@ -56,6 +58,11 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
   const { label, badgeClass } = CATEGORIAS_NOTICIA[noticia.categoria];
   const enMemoria = noticia.categoria === "en-memoria";
   const newsArticleJsonLd = generateNewsArticleSchema(noticia);
+  const esNoticiaExaltacion = noticia.slug === EXALTACION_2026.noticiaSlug;
+  // Imágenes verticales (p. ej. flyer 2:3): se contienen, NUNCA se recortan.
+  const imagenVertical =
+    noticia.imagen !== undefined &&
+    noticia.imagen.height > noticia.imagen.width;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -66,6 +73,7 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
           __html: JSON.stringify(newsArticleJsonLd),
         }}
       />
+      {esNoticiaExaltacion && <ExaltacionJsonLd />}
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Link
@@ -107,8 +115,16 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
                 alt={noticia.imagen.alt}
                 width={noticia.imagen.width}
                 height={noticia.imagen.height}
-                className="w-full h-auto"
-                sizes="(max-width: 768px) 100vw, 720px"
+                className={
+                  imagenVertical
+                    ? "mx-auto h-auto max-h-[80vh] w-auto max-w-full object-contain"
+                    : "w-full h-auto"
+                }
+                sizes={
+                  imagenVertical
+                    ? "(max-width: 768px) 100vw, 540px"
+                    : "(max-width: 768px) 100vw, 720px"
+                }
               />
             </div>
           )}
