@@ -21,6 +21,7 @@
 
 import { parseDateLocal } from "@/lib/date-utils";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
+import { formatearFechaLargaAST } from "@/lib/exaltacion";
 
 export type CategoriaNoticia =
   | "en-memoria"
@@ -59,21 +60,36 @@ export interface Noticia {
 // (2026-07-14). RESTRICCIÓN VIGENTE: solo hechos verificados — NO añadir
 // edades, causa de muerte, sobrevivientes ni relaciones familiares sin
 // confirmación de la Junta.
+
+// PF-072: la ceremonia ya se celebró. Fecha y sede derivadas de EXALTACION_2026
+// («domingo 8 de noviembre de 2026»: sin la coma de formatearFechaLargaAST).
+const FECHA_EXALTACION = formatearFechaLargaAST(EXALTACION_2026.inicio).replace(
+  ",",
+  "",
+);
+const LUGAR_EXALTACION = `${EXALTACION_2026.sede.nombre} de ${EXALTACION_2026.sede.municipio}`;
+
 export const noticias: readonly Noticia[] = [
   {
     slug: EXALTACION_2026.noticiaSlug,
     titulo: "Novena Exaltación del Pabellón de la Fama",
     fecha: "2026-10-01",
     categoria: "exaltacion",
-    resumen:
-      "El Pabellón celebrará su Novena Exaltación el domingo 8 de noviembre de 2026, a la 1:00 p.m., en el Centro de Bellas Artes Águedo Mojica Marrero de Humacao.",
+    resumen: `El Pabellón celebró su ${EXALTACION_2026.titulo} el ${FECHA_EXALTACION} en el ${LUGAR_EXALTACION}.`,
     contenido: [
-      "El Pabellón de la Fama del Deporte Humacaeño celebrará su Novena Exaltación el domingo 8 de noviembre de 2026, a la 1:00 p.m., en el Centro de Bellas Artes Águedo Mojica Marrero de Humacao.",
-      "La ceremonia lleva por lema «Honrando nuestros atletas y propulsores».",
+      `El Pabellón de la Fama del Deporte Humacaeño celebró su ${EXALTACION_2026.titulo} el ${FECHA_EXALTACION} en el ${LUGAR_EXALTACION}.`,
+      `La ceremonia llevó por lema «${EXALTACION_2026.lema}».`,
       "Para más información, comuníquese al 787-410-1237 o escriba a informa@pfdh.org.",
     ],
     // Flyer vertical 2:3 (1024×1536): fuente única en EXALTACION_2026.
     imagen: EXALTACION_2026.flyer,
+    actualizaciones: [
+      {
+        fecha: "2026-11-11",
+        texto:
+          "La ceremonia se celebró el domingo 8 de noviembre de 2026; se actualizó el texto para reflejarlo.",
+      },
+    ],
   },
   {
     slug: "entrevista-pipa-sierra",

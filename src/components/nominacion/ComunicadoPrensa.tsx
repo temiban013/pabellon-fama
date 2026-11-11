@@ -9,8 +9,13 @@ export function ComunicadoPrensa({ comunicadoPdf }: ComunicadoPrensaProps) {
   return (
     <article className="max-w-4xl mx-auto">
       <h2 className="text-3xl font-bold text-blue-900 mb-2">Comunicado de Prensa Oficial</h2>
-      <p className="text-sm text-orange-600 font-semibold uppercase tracking-wide mb-6">
+      <p className="text-sm text-orange-600 font-semibold uppercase tracking-wide mb-3">
         Junta de Directores · PFDH
+      </p>
+
+      {/* PF-072: el periodo de nominaciones cerró; el texto de abajo es literal. */}
+      <p className="text-sm text-gray-600 mb-4">
+        Archivo: comunicado emitido para el periodo de nominaciones de 2026.
       </p>
 
       <p className="text-gray-700 leading-relaxed mb-6">

@@ -157,6 +157,28 @@ describe('data/noticias.ts', () => {
       expect(noticia?.resumen.length).toBeLessThanOrEqual(160);
     });
 
+    it('el resumen y el contenido están en pasado, con el texto aprobado (PF-072)', () => {
+      expect(noticia?.resumen).toBe(
+        'El Pabellón celebró su Novena Exaltación el domingo 8 de noviembre de 2026 en el Centro de Bellas Artes Águedo Mojica Marrero de Humacao.',
+      );
+      expect(noticia?.contenido).toEqual([
+        'El Pabellón de la Fama del Deporte Humacaeño celebró su Novena Exaltación el domingo 8 de noviembre de 2026 en el Centro de Bellas Artes Águedo Mojica Marrero de Humacao.',
+        'La ceremonia llevó por lema «Honrando nuestros atletas y propulsores».',
+        'Para más información, comuníquese al 787-410-1237 o escriba a informa@pfdh.org.',
+      ]);
+    });
+
+    it('registra la actualización del 2026-11-11 y conserva la fecha de publicación', () => {
+      expect(noticia?.fecha).toBe('2026-10-01');
+      expect(noticia?.actualizaciones).toEqual([
+        {
+          fecha: '2026-11-11',
+          texto:
+            'La ceremonia se celebró el domingo 8 de noviembre de 2026; se actualizó el texto para reflejarlo.',
+        },
+      ]);
+    });
+
     it('la imagen es el flyer vertical 1024x1536', () => {
       expect(noticia?.imagen?.width).toBe(1024);
       expect(noticia?.imagen?.height).toBe(1536);

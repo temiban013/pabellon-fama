@@ -221,7 +221,9 @@
 /* ── Aviso de la Novena Exaltación (PF-065) ──
    El layout lo renderiza siempre; en Inicio y en la propia noticia sobra. Se oculta por
    CSS (sin JS ni pathname: usePathname() no es fiable en el prerender de Vercel).
-   Navegadores sin :has() simplemente muestran el aviso (inofensivo). */
+   Navegadores sin :has() simplemente muestran el aviso (inofensivo).
+   Esta regla y los atributos data-pagina (Inicio y noticia de la Exaltación) solo importan
+   mientras AvisoExaltacion se renderiza (fase ≠ realizada, PF-072): quitarlos junto con él. */
 body:has([data-pagina="inicio"], [data-pagina="noticia-exaltacion"]) .aviso-exaltacion {
   display: none;
 }

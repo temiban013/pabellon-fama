@@ -68,6 +68,7 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
     <div
       className="min-h-screen bg-gray-50"
       // globals.css oculta el aviso global en la propia noticia de la Exaltación (PF-065).
+      // Solo importa mientras AvisoExaltacion se renderiza (fase ≠ realizada): quitar junto con él.
       data-pagina={esNoticiaExaltacion ? "noticia-exaltacion" : undefined}
     >
       {/* Structured Data (NewsArticle) */}

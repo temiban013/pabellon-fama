@@ -7,7 +7,7 @@ import { VisibleHasta } from "@/components/exaltacion/VisibleHasta";
 import { ProximaExaltacion } from "@/components/exaltacion/ProximaExaltacion";
 import { ExaltacionJsonLd } from "@/components/exaltacion/ExaltacionJsonLd";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
-import { aniosDesdeIncorporacion } from "@/lib/exaltacion";
+import { aniosDesdeIncorporacion, getFaseEvento } from "@/lib/exaltacion";
 
 // Revalida a diario para que los años de historia cambien el 22 de diciembre sin deploy.
 export const revalidate = 86400;
@@ -23,10 +23,11 @@ export default function HomePage() {
   const ahora = new Date();
   return (
     // data-pagina: globals.css oculta el aviso global de la Exaltación en Inicio (PF-065).
+    // Solo importa mientras AvisoExaltacion se renderiza (fase ≠ realizada): quitar junto con él.
     <div data-pagina="inicio">
       <Hero />
-      {/* JSON-LD fuera de VisibleHasta: siempre presente en el HTML estático. */}
-      <ExaltacionJsonLd />
+      {/* JSON-LD fuera de VisibleHasta, pero solo mientras el evento no ha sido realizado (PF-072). */}
+      {getFaseEvento(EXALTACION_2026, ahora) !== "realizada" && <ExaltacionJsonLd />}
       <VisibleHasta hasta={EXALTACION_2026.inicio.toISOString()}>
         <ProximaExaltacion />
       </VisibleHasta>

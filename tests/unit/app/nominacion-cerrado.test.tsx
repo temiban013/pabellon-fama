@@ -18,6 +18,9 @@ describe("NominacionPage con el periodo cerrado (2026-10-17)", () => {
     expect(
       screen.getAllByText(/El periodo de nominaciones cerró el 31 de agosto de 2026\./).length,
     ).toBeGreaterThan(0);
+    expect(
+      screen.getByText("Archivo: comunicado emitido para el periodo de nominaciones de 2026."),
+    ).toBeInTheDocument();
     expect(screen.queryByText("¿Listo para nominar?")).not.toBeInTheDocument();
     expect(
       screen.getAllByRole("link", { name: "Ver detalles de la Novena Exaltación" }),

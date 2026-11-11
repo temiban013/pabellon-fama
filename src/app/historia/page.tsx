@@ -12,7 +12,10 @@ import {
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 import { siteUrl } from "@/lib/constants/site";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
-import { aniosDesdeIncorporacion } from "@/lib/exaltacion";
+import {
+  aniosDesdeIncorporacion,
+  formatearFechaLargaAST,
+} from "@/lib/exaltacion";
 
 export const revalidate = 86400;
 
@@ -35,29 +38,6 @@ interface EventoHistorico {
     | "reconocimiento";
   destacado?: boolean;
 }
-
-/** Texto de la ceremonia a partir de la fecha/hora de EXALTACION_2026 (AST). */
-const descripcionEvento = (inicio: Date, sede: string): string => {
-  const fecha = new Intl.DateTimeFormat("es-PR", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "America/Puerto_Rico",
-  })
-    .format(inicio)
-    .replace(",", "");
-  const hora = new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-    timeZone: "America/Puerto_Rico",
-  })
-    .format(inicio)
-    .replace(/\s?AM$/, " a.m.")
-    .replace(/\s?PM$/, " p.m.");
-  return `Programada para el ${fecha}, a la ${hora}, en el ${sede}.`;
-};
 
 const eventosHistoricos: EventoHistorico[] = [
   {
@@ -208,11 +188,10 @@ const eventosHistoricos: EventoHistorico[] = [
     año: 2015,
     titulo: "Octava Ceremonia de Exaltación",
     descripcion:
-      "Última ceremonia realizada, completando un total de 78 deportistas exaltados.",
+      "Se exaltan 6 deportistas, completando 78 deportistas exaltados entre 2000 y 2015.",
     detalles: [
-      "6 atletas y propulsores exaltados",
-      "78 deportistas exaltados en total",
-      "3 equipos completos honrados a lo largo de 8 ceremonias",
+      "78 deportistas exaltados de 2000 a 2015",
+      "3 equipos completos honrados en las primeras 8 ceremonias",
     ],
     icono: "ceremonia",
   },
@@ -254,10 +233,9 @@ const eventosHistoricos: EventoHistorico[] = [
   {
     año: 2026,
     titulo: "Novena Ceremonia de Exaltación",
-    descripcion: descripcionEvento(
-      EXALTACION_2026.inicio,
-      EXALTACION_2026.sede.nombre,
-    ),
+    // «domingo 8 de noviembre de 2026»: sin la coma de formatearFechaLargaAST.
+    descripcion: `Celebrada el ${formatearFechaLargaAST(EXALTACION_2026.inicio).replace(",", "")} en el ${EXALTACION_2026.sede.nombre}.`,
+    detalles: [`Lema: «${EXALTACION_2026.lema}»`],
     icono: "ceremonia",
     destacado: true,
   },
@@ -266,7 +244,7 @@ const eventosHistoricos: EventoHistorico[] = [
 const getLogrosDestacados = (ahora: Date) => [
   {
     titulo: "78 Deportistas Exaltados",
-    descripcion: "Atletas y propulsores honrados en 8 ceremonias",
+    descripcion: "En las ocho ceremonias de 2000 a 2015",
     icono: Trophy,
   },
   {

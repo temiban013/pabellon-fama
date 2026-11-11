@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
+import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
+import { getFaseEvento } from '@/lib/exaltacion';
 
 /**
  * PF-065 (defecto post-deploy): el aviso global de la Novena Exaltación salía en el HTML
@@ -14,6 +16,16 @@ import path from 'node:path';
  * El ocultamiento por CSS (`body:has([data-pagina=…]) .aviso-exaltacion`) no depende de
  * la ruta que vea el servidor, así que es lo que se exige.
  *
+ * PF-072: las pruebas son sensibles a la fase del evento EN EL MOMENTO DEL BUILD (no la del
+ * reloj de la prueba), porque el HTML estático congela la fase con que se generó. Se toma
+ * la fecha de modificación de `.next/BUILD_ID` y se evalúa `getFaseEvento` con ella:
+ * - fase "proxima"/"hoy": el aviso está en las páginas (salvo Inicio y la noticia, que lo
+ *   ocultan por CSS) y las reglas CSS / marcas `data-pagina` se exigen como antes.
+ * - fase "realizada": NINGUNA página prerenderizada contiene el aviso (su «Ver detalles →»,
+ *   clase `aviso-exaltacion`), ni la tarjeta «Próximo gran evento», ni el JSON-LD `Event`
+ *   de la Exaltación en Inicio. Las marcas `data-pagina` y la regla CSS se conservan
+ *   (inofensivas) y se siguen comprobando.
+ *
  * Requiere `pnpm build` previo. Sin build (clon limpio) las pruebas se omiten con una
  * advertencia para no romper `pnpm test:run`; con `REQUIRE_NEXT_BUILD=1` fallan en su lugar.
  */
@@ -25,6 +37,24 @@ const HTML_HISTORIA = path.join(DIR_APP, 'historia.html');
 const HTML_NOTICIA = path.join(DIR_APP, 'noticias/novena-exaltacion-2026.html');
 
 const hayBuild = [HTML_INICIO, HTML_HISTORIA, HTML_NOTICIA].every((f) => existsSync(f));
+
+/** Fase del evento cuando se hizo el build (mtime de BUILD_ID, o del HTML de Inicio). */
+const ARCHIVO_BUILD = existsSync(path.join(RAIZ, '.next/BUILD_ID'))
+  ? path.join(RAIZ, '.next/BUILD_ID')
+  : HTML_INICIO;
+const faseDelBuild = hayBuild
+  ? getFaseEvento(EXALTACION_2026, statSync(ARCHIVO_BUILD).mtime)
+  : 'proxima';
+const avisoVigente = faseDelBuild !== 'realizada';
+
+/** Todos los .html prerenderizados bajo .next/server/app (recursivo). */
+function htmlsPrerenderizados(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((d) => {
+    const ruta = path.join(dir, d.name);
+    if (d.isDirectory()) return htmlsPrerenderizados(ruta);
+    return d.name.endsWith('.html') ? [ruta] : [];
+  });
+}
 const exigirBuild = process.env.REQUIRE_NEXT_BUILD === '1';
 
 if (!hayBuild && !exigirBuild) {
@@ -88,6 +118,31 @@ describe.skipIf(!hayBuild && !exigirBuild)('aviso de la Novena Exaltación en el
     ).toBe(true);
   });
 
+  describe.skipIf(avisoVigente)('build posterior al evento (fase realizada, PF-072)', () => {
+    it('ninguna página prerenderizada contiene el aviso ni la tarjeta «Próximo gran evento»', () => {
+      const paginas = htmlsPrerenderizados(DIR_APP);
+      expect(paginas.length).toBeGreaterThan(0);
+      for (const ruta of paginas) {
+        const html = readFileSync(ruta, 'utf8');
+        // Solo el «Ver detalles →» del aviso (span dorado subrayado); ExaltadoCard usa el
+        // mismo texto en /directorio y no es parte de PF-072.
+        expect(html, `${ruta} contiene «Ver detalles →» del aviso`).not.toContain(
+          'text-pabellon-gold-400 underline">Ver detalles →',
+        );
+        expect(html, `${ruta} contiene la clase aviso-exaltacion`).not.toContain('aviso-exaltacion');
+        expect(html, `${ruta} contiene «Próximo gran evento»`).not.toContain('Próximo gran evento');
+      }
+    });
+
+    it('Inicio no trae el JSON-LD Event de la Exaltación', () => {
+      const html = readFileSync(HTML_INICIO, 'utf8');
+      const bloques = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(
+        (m) => m[1] ?? '',
+      );
+      for (const b of bloques) expect(b).not.toContain(EXALTACION_2026.titulo);
+    });
+  });
+
   describe('Inicio (/)', () => {
     it('el aviso, si está en el HTML, lleva la clase aviso-exaltacion', () => {
       const p = cargar(HTML_INICIO);
@@ -118,7 +173,7 @@ describe.skipIf(!hayBuild && !exigirBuild)('aviso de la Novena Exaltación en el
   });
 
   describe('otra página (/historia)', () => {
-    it('el aviso está en el HTML, con la clase y enlazando a la noticia', () => {
+    it.skipIf(!avisoVigente)('el aviso está en el HTML, con la clase y enlazando a la noticia', () => {
       const p = cargar(HTML_HISTORIA);
       expect(tieneAviso(p)).toBe(true);
       expect(avisoConClase(p)).toBe(true);

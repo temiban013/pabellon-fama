@@ -5,6 +5,7 @@ import {
   capitalizar,
   formatearFechaCortaAST,
   formatearHoraAST,
+  getFaseEvento,
   partesFechaAST,
 } from '@/lib/exaltacion';
 import { VisibleHasta } from '@/components/exaltacion/VisibleHasta';
@@ -22,13 +23,19 @@ const FECHA_MOVIL = formatearFechaCortaAST(inicio);
  * Franja global (NO sticky) bajo el Header que anuncia la Novena Exaltación
  * (PF-065 §3.2). Contraste: texto blanco y dorado-400 sobre blue-900.
  *
- * Se renderiza SIEMPRE en el servidor. En Inicio y en la propia noticia el evento ya es
- * el protagonista y el aviso sobra: lo oculta una regla CSS de `globals.css`
- * (`body:has([data-pagina=…]) .aviso-exaltacion`), no la ruta. `usePathname()` en el
- * prerender no es fiable: en Vercel, Inicio llega como "/index" y el aviso se colaba
- * en el HTML y provocaba un error de hidratación (React #418).
+ * Server Component. Devuelve null cuando el evento ya fue realizado (PF-072): el aviso
+ * desaparece del HTML del servidor, no solo tras la hidratación. `VisibleHasta` queda
+ * como respaldo para el hueco entre revalidaciones (el layout es estático).
+ *
+ * Mientras el evento está en fase "proxima" u "hoy" se renderiza en todas las páginas. En
+ * Inicio y en la propia noticia el evento ya es el protagonista y el aviso sobra: lo oculta
+ * una regla CSS de `globals.css` (`body:has([data-pagina=…]) .aviso-exaltacion`), no la
+ * ruta. `usePathname()` en el prerender no es fiable: en Vercel, Inicio llega como "/index"
+ * y el aviso se colaba en el HTML y provocaba un error de hidratación (React #418).
  */
-export function AvisoExaltacion(): React.JSX.Element {
+export function AvisoExaltacion(): React.JSX.Element | null {
+  if (getFaseEvento(EXALTACION_2026, new Date()) === 'realizada') return null;
+
   return (
     <VisibleHasta hasta={EXALTACION_2026.inicio.toISOString()}>
       <Link
