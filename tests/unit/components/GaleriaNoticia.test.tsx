@@ -77,9 +77,9 @@ describe('GaleriaNoticia', () => {
 
   it('muestra el crédito solo si no es null', () => {
     const { rerender } = render(<GaleriaNoticia galeria={galeria()} />);
-    expect(screen.queryByText(/Crédito:/)).toBeNull();
+    expect(screen.queryByText(/^Fotos:/)).toBeNull();
     rerender(<GaleriaNoticia galeria={galeria('Fotos de prueba')} />);
-    expect(screen.getByText('Crédito: Fotos de prueba')).toBeInTheDocument();
+    expect(screen.getByText('Fotos: Fotos de prueba')).toBeInTheDocument();
   });
 
   it('abre el visor en la foto pulsada, navega con flechas y cierra con Esc devolviendo el foco', async () => {

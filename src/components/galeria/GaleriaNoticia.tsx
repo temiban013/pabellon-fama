@@ -98,7 +98,7 @@ export function GaleriaNoticia({ galeria }: GaleriaNoticiaProps) {
       </ul>
 
       {credito && (
-        <p className="mt-4 text-sm text-gray-600">Crédito: {credito}</p>
+        <p className="mt-4 text-sm text-gray-600">Fotos: {credito}</p>
       )}
 
       {abierta !== null && (

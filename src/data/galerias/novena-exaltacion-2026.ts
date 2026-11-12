@@ -12,7 +12,7 @@ import type { Galeria } from "./types";
 export const galeriaNovenaExaltacion2026: Galeria = {
   id: "novena-exaltacion-2026",
   titulo: "Galería de la ceremonia",
-  credito: null,
+  credito: "Mario R. Ayala",
   portada: {
     "src": "https://licijzlydvcugjx5.public.blob.vercel-storage.com/galerias/novena-exaltacion-2026/full/pxl-20261108-185943981.webp",
     "alt": "Los cinco exaltados de pie, con bandas amarillas y la mano derecha en alto",
