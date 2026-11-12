@@ -23,7 +23,9 @@ const navigation: NavigationItem[] = [
   { name: "Horario", href: "/horario" },
   { name: "Calendario", href: "/calendario" },
   { name: "Noticias", href: "/noticias" },
-  { name: "Nominaciones", href: "/nominacion" },
+  // «Nominaciones» fuera del menú desde 2026-11-12: el período cerró y la próxima
+  // exaltación es en dos años. La página /nominacion sigue publicada como archivo;
+  // reponer aquí { name: "Nominaciones", href: "/nominacion" } al abrir el próximo ciclo.
   { name: "Contribuir", href: "/contribuir" },
 ];
 
