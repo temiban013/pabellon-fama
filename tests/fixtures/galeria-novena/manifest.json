@@ -1,0 +1,52 @@
+{
+  "evento": "novena-exaltacion-2026",
+  "generado": "2026-11-11T00:00:00.000Z",
+  "credito": null,
+  "fotos": [],
+  "seleccion": [
+    {
+      "id": "fixture-001",
+      "archivo_original": "FIXTURE-001.jpg",
+      "orden": 1,
+      "categoria": "llegada",
+      "alt": "Fotografía de prueba de la llegada de los asistentes al Centro de Bellas Artes.",
+      "pie": null,
+      "edicion": null,
+      "full": { "archivo": "derivados/full/fixture-001.webp", "width": 1600, "height": 1067, "bytes": 180000 },
+      "thumb": { "archivo": "derivados/thumb/fixture-001.webp", "width": 480, "height": 320, "bytes": 18000 }
+    },
+    {
+      "id": "fixture-002",
+      "archivo_original": "FIXTURE-002.jpg",
+      "orden": 2,
+      "categoria": "discurso",
+      "alt": "Fotografía de prueba de un orador en el podio durante la ceremonia.",
+      "pie": "Pie de foto de prueba",
+      "edicion": "recorte",
+      "full": { "archivo": "derivados/full/fixture-002.webp", "width": 1067, "height": 1600, "bytes": 170000 },
+      "thumb": { "archivo": "derivados/thumb/fixture-002.webp", "width": 320, "height": 480, "bytes": 16000 }
+    },
+    {
+      "id": "fixture-003",
+      "archivo_original": "FIXTURE-003.jpg",
+      "orden": 3,
+      "categoria": "grupal",
+      "alt": "Fotografía de prueba de un grupo reunido frente al escenario.",
+      "pie": null,
+      "edicion": null,
+      "full": { "archivo": "derivados/full/fixture-003.webp", "width": 1600, "height": 1067, "bytes": 190000 },
+      "thumb": { "archivo": "derivados/thumb/fixture-003.webp", "width": 480, "height": 320, "bytes": 19000 }
+    }
+  ],
+  "destacadas": {
+    "portada": "fixture-001",
+    "og": {
+      "archivo": "derivados/og-1200x630.jpg",
+      "width": 1200,
+      "height": 630,
+      "bytes": 90000,
+      "de": "fixture-001",
+      "alt": "Imagen de prueba para compartir la noticia de la Novena Exaltación."
+    }
+  }
+}

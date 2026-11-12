@@ -37,6 +37,7 @@
   ],
   "exclude": [
     "node_modules",
+    ".media-staging",
     "tests/**/*",
     "vitest.config.ts",
     "playwright.config.ts",

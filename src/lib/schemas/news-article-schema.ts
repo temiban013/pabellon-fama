@@ -13,6 +13,10 @@ const organizacion: Organization = {
   },
 };
 
+/** Las imágenes locales llevan el dominio del sitio; las de Blob ya son absolutas. */
+const urlAbsoluta = (src: string): string =>
+  src.startsWith("https://") ? src : `${SITE_URL}${src}`;
+
 /**
  * JSON-LD NewsArticle para las páginas de detalle /noticias/[slug] (PF-051, D2).
  * Convención tipada de src/lib/schemas/ (modelado en event-schema.ts) —
@@ -42,7 +46,7 @@ export function generateNewsArticleSchema(
       "@id": urlNoticia,
     },
     articleBody: noticia.contenido.join("\n\n"),
-    image: noticia.imagen ? [`${SITE_URL}${noticia.imagen.src}`] : undefined,
+    image: noticia.imagen ? [urlAbsoluta(noticia.imagen.src)] : undefined,
     author: organizacion,
     publisher: organizacion,
   };

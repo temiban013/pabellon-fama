@@ -18,6 +18,7 @@ function youtubeIdsDelSitio(): string[] {
   const ids = [
     ...visitas.map((v) => v.youtubeId),
     ...noticias.map((n) => n.youtubeId),
+    ...noticias.flatMap((n) => (n.videos ?? []).map((v) => v.youtubeId)),
     ...todosLosExaltados.map((e) => e.entrevistaYoutubeId),
   ].filter((id): id is string => Boolean(id));
 

@@ -14,7 +14,8 @@
  * - `exaltadoSlug`: id VIVO del directorio (ej. "julio-yuyo-maldonado")
  *   para noticias "en-memoria" — debe existir en todosLosExaltados.
  * - Imágenes: viven en /public/images/noticias/, optimizadas a ~1600px
- *   en su lado mayor.
+ *   en su lado mayor. Las noticias con galería (`galeriaId`) usan la portada
+ *   y la imagen OG de la galería (URLs absolutas de Vercel Blob).
  * - Tratamiento "en-memoria": sobrio — insignia slate neutral, sin acento
  *   dorado ni adornos.
  */
@@ -22,6 +23,7 @@
 import { parseDateLocal } from "@/lib/date-utils";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
 import { formatearFechaLargaAST } from "@/lib/exaltacion";
+import { getGaleria, type GaleriaId } from "@/data/galerias";
 
 export type CategoriaNoticia =
   | "en-memoria"
@@ -44,12 +46,31 @@ export interface Noticia {
   readonly exaltadoSlug?: string;
   /** ID de video de YouTube; si está presente se muestra embebido al final */
   readonly youtubeId?: string;
+  /**
+   * Videos adicionales de YouTube (PF-073): se muestran en una cuadrícula
+   * «Momentos en video» después de la galería. `titulo` es el pie visible y el
+   * `title` del iframe; nombres de personas solo con fuente.
+   */
+  readonly videos?: readonly {
+    readonly youtubeId: string;
+    readonly titulo: string;
+  }[];
   readonly imagen?: {
-    readonly src: string; // under public/images/noticias/
+    /** Ruta bajo public/images/noticias/ o URL absoluta (Vercel Blob). */
+    readonly src: string;
     readonly alt: string;
     readonly width: number;
     readonly height: number;
   };
+  /** Imagen Open Graph (1200×630); si falta, se usa `imagen`. */
+  readonly imagenOg?: {
+    readonly src: string;
+    readonly alt: string;
+    readonly width: number;
+    readonly height: number;
+  };
+  /** Clave del registro src/data/galerias: galería de fotos bajo el cuerpo. */
+  readonly galeriaId?: GaleriaId;
   readonly actualizaciones?: readonly {
     readonly fecha: string;
     readonly texto: string;
@@ -69,6 +90,9 @@ const FECHA_EXALTACION = formatearFechaLargaAST(EXALTACION_2026.inicio).replace(
 );
 const LUGAR_EXALTACION = `${EXALTACION_2026.sede.nombre} de ${EXALTACION_2026.sede.municipio}`;
 
+// PF-073: galería de la ceremonia (fotos en Vercel Blob).
+const GALERIA_EXALTACION = getGaleria("novena-exaltacion-2026");
+
 export const noticias: readonly Noticia[] = [
   {
     slug: EXALTACION_2026.noticiaSlug,
@@ -81,8 +105,24 @@ export const noticias: readonly Noticia[] = [
       `La ceremonia llevó por lema «${EXALTACION_2026.lema}».`,
       "Para más información, comuníquese al 787-410-1237 o escriba a informa@pfdh.org.",
     ],
-    // Flyer vertical 2:3 (1024×1536): fuente única en EXALTACION_2026.
-    imagen: EXALTACION_2026.flyer,
+    // PF-073: la imagen principal es la portada de la galería; el flyer 2:3
+    // (EXALTACION_2026.flyer) pasó a ser «La invitación», primera foto de la galería.
+    imagen: GALERIA_EXALTACION.portada,
+    imagenOg: GALERIA_EXALTACION.og,
+    galeriaId: "novena-exaltacion-2026",
+    // PF-073: ceremonia completa (cámara y edición de Reinaldo Álvarez, por encargo
+    // de la Junta; video público en @PabellonFDH).
+    youtubeId: "wHCHip8EoJI",
+    // PF-073: seis clips breves, «No listado» en YouTube (solo se ven desde aquí).
+    // Los tres nombres son los que Mario puso en los títulos de YouTube (2026-11-12).
+    videos: [
+      { youtubeId: "YivSpF5SXmw", titulo: "El escenario" },
+      { youtubeId: "AVoZTc1-xLQ", titulo: "Obed Santana Acosta" },
+      { youtubeId: "2DtweeQToSo", titulo: "Francisco Betancourt" },
+      { youtubeId: "oVjRyW4ZImg", titulo: "Un momento solemne" },
+      { youtubeId: "yZFX7DMjLxI", titulo: "Los exaltados con sus trofeos" },
+      { youtubeId: "KWyPvNH9HEg", titulo: "Palabras de José Escalera" },
+    ],
     actualizaciones: [
       {
         fecha: "2026-11-11",

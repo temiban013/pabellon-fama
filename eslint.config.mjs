@@ -7,6 +7,7 @@ const eslintConfig = [
     ignores: [
       "node_modules/**",
       ".next/**",
+      ".media-staging/**",
       "tests/**",
       "next-env.d.ts",
       "src/scripts/**/*",

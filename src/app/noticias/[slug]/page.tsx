@@ -13,6 +13,8 @@ import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { YouTubeEmbed } from "@/components/shared/YouTubeEmbed";
 import { ExaltacionJsonLd } from "@/components/exaltacion/ExaltacionJsonLd";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
+import { getGaleria } from "@/data/galerias";
+import { GaleriaNoticia } from "@/components/galeria/GaleriaNoticia";
 
 interface NoticiaPageProps {
   params: Promise<{ slug: string }>;
@@ -38,12 +40,15 @@ export async function generateMetadata({
     };
   }
 
+  // PF-073: la imagen OG dedicada (1200×630) tiene prioridad sobre la principal.
+  const imagenSocial = noticia.imagenOg ?? noticia.imagen;
+
   return generateSEOMetadata({
     title: noticia.titulo,
     description: noticia.resumen,
     url: `/noticias/${noticia.slug}`,
     type: "article",
-    ...(noticia.imagen ? { image: noticia.imagen.src } : {}),
+    ...(imagenSocial ? { image: imagenSocial.src } : {}),
   });
 }
 
@@ -59,6 +64,7 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
   const enMemoria = noticia.categoria === "en-memoria";
   const newsArticleJsonLd = generateNewsArticleSchema(noticia);
   const esNoticiaExaltacion = noticia.slug === EXALTACION_2026.noticiaSlug;
+  const galeria = noticia.galeriaId ? getGaleria(noticia.galeriaId) : undefined;
   // Imágenes verticales (p. ej. flyer 2:3): se contienen, NUNCA se recortan.
   const imagenVertical =
     noticia.imagen !== undefined &&
@@ -149,6 +155,35 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
               title={noticia.titulo}
               className="mt-8"
             />
+          )}
+
+          {galeria && <GaleriaNoticia galeria={galeria} />}
+
+          {noticia.videos && noticia.videos.length > 0 && (
+            <section
+              aria-labelledby="videos-titulo"
+              className="mt-10 border-t border-gray-200 pt-8"
+            >
+              <h2
+                id="videos-titulo"
+                className="mb-4 text-2xl font-bold text-pabellon-green-800"
+              >
+                Momentos en video
+              </h2>
+              <ul className="grid gap-6 sm:grid-cols-2">
+                {noticia.videos.map((video) => (
+                  <li key={video.youtubeId}>
+                    <YouTubeEmbed
+                      youtubeId={video.youtubeId}
+                      title={video.titulo}
+                    />
+                    <p className="mt-2 text-sm font-medium text-gray-700">
+                      {video.titulo}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
 
           {noticia.actualizaciones && noticia.actualizaciones.length > 0 && (

@@ -179,10 +179,18 @@ describe('data/noticias.ts', () => {
       ]);
     });
 
-    it('la imagen es el flyer vertical 1024x1536', () => {
-      expect(noticia?.imagen?.width).toBe(1024);
-      expect(noticia?.imagen?.height).toBe(1536);
-      expect(noticia?.imagen?.src).toBe('/images/noticias/novena-exaltacion-2026.jpg');
+    it('la imagen principal es la portada de la galería (Vercel Blob, PF-073)', () => {
+      expect(noticia?.imagen?.src).toMatch(
+        /^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/galerias\/novena-exaltacion-2026\/full\//,
+      );
+      expect(noticia?.imagen?.width).toBeGreaterThan(0);
+      expect(noticia?.imagen?.height).toBeGreaterThan(0);
+    });
+
+    it('el flyer vertical 1024x1536 sigue siendo la fuente de EXALTACION_2026', () => {
+      expect(EXALTACION_2026.flyer.width).toBe(1024);
+      expect(EXALTACION_2026.flyer.height).toBe(1536);
+      expect(EXALTACION_2026.flyer.src).toBe('/images/noticias/novena-exaltacion-2026.jpg');
     });
 
     it('getUltimasNoticias la ordena según su fecha (primera: es la más reciente)', () => {

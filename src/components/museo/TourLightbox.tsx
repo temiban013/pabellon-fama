@@ -2,10 +2,21 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import type { TourPhoto } from "@/lib/museo-tour";
+
+/**
+ * Foto mínima que muestra el visor. `TourPhoto` (museo) y las fotos de las
+ * galerías de noticias (PF-073, mapeadas desde `FotoGaleria`) la satisfacen.
+ */
+export interface LightboxPhoto {
+  src: string;
+  alt: string;
+  caption?: string;
+  /** true para imágenes ya dimensionadas (p. ej. WebP en Vercel Blob): omite el optimizador de Next. */
+  unoptimized?: boolean;
+}
 
 interface TourLightboxProps {
-  photos: TourPhoto[];
+  photos: readonly LightboxPhoto[];
   initialIndex?: number;
   title?: string;
   onClose: () => void;
@@ -140,6 +151,7 @@ export function TourLightbox({ photos, initialIndex = 0, title, onClose }: TourL
             fill
             sizes="100vw"
             className="object-contain"
+            unoptimized={photo.unoptimized}
             priority
           />
         </figure>
