@@ -21,6 +21,12 @@ export interface CreditoIA {
   readonly categorias: readonly CategoriaIA[];
   /** Herramienta por categoría. Solo se llena donde hay respaldo documental. */
   readonly herramientas: Partial<Record<CategoriaIA, string>>;
+  /**
+   * Divulgación libre que se pinta bajo el video aunque `categorias` esté vacío
+   * (PF-075): para lo que no es parte del video pero se ve en el sitio, como una
+   * miniatura compuesta con asistencia de IA.
+   */
+  readonly nota?: string;
 }
 
 /** Etiqueta corta de cada categoría, para la nota bajo el video. */
@@ -77,9 +83,12 @@ export const creditosIA: Readonly<Record<string, CreditoIA>> = {
   // Novena Exaltación (PF-073) — sin categorías de IA declaradas.
   // Ceremonia completa: grabada y editada por Reinaldo Álvarez por encargo de la Junta.
   // No hay documentación de que su edición use IA; si se confirma, declararlo aquí.
-  // (La miniatura de YouTube, con título y escudo, se compuso con asistencia de IA
-  // sobre un fotograma del propio video; no forma parte del video.)
-  wHCHip8EoJI: { categorias: [], herramientas: {} },
+  // La miniatura sí la compusimos nosotros y se ve como póster del reproductor: `nota`.
+  wHCHip8EoJI: {
+    categorias: [],
+    herramientas: {},
+    nota: "La miniatura (título y escudo sobre un fotograma del video) se compuso con asistencia de IA.",
+  },
   // Seis clips de teléfono, solo recortados y convertidos con ffmpeg (ver videos.md).
   YivSpF5SXmw: { categorias: [], herramientas: {} },
   "AVoZTc1-xLQ": { categorias: [], herramientas: {} },

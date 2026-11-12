@@ -153,6 +153,7 @@ export default async function NoticiaPage({ params }: NoticiaPageProps) {
             <YouTubeEmbed
               youtubeId={noticia.youtubeId}
               title={noticia.titulo}
+              credito={noticia.youtubeCredito}
               className="mt-8"
             />
           )}

@@ -22,7 +22,7 @@
 
 import { parseDateLocal } from "@/lib/date-utils";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
-import { formatearFechaLargaAST } from "@/lib/exaltacion";
+import { formatearFechaLargaSinComaAST } from "@/lib/exaltacion";
 import { getGaleria, type GaleriaId } from "@/data/galerias";
 
 export type CategoriaNoticia =
@@ -46,6 +46,8 @@ export interface Noticia {
   readonly exaltadoSlug?: string;
   /** ID de video de YouTube; si está presente se muestra embebido al final */
   readonly youtubeId?: string;
+  /** Crédito visible bajo el video de `youtubeId` (p. ej. «Cámara y edición: …»). */
+  readonly youtubeCredito?: string;
   /**
    * Videos adicionales de YouTube (PF-073): se muestran en una cuadrícula
    * «Momentos en video» después de la galería. `titulo` es el pie visible y el
@@ -83,11 +85,8 @@ export interface Noticia {
 // confirmación de la Junta.
 
 // PF-072: la ceremonia ya se celebró. Fecha y sede derivadas de EXALTACION_2026
-// («domingo 8 de noviembre de 2026»: sin la coma de formatearFechaLargaAST).
-const FECHA_EXALTACION = formatearFechaLargaAST(EXALTACION_2026.inicio).replace(
-  ",",
-  "",
-);
+// («domingo 8 de noviembre de 2026»).
+const FECHA_EXALTACION = formatearFechaLargaSinComaAST(EXALTACION_2026.inicio);
 const LUGAR_EXALTACION = `${EXALTACION_2026.sede.nombre} de ${EXALTACION_2026.sede.municipio}`;
 
 // PF-073: galería de la ceremonia (fotos en Vercel Blob).
@@ -113,6 +112,8 @@ export const noticias: readonly Noticia[] = [
     // PF-073: ceremonia completa (cámara y edición de Reinaldo Álvarez, por encargo
     // de la Junta; video público en @PabellonFDH).
     youtubeId: "wHCHip8EoJI",
+    // PF-075: tal como lo dicen los créditos del propio video. No ampliar el nombre.
+    youtubeCredito: "Cámara y edición: Reinaldo Álvarez",
     // PF-073: seis clips breves, «No listado» en YouTube (solo se ven desde aquí).
     // Los tres nombres son los que Mario puso en los títulos de YouTube (2026-11-12).
     videos: [
@@ -128,6 +129,10 @@ export const noticias: readonly Noticia[] = [
         fecha: "2026-11-11",
         texto:
           "La ceremonia se celebró el domingo 8 de noviembre de 2026; se actualizó el texto para reflejarlo.",
+      },
+      {
+        fecha: "2026-11-12",
+        texto: "Se añadieron la galería de fotos y los videos de la ceremonia.",
       },
     ],
   },

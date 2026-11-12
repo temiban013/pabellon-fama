@@ -6,6 +6,7 @@ import {
   aniosDesdeIncorporacion,
   formatearHoraAST,
   formatearFechaLargaAST,
+  formatearFechaLargaSinComaAST,
   formatearFechaCortaAST,
 } from '@/lib/exaltacion';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
@@ -138,6 +139,13 @@ describe('formatearFechaLargaAST', () => {
   });
   it('usa el día AST: 2026-11-09T01:00Z sigue siendo domingo 8', () => {
     expect(formatearFechaLargaAST(new Date('2026-11-09T01:00:00Z'))).toBe('domingo, 8 de noviembre de 2026');
+  });
+});
+
+describe('formatearFechaLargaSinComaAST', () => {
+  it('da la fecha larga sin coma, para ir dentro de una frase', () => {
+    expect(formatearFechaLargaSinComaAST(EXALTACION_2026.inicio)).toBe('domingo 8 de noviembre de 2026');
+    expect(formatearFechaLargaSinComaAST(new Date('2026-11-09T01:00:00Z'))).toBe('domingo 8 de noviembre de 2026');
   });
 });
 

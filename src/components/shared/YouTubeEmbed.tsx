@@ -9,11 +9,13 @@
  */
 
 import Link from "next/link";
-import { getResumenCreditoIA } from "@/data/creditos-ia";
+import { getCreditoIA, getResumenCreditoIA } from "@/data/creditos-ia";
 
 interface YouTubeEmbedProps {
   youtubeId: string;
   title: string;
+  /** Crédito de autoría visible bajo el video (p. ej. «Cámara y edición: …») */
+  credito?: string;
   /** Clases adicionales de layout (márgenes, max-width) sobre el contenedor */
   className?: string;
 }
@@ -21,9 +23,12 @@ interface YouTubeEmbedProps {
 export function YouTubeEmbed({
   youtubeId,
   title,
+  credito,
   className,
 }: YouTubeEmbedProps) {
   const resumenIA = getResumenCreditoIA(youtubeId);
+  // PF-075: divulgación que no depende de las categorías (p. ej. la miniatura).
+  const notaIA = getCreditoIA(youtubeId)?.nota;
 
   // El className del llamante va en el <figure>, no en la caja de proporción: si
   // fuera al mismo div que `aspect-video`, el texto del crédito entraría dentro de
@@ -42,16 +47,22 @@ export function YouTubeEmbed({
         />
       </div>
 
-      {resumenIA && (
-        <figcaption className="mt-2 text-sm leading-relaxed text-gray-600">
-          Este video usa {resumenIA} creados con inteligencia artificial. Las
-          fotografías y el testimonio son auténticos.{" "}
-          <Link
-            href="/como-se-hace"
-            className="font-medium text-pabellon-green-800 underline underline-offset-2 hover:text-pabellon-green-900"
-          >
-            Cómo se hace
-          </Link>
+      {(credito || resumenIA || notaIA) && (
+        <figcaption className="mt-2 space-y-1 text-sm leading-relaxed text-gray-600">
+          {credito && <p>{credito}</p>}
+          {resumenIA && (
+            <p>
+              Este video usa {resumenIA} creados con inteligencia artificial. Las
+              fotografías y el testimonio son auténticos.{" "}
+              <Link
+                href="/como-se-hace"
+                className="font-medium text-pabellon-green-800 underline underline-offset-2 hover:text-pabellon-green-900"
+              >
+                Cómo se hace
+              </Link>
+            </p>
+          )}
+          {notaIA && <p>{notaIA}</p>}
         </figcaption>
       )}
     </figure>

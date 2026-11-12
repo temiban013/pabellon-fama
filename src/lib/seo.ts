@@ -186,7 +186,7 @@ export const seoConfigs = {
   nominacion: {
     title: "Nominaciones — 9na Exaltación 2026",
     description:
-      "Nominaciones a la Novena Exaltación (2026). El periodo cerró el 31 de agosto de 2026; el comunicado y la boleta se conservan como archivo.",
+      "Nominaciones a la Novena Exaltación (2026). El periodo cerró el 31 de agosto de 2026; el comunicado oficial se conserva como archivo.",
     keywords: ["nominación", "boleta", "exaltación", "9na exaltación", "2026"],
     url: "/nominacion",
   },

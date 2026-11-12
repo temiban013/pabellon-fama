@@ -168,13 +168,17 @@ describe('data/noticias.ts', () => {
       ]);
     });
 
-    it('registra la actualización del 2026-11-11 y conserva la fecha de publicación', () => {
+    it('registra las actualizaciones del 2026-11-11 y del 2026-11-12 y conserva la fecha de publicación', () => {
       expect(noticia?.fecha).toBe('2026-10-01');
       expect(noticia?.actualizaciones).toEqual([
         {
           fecha: '2026-11-11',
           texto:
             'La ceremonia se celebró el domingo 8 de noviembre de 2026; se actualizó el texto para reflejarlo.',
+        },
+        {
+          fecha: '2026-11-12',
+          texto: 'Se añadieron la galería de fotos y los videos de la ceremonia.',
         },
       ]);
     });

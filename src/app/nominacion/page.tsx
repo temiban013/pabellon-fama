@@ -19,7 +19,13 @@ import { CategoriasGrid } from "@/components/nominacion/CategoriasGrid";
 import { BoletaDownloadCard } from "@/components/nominacion/BoletaDownloadCard";
 import { InstruccionesEntrega } from "@/components/nominacion/InstruccionesEntrega";
 
-export const metadata: Metadata = genMeta(seoConfigs.nominacion);
+// PF-075: con el periodo cerrado la página queda como archivo, sin enlaces internos
+// y fuera del índice. La fase se evalúa en el servidor, igual que en el cuerpo.
+export function generateMetadata(): Metadata {
+  const cerrado =
+    getFaseNominacion(NOMINACION_2026.periodo, new Date()) === "cerrado";
+  return genMeta({ ...seoConfigs.nominacion, noIndex: cerrado });
+}
 
 const fmtFechaLarga = (d: Date) =>
   new Intl.DateTimeFormat("es-PR", {
@@ -123,12 +129,14 @@ export default function NominacionPage() {
                 Descargar boleta oficial
               </a>
             )}
-            <a
-              href="#instrucciones"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold transition-colors"
-            >
-              Cómo entregar →
-            </a>
+            {fase !== "cerrado" && (
+              <a
+                href="#instrucciones"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold transition-colors"
+              >
+                Cómo entregar →
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -154,28 +162,33 @@ export default function NominacionPage() {
         <CategoriasGrid />
       </section>
 
-      {/* 5. Descargar boleta */}
-      <section
-        id="descargar"
-        className="bg-white border-y border-gray-200 scroll-mt-24"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <BoletaDownloadCard
-            pdfUrl={documentos.boleta.url}
-            downloadFileName={documentos.boleta.downloadFileName}
-            apertura={periodo.apertura}
-            cierre={periodo.cierre}
-          />
-        </div>
-      </section>
+      {/* 5 y 6: solo con el periodo abierto o por abrir (PF-075) */}
+      {fase !== "cerrado" && (
+        <>
+          {/* 5. Descargar boleta */}
+          <section
+            id="descargar"
+            className="bg-white border-y border-gray-200 scroll-mt-24"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+              <BoletaDownloadCard
+                pdfUrl={documentos.boleta.url}
+                downloadFileName={documentos.boleta.downloadFileName}
+                apertura={periodo.apertura}
+                cierre={periodo.cierre}
+              />
+            </div>
+          </section>
 
-      {/* 6. Instrucciones presenciales */}
-      <section
-        id="instrucciones"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-24"
-      >
-        <InstruccionesEntrega />
-      </section>
+          {/* 6. Instrucciones presenciales */}
+          <section
+            id="instrucciones"
+            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-24"
+          >
+            <InstruccionesEntrega />
+          </section>
+        </>
+      )}
 
       {/* 7. Closing emphasis (mismo patrón de /contribuir, /historia) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">

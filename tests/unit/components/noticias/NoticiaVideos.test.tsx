@@ -61,6 +61,23 @@ describe('videos de las noticias (PF-073)', () => {
     }
   });
 
+  it('bajo la ceremonia completa van el crédito y la nota de la miniatura (PF-075)', async () => {
+    const { container } = await renderDetalle('novena-exaltacion-2026');
+    const principal = container.querySelector(
+      'iframe[src="https://www.youtube-nocookie.com/embed/wHCHip8EoJI"]',
+    );
+    const pie = principal?.closest('figure')?.querySelector('figcaption');
+    expect(pie).not.toBeNull();
+    expect(pie?.textContent).toContain('Cámara y edición: Reinaldo Álvarez');
+    expect(pie?.textContent).toContain(
+      'La miniatura (título y escudo sobre un fotograma del video) se compuso con asistencia de IA.',
+    );
+    // No se declara ninguna categoría de IA para el video en sí.
+    expect(pie?.textContent).not.toMatch(/Este video usa/);
+    // Los seis clips no llevan pie de crédito ni nota.
+    expect(container.querySelectorAll('figcaption')).toHaveLength(1);
+  });
+
   it('una noticia sin lista de videos no muestra la sección', async () => {
     const sinVideos = noticias.find((n) => !n.videos);
     expect(sinVideos).toBeDefined();

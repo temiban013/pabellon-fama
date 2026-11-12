@@ -86,6 +86,25 @@ describe('creditosIA — integridad de cada entrada', () => {
   });
 });
 
+describe('creditosIA — nota libre (PF-075)', () => {
+  it('la ceremonia completa declara la miniatura sin declarar categorías', () => {
+    const credito = getCreditoIA('wHCHip8EoJI');
+    expect(credito?.categorias).toEqual([]);
+    expect(credito?.nota).toBe(
+      'La miniatura (título y escudo sobre un fotograma del video) se compuso con asistencia de IA.',
+    );
+    expect(getResumenCreditoIA('wHCHip8EoJI')).toBeNull();
+  });
+
+  it('ninguna nota queda vacía', () => {
+    for (const [id, credito] of Object.entries(creditosIA)) {
+      if (credito.nota !== undefined) {
+        expect(credito.nota.trim().length, `${id} tiene una nota vacía`).toBeGreaterThan(0);
+      }
+    }
+  });
+});
+
 describe('getResumenCreditoIA', () => {
   it('devuelve null para un video sin crédito registrado', () => {
     expect(getResumenCreditoIA('id-que-no-existe')).toBeNull();

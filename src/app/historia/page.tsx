@@ -14,7 +14,7 @@ import { siteUrl } from "@/lib/constants/site";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
 import {
   aniosDesdeIncorporacion,
-  formatearFechaLargaAST,
+  formatearFechaLargaSinComaAST,
 } from "@/lib/exaltacion";
 
 export const revalidate = 86400;
@@ -233,8 +233,7 @@ const eventosHistoricos: EventoHistorico[] = [
   {
     año: 2026,
     titulo: "Novena Ceremonia de Exaltación",
-    // «domingo 8 de noviembre de 2026»: sin la coma de formatearFechaLargaAST.
-    descripcion: `Celebrada el ${formatearFechaLargaAST(EXALTACION_2026.inicio).replace(",", "")} en el ${EXALTACION_2026.sede.nombre}.`,
+    descripcion: `Celebrada el ${formatearFechaLargaSinComaAST(EXALTACION_2026.inicio)} en el ${EXALTACION_2026.sede.nombre}.`,
     detalles: [`Lema: «${EXALTACION_2026.lema}»`],
     icono: "ceremonia",
     destacado: true,

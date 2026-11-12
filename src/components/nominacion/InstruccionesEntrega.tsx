@@ -1,17 +1,12 @@
 import { NOMINACION_2026 } from "@/lib/data/nominacion-2026";
+import { formatearFechaLargaAST } from "@/lib/exaltacion";
 import { AlertCircle, MapPin, Clock, Phone, Mail } from "lucide-react";
 
 export function InstruccionesEntrega() {
   const { contacto, puntosDistribucion, ceremonia } = NOMINACION_2026;
   const { telefonoPrincipal, telefonosAdicionales, email } = contacto;
 
-  const ceremoniaFechaFormateada = new Intl.DateTimeFormat("es-PR", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "America/Puerto_Rico",
-  }).format(ceremonia.fecha);
+  const ceremoniaFechaFormateada = formatearFechaLargaAST(ceremonia.fecha);
 
   return (
     <section>

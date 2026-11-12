@@ -90,6 +90,12 @@ export function formatearFechaLargaAST(fecha: Date): string {
   return `${diaSemana}, ${dia} de ${mes} de ${anio}`;
 }
 
+/** «domingo 8 de noviembre de 2026» (sin coma, para ir dentro de una frase). */
+export function formatearFechaLargaSinComaAST(fecha: Date): string {
+  const { diaSemana, dia, mes, anio } = partesFechaAST(fecha);
+  return `${diaSemana} ${dia} de ${mes} de ${anio}`;
+}
+
 /** «8 nov» */
 export function formatearFechaCortaAST(fecha: Date): string {
   const { dia, mesCorto } = partesFechaAST(fecha);
