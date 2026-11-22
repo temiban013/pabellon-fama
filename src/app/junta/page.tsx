@@ -14,6 +14,7 @@ export const metadata: Metadata = generateMetadata({
 
 interface MiembroJunta {
   id: string;
+  tratamiento?: "Sr." | "Sra." | "Prof.";
   nombre: string;
   cargo: string;
   descripcion: string;
@@ -28,13 +29,13 @@ interface MiembroJunta {
 const miembrosJunta: MiembroJunta[] = [
   {
     id: "enrique-torres",
+    tratamiento: "Sr.",
     nombre: "Enrique (Quique) Torres",
     cargo: "Presidente",
     descripcion:
       "Líder visionario con amplia experiencia en la gestión deportiva y comunitaria de Humacao.",
     anosServicio: "2016 - Presente",
     foto: "/images/junta/enrique-torres.jpg",
-    fotoPosition: "center 12%",
     contribuciones: [
       "Modernización de las operaciones del PFDH",
       "Expansión de programas educativos",
@@ -43,14 +44,13 @@ const miembrosJunta: MiembroJunta[] = [
   },
   {
     id: "miriam-lasanta",
+    tratamiento: "Sra.",
     nombre: "Miriam Lasanta",
     cargo: "Secretaria",
     descripcion:
       "Responsable de mantener los registros oficiales y la documentación del pabellón.",
     anosServicio: "2004 - Presente",
     foto: "/images/junta/miriam-lasanta.jpg",
-    fotoPosition: "center 50%",
-    fotoZoom: 1.25,
     contribuciones: [
       "Coordinación de eventos especiales",
       "Desarrollo de programas educativos",
@@ -59,30 +59,30 @@ const miembrosJunta: MiembroJunta[] = [
   },
   {
     id: "felix-baez",
+    tratamiento: "Prof.",
     nombre: "Félix Báez Neris",
     cargo: "Vicepresidente",
     descripcion:
       "Historiador y cronista del deporte humacaeño, custodio de la memoria deportiva.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/felix-baez.jpg",
-    fotoPosition: "center 5%",
-    fotoZoom: 1.1,
     contribuciones: [
       "Fundador y miembro original de la primera junta",
       "Autor de múltiples investigaciones deportivas",
       "Administrador del blog histórico del PFDH",
+      "Responsable de mantener los registros oficiales y la documentación del pabellón",
+      "Impulsó la creación del sitio web del PFDH",
     ],
   },
   {
     id: "juan-velazquez",
+    tratamiento: "Sr.",
     nombre: "Juan Velázquez",
     cargo: "Tesorero",
     descripcion:
       "Administrador financiero responsable de la gestión económica del pabellón.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/juan-velazquez.jpg",
-    fotoPosition: "center 10%",
-    fotoZoom: 1.1,
     contribuciones: [
       "Miembro fundador de la primera junta directiva",
       "Gestión financiera transparente",
@@ -91,14 +91,13 @@ const miembrosJunta: MiembroJunta[] = [
   },
   {
     id: "arnaldo-ortiz",
+    tratamiento: "Sr.",
     nombre: "Arnaldo (Larry) Ortiz",
     cargo: "Vocal",
     descripcion:
       "Miembro activo con enfoque en programas comunitarios y desarrollo organizacional.",
     anosServicio: "2018 - Presente",
     foto: "/images/junta/arnaldo-ortiz.jpg",
-    fotoPosition: "center 45%",
-    fotoZoom: 1.25,
     contribuciones: [
       "Digitalización de archivos históricos",
       "Organización de ceremonias de exaltación",
@@ -107,6 +106,7 @@ const miembrosJunta: MiembroJunta[] = [
   },
   {
     id: "jorge-orona",
+    tratamiento: "Sr.",
     nombre: "Jorge Orona",
     cargo: "Vocal",
     descripcion:
@@ -121,14 +121,14 @@ const miembrosJunta: MiembroJunta[] = [
   },
   {
     id: "orlando-lopez",
+    tratamiento: "Sr.",
     nombre: "Orlando J. López Rivera",
     cargo: "Vocal",
     descripcion:
       "Miembro joven con enfoque analítico en la investigación y documentación estadística del deporte humacaeño.",
     anosServicio: "2026 - Presente",
     foto: "/images/junta/orlando-lopez.jpg",
-    fotoPosition: "center 45%",
-    fotoZoom: 1.35,
+    fotoPosition: "center 6%",
     contribuciones: [
       "Análisis estadístico del rendimiento deportivo",
       "Investigación y documentación de récords históricos",
@@ -137,14 +137,14 @@ const miembrosJunta: MiembroJunta[] = [
   },
   {
     id: "luis-alvarez",
-    nombre: "Luis Reinaldo Álvarez",
-    cargo: "Curador del Museo",
+    tratamiento: "Prof.",
+    nombre: "Luis Reinaldo Álvarez Vázquez",
+    cargo: "Curador del Museo del PFDH",
     descripcion:
       "Historiador y educador, curador del Museo Manuel Rivera Guevara.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/luis-alvarez.jpg",
-    fotoPosition: "center 45%",
-    fotoZoom: 1,
+    fotoPosition: "center 15%",
     contribuciones: [
       "Miembro fundador y educador distinguido",
       "Curación del museo y exhibiciones",
@@ -152,6 +152,16 @@ const miembrosJunta: MiembroJunta[] = [
     ],
   },
 ];
+
+const presidenteHonor: MiembroJunta = {
+  id: "william-mendez-pagan",
+  tratamiento: "Sr.",
+  nombre: "William Méndez Pagán",
+  cargo: "Presidente de Honor",
+  descripcion:
+    "Presidente Ejecutivo de la Cooperativa de Ahorro y Crédito Oriental.",
+  foto: "/images/junta/william-mendez-pagan.jpg",
+};
 
 const MiembroCard = ({ miembro }: { miembro: MiembroJunta }) => (
   <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
@@ -188,6 +198,7 @@ const MiembroCard = ({ miembro }: { miembro: MiembroJunta }) => (
       {/* Header con nombre y cargo */}
       <div className="mb-4">
         <h3 className="text-xl font-bold text-blue-900 mb-1">
+          {miembro.tratamiento && `${miembro.tratamiento} `}
           {miembro.nombre}
         </h3>
         <p className="text-orange-600 font-semibold text-lg">{miembro.cargo}</p>
@@ -290,12 +301,44 @@ export default function JuntaDirectoresPage() {
           </div>
         </div>
 
+        {/* Foto de grupo */}
+        <figure className="mb-12">
+          <Image
+            src="/images/junta/junta-2026-museo.jpg"
+            alt="Miembros de la Junta de Directores del PFDH frente a la entrada del Museo Manuel Rivera Guevara"
+            width={1050}
+            height={632}
+            className="w-full h-auto rounded-lg shadow-lg"
+            sizes="(max-width: 1280px) 100vw, 1216px"
+          />
+          <figcaption className="mt-3 text-center text-sm text-gray-600">
+            Junta de Directores del PFDH frente al Museo Manuel Rivera Guevara,
+            2026. Foto: Revista de la Novena Exaltación.
+          </figcaption>
+        </figure>
+
         {/* Grid de Miembros */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
           {miembrosJunta.map((miembro) => (
             <MiembroCard key={miembro.id} miembro={miembro} />
           ))}
         </div>
+
+        {/* Presidente de Honor */}
+        <section className="mb-12" aria-labelledby="presidente-honor">
+          <h2
+            id="presidente-honor"
+            className="text-2xl font-bold text-gray-900 mb-2 text-center"
+          >
+            Presidente de Honor
+          </h2>
+          <p className="text-gray-600 text-center mb-6">
+            Cargo honorífico; no es miembro activo de la Junta de Directores.
+          </p>
+          <div className="max-w-md mx-auto">
+            <MiembroCard miembro={presidenteHonor} />
+          </div>
+        </section>
 
         {/* Información de Contacto */}
         <div className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg p-8">
