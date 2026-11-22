@@ -12,6 +12,8 @@ import {
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 import { siteUrl } from "@/lib/constants/site";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
+import { rev09Exaltados } from "@/data/revistas/rev09/exaltados";
+import { getTotalesExaltados } from "@/lib/exaltados-totales";
 import {
   aniosDesdeIncorporacion,
   formatearFechaLargaSinComaAST,
@@ -38,6 +40,19 @@ interface EventoHistorico {
     | "reconocimiento";
   destacado?: boolean;
 }
+
+/** Totales calculados de los datos (PF-074, D101): no se escriben a mano. */
+const totales = getTotalesExaltados();
+
+/** Nombre de cada exaltado de la Novena, tomado de sus datos (revista 9, Cuadro de Honor 2026). */
+const detalleExaltadoNovena = (e: (typeof rev09Exaltados)[number]): string => {
+  const apodo = e.apodo ? ` «${e.apodo}»` : "";
+  const deportes =
+    e.categoria === "PROPULSOR"
+      ? `propulsor: ${e.deportes.join(", ").toLowerCase()}`
+      : e.deportes.join(", ");
+  return `${e.nombre}${apodo} ${e.apellidos} (${deportes})`;
+};
 
 const eventosHistoricos: EventoHistorico[] = [
   {
@@ -234,7 +249,11 @@ const eventosHistoricos: EventoHistorico[] = [
     año: 2026,
     titulo: "Novena Ceremonia de Exaltación",
     descripcion: `Celebrada el ${formatearFechaLargaSinComaAST(EXALTACION_2026.inicio)} en el ${EXALTACION_2026.sede.nombre}.`,
-    detalles: [`Lema: «${EXALTACION_2026.lema}»`],
+    detalles: [
+      `Lema: «${EXALTACION_2026.lema}»`,
+      ...rev09Exaltados.map(detalleExaltadoNovena),
+      `${totales.personas} deportistas exaltados de ${totales.primerAnio} a ${EXALTACION_2026.inicio.getUTCFullYear()}`,
+    ],
     icono: "ceremonia",
     destacado: true,
   },
@@ -242,8 +261,8 @@ const eventosHistoricos: EventoHistorico[] = [
 
 const getLogrosDestacados = (ahora: Date) => [
   {
-    titulo: "78 Deportistas Exaltados",
-    descripcion: "En las ocho ceremonias de 2000 a 2015",
+    titulo: `${totales.personas} Deportistas Exaltados`,
+    descripcion: `En las ${totales.ceremonias} ceremonias de ${totales.primerAnio} a ${totales.ultimoAnio}`,
     icono: Trophy,
   },
   {

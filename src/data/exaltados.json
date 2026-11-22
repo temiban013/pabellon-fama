@@ -294,6 +294,27 @@
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
+      },
+      {
+        "id": "jose-escalera",
+        "nombre": "José Escalera",
+        "apellidos": "Escalera",
+        "nombreCompleto": "José Escalera",
+        "deporte": [
+          "Atletismo"
+        ],
+        "categoria": "atleta",
+        "anoExaltacion": 2026,
+        "exaltacion": "9na. Exaltación",
+        "biografia": "Saltador: superó los 7 pies en el Salto Alto y llegó a 16.21 metros en el Triple Salto; Atleta Más Valioso de las Justas de la LAI 1990.",
+        "fechaNacimiento": null,
+        "fechaFallecimiento": null,
+        "lugarNacimiento": "Toa Baja",
+        "apodo": null,
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/jose-escalera.jpg",
+        "estado": "activo"
       }
     ],
     "propulsores": [
@@ -738,6 +759,27 @@
         "reconocimientos": [],
         "foto": null,
         "estado": "activo"
+      },
+      {
+        "id": "victor-vitin-hernandez-lopez",
+        "nombre": "Víctor M. (Vitín) Hernández López",
+        "apellidos": "Hernández López",
+        "nombreCompleto": "Víctor M. (Vitín) Hernández López",
+        "deporte": [
+          "Béisbol"
+        ],
+        "categoria": "jugador",
+        "anoExaltacion": 2026,
+        "exaltacion": "9na. Exaltación",
+        "biografia": "Segunda base de los Grises de Humacao en la Liga Doble A de Puerto Rico; diez temporadas con promedio de por vida de .306.",
+        "fechaNacimiento": "1945-08-03",
+        "fechaFallecimiento": null,
+        "lugarNacimiento": "Humacao",
+        "apodo": "Vitín",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/victor-vitin-hernandez-lopez.jpg",
+        "estado": "activo"
       }
     ],
     "propulsores": [
@@ -1138,6 +1180,27 @@
         "logros": [],
         "reconocimientos": [],
         "foto": null,
+        "estado": "activo"
+      },
+      {
+        "id": "jose-m-pancho-rodriguez-castillo",
+        "nombre": "José M. (Pancho) Rodríguez Castillo",
+        "apellidos": "Rodríguez Castillo",
+        "nombreCompleto": "José M. (Pancho) Rodríguez Castillo",
+        "deporte": [
+          "Boxeo"
+        ],
+        "categoria": "boxeador",
+        "anoExaltacion": 2026,
+        "exaltacion": "9na. Exaltación",
+        "biografia": "Boxeador aficionado y profesional; participó en las Olimpiadas de Los Ángeles 1984 con 17 años de edad y fue técnico de boxeo desde 1992.",
+        "fechaNacimiento": null,
+        "fechaFallecimiento": null,
+        "lugarNacimiento": null,
+        "apodo": "Pancho",
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/jose-m-pancho-rodriguez-castillo.jpg",
         "estado": "activo"
       }
     ],
@@ -1720,6 +1783,27 @@
         ],
         "foto": null,
         "estado": "activo"
+      },
+      {
+        "id": "obed-santana-acosta",
+        "nombre": "Obed Santana Acosta",
+        "apellidos": "Santana Acosta",
+        "nombreCompleto": "Obed Santana Acosta",
+        "deporte": [
+          "Lucha Olímpica"
+        ],
+        "categoria": "atleta",
+        "anoExaltacion": 2026,
+        "exaltacion": "9na. Exaltación",
+        "biografia": "Luchador, entrenador y árbitro internacional; presidente de la Federación de Luchas Asociadas de Puerto Rico (FLAPR) desde 2021.",
+        "fechaNacimiento": "1971-10-25",
+        "fechaFallecimiento": null,
+        "lugarNacimiento": "Humacao",
+        "apodo": null,
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/obed-santana-acosta.jpg",
+        "estado": "activo"
       }
     ]
   },
@@ -1961,6 +2045,32 @@
         ],
         "foto": null,
         "estado": "activo"
+      },
+      {
+        "id": "francisco-betancourt-ibern",
+        "nombre": "Francisco Betancourt Ibern",
+        "apellidos": "Betancourt Ibern",
+        "nombreCompleto": "Francisco Betancourt Ibern",
+        "deporte": [
+          "Deportes Varios"
+        ],
+        "categoria": "propulsor",
+        "anoExaltacion": 2026,
+        "exaltacion": "9na. Exaltación",
+        "biografia": "Promotor del béisbol, el softbol y el fútbol en Humacao; en 1998 creó el Pabellón de la Fama del Deporte Humacaeño y lo presidió.",
+        "fechaNacimiento": "1949-11-08",
+        "fechaFallecimiento": null,
+        "lugarNacimiento": "Humacao",
+        "apodo": null,
+        "deportesPromovidos": [
+          "Béisbol",
+          "Softbol",
+          "Fútbol"
+        ],
+        "logros": [],
+        "reconocimientos": [],
+        "foto": "/images/exaltados/francisco-betancourt-ibern.jpg",
+        "estado": "activo"
       }
     ],
     "cronistas": [
@@ -1994,10 +2104,10 @@
     ]
   },
   "estadisticas": {
-    "totalExaltados": 78,
+    "totalExaltados": 83,
     "totalEquipos": 3,
-    "totalEntradas": 81,
-    "deportesRepresentados": 12,
+    "totalEntradas": 86,
+    "deportesRepresentados": 13,
     "exaltacionesPorAno": {
       "2000": 20,
       "2002": 8,
@@ -2006,30 +2116,31 @@
       "2008": 8,
       "2010": 6,
       "2012": 14,
-      "2015": 6
+      "2015": 6,
+      "2026": 5
     },
     "categorias": {
-      "atletas": 45,
-      "jugadores": 23,
-      "propulsores": 27,
+      "atletas": 48,
+      "jugadores": 24,
+      "propulsores": 28,
       "cronistas": 1,
       "equipos": 3
     },
     "deportesPorCategoria": {
       "artes-marciales": 1,
-      "atletismo": 13,
-      "beisbol": 32,
-      "boxeo": 5,
+      "atletismo": 14,
+      "beisbol": 33,
+      "boxeo": 6,
       "futbol": 7,
       "baloncesto": 2,
       "ciclismo": 1,
       "levantamiento-pesas": 7,
-      "lucha-olimpica": 2,
+      "lucha-olimpica": 3,
       "natacion": 2,
       "paso-fino": 2,
       "tiro": 2,
       "tenis": 1,
-      "deportes-varios": 3,
+      "deportes-varios": 4,
       "equipos": 3
     }
   }

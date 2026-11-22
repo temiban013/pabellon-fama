@@ -12,6 +12,7 @@ import { rev05Exaltados } from './revistas/rev05/exaltados';
 import { rev06Exaltados } from './revistas/rev06/exaltados';
 import { rev07Exaltados } from './revistas/rev07/exaltados';
 import { rev08Exaltados } from './revistas/rev08/exaltados';
+import { rev09Exaltados } from './revistas/rev09/exaltados';
 
 export const todosLosExaltados: ExaltadoRevista[] = [
   ...rev01Exaltados,  // Sprint 1 - 23 exaltados
@@ -21,7 +22,8 @@ export const todosLosExaltados: ExaltadoRevista[] = [
   ...rev05Exaltados,  // Sprint 5 - 9 exaltados
   ...rev06Exaltados,  // Sprint 6 - 7 exaltados
   ...rev07Exaltados,  // Sprint 7 - 10 exaltados
-  ...rev08Exaltados,  // Sprint 8 - 6 exaltados - FINAL REVISTA!
+  ...rev08Exaltados,  // Sprint 8 - 6 exaltados
+  ...rev09Exaltados,  // Revista 9 (Novena Exaltación, 2026) - 5 exaltados
 ];
 
 /**

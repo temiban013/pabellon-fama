@@ -2,6 +2,7 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import HistoriaPage from "@/app/historia/page";
+import { getTotalesExaltados } from "@/lib/exaltados-totales";
 
 describe("HistoriaPage en pasado (PF-072)", () => {
   afterEach(cleanup);
@@ -18,7 +19,7 @@ describe("HistoriaPage en pasado (PF-072)", () => {
     ).toBeInTheDocument();
   });
 
-  it("la ceremonia de 2015 y el logro de 78 deportistas usan el texto aprobado", () => {
+  it("la ceremonia de 2015 conserva sus cifras de época y el logro usa los totales calculados", () => {
     render(<HistoriaPage />);
     expect(
       screen.getByText(
@@ -29,7 +30,26 @@ describe("HistoriaPage en pasado (PF-072)", () => {
     expect(
       screen.getByText("3 equipos completos honrados en las primeras 8 ceremonias"),
     ).toBeInTheDocument();
-    expect(screen.getByText("En las ocho ceremonias de 2000 a 2015")).toBeInTheDocument();
-    expect(screen.getByText("78 Deportistas Exaltados")).toBeInTheDocument();
+    const t = getTotalesExaltados();
+    expect(
+      screen.getByText(
+        `En las ${t.ceremonias} ceremonias de ${t.primerAnio} a ${t.ultimoAnio}`,
+      ),
+    ).toBeInTheDocument();
+    expect(screen.getByText(`${t.personas} Deportistas Exaltados`)).toBeInTheDocument();
+  });
+
+  it("la Novena trae los cinco nombres de la clase 2026 y el total nuevo en sus detalles (PF-074)", () => {
+    render(<HistoriaPage />);
+    for (const nombre of [
+      "Víctor M. «Vitín» Hernández López (Béisbol)",
+      "Obed Santana Acosta (Lucha Olímpica)",
+      "José Escalera (Atletismo)",
+      "José M. «Pancho» Rodríguez Castillo (Boxeo)",
+      "Francisco Betancourt Ibern (propulsor: béisbol, softbol, fútbol)",
+    ]) {
+      expect(screen.getByText(nombre)).toBeInTheDocument();
+    }
+    expect(screen.getByText("83 deportistas exaltados de 2000 a 2026")).toBeInTheDocument();
   });
 });

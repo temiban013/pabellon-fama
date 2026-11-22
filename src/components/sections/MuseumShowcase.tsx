@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { PABELLON_CONSTANTS } from "@/lib/utils";
+import { getTotalesExaltados } from "@/lib/exaltados-totales";
 
 interface MuseumShowcaseProps {
   className?: string;
@@ -70,7 +71,7 @@ export function MuseumShowcase({
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-pabellon-gold-200 hover:shadow-xl transition-shadow duration-300">
               <div className="text-3xl font-bold text-pabellon-gold-600 mb-2">
-                81
+                {getTotalesExaltados().entradas}
               </div>
               <p className="text-pabellon-green-700 font-medium">
                 Atletas Exaltados

@@ -76,9 +76,9 @@ export async function generateMetadata({
   });
 }
 
-// Generar páginas estáticas para todos los 81 exaltados (Sprint 10)
+// Generar páginas estáticas para todos los exaltados (Sprint 10)
 export function generateStaticParams() {
-  // Use todosLosExaltados from revista system (all 81 exaltados)
+  // Use todosLosExaltados from revista system (todas las entradas, personas y equipos)
   return todosLosExaltados.map((exaltado) => ({
     slug: exaltado.id,
   }));

@@ -15,6 +15,10 @@ import {
 import { generateMetadata, seoConfigs, generateBreadcrumbs } from "@/lib/seo";
 import { siteUrl } from "@/lib/constants/site";
 import { PABELLON_CONSTANTS } from "@/lib/utils";
+import { getTotalesExaltados } from "@/lib/exaltados-totales";
+
+/** Totales calculados de los datos (PF-074, D101): no se escriben a mano. */
+const totales = getTotalesExaltados();
 
 export const metadata: Metadata = generateMetadata({
   ...seoConfigs.enlaces,
@@ -72,13 +76,13 @@ const recursosEnlaces: RecursoEnlace[] = [
     id: "publicaciones",
     titulo: "Publicaciones Oficiales",
     descripcion:
-      "Revistas conmemorativas de las 8 ceremonias de exaltación con biografías completas, fotografías históricas y documentación de cada evento.",
+      `Revistas conmemorativas de las ${totales.ceremonias} ceremonias de exaltación con biografías completas, fotografías históricas y documentación de cada evento.`,
     url: "/revistas",
     tipo: "documento",
     icono: BookOpen,
     activo: true,
     destacado: true,
-    contenidoEspecial: "8 revistas oficiales con 81 biografías de exaltados",
+    contenidoEspecial: `${totales.ceremonias} revistas oficiales con ${totales.entradas} biografías de exaltados`,
   },
   {
     id: "youtube-channel",
