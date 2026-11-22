@@ -136,7 +136,7 @@ Entre sus muchos logros en Grandes Ligas podemos señalar los siguientes:
   {
     id: 'angel-mane-rosa-lopez',
     foto: '/images/exaltados/angel-mane-rosa-lopez.jpg',
-    nombre: 'Angel Manuel',
+    nombre: 'Ángel Manuel',
     apellidos: 'Rosa López',
     apodo: 'Mane',
     categoria: 'PROPULSOR',
