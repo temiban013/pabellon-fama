@@ -87,9 +87,9 @@ describe('fusionarManifiesto', () => {
     },
   );
 
-  it('sobre el manifiesto real, añadir la revista 9 conserva las 9 entradas actuales', () => {
+  it('sobre el manifiesto real, añadir una revista nueva conserva todas las entradas actuales', () => {
     const resultado = fusionarManifiesto(manifestReal, {
-      'revista-09.pdf': `${BASE}/revista-09.pdf`,
+      'revista-99.pdf': `${BASE}/revista-99.pdf`,
     });
 
     for (const [nombre, url] of Object.entries(manifestReal)) {

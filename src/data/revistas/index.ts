@@ -202,6 +202,31 @@ export const revistasMetadata: RevistaMetadata[] = [
     }
   },
 
+  // Revista #09 (2026) - 5 exaltados
+  {
+    tipo: 'exaltacion',
+    slug: '9',
+    numero: 9,
+    year: 2026,
+    titulo: 'Novena Exaltación del Pabellón',
+    fechaCeremonia: '2026-11-08',
+    descripcion: 'Novena ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Cuadro de Honor 2026 en el Centro de Bellas Artes Águedo Mojica Marrero.',
+    pdfUrl: blobUrl('revista-09.pdf'),
+    portadaUrl: '/revistas/portadas/rev09.jpg',
+    totalPaginas: 40,
+    exaltadosCount: 5,
+    categorias: {
+      deportistas: 4,
+      propulsores: 1,
+      postumos: 0
+    },
+    rangoPaginas: {
+      biografias: [16, 20],
+      fotosHistoricas: [28, 32],
+      mensajes: [13, 15]
+    }
+  },
+
   // Edición Especial: Inauguración del Museo (2025)
   {
     tipo: 'especial',

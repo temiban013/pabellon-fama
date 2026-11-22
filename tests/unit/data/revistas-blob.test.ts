@@ -30,11 +30,11 @@ describe('blob-manifest — cobertura de revistasMetadata', () => {
     }
   });
 
-  it('ninguna clave del manifiesto queda huérfana y hay exactamente 9 claves', async () => {
+  it('ninguna clave del manifiesto queda huérfana y hay exactamente 10 claves', async () => {
     const { revistasMetadata } = await import('@/data/revistas');
 
     const claves = Object.keys(manifest);
-    expect(claves).toHaveLength(9);
+    expect(claves).toHaveLength(10);
 
     const nombresUsados = new Set(
       revistasMetadata.map((revista) => revista.pdfUrl.split('/').pop()),
