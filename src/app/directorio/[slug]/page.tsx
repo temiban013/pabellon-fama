@@ -8,6 +8,21 @@ import { exaltados } from "@/data/exaltados";
 import { parseDateLocal } from "@/lib/date-utils";
 import { todosLosExaltados } from "@/data/exaltados-all";
 import { ExaltadoDetail } from "@/components/directorio/ExaltadoDetail";
+import { jsonLdExaltado, metadataExaltado } from "@/lib/directorio/seo";
+import { dimensionesImagenPublica } from "@/lib/imagen-publica";
+
+/**
+ * Busca al exaltado por su id canónico. Si `slug` es uno de los slugs viejos
+ * (derivados del nombre completo en `exaltados.json`), devuelve el mismo
+ * exaltado para que la página declare como canónica `/directorio/<id>`.
+ */
+function resolverExaltado(slug: string) {
+  const porId = todosLosExaltados.find((e) => e.id === slug);
+  if (porId) return porId;
+
+  const viejo = exaltados.find((e) => e.slug === slug);
+  return viejo ? todosLosExaltados.find((e) => e.id === viejo.id) : undefined;
+}
 
 interface ExaltadoPageProps {
   params: Promise<{
@@ -22,28 +37,15 @@ export async function generateMetadata({
   const { slug } = await params;
 
   // First check in revista data (priority)
-  const exaltadoRevista = todosLosExaltados.find((e) => e.id === slug);
+  const exaltadoRevista = resolverExaltado(slug);
 
   if (exaltadoRevista) {
-    const nombreCompleto = `${exaltadoRevista.nombre}${exaltadoRevista.apodo ? ` "${exaltadoRevista.apodo}"` : ''} ${exaltadoRevista.apellidos}`;
-    const deportes = exaltadoRevista.deportes.join(", ");
-    const biografia = exaltadoRevista.contenido.biografia.substring(0, 155);
-
-    return generateSEOMetadata({
-      title: `${nombreCompleto} - Exaltado PFDH`,
-      description: `${nombreCompleto}, exaltado al Pabellón de la Fama del Deporte Humacaeño en ${exaltadoRevista.anoExaltacion}. ${deportes} - ${biografia}...`,
-      keywords: [
-        exaltadoRevista.nombre,
-        exaltadoRevista.apellidos,
-        ...exaltadoRevista.deportes,
-        "exaltado",
-        String(exaltadoRevista.anoExaltacion),
-        "Humacao",
-        "Pabellón de la Fama",
-      ],
-      url: `/directorio/${slug}`,
-      type: "profile",
-    });
+    return metadataExaltado(
+      exaltadoRevista,
+      exaltadoRevista.foto
+        ? await dimensionesImagenPublica(exaltadoRevista.foto)
+        : undefined,
+    );
   }
 
   // Fallback to old data
@@ -88,7 +90,7 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
   const { slug } = await params;
 
   // Primero buscar en exaltados de revistas (más reciente)
-  const exaltadoRevista = todosLosExaltados.find((e) => e.id === slug);
+  const exaltadoRevista = resolverExaltado(slug);
 
   // Si se encuentra en revistas, convertir al formato esperado
   if (exaltadoRevista) {
@@ -121,21 +123,22 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
       entrevistaYoutubeId: exaltadoRevista.entrevistaYoutubeId,
     };
 
-    const personJsonLd = generateJsonLd("person", {
-      name: exaltadoAdaptado.name,
-      biography: exaltadoAdaptado.biography,
-      sport: exaltadoAdaptado.sport,
-      achievements: exaltadoAdaptado.achievements || [],
-    });
+    const datosEstructurados = jsonLdExaltado(
+      exaltadoRevista,
+      exaltadoRevista.foto
+        ? await dimensionesImagenPublica(exaltadoRevista.foto)
+        : undefined,
+    );
 
     return (
       <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personJsonLd),
-          }}
-        />
+        {datosEstructurados.map((datos, indice) => (
+          <script
+            key={indice}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }}
+          />
+        ))}
         <ExaltadoDetail exaltado={exaltadoAdaptado} />
       </>
     );

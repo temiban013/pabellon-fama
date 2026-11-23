@@ -4,35 +4,18 @@
  * La portada de cada revista es la imagen que se comparte (Open Graph), para
  * que el enlace a `/revistas/<slug>` muestre la portada en WhatsApp y redes.
  */
-import { join } from "node:path";
 import type { Metadata } from "next";
-import sharp from "sharp";
 import { SITE_URL } from "@/lib/constants/site";
+import { dimensionesImagenPublica, type DimensionesImagen } from "@/lib/imagen-publica";
 import { generateBreadcrumbs, generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import type { RevistaMetadata } from "@/lib/types/revista";
 
 const NOMBRE_ORGANIZACION = "Pabellón de la Fama del Deporte Humacaeño";
 
-export interface DimensionesImagen {
-  width: number;
-  height: number;
-}
+export type { DimensionesImagen };
 
-/**
- * Lee el ancho y alto reales de una portada bajo `public/`. Devuelve
- * `undefined` si el archivo no se puede leer: la página se publica igual,
- * solo sin `og:image:width`/`og:image:height`.
- */
-export async function dimensionesPortada(
-  portadaUrl: string,
-): Promise<DimensionesImagen | undefined> {
-  try {
-    const { width, height } = await sharp(join(process.cwd(), "public", portadaUrl)).metadata();
-    return width && height ? { width, height } : undefined;
-  } catch {
-    return undefined;
-  }
-}
+/** Dimensiones reales de una portada bajo `public/`; `undefined` si no se puede leer. */
+export const dimensionesPortada = dimensionesImagenPublica;
 
 export function tituloRevista(revista: RevistaMetadata): string {
   return revista.tipo === "especial"
