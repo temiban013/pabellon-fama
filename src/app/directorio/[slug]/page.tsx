@@ -40,12 +40,7 @@ export async function generateMetadata({
   const exaltadoRevista = resolverExaltado(slug);
 
   if (exaltadoRevista) {
-    return metadataExaltado(
-      exaltadoRevista,
-      exaltadoRevista.foto
-        ? await dimensionesImagenPublica(exaltadoRevista.foto)
-        : undefined,
-    );
+    return metadataExaltado(exaltadoRevista);
   }
 
   // Fallback to old data

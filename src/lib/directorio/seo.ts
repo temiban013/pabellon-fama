@@ -2,7 +2,8 @@
  * Metadatos y datos estructurados de los perfiles de exaltados
  * (`/directorio/<id>`).
  *
- * La foto del exaltado es la imagen que se comparte (Open Graph), para que el
+ * La imagen que se comparte (Open Graph) es una tarjeta 1200×630 con la foto
+ * y el nombre del exaltado, generada por `opengraph-image.tsx`, para que el
  * enlace al perfil muestre a la persona en WhatsApp y redes.
  */
 import type { Metadata } from "next";
@@ -16,11 +17,13 @@ const NOMBRE_ORGANIZACION = "Pabellón de la Fama del Deporte Humacaeño";
 /** Largo máximo de la descripción: lo que cabe en un resultado de búsqueda. */
 export const LARGO_MAXIMO_DESCRIPCION = 155;
 
-/**
- * Lado mínimo (px) para usar la foto como imagen al compartir. Por debajo, las
- * redes la descartan y es mejor la imagen por defecto del sitio.
- */
-export const LADO_MINIMO_IMAGEN_SOCIAL = 200;
+/** Tamaño de la imagen para compartir que genera `opengraph-image.tsx`. */
+export const TAMANO_IMAGEN_SOCIAL = { width: 1200, height: 630 };
+
+/** URL de la imagen para compartir de un perfil (generada al compilar). */
+export function urlImagenSocialExaltado(id: string): string {
+  return `${SITE_URL}/directorio/${id}/opengraph-image`;
+}
 
 type ExaltadoSeo = Pick<
   ExaltadoRevista,
@@ -101,30 +104,9 @@ export function descripcionExaltado(exaltado: ExaltadoSeo): string {
   return descripcion;
 }
 
-/** `true` si la foto tiene tamaño suficiente para usarse al compartir. */
-export function sirveComoImagenSocial(dimensiones?: DimensionesImagen): boolean {
-  return (
-    !!dimensiones &&
-    dimensiones.width >= LADO_MINIMO_IMAGEN_SOCIAL &&
-    dimensiones.height >= LADO_MINIMO_IMAGEN_SOCIAL
-  );
-}
-
-export function metadataExaltado(
-  exaltado: ExaltadoSeo,
-  dimensionesFoto?: DimensionesImagen,
-): Metadata {
+export function metadataExaltado(exaltado: ExaltadoSeo): Metadata {
   const nombreCompleto = nombreCompletoExaltado(exaltado);
   const esEquipo = exaltado.categoria === "EQUIPO";
-  const fotoSocial =
-    exaltado.foto && dimensionesFoto && sirveComoImagenSocial(dimensionesFoto)
-      ? {
-          image: `${SITE_URL}${exaltado.foto}`,
-          imageWidth: dimensionesFoto.width,
-          imageHeight: dimensionesFoto.height,
-          imageAlt: `Foto de ${nombreCompleto}`,
-        }
-      : {};
 
   return generateSEOMetadata({
     title: `${nombreCompleto} - Exaltado PFDH`,
@@ -138,7 +120,12 @@ export function metadataExaltado(
     ],
     url: `/directorio/${exaltado.id}`,
     type: esEquipo ? "article" : "profile",
-    ...fotoSocial,
+    // Imagen 1200×630 con la foto y el nombre: mismo formato en los 86
+    // perfiles, aunque la foto original sea pequeña.
+    image: urlImagenSocialExaltado(exaltado.id),
+    imageWidth: TAMANO_IMAGEN_SOCIAL.width,
+    imageHeight: TAMANO_IMAGEN_SOCIAL.height,
+    imageAlt: `${nombreCompleto}, exaltación ${exaltado.anoExaltacion} del ${NOMBRE_ORGANIZACION}`,
   });
 }
 

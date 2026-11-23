@@ -18,22 +18,22 @@ const porId = (id: string) => todosLosExaltados.find((e) => e.id === id)!;
 describe("metadatos de /directorio/[slug]", () => {
   const victor = porId("victor-vitin-hernandez-lopez");
 
-  it("el perfil comparte la foto del exaltado como imagen Open Graph, con URL absoluta y dimensiones reales", async () => {
-    const dimensiones = await dimensionesImagenPublica(victor.foto!);
-    expect(dimensiones).toEqual({ width: 1000, height: 1250 });
-
-    const metadata = metadataExaltado(victor, dimensiones);
+  it("el perfil comparte su tarjeta 1200×630 como imagen Open Graph, con URL absoluta", () => {
+    const metadata = metadataExaltado(victor);
     const og = metadata.openGraph as { url: string; type: string; images: unknown[] };
 
     expect(og.url).toBe(`${SITE_URL}/directorio/victor-vitin-hernandez-lopez`);
     expect(og.type).toBe("profile");
     expect(og.images).toEqual([
       {
-        url: `${SITE_URL}/images/exaltados/victor-vitin-hernandez-lopez.jpg`,
-        width: 1000,
-        height: 1250,
-        alt: 'Foto de Víctor M. "Vitín" Hernández López',
+        url: `${SITE_URL}/directorio/victor-vitin-hernandez-lopez/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Víctor M. "Vitín" Hernández López, exaltación 2026 del Pabellón de la Fama del Deporte Humacaeño',
       },
+    ]);
+    expect(metadata.twitter?.images).toEqual([
+      `${SITE_URL}/directorio/victor-vitin-hernandez-lopez/opengraph-image`,
     ]);
     expect(metadata.alternates?.canonical).toBe(
       `${SITE_URL}/directorio/victor-vitin-hernandez-lopez`,
@@ -77,19 +77,20 @@ describe("metadatos de /directorio/[slug]", () => {
     }
   });
 
-  it("toda foto de exaltado existe; las de menos de 200 px por lado ceden a la imagen por defecto", async () => {
+  it("los 86 perfiles comparten una tarjeta del mismo tamaño, también los de foto pequeña", async () => {
     for (const exaltado of todosLosExaltados) {
-      if (!exaltado.foto) continue;
-      const dimensiones = await dimensionesImagenPublica(exaltado.foto);
-      expect(dimensiones, exaltado.id).toBeDefined();
-
-      const og = metadataExaltado(exaltado, dimensiones).openGraph as {
-        images: Array<{ url: string }>;
+      const og = metadataExaltado(exaltado).openGraph as {
+        images: Array<{ url: string; width: number; height: number }>;
       };
-      const chica = dimensiones!.width < 200 || dimensiones!.height < 200;
-      expect(og.images[0].url, exaltado.id).toBe(
-        chica ? `${SITE_URL}/images/og-default.jpg` : `${SITE_URL}${exaltado.foto}`,
-      );
+      expect(og.images[0], exaltado.id).toMatchObject({
+        url: `${SITE_URL}/directorio/${exaltado.id}/opengraph-image`,
+        width: 1200,
+        height: 630,
+      });
+      // La tarjeta se arma con la foto: tiene que existir y poder leerse.
+      if (exaltado.foto) {
+        expect(await dimensionesImagenPublica(exaltado.foto), exaltado.id).toBeDefined();
+      }
     }
   });
 
