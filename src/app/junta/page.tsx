@@ -36,6 +36,7 @@ const miembrosJunta: MiembroJunta[] = [
       "Líder visionario con amplia experiencia en la gestión deportiva y comunitaria de Humacao.",
     anosServicio: "2016 - Presente",
     foto: "/images/junta/enrique-torres.jpg",
+    fotoPosition: "center 12%",
     contribuciones: [
       "Modernización de las operaciones del PFDH",
       "Expansión de programas educativos",
@@ -51,6 +52,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Responsable de mantener los registros oficiales y la documentación del pabellón.",
     anosServicio: "2004 - Presente",
     foto: "/images/junta/miriam-lasanta.jpg",
+    fotoPosition: "center 50%",
+    fotoZoom: 1.25,
     contribuciones: [
       "Coordinación de eventos especiales",
       "Desarrollo de programas educativos",
@@ -66,6 +69,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Historiador y cronista del deporte humacaeño, custodio de la memoria deportiva.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/felix-baez.jpg",
+    fotoPosition: "center 5%",
+    fotoZoom: 1.1,
     contribuciones: [
       "Fundador y miembro original de la primera junta",
       "Autor de múltiples investigaciones deportivas",
@@ -83,6 +88,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Administrador financiero responsable de la gestión económica del pabellón.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/juan-velazquez.jpg",
+    fotoPosition: "center 10%",
+    fotoZoom: 1.1,
     contribuciones: [
       "Miembro fundador de la primera junta directiva",
       "Gestión financiera transparente",
@@ -98,6 +105,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Miembro activo con enfoque en programas comunitarios y desarrollo organizacional.",
     anosServicio: "2018 - Presente",
     foto: "/images/junta/arnaldo-ortiz.jpg",
+    fotoPosition: "center 45%",
+    fotoZoom: 1.25,
     contribuciones: [
       "Digitalización de archivos históricos",
       "Organización de ceremonias de exaltación",
@@ -128,7 +137,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Miembro joven con enfoque analítico en la investigación y documentación estadística del deporte humacaeño.",
     anosServicio: "2026 - Presente",
     foto: "/images/junta/orlando-lopez.jpg",
-    fotoPosition: "center 6%",
+    fotoPosition: "center 45%",
+    fotoZoom: 1.35,
     contribuciones: [
       "Análisis estadístico del rendimiento deportivo",
       "Investigación y documentación de récords históricos",
@@ -144,7 +154,8 @@ const miembrosJunta: MiembroJunta[] = [
       "Historiador y educador, curador del Museo Manuel Rivera Guevara.",
     anosServicio: "1999 - Presente",
     foto: "/images/junta/luis-alvarez.jpg",
-    fotoPosition: "center 15%",
+    fotoPosition: "center 45%",
+    fotoZoom: 1,
     contribuciones: [
       "Miembro fundador y educador distinguido",
       "Curación del museo y exhibiciones",
@@ -300,22 +311,6 @@ export default function JuntaDirectoresPage() {
             </p>
           </div>
         </div>
-
-        {/* Foto de grupo */}
-        <figure className="mb-12">
-          <Image
-            src="/images/junta/junta-2026-museo.jpg"
-            alt="Miembros de la Junta de Directores del PFDH frente a la entrada del Museo Manuel Rivera Guevara"
-            width={1050}
-            height={632}
-            className="w-full h-auto rounded-lg shadow-lg"
-            sizes="(max-width: 1280px) 100vw, 1216px"
-          />
-          <figcaption className="mt-3 text-center text-sm text-gray-600">
-            Junta de Directores del PFDH frente al Museo Manuel Rivera Guevara,
-            2026. Foto: Revista de la Novena Exaltación.
-          </figcaption>
-        </figure>
 
         {/* Grid de Miembros */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
