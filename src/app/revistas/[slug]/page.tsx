@@ -6,6 +6,7 @@ import { getRevistaBySlug, getAllRevistas } from "@/data/revistas";
 import { getExaltadosPorRevista } from "@/data/exaltados-all";
 import { getFotosByRevista } from "@/data/fotos-historicas";
 import { PhotoGrid } from "@/components/galeria/PhotoGrid";
+import { dimensionesPortada, jsonLdRevista, metadataRevista } from "@/lib/revistas/seo";
 import { ChevronLeft, Download, Calendar, Users, BookOpen, Camera, ExternalLink, Star } from "lucide-react";
 
 interface RevistaPageProps {
@@ -31,33 +32,7 @@ export async function generateMetadata({ params }: RevistaPageProps): Promise<Me
     };
   }
 
-  if (revista.tipo === 'especial') {
-    return {
-      title: `${revista.titulo} - Edición Especial | PFDH`,
-      description: revista.descripcion,
-      keywords: [
-        "Edición Especial",
-        "Museo",
-        "Pabellón de la Fama",
-        "Humacao",
-        "Puerto Rico",
-        `inauguración ${revista.year}`,
-      ],
-    };
-  }
-
-  return {
-    title: `${revista.titulo} - Revista #${revista.numero} | PFDH`,
-    description: `${revista.descripcion} - ${revista.exaltadosCount} exaltados en ${revista.year}`,
-    keywords: [
-      `Revista ${revista.numero}`,
-      "Pabellón de la Fama",
-      "Humacao",
-      "Puerto Rico",
-      `exaltación ${revista.year}`,
-      "biografías",
-    ],
-  };
+  return metadataRevista(revista, await dimensionesPortada(revista.portadaUrl));
 }
 
 export default async function RevistaPage({ params }: RevistaPageProps) {
@@ -74,6 +49,15 @@ export default async function RevistaPage({ params }: RevistaPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Datos estructurados: revista y ruta de navegación */}
+      {jsonLdRevista(revista).map((datos, indice) => (
+        <script
+          key={indice}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }}
+        />
+      ))}
+
       {/* Header with back button */}
       <div className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">

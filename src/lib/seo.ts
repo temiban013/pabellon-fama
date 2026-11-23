@@ -8,6 +8,10 @@ export interface SEOConfig {
   description: string;
   keywords?: string[];
   image?: string;
+  /** Dimensiones reales de `image`. Sin ellas se asume 1200×630 (la imagen por defecto). */
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlt?: string;
   url?: string;
   type?: "website" | "article" | "profile";
   noIndex?: boolean;
@@ -24,6 +28,9 @@ export function generateMetadata({
   description,
   keywords = [],
   image = defaultImage,
+  imageWidth = 1200,
+  imageHeight = 630,
+  imageAlt,
   url = SITE_URL,
   type = "website",
   noIndex = false,
@@ -76,9 +83,9 @@ export function generateMetadata({
       images: [
         {
           url: image,
-          width: 1200,
-          height: 630,
-          alt: title,
+          width: imageWidth,
+          height: imageHeight,
+          alt: imageAlt ?? title,
         },
       ],
       locale: "es_PR",

@@ -2,21 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllRevistas } from "@/data/revistas";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Revistas del Pabellón | Pabellón de la Fama del Deporte Humacaeño",
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Revistas del Pabellón",
   description:
     "Explora todas las revistas conmemorativas del Pabellón de la Fama del Deporte Humacaeño. Lee biografías completas de los exaltados.",
-  keywords: [
-    "Revistas PFDH",
-    "Pabellón de la Fama",
-    "Humacao",
-    "Puerto Rico",
-    "exaltados",
-    "biografías",
-    "historia deportiva",
-  ],
-};
+  keywords: ["Revistas PFDH", "exaltados", "biografías", "historia deportiva"],
+  url: "/revistas",
+});
 
 export default function RevistasPage() {
   const revistas = getAllRevistas();
