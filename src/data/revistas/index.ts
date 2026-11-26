@@ -192,8 +192,8 @@ export const revistasMetadata: RevistaMetadata[] = [
     totalPaginas: 28,
     exaltadosCount: 6,
     categorias: {
-      deportistas: 4,
-      propulsores: 1,
+      deportistas: 2,
+      propulsores: 3,
       postumos: 1
     },
     rangoPaginas: {

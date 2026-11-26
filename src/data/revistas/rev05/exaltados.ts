@@ -13,7 +13,7 @@ export const rev05Exaltados: ExaltadoRevista[] = [
   {
     id: 'jose-miguel-pochy-figueroa',
     foto: '/images/exaltados/jose-miguel-pochy-figueroa.jpg',
-    nombre: 'Miguel A.',
+    nombre: 'José Miguel',
     apellidos: 'Figueroa',
     apodo: 'Pochy',
     categoria: 'ATLETA',
