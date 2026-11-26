@@ -97,7 +97,6 @@ export function generateMetadata({
       title: fullTitle,
       description,
       images: [image],
-      creator: "@PabellonHumacao",
     },
 
     other: {

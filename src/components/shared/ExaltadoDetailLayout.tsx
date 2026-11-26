@@ -62,10 +62,11 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
             <>
               <Image
                 src={exaltado.foto}
-                alt={`Foto de ${exaltado.nombre}`}
+                alt={`Foto de ${exaltado.nombreCompleto}`}
                 fill
+                preload
                 className="object-cover"
-                style={{ objectPosition: 'center 20%' }}
+                style={{ objectPosition: exaltado.fotoFoco ?? "center 20%" }}
                 sizes="(max-width: 1024px) 100vw, 25vw"
               />
               {/* Enlarge button overlay */}

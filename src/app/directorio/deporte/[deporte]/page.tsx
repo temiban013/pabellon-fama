@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { exaltados } from "@/data/exaltados";
+import { todosLosExaltados } from "@/data/exaltados-all";
 import { DirectorioGrid } from "@/components/directorio/DirectorioGrid";
 import { type Exaltado } from "@/lib/types";
 
@@ -57,6 +58,7 @@ export default async function DeportePage({ params }: DeportePageProps) {
     logros: e.logros,
     reconocimientos: e.reconocimientos,
     foto: e.foto,
+    fotoFoco: todosLosExaltados.find((r) => r.id === e.id)?.fotoFoco,
     galeria: e.galeria,
     estado: e.estado,
     fechaNacimiento: e.fechaNacimiento,

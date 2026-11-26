@@ -11,6 +11,9 @@ import {
   getCategoryLabel,
 } from "@/lib/constants/exaltados";
 
+/** Punto de la foto que se conserva al recortarla cuando el exaltado no define `fotoFoco`. */
+export const FOCO_FOTO_POR_DEFECTO = "center 20%";
+
 interface ExaltadoCardProps {
   exaltado: Exaltado;
   viewMode: "grid" | "list";
@@ -43,10 +46,10 @@ export const ExaltadoCard = memo(function ExaltadoCard({
               {exaltado.foto ? (
                 <Image
                   src={exaltado.foto}
-                  alt={`Foto de ${exaltado.nombre}`}
+                  alt={`Foto de ${exaltado.nombreCompleto}`}
                   fill
                   className="object-cover"
-                  style={{ objectPosition: 'center 20%' }}
+                  style={{ objectPosition: exaltado.fotoFoco ?? FOCO_FOTO_POR_DEFECTO }}
                   sizes="64px"
                 />
               ) : (
@@ -109,10 +112,10 @@ export const ExaltadoCard = memo(function ExaltadoCard({
         {exaltado.foto ? (
           <Image
             src={exaltado.foto}
-            alt={`Foto de ${exaltado.nombre}`}
+            alt={`Foto de ${exaltado.nombreCompleto}`}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-300"
-            style={{ objectPosition: 'center 20%' }}
+            style={{ objectPosition: exaltado.fotoFoco ?? FOCO_FOTO_POR_DEFECTO }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
           />
         ) : (

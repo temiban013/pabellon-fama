@@ -59,9 +59,9 @@ export function Header() {
               </div>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl lg:text-2xl font-bold text-pabellon-green-800 group-hover:text-pabellon-green-700 transition-colors whitespace-nowrap">
+              <p className="text-xl lg:text-2xl font-bold text-pabellon-green-800 group-hover:text-pabellon-green-700 transition-colors whitespace-nowrap">
                 Pabellón de la Fama
-              </h1>
+              </p>
               <p className="text-sm lg:text-base text-pabellon-gold-600 font-medium">
                 Deporte Humacaeño
               </p>

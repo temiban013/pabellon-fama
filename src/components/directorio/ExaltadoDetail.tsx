@@ -24,6 +24,7 @@ interface ExaltadoDetailProps {
     biografia: string;
     biography: string;
     foto?: string;
+    fotoFoco?: string;
     photo?: string;
     fechaNacimiento?: string | null;
     fechaFallecimiento?: string | null;
@@ -61,6 +62,7 @@ export function ExaltadoDetail({ exaltado }: ExaltadoDetailProps) {
     logros: exaltado.logros || exaltado.achievements || [],
     reconocimientos: exaltado.reconocimientos || [],
     foto: exaltado.foto || exaltado.photo,
+    fotoFoco: exaltado.fotoFoco,
     estado: exaltado.estado,
     fechaNacimiento: exaltado.fechaNacimiento ?? undefined,
     fechaFallecimiento: exaltado.fechaFallecimiento ?? undefined,

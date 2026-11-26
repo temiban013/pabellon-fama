@@ -54,7 +54,16 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const organizationJsonLd = generateJsonLd("organization", {});
+  const organizationJsonLd = {
+    ...generateJsonLd("organization", {}),
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+1-787-410-1237",
+      contactType: "customer service",
+      availableLanguage: ["Spanish"],
+      areaServed: "PR",
+    },
+  };
 
   return (
     <html
@@ -174,22 +183,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 setTimeout(loadGTM, 5000);
               })();
             `,
-          }}
-        />
-
-
-        {/* Emergency Contact Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ContactPoint",
-              telephone: "+1-787-410-1237",
-              contactType: "customer service",
-              availableLanguage: ["Spanish", "English"],
-              areaServed: "PR",
-            }),
           }}
         />
       </body>

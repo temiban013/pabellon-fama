@@ -17,6 +17,8 @@ export interface Exaltado {
   logros: Logro[] | string[]; // Allow both structured objects and string arrays
   reconocimientos: Reconocimiento[] | string[]; // Allow both structured objects and string arrays
   foto?: string;
+  /** Punto de la foto que se conserva al recortarla (`object-position`). Por defecto «center 20%». */
+  fotoFoco?: string;
   galeria?: string[];
   estadisticas?: EstadisticaDeportiva[];
   estado: "activo" | "fallecido";

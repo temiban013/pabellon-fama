@@ -46,6 +46,7 @@ function transformExaltadoRevista(exaltadoRevista: ExaltadoRevista): Exaltado {
     logros: exaltadoRevista.contenido.logros || [],
     reconocimientos: exaltadoRevista.contenido.reconocimientos || [],
     foto: exaltadoRevista.foto,
+    fotoFoco: exaltadoRevista.fotoFoco,
     estado: "activo", // Default - we can enhance this later with actual data
     apodo: exaltadoRevista.apodo || null,
   };

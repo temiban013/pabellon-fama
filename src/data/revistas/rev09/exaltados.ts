@@ -6,6 +6,7 @@ export const rev09Exaltados: ExaltadoRevista[] = [
   {
     id: 'victor-vitin-hernandez-lopez',
     foto: '/images/exaltados/victor-vitin-hernandez-lopez.jpg',
+    fotoFoco: 'center 22%',
     nombre: 'Víctor M.',
     apodo: 'Vitín',
     apellidos: 'Hernández López',
@@ -34,6 +35,7 @@ Actualmente está felizmente retirado y junto a su esposa disfruta de sus hijos 
   {
     id: 'obed-santana-acosta',
     foto: '/images/exaltados/obed-santana-acosta.jpg',
+    fotoFoco: 'center 3%',
     nombre: 'Obed',
     apellidos: 'Santana Acosta',
     categoria: 'ATLETA',
@@ -68,6 +70,7 @@ Por su trayectoria ejemplar, disciplina y dedicación, Obed Santana Acosta es re
   {
     id: 'jose-escalera',
     foto: '/images/exaltados/jose-escalera.jpg',
+    fotoFoco: 'center 5%',
     nombre: 'José',
     apellidos: 'Escalera',
     categoria: 'ATLETA',

@@ -40,9 +40,26 @@ describe("metadatos de /directorio/[slug]", () => {
     );
   });
 
+  it("título y descripción no llevan género: «Exaltación <año>», también para mujeres y equipos", () => {
+    expect(metadataExaltado(victor).title).toBe(
+      'Víctor M. "Vitín" Hernández López · Exaltación 2026 | Pabellón de la Fama del Deporte Humacaeño',
+    );
+    for (const exaltado of todosLosExaltados) {
+      const metadata = metadataExaltado(exaltado);
+      expect(String(metadata.title), exaltado.id).not.toMatch(/exaltad[oa]\b/i);
+      expect(String(metadata.description).split(".")[0], exaltado.id).not.toMatch(/exaltad[oa]\b/i);
+      expect((metadata.openGraph as { title: string }).title).toBe(metadata.title);
+      expect(metadata.twitter?.title).toBe(metadata.title);
+    }
+  });
+
+  it("no declara una cuenta de Twitter sin verificar", () => {
+    expect(metadataExaltado(victor).twitter).not.toHaveProperty("creator");
+  });
+
   it("la descripción de Víctor termina en una oración completa de su biografía", () => {
     expect(descripcionExaltado(victor)).toBe(
-      'Víctor M. "Vitín" Hernández López, exaltado al Pabellón de la Fama del Deporte Humacaeño en 2026. Béisbol. Nació en Humacao el 3 de agosto de 1945.',
+      'Víctor M. "Vitín" Hernández López: Exaltación 2026 al Pabellón de la Fama del Deporte Humacaeño. Béisbol. Nació en Humacao el 3 de agosto de 1945.',
     );
   });
 
@@ -69,7 +86,7 @@ describe("metadatos de /directorio/[slug]", () => {
       if (descripcion.endsWith("…")) {
         // Lo que precede a «…» es un prefijo de la biografía que acaba en palabra entera.
         const biografia = exaltado.contenido.biografia.replace(/\s+/g, " ").trim();
-        const fragmento = descripcion.slice(descripcion.indexOf(". ", descripcion.indexOf(" en ")) + 2, -1);
+        const fragmento = descripcion.slice(descripcion.indexOf("Humacaeño. ") + "Humacaeño. ".length, -1);
         const resto = fragmento.slice(fragmento.indexOf(". ") + 2);
         expect(biografia.startsWith(resto), exaltado.id).toBe(true);
         expect(biografia.charAt(resto.length), exaltado.id).toMatch(/[\s,;:]/);

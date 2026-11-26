@@ -74,13 +74,14 @@ export function separarOraciones(texto: string): string[] {
 }
 
 /**
- * Descripción de hasta 155 caracteres: quién es y cuándo fue exaltado, más las
+ * Descripción de hasta 155 caracteres, sin género («Exaltación <año>», vale
+ * para mujeres y equipos): quién es y el año de su exaltación, más las
  * primeras oraciones completas de la biografía que quepan. Nunca corta una
  * palabra: si la primera oración no cabe entera, se recorta en un espacio y
  * termina en «…».
  */
 export function descripcionExaltado(exaltado: ExaltadoSeo): string {
-  const base = `${nombreCompletoExaltado(exaltado)}, exaltado al ${NOMBRE_ORGANIZACION} en ${exaltado.anoExaltacion}. ${exaltado.deportes.join(", ")}.`;
+  const base = `${nombreCompletoExaltado(exaltado)}: Exaltación ${exaltado.anoExaltacion} al ${NOMBRE_ORGANIZACION}. ${exaltado.deportes.join(", ")}.`;
   const oraciones = separarOraciones(exaltado.contenido.biografia);
 
   let descripcion = base;
@@ -109,7 +110,7 @@ export function metadataExaltado(exaltado: ExaltadoSeo): Metadata {
   const esEquipo = exaltado.categoria === "EQUIPO";
 
   return generateSEOMetadata({
-    title: `${nombreCompleto} - Exaltado PFDH`,
+    title: `${nombreCompleto} · Exaltación ${exaltado.anoExaltacion}`,
     description: descripcionExaltado(exaltado),
     keywords: [
       nombreExaltado(exaltado),

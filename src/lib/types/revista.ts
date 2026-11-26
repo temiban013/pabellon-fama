@@ -45,6 +45,8 @@ export interface RevistaMetadata {
 export interface ExaltadoRevista {
   id: string;
   foto?: string;
+  /** Punto de la foto que se conserva al recortarla (`object-position` de CSS). Por defecto «center 20%». */
+  fotoFoco?: string;
   nombre: string;
   apodo?: string;
   apellidos: string;
