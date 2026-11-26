@@ -90,9 +90,10 @@ describe("NoticiaCard", () => {
     });
   });
 
-  it("CATEGORIAS_NOTICIA cubre las cuatro categorías del spec", () => {
+  it("CATEGORIAS_NOTICIA cubre las cinco categorías (las cuatro del spec y «cronica», PF-087)", () => {
     expect(Object.keys(CATEGORIAS_NOTICIA).sort()).toEqual([
       "anuncio",
+      "cronica",
       "en-memoria",
       "evento",
       "exaltacion",

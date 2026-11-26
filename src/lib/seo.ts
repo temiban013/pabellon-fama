@@ -12,6 +12,18 @@ export interface SEOConfig {
   imageWidth?: number;
   imageHeight?: number;
   imageAlt?: string;
+  /**
+   * Título para `og:title` y `twitter:title`, sin el nombre del sitio (ya va
+   * en `og:site_name`). Si falta, se usa el mismo de `<title>`.
+   */
+  socialTitle?: string;
+  /** Datos de artículo (`article:*` de Open Graph); solo con `type: "article"`. */
+  article?: {
+    /** ISO 8601. */
+    publishedTime: string;
+    modifiedTime?: string;
+    authors?: string[];
+  };
   url?: string;
   type?: "website" | "article" | "profile";
   noIndex?: boolean;
@@ -31,6 +43,8 @@ export function generateMetadata({
   imageWidth = 1200,
   imageHeight = 630,
   imageAlt,
+  socialTitle,
+  article,
   url = SITE_URL,
   type = "website",
   noIndex = false,
@@ -76,7 +90,7 @@ export function generateMetadata({
     },
 
     openGraph: {
-      title: fullTitle,
+      title: socialTitle ?? fullTitle,
       description,
       url: fullUrl,
       siteName,
@@ -90,11 +104,12 @@ export function generateMetadata({
       ],
       locale: "es_PR",
       type,
+      ...(type === "article" && article ? article : {}),
     },
 
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title: socialTitle ?? fullTitle,
       description,
       images: [image],
     },

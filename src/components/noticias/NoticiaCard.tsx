@@ -28,6 +28,11 @@ export const CATEGORIAS_NOTICIA: Record<
     label: "Exaltación",
     badgeClass: "bg-pabellon-gold-100 text-pabellon-gold-800",
   },
+  // PF-087: marrón del marco del logo; brown-900 sobre brown-100 pasa de 10:1.
+  cronica: {
+    label: "Crónica",
+    badgeClass: "bg-pabellon-brown-100 text-pabellon-brown-900",
+  },
 };
 
 /**

@@ -5,6 +5,7 @@ import {
   getNoticiaBySlug,
   getUltimasNoticias,
   type Noticia,
+  parrafosDeNoticia,
 } from '@/data/noticias';
 import { todosLosExaltados } from '@/data/exaltados-all';
 import { EXALTACION_2026 } from '@/lib/data/exaltacion-2026';
@@ -130,10 +131,12 @@ describe('data/noticias.ts', () => {
       }
     });
 
-    it('cada contenido tiene al menos un párrafo no vacío', () => {
+    it('cada noticia trae contenido o cuerpo (nunca los dos), con al menos un párrafo no vacío', () => {
       for (const n of noticias) {
-        expect(n.contenido.length).toBeGreaterThan(0);
-        for (const parrafo of n.contenido) {
+        expect((n.contenido !== undefined) !== (n.cuerpo !== undefined), n.slug).toBe(true);
+        const parrafos = parrafosDeNoticia(n);
+        expect(parrafos.length, n.slug).toBeGreaterThan(0);
+        for (const parrafo of parrafos) {
           expect(parrafo.trim().length).toBeGreaterThan(0);
         }
       }
@@ -197,9 +200,10 @@ describe('data/noticias.ts', () => {
       expect(EXALTACION_2026.flyer.src).toBe('/images/noticias/novena-exaltacion-2026.jpg');
     });
 
-    it('getUltimasNoticias la ordena según su fecha (primera: es la más reciente)', () => {
+    it('getUltimasNoticias la ordena según su fecha, detrás de la crónica del 2026-11-26 (PF-087)', () => {
       const ultimas = getUltimasNoticias(noticias.length);
-      expect(ultimas[0]?.slug).toBe('novena-exaltacion-2026');
+      expect(ultimas[0]?.slug).toBe('cronica-novena-exaltacion-2026');
+      expect(ultimas[1]?.slug).toBe('novena-exaltacion-2026');
       const fechas = ultimas.map((n) => n.fecha);
       expect([...fechas].sort().reverse()).toEqual(fechas);
     });

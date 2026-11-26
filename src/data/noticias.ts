@@ -11,6 +11,9 @@
  * - `resumen`: máximo 160 caracteres (tarjeta de lista + meta description).
  * - `contenido`: párrafos como texto plano; se renderizan como nodos de
  *   texto en <p> — NUNCA HTML ni dangerouslySetInnerHTML.
+ * - `cuerpo` (PF-087): alternativa a `contenido` para textos con estructura
+ *   (crónicas firmadas): bloques tipados de src/data/noticia-bloques.ts.
+ *   Una noticia trae `contenido` o `cuerpo`, nunca los dos.
  * - `exaltadoSlug`: id VIVO del directorio (ej. "julio-yuyo-maldonado")
  *   para noticias "en-memoria" — debe existir en todosLosExaltados.
  * - Imágenes: viven en /public/images/noticias/, optimizadas a ~1600px
@@ -24,24 +27,43 @@ import { parseDateLocal } from "@/lib/date-utils";
 import { EXALTACION_2026 } from "@/lib/data/exaltacion-2026";
 import { formatearFechaLargaSinComaAST } from "@/lib/exaltacion";
 import { getGaleria, type GaleriaId } from "@/data/galerias";
+import { textoDeBloques, type BloqueNoticia } from "@/data/noticia-bloques";
+import { cuerpoCronicaNovena2026 } from "@/data/cronicas/novena-exaltacion-2026";
 
 export type CategoriaNoticia =
   | "en-memoria"
   | "anuncio"
   | "evento"
-  | "exaltacion";
+  | "exaltacion"
+  | "cronica";
 
 export interface Noticia {
   /** URL slug, kebab-case, unique. */
   readonly slug: string;
   readonly titulo: string;
+  /** Segunda línea del titular; en `<title>` y en el JSON-LD va unida con «: ». */
+  readonly subtitulo?: string;
+  /** Firma del texto, tal como firmó su autor. Sin autor, firma el Pabellón. */
+  readonly autor?: {
+    readonly nombre: string;
+    readonly descripcion?: string;
+  };
   /** ISO date YYYY-MM-DD (America/Puerto_Rico semantics) */
   readonly fecha: string;
   readonly categoria: CategoriaNoticia;
   /** List-card + meta description (<=160 chars) */
   readonly resumen: string;
   /** Body paragraphs rendered as <p> text nodes. No HTML. */
-  readonly contenido: readonly string[];
+  readonly contenido?: readonly string[];
+  /** Cuerpo por bloques (PF-087); excluye a `contenido`. */
+  readonly cuerpo?: readonly BloqueNoticia[];
+  /** Slugs de otras noticias para «Sigue leyendo». */
+  readonly relacionadas?: readonly string[];
+  /** Enlaces internos adicionales de «Sigue leyendo». */
+  readonly enlaces?: readonly {
+    readonly texto: string;
+    readonly href: string;
+  }[];
   /** Live directorio id (e.g. "julio-yuyo-maldonado") for en-memoria items */
   readonly exaltadoSlug?: string;
   /** ID de video de YouTube; si está presente se muestra embebido al final */
@@ -63,6 +85,8 @@ export interface Noticia {
     readonly alt: string;
     readonly width: number;
     readonly height: number;
+    /** Crédito fotográfico visible bajo la imagen. */
+    readonly credito?: string;
   };
   /** Imagen Open Graph (1200×630); si falta, se usa `imagen`. */
   readonly imagenOg?: {
@@ -92,7 +116,61 @@ const LUGAR_EXALTACION = `${EXALTACION_2026.sede.nombre} de ${EXALTACION_2026.se
 // PF-073: galería de la ceremonia (fotos en Vercel Blob).
 const GALERIA_EXALTACION = getGaleria("novena-exaltacion-2026");
 
+/** Foto de una galería por su id; lanza si no existe (falla al compilar). */
+export function fotoDeGaleria(galeriaId: GaleriaId, fotoId: string) {
+  const foto = getGaleria(galeriaId).fotos.find((f) => f.id === fotoId);
+  if (!foto) {
+    throw new Error(`La galería "${galeriaId}" no tiene la foto "${fotoId}".`);
+  }
+  return foto;
+}
+
+// PF-087: foto principal de la crónica, tomada de la galería de la ceremonia.
+const FOTO_PRINCIPAL_CRONICA = fotoDeGaleria(
+  "novena-exaltacion-2026",
+  "pxl-20261108-190313536"
+);
+
+const ENLACE_REVISTA_NOVENA = {
+  texto: "Revista de la Novena Exaltación",
+  href: "/revistas/9",
+} as const;
+
+export const SLUG_CRONICA_NOVENA = "cronica-novena-exaltacion-2026";
+
 export const noticias: readonly Noticia[] = [
+  {
+    slug: SLUG_CRONICA_NOVENA,
+    titulo: "La Ciudad Gris aplaude a sus Héroes",
+    subtitulo: "Crónica de la 9na. Ceremonia de Exaltación del PFDH",
+    autor: {
+      nombre: "Félix Báez Neris",
+      descripcion: "Profesor jubilado de la UPRH",
+    },
+    fecha: "2026-11-26",
+    categoria: "cronica",
+    resumen:
+      "Crónica de Félix Báez Neris sobre la Novena Ceremonia de Exaltación, celebrada el 8 de noviembre de 2026 en el Centro de Bellas Artes de Humacao.",
+    cuerpo: cuerpoCronicaNovena2026,
+    imagen: {
+      src: FOTO_PRINCIPAL_CRONICA.src,
+      alt: FOTO_PRINCIPAL_CRONICA.alt,
+      width: FOTO_PRINCIPAL_CRONICA.width,
+      height: FOTO_PRINCIPAL_CRONICA.height,
+      ...(GALERIA_EXALTACION.credito
+        ? { credito: GALERIA_EXALTACION.credito }
+        : {}),
+    },
+    // Recorte 1200×630 de la misma foto, hecho desde el original, sin EXIF.
+    imagenOg: {
+      src: "/images/noticias/cronica-novena-exaltacion-2026-og.jpg",
+      alt: FOTO_PRINCIPAL_CRONICA.alt,
+      width: 1200,
+      height: 630,
+    },
+    relacionadas: [EXALTACION_2026.noticiaSlug],
+    enlaces: [ENLACE_REVISTA_NOVENA],
+  },
   {
     slug: EXALTACION_2026.noticiaSlug,
     titulo: "Novena Exaltación del Pabellón de la Fama",
@@ -109,6 +187,9 @@ export const noticias: readonly Noticia[] = [
     imagen: GALERIA_EXALTACION.portada,
     imagenOg: GALERIA_EXALTACION.og,
     galeriaId: "novena-exaltacion-2026",
+    // PF-087: la crónica firmada de la ceremonia es una noticia aparte.
+    relacionadas: [SLUG_CRONICA_NOVENA],
+    enlaces: [ENLACE_REVISTA_NOVENA],
     // PF-073: ceremonia completa (cámara y edición de Reinaldo Álvarez, por encargo
     // de la Junta; video público en @PabellonFDH).
     youtubeId: "wHCHip8EoJI",
@@ -238,4 +319,30 @@ export function getUltimasNoticias(
   source: readonly Noticia[] = noticias
 ): readonly Noticia[] {
   return getNoticias(source).slice(0, n);
+}
+
+/**
+ * Texto de la noticia, un elemento por párrafo: `contenido` tal cual, o el
+ * texto de los bloques de `cuerpo`. Es lo que va a `articleBody`.
+ */
+export function parrafosDeNoticia(noticia: Noticia): readonly string[] {
+  if (noticia.cuerpo) return textoDeBloques(noticia.cuerpo);
+  return noticia.contenido ?? [];
+}
+
+/** Titular completo: título y subtítulo unidos con «: ». */
+export function titularCompleto(noticia: Noticia): string {
+  return noticia.subtitulo
+    ? `${noticia.titulo}: ${noticia.subtitulo}`
+    : noticia.titulo;
+}
+
+/** Noticias de «Sigue leyendo», en el orden declarado; omite slugs inexistentes. */
+export function getRelacionadas(
+  noticia: Noticia,
+  source: readonly Noticia[] = noticias
+): readonly Noticia[] {
+  return (noticia.relacionadas ?? [])
+    .map((slug) => getNoticiaBySlug(slug, source))
+    .filter((n): n is Noticia => n !== undefined);
 }

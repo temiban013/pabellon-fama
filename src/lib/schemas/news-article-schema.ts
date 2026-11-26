@@ -1,6 +1,10 @@
 import { SITE_URL } from "@/lib/constants/site";
 import type { NewsArticle, Organization, WithContext } from "schema-dts";
-import type { Noticia } from "@/data/noticias";
+import {
+  parrafosDeNoticia,
+  titularCompleto,
+  type Noticia,
+} from "@/data/noticias";
 
 
 const organizacion: Organization = {
@@ -32,10 +36,21 @@ export function generateNewsArticleSchema(
     noticia.actualizaciones?.[noticia.actualizaciones.length - 1]?.fecha ??
     noticia.fecha;
 
+  // PF-087: perfiles de los exaltados que el cuerpo presenta en tarjetas. El
+  // `@id` es el mismo del `Person` de cada perfil (src/lib/directorio/seo.ts).
+  const mentions = (noticia.cuerpo ?? []).flatMap((bloque) =>
+    bloque.tipo === "exaltados"
+      ? bloque.items.map((item) => ({
+          "@id": `${SITE_URL}/directorio/${item.exaltadoId}`,
+        }))
+      : []
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    headline: noticia.titulo,
+    headline: titularCompleto(noticia),
+    ...(noticia.subtitulo ? { alternativeHeadline: noticia.subtitulo } : {}),
     description: noticia.resumen,
     datePublished: noticia.fecha,
     dateModified,
@@ -45,9 +60,13 @@ export function generateNewsArticleSchema(
       "@type": "WebPage",
       "@id": urlNoticia,
     },
-    articleBody: noticia.contenido.join("\n\n"),
+    articleBody: parrafosDeNoticia(noticia).join("\n\n"),
     image: noticia.imagen ? [urlAbsoluta(noticia.imagen.src)] : undefined,
-    author: organizacion,
+    // Texto firmado: el autor es la persona; si no, firma el Pabellón.
+    author: noticia.autor
+      ? { "@type": "Person", name: noticia.autor.nombre }
+      : organizacion,
+    ...(mentions.length > 0 ? { mentions } : {}),
     publisher: organizacion,
   };
 }
