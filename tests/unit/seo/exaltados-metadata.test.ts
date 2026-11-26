@@ -59,7 +59,7 @@ describe("metadatos de /directorio/[slug]", () => {
 
   it("la descripción de Víctor termina en una oración completa de su biografía", () => {
     expect(descripcionExaltado(victor)).toBe(
-      'Víctor M. "Vitín" Hernández López: Exaltación 2026 al Pabellón de la Fama del Deporte Humacaeño. Béisbol. Nació en Humacao el 3 de agosto de 1945.',
+      'Víctor M. "Vitín" Hernández López: Exaltación 2026 al Pabellón de la Fama del Deporte Humacaeño. Béisbol, Softbol. Nació en Humacao el 3 de agosto de 1945.',
     );
   });
 

@@ -328,7 +328,8 @@ export default function JuntaDirectoresPage() {
             Presidente de Honor
           </h2>
           <p className="text-gray-600 text-center mb-6">
-            Cargo honorífico; no es miembro activo de la Junta de Directores.
+            Cargo honorífico que se entrega en cada exaltación; no es miembro
+            activo de la Junta de Directores.
           </p>
           <div className="max-w-md mx-auto">
             <MiembroCard miembro={presidenteHonor} />

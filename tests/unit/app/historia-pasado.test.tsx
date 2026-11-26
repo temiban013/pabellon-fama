@@ -42,9 +42,9 @@ describe("HistoriaPage en pasado (PF-072)", () => {
   it("la Novena trae los cinco nombres de la clase 2026 y el total nuevo en sus detalles (PF-074)", () => {
     render(<HistoriaPage />);
     for (const nombre of [
-      "Víctor M. «Vitín» Hernández López (Béisbol)",
+      "Víctor M. «Vitín» Hernández López (Béisbol, Softbol)",
       "Obed Santana Acosta (Lucha Olímpica)",
-      "José Escalera (Atletismo)",
+      "José Escalera (Atletismo, Béisbol)",
       "José M. «Pancho» Rodríguez Castillo (Boxeo)",
       "Francisco Betancourt Ibern (propulsor: béisbol, softbol, fútbol)",
     ]) {
