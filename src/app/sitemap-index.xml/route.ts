@@ -13,10 +13,6 @@ export async function GET() {
     <loc>${SITE_URL}/sitemap-exaltados.xml</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
   </sitemap>
-  <sitemap>
-    <loc>${SITE_URL}/sitemap-deportes.xml</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-  </sitemap>
 </sitemapindex>`;
 
   return new NextResponse(sitemapIndex, {
