@@ -56,7 +56,10 @@ export interface ExaltadoRevista {
   revistaNumero: number;
   paginaInicio: number;
   paginaFin: number;
-  fechaFallecimiento?: string; // ISO YYYY-MM-DD
+  /** `YYYY` o `YYYY-MM-DD`: cuando la fuente solo da el año, se guarda el año. */
+  fechaNacimiento?: string;
+  /** `YYYY` o `YYYY-MM-DD`. Si existe, `estado` es `'fallecido'`. */
+  fechaFallecimiento?: string;
   estado?: 'activo' | 'fallecido';
   /** ID de video de YouTube de la entrevista PFDH; si está presente se muestra embebida en el perfil */
   entrevistaYoutubeId?: string;

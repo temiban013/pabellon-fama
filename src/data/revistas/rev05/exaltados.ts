@@ -214,6 +214,9 @@ En las Justas Intramurales de la Escuela Superior de 1949 ganó los 100, 200 y 4
     revistaNumero: 5,
     paginaInicio: 18,
     paginaFin: 18,
+    fechaNacimiento: '1940',
+    fechaFallecimiento: '2022',
+    estado: 'fallecido',
     contenido: {
       biografia: `Pedro Juan Dávila Poupart, mejor conocido como Peyo, inició su carrera deportiva desde muy joven. Perteneció al equipo de béisbol Malta Corona y fungió como dirigente. Jugó con el equipo Garage Miguel y jugó en el béisbol Clase A pero prefirió el fútbol. Ingresa al Jumacao Fútbol Club jugando de interior y de extremo izquierdo en los equipos juveniles y de Primera División de dicho club. Jugó, también, para los Caribes F.C. siendo ya un destacado futbolista.
 

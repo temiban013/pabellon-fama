@@ -62,7 +62,7 @@
         "fechaNacimiento": null,
         "fechaFallecimiento": null,
         "lugarNacimiento": null,
-        "apodo": "Paciencia",
+        "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": "/images/exaltados/carmen-marrero.jpg",
@@ -102,7 +102,7 @@
           "Atletismo"
         ],
         "categoria": "atleta",
-        "anoExaltacion": 2000,
+        "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
         "biografia": "Atleta destacado en las competencias de atletismo a nivel local y nacional.",
         "fechaNacimiento": null,
@@ -123,7 +123,7 @@
           "Atletismo"
         ],
         "categoria": "atleta",
-        "anoExaltacion": 2000,
+        "anoExaltacion": 2002,
         "exaltacion": "2da. Exaltación",
         "biografia": "Atleta humacaeño con destacada participación en competencias nacionales de atletismo.",
         "fechaNacimiento": null,
@@ -996,14 +996,14 @@
         "anoExaltacion": 2010,
         "exaltacion": "6ta. Exaltación",
         "biografia": "Propulsor del béisbol humacaeño, dedicado al desarrollo del deporte.",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
+        "fechaNacimiento": "1940-10-07",
+        "fechaFallecimiento": "2025",
         "lugarNacimiento": null,
         "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": null,
-        "estado": "activo"
+        "estado": "fallecido"
       },
       {
         "id": "angel-lalin-rodriguez",
@@ -1038,14 +1038,14 @@
         "anoExaltacion": 2015,
         "exaltacion": "8va. Exaltación",
         "biografia": "Propulsor del béisbol humacaeño, dedicado al desarrollo de talentos.",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
+        "fechaNacimiento": "1943-10-17",
+        "fechaFallecimiento": "2019",
         "lugarNacimiento": null,
         "apodo": null,
         "logros": [],
         "reconocimientos": [],
         "foto": null,
-        "estado": "activo"
+        "estado": "fallecido"
       },
       {
         "id": "luis-f-baby-carrasquillo",
@@ -1219,8 +1219,8 @@
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
         "biografia": "Fundador y promotor del Pabellón de la Fama. Promovió la creación del Pabellón en 1983. Reportero deportivo y miembro de la Asamblea Municipal.",
-        "fechaNacimiento": null,
-        "fechaFallecimiento": null,
+        "fechaNacimiento": "1932-02-22",
+        "fechaFallecimiento": "2021",
         "lugarNacimiento": null,
         "apodo": null,
         "rolFundador": "Fundador y promotor del Pabellón de la Fama",
@@ -1236,7 +1236,7 @@
           "Fundador del Pabellón de la Fama del Deporte Humacaeño"
         ],
         "foto": null,
-        "estado": "activo"
+        "estado": "fallecido"
       },
       {
         "id": "ismael-garcia-perez",
@@ -1296,8 +1296,8 @@
         "anoExaltacion": 2000,
         "exaltacion": "1ra. Exaltación",
         "biografia": "Considerado por muchos el mejor futbolista en la historia de Puerto Rico. Representó a PR en Juegos Centroamericanos por 15 años y entrenenó la selección nacional por 28 años.",
-        "fechaNacimiento": "1931-10-12",
-        "fechaFallecimiento": null,
+        "fechaNacimiento": "1932",
+        "fechaFallecimiento": "2025",
         "lugarNacimiento": "Santurce",
         "apodo": "Saso",
         "carreraInternacional": "Representó a PR en Juegos Centroamericanos (1959-1974)",
@@ -1316,7 +1316,7 @@
           "Considerado el mejor futbolista en la historia de Puerto Rico"
         ],
         "foto": null,
-        "estado": "activo"
+        "estado": "fallecido"
       },
       {
         "id": "pedro-jose-pepito-alvarez",
@@ -2022,7 +2022,7 @@
         "exaltacion": "5ta. Exaltación",
         "biografia": "Profesor UPR Humacao por 32 años. Miembro fundador y secretario del Pabellón (1998). Fundador del Club de Atletismo de Humacao (1978) y apoderado del equipo Doble A por 12 años.",
         "fechaNacimiento": "1940-11-15",
-        "fechaFallecimiento": null,
+        "fechaFallecimiento": "2022",
         "lugarNacimiento": "Humacao",
         "apodo": "Peyo",
         "carreraAcademica": "Profesor UPR Humacao (1962-1994)",
@@ -2046,7 +2046,7 @@
           "Miembro fundador del Pabellón de la Fama"
         ],
         "foto": null,
-        "estado": "activo"
+        "estado": "fallecido"
       },
       {
         "id": "francisco-betancourt-ibern",
@@ -2063,7 +2063,7 @@
         "fechaNacimiento": "1949-11-08",
         "fechaFallecimiento": null,
         "lugarNacimiento": "Humacao",
-        "apodo": null,
+        "apodo": "Pancho",
         "deportesPromovidos": [
           "Béisbol",
           "Softbol",

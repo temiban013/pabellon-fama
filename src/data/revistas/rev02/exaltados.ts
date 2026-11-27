@@ -1,6 +1,6 @@
 /**
  * Exaltados de la Revista #02 (Año 2002)
- * Segunda Exaltación - 17 de agosto de 2002
+ * Segunda Exaltación - 3 de noviembre de 2002
  * Total: 9 exaltados (8 individuos + 1 equipo)
  *
  * Categorías:

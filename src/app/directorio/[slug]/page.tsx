@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
-import { parseDateLocal } from "@/lib/date-utils";
 import { todosLosExaltados } from "@/data/exaltados-all";
 import { ExaltadoDetail } from "@/components/directorio/ExaltadoDetail";
 import { idCanonicoDeAlias } from "@/lib/directorio/alias";
@@ -74,12 +73,9 @@ export default async function ExaltadoPage({ params }: ExaltadoPageProps) {
     fotoFoco: exaltadoRevista.fotoFoco,
     photo: exaltadoRevista.foto,
     estado: exaltadoRevista.estado ?? ('activo' as const),
-    fechaFallecimiento: exaltadoRevista.fechaFallecimiento
-      ? parseDateLocal(exaltadoRevista.fechaFallecimiento).toLocaleDateString(
-          "es-PR",
-          { day: "numeric", month: "long", year: "numeric" }
-        )
-      : undefined,
+    // `YYYY` o `YYYY-MM-DD`; el perfil les da formato (formatearFechaHistorica).
+    fechaNacimiento: exaltadoRevista.fechaNacimiento,
+    fechaFallecimiento: exaltadoRevista.fechaFallecimiento,
     slug: exaltadoRevista.id,
     entrevistaYoutubeId: exaltadoRevista.entrevistaYoutubeId,
   };

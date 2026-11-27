@@ -38,7 +38,7 @@ export const revistasMetadata: RevistaMetadata[] = [
     numero: 2,
     year: 2002,
     titulo: 'Segunda Exaltación del Pabellón',
-    fechaCeremonia: '2002-08-17',
+    fechaCeremonia: '2002-11-03',
     descripcion: 'Segunda ceremonia de exaltación del Pabellón de la Fama del Deporte Humacaeño. Programa 2002.',
     pdfUrl: blobUrl('revista-02.pdf'),
     portadaUrl: '/revistas/portadas/rev02.jpg',

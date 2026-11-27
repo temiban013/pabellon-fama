@@ -46,7 +46,7 @@ describe("HistoriaPage en pasado (PF-072)", () => {
       "Obed Santana Acosta (Lucha Olímpica)",
       "José Escalera (Atletismo, Béisbol)",
       "José M. «Pancho» Rodríguez Castillo (Boxeo)",
-      "Francisco Betancourt Ibern (propulsor: béisbol, softbol, fútbol)",
+      "Francisco «Pancho» Betancourt Ibern (propulsor: béisbol, softbol, fútbol)",
     ]) {
       expect(screen.getByText(nombre)).toBeInTheDocument();
     }

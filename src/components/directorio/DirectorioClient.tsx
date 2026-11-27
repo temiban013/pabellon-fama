@@ -28,7 +28,7 @@ const categoriaMap: Record<string, CategoriaExaltado> = {
 };
 
 // Función para transformar ExaltadoRevista a Exaltado
-function transformExaltadoRevista(exaltadoRevista: ExaltadoRevista): Exaltado {
+export function transformExaltadoRevista(exaltadoRevista: ExaltadoRevista): Exaltado {
   // Construct nombreCompleto: nombre + "apodo" + apellidos
   const nombreCompleto = exaltadoRevista.apodo
     ? `${exaltadoRevista.nombre} "${exaltadoRevista.apodo}" ${exaltadoRevista.apellidos}`
@@ -47,7 +47,13 @@ function transformExaltadoRevista(exaltadoRevista: ExaltadoRevista): Exaltado {
     reconocimientos: exaltadoRevista.contenido.reconocimientos || [],
     foto: exaltadoRevista.foto,
     fotoFoco: exaltadoRevista.fotoFoco,
-    estado: "activo", // Default - we can enhance this later with actual data
+    // PF-088: el estado sale de los datos. Un exaltado póstumo ya había
+    // fallecido al ser exaltado, aunque su entrada no lo marque.
+    estado:
+      exaltadoRevista.estado ??
+      (exaltadoRevista.categoria === "PÓSTUMO" ? "fallecido" : "activo"),
+    fechaNacimiento: exaltadoRevista.fechaNacimiento,
+    fechaFallecimiento: exaltadoRevista.fechaFallecimiento,
     apodo: exaltadoRevista.apodo || null,
   };
 }

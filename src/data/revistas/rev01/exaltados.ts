@@ -34,8 +34,7 @@ export const rev01Exaltados: ExaltadoRevista[] = [
   {
     id: 'carmen-paciencia-marrero',
     foto: '/images/exaltados/carmen-paciencia-marrero.jpg',
-    nombre: 'Carmen',
-    apodo: 'Paciencia',
+    nombre: 'Carmen Paciencia',
     apellidos: 'Marrero Berrios',
     categoria: 'ATLETA',
     deportes: ['Atletismo'],
@@ -62,6 +61,9 @@ export const rev01Exaltados: ExaltadoRevista[] = [
     revistaNumero: 1,
     paginaInicio: 16,
     paginaFin: 16,
+    fechaNacimiento: '1932',
+    fechaFallecimiento: '2025',
+    estado: 'fallecido',
     contenido: {
       biografia: `Aunque nacido en Santurce, se considera así mismo humacaeño por sentimiento y adopción, ya que desde los 16 años, el pueblo de Humacao lo recibe como un hijo. Ya a los 16 años, Saso Tuller era jugador de categoría superior con el equipo Arqueros Verdes, de mucha tradición en el fútbol puertorriqueño y también con la selección de Puerto Rico, con la que estuvo 28 años.
 
@@ -358,6 +360,9 @@ Como observamos, Osvaldo, se ha destacado en diversas facetas como dentro del b�
     revistaNumero: 1,
     paginaInicio: 26,
     paginaFin: 26,
+    fechaNacimiento: '1932-02-22',
+    fechaFallecimiento: '2021',
+    estado: 'fallecido',
     contenido: {
       biografia: `Nació el 22 de febrero de 1932 en Humacao. Practicó el softball, béisbol y atletismo. Cosechó grandes triunfos en el atletismo representando a su escuela en la década del 50. Se destacó en la pértiga, en los relevos de 4x100 metros y 4x400 metros.
 

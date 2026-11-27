@@ -168,6 +168,7 @@ Inspirado por Muhammad Alí, Pancho ha demostrado que los verdaderos campeones s
     id: 'francisco-betancourt-ibern',
     foto: '/images/exaltados/francisco-betancourt-ibern.jpg',
     nombre: 'Francisco',
+    apodo: 'Pancho',
     apellidos: 'Betancourt Ibern',
     categoria: 'PROPULSOR',
     deportes: ['Béisbol', 'Softbol', 'Fútbol'],

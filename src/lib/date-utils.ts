@@ -19,3 +19,34 @@ export const parseDateLocal = (dateString: string): Date => {
   const [year, month, day] = prDateStr.split("-").map(Number);
   return new Date(year, month - 1, day);
 };
+
+/** Fecha histórica: el año solo (`YYYY`) o el día completo (`YYYY-MM-DD`). */
+export const FORMATO_FECHA_HISTORICA = /^\d{4}(-\d{2}-\d{2})?$/;
+
+/**
+ * Fecha de nacimiento o de fallecimiento para mostrar (PF-088).
+ *
+ * Las fuentes históricas a veces dan solo el año. `'2022'` se muestra como
+ * «2022» y `'2026-05-09'` como «9 de mayo de 2026»; `soloAno` le dice a la
+ * página qué etiqueta poner («Año de…» o «Fecha de…»). Cualquier otro texto
+ * se devuelve tal cual.
+ */
+export function formatearFechaHistorica(valor: string): {
+  texto: string;
+  soloAno: boolean;
+} {
+  if (/^\d{4}$/.test(valor)) {
+    return { texto: valor, soloAno: true };
+  }
+  if (/^\d{4}-\d{2}-\d{2}$/.test(valor)) {
+    return {
+      texto: parseDateLocal(valor).toLocaleDateString("es-PR", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
+      soloAno: false,
+    };
+  }
+  return { texto: valor, soloAno: false };
+}

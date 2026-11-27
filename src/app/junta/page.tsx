@@ -30,7 +30,7 @@ const miembrosJunta: MiembroJunta[] = [
   {
     id: "enrique-torres",
     tratamiento: "Sr.",
-    nombre: "Enrique (Quique) Torres",
+    nombre: "Enrique (Quique) Torres Romero",
     cargo: "Presidente",
     descripcion:
       "Líder visionario con amplia experiencia en la gestión deportiva y comunitaria de Humacao.",
@@ -143,6 +143,21 @@ const miembrosJunta: MiembroJunta[] = [
       "Análisis estadístico del rendimiento deportivo",
       "Investigación y documentación de récords históricos",
       "Apoyo en la modernización de procesos organizacionales",
+    ],
+  },
+  // PF-088: el historiador confirmó a Héctor Ruiz como Vocal (2026-11-27).
+  // Sin foto todavía (PF-079) y sin años de servicio: no hay fuente.
+  {
+    id: "hector-ruiz",
+    tratamiento: "Sr.",
+    nombre: "Héctor Ruiz",
+    cargo: "Vocal",
+    descripcion:
+      "Preparó el video introductorio de la Novena Ceremonia de Exaltación y dirigió la grabación de entrevistas del Pabellón en el Museo Manuel Rivera Guevara.",
+    contribuciones: [
+      "Video introductorio de la Novena Ceremonia de Exaltación (2026)",
+      "Dirección de las entrevistas grabadas en el Museo Manuel Rivera Guevara",
+      "Fotografía de la Revista de la Novena Exaltación",
     ],
   },
   {

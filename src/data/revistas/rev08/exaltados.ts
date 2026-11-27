@@ -72,6 +72,9 @@ Representó a la UPR de Humacao en Béisbol, más destacado en Voleibol y Pista 
     revistaNumero: 8,
     paginaInicio: 13,
     paginaFin: 13,
+    fechaNacimiento: '1943-10-17',
+    fechaFallecimiento: '2019',
+    estado: 'fallecido',
     contenido: {
       biografia: `Nació el 17 de octubre de 1943 en el Barrio Abajo de Humacao en el matrimonio de Paula Santiago y Encarnación Ortiz. Casado con Luz M. Castañeda y padre de 4 varones: Juan Luis, Juan Manuel, Juan Carlos y Juan De Dios. Es producto de las escuelas públicas y en el ejército practicó el boxeo.
 

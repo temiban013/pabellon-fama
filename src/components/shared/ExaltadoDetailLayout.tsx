@@ -17,6 +17,7 @@ import { DatosExtendidosSection } from "@/components/directorio/DatosExtendidosS
 import { TrayectoriaTimeline } from "@/components/directorio/TrayectoriaTimeline";
 import { ConexionesSection } from "@/components/directorio/ConexionesSection";
 import { ContribucionCTA } from "@/components/contribucion/ContribucionCTA";
+import { formatearFechaHistorica } from "@/lib/date-utils";
 
 interface ExaltadoDetailLayoutProps {
   exaltado: Exaltado;
@@ -30,6 +31,13 @@ interface ExaltadoDetailLayoutProps {
  */
 export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
   const initials = getInitials(exaltado.nombre);
+  // PF-088: las fechas llegan como `YYYY` o `YYYY-MM-DD`.
+  const nacimiento = exaltado.fechaNacimiento
+    ? formatearFechaHistorica(String(exaltado.fechaNacimiento))
+    : undefined;
+  const fallecimiento = exaltado.fechaFallecimiento
+    ? formatearFechaHistorica(String(exaltado.fechaFallecimiento))
+    : undefined;
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
 
   // Handle ESC key to close modal
@@ -110,10 +118,10 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
           {exaltado.fechaNacimiento && (
             <div className="border-l-2 border-pabellon-green-200 pl-3">
               <p className="text-xs sm:text-sm text-gray-600 mb-1">
-                Fecha de nacimiento
+                {nacimiento?.soloAno ? "Año de nacimiento" : "Fecha de nacimiento"}
               </p>
               <p className="font-medium text-sm sm:text-base text-gray-800">
-                {String(exaltado.fechaNacimiento)}
+                {nacimiento?.texto}
               </p>
             </div>
           )}
@@ -121,10 +129,12 @@ export function ExaltadoDetailLayout({ exaltado }: ExaltadoDetailLayoutProps) {
           {exaltado.fechaFallecimiento && (
             <div className="border-l-2 border-gray-200 pl-3">
               <p className="text-xs sm:text-sm text-gray-600 mb-1">
-                Fecha de fallecimiento
+                {fallecimiento?.soloAno
+                  ? "Año de fallecimiento"
+                  : "Fecha de fallecimiento"}
               </p>
               <p className="font-medium text-sm sm:text-base text-gray-800">
-                {String(exaltado.fechaFallecimiento)}
+                {fallecimiento?.texto}
               </p>
             </div>
           )}

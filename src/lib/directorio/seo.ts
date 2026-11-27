@@ -35,6 +35,7 @@ type ExaltadoSeo = Pick<
   | "deportes"
   | "anoExaltacion"
   | "foto"
+  | "fechaNacimiento"
   | "fechaFallecimiento"
   | "contenido"
 >;
@@ -160,6 +161,10 @@ export function jsonLdExaltado(
       : {}),
     award: `Exaltación al ${NOMBRE_ORGANIZACION} (${exaltado.anoExaltacion})`,
     ...(esEquipo ? { sport: exaltado.deportes } : {}),
+    // ISO 8601 admite el año solo (`YYYY`).
+    ...(!esEquipo && exaltado.fechaNacimiento
+      ? { birthDate: exaltado.fechaNacimiento }
+      : {}),
     ...(!esEquipo && exaltado.fechaFallecimiento
       ? { deathDate: exaltado.fechaFallecimiento }
       : {}),
