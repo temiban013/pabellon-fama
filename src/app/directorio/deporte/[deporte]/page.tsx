@@ -1,9 +1,13 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
-import { exaltados } from "@/data/exaltados";
 import { todosLosExaltados } from "@/data/exaltados-all";
 import { DirectorioGrid } from "@/components/directorio/DirectorioGrid";
 import { type Exaltado } from "@/lib/types";
+import {
+  deporteDeSegmento,
+  deportesDelDirectorio,
+} from "@/lib/directorio/deportes";
 
 interface DeportePageProps {
   params: Promise<{
@@ -15,32 +19,40 @@ export async function generateMetadata({
   params,
 }: DeportePageProps): Promise<Metadata> {
   const { deporte } = await params;
-  const deporteDecoded = decodeURIComponent(deporte).replace(/-/g, " ");
-  const atletasDelDeporte = exaltados.filter(
-    (e) => e.sport.toLowerCase() === deporteDecoded.toLowerCase()
-  );
+  const pagina = deporteDeSegmento(deporte);
+
+  if (!pagina) {
+    return generateSEOMetadata({
+      title: "Deporte no encontrado",
+      description: "El deporte solicitado no tiene exaltados en el directorio.",
+      noIndex: true,
+    });
+  }
 
   return generateSEOMetadata({
-    title: `${deporteDecoded} - Exaltados del Pabellón`,
-    description: `Conoce a los ${atletasDelDeporte.length} exaltados del deporte ${deporteDecoded} en el Pabellón de la Fama del Deporte Humacaeño.`,
-    keywords: [deporteDecoded, "atletas", "exaltados", "Humacao"],
-    url: `/directorio/deporte/${deporte}`,
+    title: `${pagina.nombre} - Exaltados del Pabellón`,
+    description: `Conoce a los ${pagina.exaltados.length} exaltados del deporte ${pagina.nombre} en el Pabellón de la Fama del Deporte Humacaeño.`,
+    keywords: [pagina.nombre, "atletas", "exaltados", "Humacao"],
+    // Canónica sin acentos, la misma de sitemap.xml.
+    url: `/directorio/deporte/${pagina.slug}`,
   });
 }
 
+// Una página por deporte individual; quien tiene varios sale en cada una.
 export function generateStaticParams() {
-  const deportes = Array.from(new Set(exaltados.map((e) => e.sport)));
-  return deportes.map((deporte) => ({
-    deporte: deporte.toLowerCase().replace(/\s+/g, "-"),
-  }));
+  return deportesDelDirectorio().map(({ slug }) => ({ deporte: slug }));
 }
 
 export default async function DeportePage({ params }: DeportePageProps) {
   const { deporte } = await params;
-  const deporteDecoded = decodeURIComponent(deporte).replace(/-/g, " ");
-  const atletasDelDeporte = exaltados.filter(
-    (e) => e.sport.toLowerCase() === deporteDecoded.toLowerCase()
-  );
+  const pagina = deporteDeSegmento(deporte);
+
+  if (!pagina) {
+    notFound();
+  }
+
+  const deporteDecoded = pagina.nombre;
+  const atletasDelDeporte = pagina.exaltados;
 
   // Transform the data to match Exaltado type
   const exaltadosTransformed: Exaltado[] = atletasDelDeporte.map((e) => ({
@@ -74,7 +86,9 @@ export default async function DeportePage({ params }: DeportePageProps) {
             Exaltados de {deporteDecoded}
           </h1>
           <p className="text-xl text-blue-100">
-            {atletasDelDeporte.length} atletas exaltados en esta disciplina
+            {atletasDelDeporte.length === 1
+              ? "1 exaltado en esta disciplina"
+              : `${atletasDelDeporte.length} exaltados en esta disciplina`}
           </p>
         </div>
       </div>

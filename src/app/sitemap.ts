@@ -1,6 +1,7 @@
 import { SITE_URL } from "@/lib/constants/site";
 import { MetadataRoute } from "next";
 import { todosLosExaltados } from "@/data/exaltados-all";
+import { deportesDelDirectorio } from "@/lib/directorio/deportes";
 import { getAllRevistas } from "@/data/revistas";
 import { getNoticias } from "@/data/noticias";
 
@@ -109,13 +110,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Páginas de categorías de deporte
-  const deportes = Array.from(new Set(todosLosExaltados.flatMap((e) => e.deportes)));
-  const deportePages: MetadataRoute.Sitemap = deportes.map((deporte) => ({
-    url: `${SITE_URL}/directorio/deporte/${deporte
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\s+/g, "-")}`,
+  // Las mismas que genera /directorio/deporte/[deporte] (misma fuente y mismo slug).
+  const deportePages: MetadataRoute.Sitemap = deportesDelDirectorio().map(({ slug }) => ({
+    url: `${SITE_URL}/directorio/deporte/${slug}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
     priority: 0.7,

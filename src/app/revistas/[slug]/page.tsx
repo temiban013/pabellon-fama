@@ -6,6 +6,7 @@ import { getRevistaBySlug, getAllRevistas } from "@/data/revistas";
 import { getExaltadosPorRevista } from "@/data/exaltados-all";
 import { getFotosByRevista } from "@/data/fotos-historicas";
 import { PhotoGrid } from "@/components/galeria/PhotoGrid";
+import { parseDateLocal } from "@/lib/date-utils";
 import { dimensionesPortada, jsonLdRevista, metadataRevista } from "@/lib/revistas/seo";
 import { ChevronLeft, Download, Calendar, Users, BookOpen, Camera, ExternalLink, Star } from "lucide-react";
 
@@ -141,7 +142,7 @@ export default async function RevistaPage({ params }: RevistaPageProps) {
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                     <Calendar className="w-6 h-6 mb-2 text-pabellon-gold-400" />
                     <div className="text-sm font-bold">
-                      {new Date(revista.fechaCeremonia).toLocaleDateString('es-PR', {
+                      {parseDateLocal(revista.fechaCeremonia).toLocaleDateString('es-PR', {
                         day: 'numeric',
                         month: 'long',
                         year: 'numeric'
@@ -155,7 +156,7 @@ export default async function RevistaPage({ params }: RevistaPageProps) {
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                     <Calendar className="w-6 h-6 mb-2 text-amber-400" />
                     <div className="text-sm font-bold">
-                      {new Date(revista.fechaEvento).toLocaleDateString('es-PR', {
+                      {parseDateLocal(revista.fechaEvento).toLocaleDateString('es-PR', {
                         day: 'numeric',
                         month: 'long',
                         year: 'numeric'
